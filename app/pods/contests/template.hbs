@@ -1,1 +1,11 @@
-contests
+{{#each model as |contest|}}
+  <article class="listing">
+    <h3>{{contest.name}}</h3>
+    <div class="detail owner">
+      <span>Date:</span> {{contest.date}}
+    </div>
+    <div class="detail type">
+      <span>Location:</span> {{contest.location}}
+    </div>
+  </article>
+{{/each}}
