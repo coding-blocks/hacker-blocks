@@ -1,1 +1,7 @@
+$primary: 'red';
 @import 'ember-paper';
+
+ul.tabs {
+  width: auto;
+  margin-left: 20px;
+}
