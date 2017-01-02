@@ -1,0 +1,9 @@
+.contest-card {
+  cursor: pointer;
+  position: relative;
+
+  .contest-dates {
+    position: absolute;
+    bottom: 0;
+  }
+}

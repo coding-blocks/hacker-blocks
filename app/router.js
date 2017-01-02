@@ -7,7 +7,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('contests');
+  this.route('contests', function() {
+    this.route('contest');
+  });
   this.route('practice');
 });
 
