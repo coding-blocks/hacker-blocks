@@ -12,4 +12,3 @@ export default DS.Model.extend({
   image: DS.attr(),
   problems: DS.attr()
 });
-
