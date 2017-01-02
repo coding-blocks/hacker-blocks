@@ -1,4 +1,5 @@
 {{#each model as |contest|}}
-  {{#contest-card contest=contest}} {{/contest-card}}
+  {{#link-to 'contests.contest' contest.id tagName="div"}}
+    {{#contest-card contest=contest}} {{/contest-card}}
+  {{/link-to}}
 {{/each}}
-

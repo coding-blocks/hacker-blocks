@@ -38,10 +38,10 @@ export default function() {
           end_time: "31st Jan 11:00 pm",
           problems: [{
             id: 1,
-            name: "Problem 1 of this hackathon"
+            name: "Problem 1 of this contest"
           },{
             id: 2,
-            name: "Problem 2 of this hackathon"
+            name: "Problem 2 of this contest"
           }]
         }
       }
