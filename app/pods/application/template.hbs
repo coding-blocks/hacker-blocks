@@ -1,4 +1,4 @@
-<nav class="z-depth-5 red">
+<nav class="z-depth-3 red">
   <div class="nav-wrapper">
     <a href="#" class="brand-logo center">Coding Blocks Hack</a>
     <ul id="nav-mobile" class="left hide-on-med-and-down">
@@ -9,7 +9,7 @@
       {{#if session.isAuthenticated}}
         <a {{action 'invalidateSession'}}>Logout</a>
       {{else}}
-        <a {{action 'openLoginDialog'}} class="btn waves-effect waves-light">Login</a>
+        <a {{action 'openLoginDialog'}} class="btn waves-effect waves-light">Login / Sign Up</a>
       {{/if}}
     </ul>
   </div>

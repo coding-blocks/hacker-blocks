@@ -1,9 +1,9 @@
 <!-- Modal Structure -->
 <div id="login-dialog" class="modal">
   <div class="modal-content">
-    <h4>Login</h4>
     <div class="row">
-      <form class="col s12">
+      <form class="col s6">
+        <h4>Login</h4>
         <div class="row">
           <div class="input-field col s12">
             <input id="username" type="text" class="validate">
@@ -16,10 +16,38 @@
             <label for="password">Password</label>
           </div>
         </div>
+        <a {{action 'authenticate'}} class="modal-action waves-effect waves-green btn-flat right">Login</a>
+      </form>
+      <div class="divider-vertical"></div>
+      <form class="col s6">
+        <h4>Sign Up</h4>
+        <div class="row">
+          <div class="input-field col s6">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">First Name</label>
+          </div>
+          <div class="input-field col s6">
+            <input id="last_name" type="text" class="validate">
+            <label for="last_name">Last Name</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="username" type="text" class="validate">
+            <label for="username">Username</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+          </div>
+        </div>
+        <a class="modal-action waves-effect waves-green btn-flat right">Sign Up</a>
       </form>
     </div>
   </div>
   <div class="modal-footer">
-    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Login</a>
+
   </div>
 </div>

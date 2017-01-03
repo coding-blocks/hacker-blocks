@@ -5,6 +5,9 @@ export default Ember.Controller.extend({
   actions: {
     openLoginDialog() {
       $('#login-dialog').modal('open');
+    },
+    invalidateSession() {
+      this.get('session').invalidate();
     }
   }
 });
