@@ -47,4 +47,17 @@ export default function() {
       }
     };
   });
+
+  this.get('/problems/:problem_id', function () {
+    return {
+      data: {
+        id:1,
+        type: "problem",
+        attributes: {
+          name: "The Great Coding Blocks Conundrum",
+          content: "Lorem ipsum..."
+        }
+      }
+    };
+  });
 }

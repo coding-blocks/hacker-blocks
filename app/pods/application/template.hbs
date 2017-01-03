@@ -5,8 +5,19 @@
       {{#link-to 'contests' tagName="li"}} <a>Contests</a> {{/link-to}}
       {{#link-to 'practice' tagName="li"}} <a>Practice</a> {{/link-to}}
     </ul>
+    <ul class="right">
+      {{#if session.isAuthenticated}}
+        <a {{action 'invalidateSession'}}>Logout</a>
+      {{else}}
+        <a {{action 'openLoginDialog'}} class="btn waves-effect waves-light">Login</a>
+      {{/if}}
+    </ul>
   </div>
 </nav>
 <div class="container">
   {{outlet}}
 </div>
+{{#if session.isAuthenticated}}
+{{else}}
+  {{#login-dialog}}{{/login-dialog}}
+{{/if}}
