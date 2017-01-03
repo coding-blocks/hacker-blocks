@@ -17,5 +17,8 @@ export default Base.extend({
     });
   },
   invalidate(data) {
+    return new Ember.RSVP.Promise(function(resolve, reject) {
+      resolve();
+    });
   }
 });

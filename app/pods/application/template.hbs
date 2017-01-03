@@ -7,7 +7,7 @@
     </ul>
     <ul class="right">
       {{#if session.isAuthenticated}}
-        <a {{action 'invalidateSession'}}>Logout</a>
+        <a {{action 'invalidateSession'}} class="btn waves-effect waves-light">Logout</a>
       {{else}}
         <a {{action 'openLoginDialog'}} class="btn waves-effect waves-light">Login / Sign Up</a>
       {{/if}}

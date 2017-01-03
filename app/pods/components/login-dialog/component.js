@@ -14,7 +14,6 @@ export default Ember.Component.extend({
       });
       this.get('session').on('authenticationSucceeded', function () {
         $('#login-dialog').modal('close');
-        console.log("closing the dialog");
       });
     }
   }
