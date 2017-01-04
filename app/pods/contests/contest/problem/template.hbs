@@ -7,12 +7,11 @@
           <div class="left">Editor</div>
           <div class="right">
             <span >Language:</span>
-            <a class="dropdown-button btn" href="#" data-activates='lang-dropdown'>C</a>
+            <a id="editor-lang" class="dropdown-button btn" href="#" data-activates='lang-dropdown'>c</a>
             <ul id='lang-dropdown' class='dropdown-content'>
-              <li><a href="#!">C</a></li>
-              <li><a href="#!">C++</a></li>
-              <li><a href="#!">Python</a></li>
-              <li><a href="#!">Java</a></li>
+              {{#each-in lang as |langId langName|}}
+                <li><a {{action "langChange" langId}} href="#!">{{langName}}</a></li>
+              {{/each-in}}
             </ul>
           </div>
         </div>
