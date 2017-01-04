@@ -7,7 +7,7 @@
           <div class="left">Editor</div>
           <div class="right">
             <span >Language:</span>
-            <a id="editor-lang" class="dropdown-button btn" href="#" data-activates='lang-dropdown'>c</a>
+            <a id="editor-lang" class="dropdown-button btn red lighten-1" href="#" data-activates='lang-dropdown'>c</a>
             <ul id='lang-dropdown' class='dropdown-content'>
               {{#each-in lang as |langId langName|}}
                 <li><a {{action "langChange" langId}} href="#!">{{langName}}</a></li>
