@@ -2,11 +2,30 @@
   <div id="test1" class="col s12">
     <h2>{{model.name}}</h2>
     <p>{{markdown-to-html model.content}}</p>
-    {{#ace-editor}}
-function () {
-  console.log("derp");
-}
-{{/ace-editor}}
+    <div class="row">
+        <div class="row">
+          <div class="left">Editor</div>
+          <div class="right">
+            <span >Language:</span>
+            <a class="dropdown-button btn" href="#" data-activates='lang-dropdown'>C</a>
+            <ul id='lang-dropdown' class='dropdown-content'>
+              <li><a href="#!">C</a></li>
+              <li><a href="#!">C++</a></li>
+              <li><a href="#!">Python</a></li>
+              <li><a href="#!">Java</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          {{#ace-editor}}
+            function () {
+            console.log("derp");
+            }
+          {{/ace-editor}}
+        </div>
+    </div>
+
+
   </div>
   <div id="test2" class="col s12">Test 2</div>
   <div id="test3" class="col s12">Test 3</div>
