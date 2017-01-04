@@ -1,7 +1,12 @@
 {{#problem-view}}
   <div id="test1" class="col s12">
     <h2>{{model.name}}</h2>
-    <p>{{model.content}}</p>
+    <p>{{markdown-to-html model.content}}</p>
+    {{#ace-editor}}
+function () {
+  console.log("derp");
+}
+{{/ace-editor}}
   </div>
   <div id="test2" class="col s12">Test 2</div>
   <div id="test3" class="col s12">Test 3</div>

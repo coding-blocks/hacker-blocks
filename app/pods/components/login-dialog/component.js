@@ -4,7 +4,7 @@ export default Ember.Component.extend({
   session: Ember.inject.service('session'),
   didRender() {
     this._super(...arguments);
-    this.$('.modal').modal();
+    $('.modal').modal();
   },
   actions: {
     authenticate() {

@@ -8,7 +8,9 @@ module.exports = function(defaults) {
   });
 
   app.import('vendor/materialize.min.js');
-  app.import('vendor/showdown.min.js');
+  app.import('vendor/ace/ace.js');
+  app.import('vendor/ace/theme-monokai.js');
+  app.import('vendor/ace/mode-javascript.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
