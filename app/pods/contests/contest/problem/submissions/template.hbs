@@ -1,13 +1,14 @@
 <div class="card col s12">
   <div class="card-content">
     <span class="card-title"><h4>Submissions</h4></span>
+    <div class="divider"></div>
     <table class="striped">
       <thead>
       <tr>
         <th data-field="id">#</th>
-        <th data-field="time">Time</th>
-        <th data-field="language">Language</th>
+        <th data-field="time">Submit time</th>
         <th data-field="score">Score</th>
+        <th data-field="language">Language</th>
         <th data-field="result">Result</th>
       </tr>
       </thead>
@@ -17,9 +18,9 @@
         {{log submission}}
         <tr>
           <td>{{index}}</td>
-          <td>{{submission.time}}</td>
-          <td>{{submission.language}}</td>
+          <td>{{submission.submit_at}}</td>
           <td>{{submission.score}}</td>
+          <td>{{submission.language}}</td>
           {{#if (eq submission.result "passed")}}
             <td><span class="new badge result-badge" data-badge-caption="Passed"></span></td>
           {{else if (eq submission.result "wrong-answer")}}

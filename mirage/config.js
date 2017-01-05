@@ -69,7 +69,8 @@ export default function() {
         id: 1,
         type: "submission",
         attributes: {
-          time: 476254654,
+          user: "omerjerk",
+          submit_at: 476254654,
           language: "c",
           score: 90.0,
           result: "passed"
@@ -78,7 +79,8 @@ export default function() {
         id: 2,
         type: "submission",
         attributes: {
-          time: 476244654,
+          user: "championswimmer",
+          submit_at: 476244654,
           language: "cpp",
           score: 100.0,
           result: "wrong-answer"
