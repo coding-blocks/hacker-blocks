@@ -1,36 +1,3 @@
 {{#problem-view}}
-  <div id="problem-screen" class="col s12">
-        <div class="row">
-          <div class="card col s12">
-            <div class="card-content">
-              <span class="card-title"><h4>{{model.name}}</h4></span>
-              <p>{{markdown-to-html model.content}}</p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="left">Editor</div>
-          <div class="right">
-            <span >Language:</span>
-            <a id="editor-lang" class="dropdown-button btn red lighten-1" href="#" data-activates='lang-dropdown'>c</a>
-            <ul id='lang-dropdown' class='dropdown-content'>
-              {{#each-in lang as |langId langName|}}
-                <li><a {{action "langChange" langId}} href="#!">{{langName}}</a></li>
-              {{/each-in}}
-            </ul>
-          </div>
-        </div>
-        <div class="row">
-          {{#ace-editor}}
-            function () {
-            console.log("derp");
-            }
-          {{/ace-editor}}
-        </div>
-        <div class="row">
-          <a class="col s3 btn red lighten-1 right waves-effect">Submit</a>
-        </div>
-  </div>
-  <div id="test2">{{#my-submissions}}{{/my-submissions}}</div>
-  <div id="test3">{{#problem-leaderboard}}{{/problem-leaderboard}}</div>
+  {{outlet}}
 {{/problem-view}}
