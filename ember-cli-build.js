@@ -9,6 +9,7 @@ module.exports = function(defaults) {
 
   app.import('vendor/materialize.min.js');
   app.import('vendor/ace/ace.js');
+  app.import('vendor/ace/worker-javascript.js');
   app.import('vendor/ace/theme-monokai.js');
   app.import('vendor/ace/mode-javascript.js');
 

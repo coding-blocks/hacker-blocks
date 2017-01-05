@@ -5,6 +5,6 @@ export default Ember.Component.extend({
     this._super(...arguments);
     $(document).ready(function(){
       $('.collapsible').collapsible();
-    });e
+    });
   }
 });
