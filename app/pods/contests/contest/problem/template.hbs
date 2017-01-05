@@ -1,7 +1,7 @@
 {{#problem-view}}
-  <div id="test1" class="col s12">
+  <div id="problem-screen" class="col s12">
         <div class="row">
-          <div class="card">
+          <div class="card col s12">
             <div class="card-content">
               <span class="card-title"><h4>{{model.name}}</h4></span>
               <p>{{markdown-to-html model.content}}</p>
@@ -31,6 +31,6 @@
           <a class="col s3 btn red lighten-1 right waves-effect">Submit</a>
         </div>
   </div>
-  <div id="test2" class="col s12">{{#my-submissions}}{{/my-submissions}}</div>
-  <div id="test3" class="col s12">Test 3</div>
+  <div id="test2">{{#my-submissions}}{{/my-submissions}}</div>
+  <div id="test3">{{#problem-leaderboard}}{{/problem-leaderboard}}</div>
 {{/problem-view}}
