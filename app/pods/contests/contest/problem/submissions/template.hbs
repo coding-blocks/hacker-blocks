@@ -1,1 +1,34 @@
-<div id="test2">{{#my-submissions}}{{/my-submissions}}</div>
+<div class="card col s12">
+  <div class="card-content">
+    <span class="card-title"><h4>Submissions</h4></span>
+    <table class="striped">
+      <thead>
+      <tr>
+        <th data-field="id">#</th>
+        <th data-field="time">Time</th>
+        <th data-field="language">Language</th>
+        <th data-field="score">Score</th>
+        <th data-field="result">Result</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      {{#each model as |submission index|}}
+        {{log submission}}
+        <tr>
+          <td>{{index}}</td>
+          <td>{{submission.time}}</td>
+          <td>{{submission.language}}</td>
+          <td>{{submission.score}}</td>
+          {{#if (eq submission.result "passed")}}
+            <td><span class="new badge result-badge" data-badge-caption="Passed"></span></td>
+          {{else if (eq submission.result "wrong-answer")}}
+              <td><span class="new badge result-badge red" data-badge-caption="Wrong Answer"></span></td>
+          {{/if}}
+        </tr>
+      {{/each}}
+
+      </tbody>
+    </table>
+  </div>
+</div>
