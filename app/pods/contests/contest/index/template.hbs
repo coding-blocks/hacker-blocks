@@ -1,5 +1,5 @@
 {{#each model.problems as |problem|}}
-  {{#link-to 'contests.contest.problem' problem.id tagName="div"}}
+  {{#link-to 'contests.contest.problem.main' problem.id tagName="div"}}
     {{#problem-card problem=problem}} {{/problem-card}}
   {{/link-to}}
 {{/each}}

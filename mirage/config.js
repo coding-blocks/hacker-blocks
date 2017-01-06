@@ -63,7 +63,7 @@ export default function() {
     };
   });
 
-  this.get('/submissions', function (db, request) {
+  this.get('/submissions', function () {
     return {
       data: [{
         id: 1,
@@ -86,6 +86,6 @@ export default function() {
           result: "wrong-answer"
         }
       }]
-    }
+    };
   });
 }

@@ -17,7 +17,7 @@
       {{#each model as |submission index|}}
         {{log submission}}
         <tr>
-          <td>{{index}}</td>
+          <td>{{sum index 1}}</td>
           <td>{{submission.submit_at}}</td>
           <td>{{submission.score}}</td>
           <td>{{submission.language}}</td>

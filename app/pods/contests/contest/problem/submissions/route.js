@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model(params) {
+  model() {
     return this.get('store').query('submission', {contest_id : 1});
   }
 });
