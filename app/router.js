@@ -8,7 +8,7 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('contests', function() {
-    this.route('contest', { path: '/contest/:contest_id' }, function() {
+    this.route('contest', { path: '/c/:contest_id' }, function() {
       this.route('problem', {path: '/:problem_id'}, function() {
         this.route('main');
         this.route('submissions');

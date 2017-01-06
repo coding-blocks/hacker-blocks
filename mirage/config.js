@@ -30,24 +30,15 @@ export default function() {
   });*/
   this.passthrough('/contests');
 
-  this.get('/contests/:id', function () {
+  this.get('/problems', function () {
     return {
-      data: {
+      data: [{
         id:1,
-        type: "contest",
+        type: "problem",
         attributes: {
-          name: "The Great Coding Blocks Hackathon",
-          start_time: "1st Jan 9:00 am",
-          end_time: "31st Jan 11:00 pm",
-          problems: [{
-            id: 1,
-            name: "Problem 1 of this contest"
-          },{
-            id: 2,
-            name: "Problem 2 of this contest"
-          }]
+          name: "Problem 1 of this contest"
         }
-      }
+      }]
     };
   });
 
