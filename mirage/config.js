@@ -86,4 +86,6 @@ export default function() {
     };
   });*/
   this.passthrough('/submissions');
+
+  this.passthrough('/leaderboard');
 }
