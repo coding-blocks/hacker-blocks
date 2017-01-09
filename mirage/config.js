@@ -1,6 +1,6 @@
 export default function() {
 
-  let lorem_ipseum = "Lorem ipsum dolor sit `amet`, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+  // let lorem_ipseum = "Lorem ipsum dolor sit `amet`, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
   this.namespace = 'http://localhost:3000/api';
 /*
@@ -44,6 +44,7 @@ export default function() {
   });*/
   this.passthrough('/problems');
 
+  /*
   this.get('/problems/:problem_id', function () {
     return {
       data: {
@@ -55,8 +56,10 @@ export default function() {
         }
       }
     };
-  });
+  });*/
+  this.passthrough('/problems/:problem_id');
 
+  /*
   this.get('/submissions', function () {
     return {
       data: [{
@@ -81,5 +84,6 @@ export default function() {
         }
       }]
     };
-  });
+  });*/
+  this.passthrough('/submissions');
 }

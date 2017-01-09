@@ -18,12 +18,12 @@
         {{log submission}}
         <tr>
           <td>{{sum index 1}}</td>
-          <td>{{submission.submit_at}}</td>
+          <td>{{submission.submitAt}}</td>
           <td>{{submission.score}}</td>
-          <td>{{submission.language}}</td>
-          {{#if (eq submission.result "passed")}}
+          <td>{{getlang submission.langCodename}}</td>
+          {{#if (eq submission.result 1)}}
             <td><span class="new badge result-badge" data-badge-caption="Passed"></span></td>
-          {{else if (eq submission.result "wrong-answer")}}
+          {{else if (eq submission.result 0)}}
               <td><span class="new badge result-badge red" data-badge-caption="Wrong Answer"></span></td>
           {{/if}}
         </tr>

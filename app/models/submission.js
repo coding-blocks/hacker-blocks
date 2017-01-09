@@ -6,8 +6,8 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   user: DS.attr(),
-  submit_at: DS.attr(),
-  language: DS.attr(),
+  submitAt: DS.attr(),
+  langCodename: DS.attr(),
   score: DS.attr(),
   result: DS.attr()
 });
