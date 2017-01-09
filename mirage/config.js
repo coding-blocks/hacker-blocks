@@ -30,6 +30,7 @@ export default function() {
   });*/
   this.passthrough('/contests');
 
+  /*
   this.get('/problems', function () {
     return {
       data: [{
@@ -40,7 +41,8 @@ export default function() {
         }
       }]
     };
-  });
+  });*/
+  this.passthrough('/problems');
 
   this.get('/problems/:problem_id', function () {
     return {
