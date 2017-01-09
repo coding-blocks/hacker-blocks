@@ -10,6 +10,5 @@ export default Ember.Component.extend({
       $('ul.tabs').tabs();
       tabInitDone = true;
     }
-    $('.dropdown-button').dropdown();
   }
 });

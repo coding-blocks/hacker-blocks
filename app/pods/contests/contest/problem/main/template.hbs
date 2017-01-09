@@ -2,8 +2,8 @@
   <div class="row">
     <div class="card col s12">
       <div class="card-content">
-        <span class="card-title"><h4>{{model.name}}</h4></span>
-        <p>{{markdown-to-html model.content}}</p>
+        <span class="card-title"><h4>{{model.problem.name}}</h4></span>
+        <p>{{markdown-to-html model.problem.content}}</p>
       </div>
     </div>
   </div>
@@ -13,7 +13,7 @@
       <span >Language:</span>
       <a id="editor-lang" class="dropdown-button btn red lighten-1" href="#" data-activates='lang-dropdown'>c</a>
       <ul id='lang-dropdown' class='dropdown-content'>
-        {{#each-in lang as |langId langName|}}
+        {{#each-in model.lang_codes as |langId langName|}}
           <li><a {{action "langChange" langId}} href="#!">{{langName}}</a></li>
         {{/each-in}}
       </ul>
