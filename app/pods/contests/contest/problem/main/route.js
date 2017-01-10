@@ -16,7 +16,6 @@ export default Ember.Route.extend({
     });
   },
   afterModel() {
-    console.log("after model done");
     Ember.run.schedule("afterRender",this,function() {
       $('.dropdown-button').dropdown();
     });

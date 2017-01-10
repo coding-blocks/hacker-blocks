@@ -2,16 +2,18 @@
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
+var Funnel = require('broccoli-funnel');
+
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     // Add options here
   });
 
   app.import('vendor/materialize.min.js');
-  app.import('vendor/ace/ace.js');
-  app.import('vendor/ace/worker-javascript.js');
-  app.import('vendor/ace/theme-monokai.js');
-  app.import('vendor/ace/mode-javascript.js');
+  // app.import('vendor/ace/ace.js');
+  // app.import('vendor/ace/worker-javascript.js');
+  // app.import('vendor/ace/theme-monokai.js');
+  // app.import('vendor/ace/mode-javascript.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
@@ -26,5 +28,11 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  return app.toTree();
+  var extraAssets = new Funnel('bower_components/ace-builds/src-min-noconflict', {
+    srcDir: '/',
+    include: ['**/*.js'],
+    destDir: '/assets/ace'
+  });
+
+  return app.toTree(extraAssets);
 };
