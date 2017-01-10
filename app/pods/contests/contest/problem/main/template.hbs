@@ -22,16 +22,13 @@
   <div class="row">
     {{#ace-editor}}{{/ace-editor}}
   </div>
-  <div class="row">
-    <div class="col s3 right">
-      <div class="row">
-        <div class="col s3">
-          {{#circular-loader}}{{/circular-loader}}
-        </div>
-        <a class="col s8 btn red lighten-1 waves-effect">Submit
-          <i class="material-icons right">send</i>
-        </a>
-      </div>
+  <div class="row right">
+    <div class="col s3">
+      {{#circular-loader id="code-submit-loader"}}{{/circular-loader}}
     </div>
+    <a id="code-submit" class="col s9 btn red lighten-1 waves-effect" {{action "submit" model.problem}}>
+      Submit
+      <i class="material-icons left">send</i>
+    </a>
   </div>
 </div>

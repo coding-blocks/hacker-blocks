@@ -20,7 +20,7 @@
           <td>{{sum index 1}}</td>
           <td>{{submission.submitAt}}</td>
           <td>{{submission.score}}</td>
-          <td>{{getlang submission.langCodename}}</td>
+          <td>{{getlang submission.language}}</td>
           {{#if (eq submission.result 1)}}
             <td><span class="new badge result-badge" data-badge-caption="Passed"></span></td>
           {{else if (eq submission.result 0)}}
