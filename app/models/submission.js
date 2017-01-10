@@ -9,5 +9,6 @@ export default DS.Model.extend({
   submitAt: DS.attr(),
   langCodename: DS.attr(),
   score: DS.attr(),
-  result: DS.attr()
+  result: DS.attr(),
+  problemId: DS.attr()
 });
