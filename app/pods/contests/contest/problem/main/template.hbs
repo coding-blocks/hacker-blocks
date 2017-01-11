@@ -31,4 +31,21 @@
       <i class="material-icons left">send</i>
     </a>
   </div>
+  <div class="row">
+    <div class="card col s12">
+      <div class="card-content">
+        <span class="card-title">Output</span>
+        {{#if (eq result "compile_error")}}
+          <p>Compilation Error:</p>
+          <p><pre>{{output}}</pre></p>
+        {{else}}
+          <ul class="collection">
+            {{#each output as |testcase index|}}
+              <li class="collection-item"><b>Testcase #{{sum index 1}} </b> {{testcase.result}}</li>
+            {{/each}}
+          </ul>
+        {{/if}}
+      </div>
+    </div>
+  </div>
 </div>

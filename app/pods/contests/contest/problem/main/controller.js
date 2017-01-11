@@ -16,6 +16,8 @@ export default Ember.Controller.extend({
   init: function () {
     this._super();
   },
+  output: "",
+  result: "",
   langId: "c",
   lang: {
     "c": {
@@ -59,6 +61,12 @@ export default Ember.Controller.extend({
       }).done(function(data){
           stopLoading();
           console.log("data returned = " + JSON.stringify(data));
+          self.set('result', data.result);
+          if (data.result == "compile_error") {
+            self.set('output', window.atob(data.error));
+          } else {
+            self.set('output', data.data.testcases);
+          }
       }).fail(function(jqXHR, textStatus, errorThrown) {
         stopLoading();
       });

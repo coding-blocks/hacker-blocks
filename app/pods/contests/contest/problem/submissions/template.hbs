@@ -18,7 +18,7 @@
         {{log submission}}
         <tr>
           <td>{{sum index 1}}</td>
-          <td>{{submission.submitAt}}</td>
+          <td>{{ago-time submission.submitAt}}</td>
           <td>{{submission.score}}</td>
           <td>{{getlang submission.language}}</td>
           {{#if (eq submission.result 1)}}
