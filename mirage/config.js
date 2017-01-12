@@ -88,4 +88,18 @@ export default function() {
   this.passthrough('/submissions');
 
   this.passthrough('/leaderboard');
+
+  this.get('/users/me', function () {
+    return {
+      data: {
+        id: 1,
+        type: "user",
+        attributes: {
+          name: "Umair",
+          roll_number: "1234",
+          email: "omerjerk@gmail.com"
+        }
+      }
+    }
+  });
 }

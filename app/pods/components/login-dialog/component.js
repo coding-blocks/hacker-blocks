@@ -8,7 +8,9 @@ export default Ember.Component.extend({
   },
   actions: {
     authenticate() {
+      var loginData = $('#login-form').serialize();
       let { identification, password } = this.getProperties('username', 'password');
+      console.log("id pass = " + loginData);
       this.get('session').authenticate('authenticator:custom', identification, password).catch((reason) => {
         this.set('errorMessage', reason.error || reason);
       });
