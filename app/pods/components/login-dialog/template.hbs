@@ -3,6 +3,10 @@
   <div class="modal-content">
     <div class="row">
       <form id="login-form" class="col s6" {{ action "authenticate" on="submit"}}>
+        {{#if errorMessage}}
+          {{log errorMessage}}
+          <div class="card-panel red">{{errorMessage.message}}</div>
+        {{/if}}
         <h4>Login</h4>
         <div class="row">
           <div class="input-field col s12">
