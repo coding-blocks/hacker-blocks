@@ -14,7 +14,6 @@ export default Ember.Component.extend({
         this.set('errorMessage', reason.error || reason);
       });
       this.get('session').on('authenticationSucceeded', function () {
-
         $('#login-dialog').modal('close');
       });
     }
