@@ -6,9 +6,9 @@
       {{#link-to 'practice' tagName="li"}} <a>Practice</a> {{/link-to}}
     </ul>
     <ul class="right">
-      {{log "current user = " currentUser}}
+      {{log "currentuser" currentUser}}
       {{#if session.isAuthenticated}}
-        Hello {{currentUser.data.name}} <a {{action 'invalidateSession'}} class="btn waves-effect waves-light">Logout</a>
+        Logged in as <b>{{model.name}}</b> <a {{action 'invalidateSession'}} class="btn waves-effect waves-light">Logout</a>
       {{else}}
         <a {{action 'openLoginDialog'}} class="btn waves-effect waves-light">Login / Sign Up</a>
       {{/if}}

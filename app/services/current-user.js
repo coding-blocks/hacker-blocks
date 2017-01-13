@@ -15,6 +15,7 @@ export default Ember.Service.extend({
       let token = this.get('session.data.authenticated.user_auth');
       return this.get('store').queryRecord('user', { me: true , token: token}).then((user) => {
         self.set('data', user);
+        return user;
       });
     }
   }

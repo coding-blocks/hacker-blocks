@@ -89,6 +89,7 @@ export default function() {
 
   this.passthrough('/leaderboard');
 
+  /*
   this.get('/users/me', function () {
     return {
       data: {
@@ -101,5 +102,7 @@ export default function() {
         }
       }
     }
-  });
+  });*/
+  this.passthrough('/users/me');
+  this.passthrough('http://localhost:3000/api/login');
 }
