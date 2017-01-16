@@ -2,6 +2,8 @@
  * Created by umair on 12/01/17.
  */
 
+import Ember from 'ember';
+
 const { inject: { service }, isEmpty, RSVP } = Ember;
 
 export default Ember.Service.extend({
