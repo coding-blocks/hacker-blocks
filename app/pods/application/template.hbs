@@ -1,23 +1,28 @@
-<nav class="z-depth-3 red">
-  <div class="nav-wrapper">
-    <a href="#" class="brand-logo center">Coding Blocks Hack</a>
-    <ul id="nav-mobile" class="left hide-on-med-and-down">
-      {{#link-to 'contests' tagName="li"}} <a>Contests</a> {{/link-to}}
-      {{#link-to 'practice' tagName="li"}} <a>Practice</a> {{/link-to}}
-    </ul>
-    <ul class="right">
-      {{log "currentuser" currentUser}}
-      {{#if session.isAuthenticated}}
-        Logged in as <b>{{model.name}}</b> <a {{action 'invalidateSession'}} class="btn waves-effect waves-light">Logout</a>
-      {{else}}
-        <a {{action 'openLoginDialog'}} class="btn waves-effect waves-light">Login / Sign Up</a>
-      {{/if}}
-    </ul>
+<header>
+  <nav class="z-depth-3 red">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo center">Coding Blocks Hack</a>
+      <ul id="nav-mobile" class="left hide-on-med-and-down">
+        {{#link-to 'contests' tagName="li"}} <a>Contests</a> {{/link-to}}
+        {{#link-to 'practice' tagName="li"}} <a>Practice</a> {{/link-to}}
+      </ul>
+      <ul class="right">
+        {{log "currentuser" currentUser}}
+        {{#if session.isAuthenticated}}
+          Logged in as <b>{{model.name}}</b> <a {{action 'invalidateSession'}} class="btn waves-effect waves-light">Logout</a>
+        {{else}}
+          <a {{action 'openLoginDialog'}} class="btn waves-effect waves-light">Login / Sign Up</a>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+</header>
+<main>
+  <div class="container">
+    {{outlet}}
   </div>
-</nav>
-<div class="container">
-  {{outlet}}
-</div>
+</main>
+{{#foot-er}}{{/foot-er}}
 {{#if session.isAuthenticated}}
 {{else}}
   {{#login-dialog}}{{/login-dialog}}
