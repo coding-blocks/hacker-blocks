@@ -42,14 +42,23 @@
   height:100%;
 }
 
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
+html, body {
+  height: 100%;
+  margin: 0;
 }
 
-main {
-  flex: 1 0 auto;
+.wrapper {
+  min-height: 100%;
+  margin-bottom: -230px;
+}
+
+#ember435 {
+  height: 100%;
+}
+
+.footer,
+.push {
+  height: 230px;
 }
 
 .arrows { white-space: nowrap; }

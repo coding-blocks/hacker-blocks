@@ -6,6 +6,5 @@ export default Ember.Component.extend({
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/c_cpp");
-    console.log("Editor init done with");
   }
 });
