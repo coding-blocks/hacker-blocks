@@ -57,9 +57,9 @@ export default Ember.Component.extend({
 
     var breadcrumbs = [];
     for (let j = 0; j < i; ++j) {
-      breadcrumbs.push(paths[j]['name']);
+      breadcrumbs.push(paths[j]);
     }
-    breadcrumbs.push(paths[i]['name']);
+    breadcrumbs.push(paths[i]);
     return breadcrumbs;
   }
 });
