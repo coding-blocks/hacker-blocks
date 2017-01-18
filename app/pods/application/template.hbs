@@ -22,7 +22,27 @@
     {{#bread-crumb}}{{/bread-crumb}}
     <div class="divider"></div>
     <div class="container">
-      {{outlet}}
+      <div class="row">
+        <div class="col s9">
+          {{outlet}}
+        </div>
+        <div class="col s3">
+          <div class="fb-page"
+               data-href="https://www.facebook.com/codingblocksindia"
+               data-tabs="timeline,events,messages"
+               data-width="300"
+               data-height="500"
+               data-small-header="false"
+               data-adapt-container-width="true"
+               data-hide-cover="false"
+               data-show-facepile="true">
+            <blockquote cite="https://www.facebook.com/codingblocksindia"
+                        class="fb-xfbml-parse-ignore">
+              <a href="https://www.facebook.com/codingblocksindia">Coding Blocks</a>
+            </blockquote>
+          </div>
+        </div>
+      </div>
     </div>
   </main>
   <div class="push"></div>

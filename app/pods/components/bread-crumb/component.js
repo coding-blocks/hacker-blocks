@@ -36,7 +36,6 @@ export default Ember.Component.extend({
   breadCrumbs: computed('routing.currentRouteName', {
     get() {
       const routeName = this.get('routing.currentRouteName');
-      console.log("routeName = " + routeName);
       return this._lookupBreadCrumbs(routeName);
     }
   }).readOnly(),
@@ -48,10 +47,7 @@ export default Ember.Component.extend({
     for (let i = 0; i < routeNames.length; ++i) {
       let routeTitle = routeNames[i];
       if (routeTitle === 'index') break;
-      console.log('routeTitle = ' + routeTitle);
-      console.log('lastRouteName = ' + lastRouteName);
       let modifiedRouteName = (lastRouteName === ''? '' : lastRouteName + '.') + routeTitle;
-      console.log("modified route name - " + modifiedRouteName);
       let route;
       if (indexPath[modifiedRouteName] == true) {
         modifiedRouteName = modifiedRouteName + '.index';
@@ -60,7 +56,6 @@ export default Ember.Component.extend({
       let breadCrumb = getWithDefault(route, 'breadCrumb', {
         title: routeTitle
       });
-      console.log('route breadcrumb title = ' + breadCrumb.title);
       breadCrumbs.push({name: breadCrumb.title, route: modifiedRouteName});
       lastRouteName = (lastRouteName === ''? '' : lastRouteName + '.') + routeTitle;
     }

@@ -16,7 +16,7 @@ Router.map(function() {
       });
     });
   });
-  this.route('practice');
+  this.route('practice', function() {});
 });
 
 export default Router;
