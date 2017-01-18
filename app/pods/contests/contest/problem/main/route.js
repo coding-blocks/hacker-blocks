@@ -8,6 +8,9 @@ var lang_codes = {
 };
 
 export default Ember.Route.extend({
+  breadCrumb: {
+    title: 'Description'
+  },
   model() {
     var problem_id = this.modelFor('contests/contest/problem').problem_id;
     return Ember.RSVP.hash({

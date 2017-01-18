@@ -22,44 +22,48 @@ const {
 * - omerjerk
 * */
 
-const paths = [
-    {
-      route: 'contests.index',
-      name: 'All Contests'
-    },{
-    route: 'contests.contest.index',
-    name: 'Problems'
-  },{
-    route: 'contests.contest.index',
-    name: 'Problem'
-  }
-];
+const indexPath = {
+  'contests': true,
+  'contests.contest': true,
+  'contests.contest.problem': false,
+  'contests.contest.problem.main': false,
+  'contests.contest.problem.leaderboard': false,
+  'contests.contest.problem.submissions': false
+}
 
 export default Ember.Component.extend({
   routing: Ember.inject.service('-routing'),
   breadCrumbs: computed('routing.currentRouteName', {
     get() {
       const routeName = this.get('routing.currentRouteName');
-      const route = getOwner(this).lookup(`route:${routeName}`);
-
-      let breadCrumbs = this._lookupBreadCrumb(routeName);
-      return breadCrumbs;
+      console.log("routeName = " + routeName);
+      return this._lookupBreadCrumbs(routeName);
     }
   }).readOnly(),
 
-  _lookupBreadCrumb: function (routeName) {
-    let i = 0;
-    for (i = 0; i < paths.length && i < 2; ++i) {
-      if (paths[i]['route'] === routeName) {
-        break;
+  _lookupBreadCrumbs: function (routeName) {
+    let routeNames = routeName.split('.');
+    let lastRouteName = '';
+    let breadCrumbs = [];
+    for (let i = 0; i < routeNames.length; ++i) {
+      let routeTitle = routeNames[i];
+      if (routeTitle === 'index') break;
+      console.log('routeTitle = ' + routeTitle);
+      console.log('lastRouteName = ' + lastRouteName);
+      let modifiedRouteName = (lastRouteName === ''? '' : lastRouteName + '.') + routeTitle;
+      console.log("modified route name - " + modifiedRouteName);
+      let route;
+      if (indexPath[modifiedRouteName] == true) {
+        modifiedRouteName = modifiedRouteName + '.index';
       }
+      route = getOwner(this).lookup(`route:${modifiedRouteName}`);
+      let breadCrumb = getWithDefault(route, 'breadCrumb', {
+        title: routeTitle
+      });
+      console.log('route breadcrumb title = ' + breadCrumb.title);
+      breadCrumbs.push({name: breadCrumb.title, route: modifiedRouteName});
+      lastRouteName = (lastRouteName === ''? '' : lastRouteName + '.') + routeTitle;
     }
-
-    var breadcrumbs = [];
-    for (let j = 0; j < i; ++j) {
-      breadcrumbs.push(paths[j]);
-    }
-    breadcrumbs.push(paths[i]);
-    return breadcrumbs;
+    return breadCrumbs;
   }
 });
