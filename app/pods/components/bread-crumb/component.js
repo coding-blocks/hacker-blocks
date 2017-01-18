@@ -28,7 +28,8 @@ const indexPath = {
   'contests.contest.problem': false,
   'contests.contest.problem.main': false,
   'contests.contest.problem.leaderboard': false,
-  'contests.contest.problem.submissions': false
+  'contests.contest.problem.submissions': false,
+  'practice': true
 }
 
 export default Ember.Component.extend({
