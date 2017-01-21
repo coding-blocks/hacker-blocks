@@ -1,2 +1,4 @@
 <h5>Problem of the day</h5>
-{{#problem-card}}{{/problem-card}}
+{{#each model as |problem|}}
+  {{#problem-card problem=problem isWeekly=true}}{{/problem-card}}
+{{/each}}
