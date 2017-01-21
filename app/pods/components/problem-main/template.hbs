@@ -1,0 +1,51 @@
+<div class="col s12">
+  <div class="row">
+    <div class="card col s12">
+      <div class="card-content">
+        <span class="card-title"><h4>{{problem.name}}</h4></span>
+        <p>{{markdown-to-html problem.content}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="left">Editor</div>
+    <div class="right">
+      <span >Language:</span>
+      <a id="editor-lang" class="dropdown-button btn red lighten-1" href="#" data-activates='lang-dropdown'>c</a>
+      <ul id='lang-dropdown' class='dropdown-content'>
+        {{#each-in lang_codes as |langId langName|}}
+          <li><a {{action "langChange" langId}} href="#!">{{langName}}</a></li>
+        {{/each-in}}
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    {{#ace-editor}}{{/ace-editor}}
+  </div>
+  <div class="row right">
+    <div class="col s3">
+      {{#circular-loader id="code-submit-loader"}}{{/circular-loader}}
+    </div>
+    <a id="code-submit" class="col s9 btn red lighten-1 waves-effect" {{action "submit" problem}}>
+      Submit
+      <i class="material-icons left">send</i>
+    </a>
+  </div>
+  <div class="row">
+    <div class="card col s12">
+      <div class="card-content">
+        <span class="card-title">Output</span>
+        {{#if (eq result "compile_error")}}
+          <p>Compilation Error:</p>
+          <p><pre>{{output}}</pre></p>
+        {{else}}
+          <ul class="collection">
+            {{#each output as |testcase index|}}
+              <li class="collection-item"><b>Testcase #{{sum index 1}} </b> {{testcase.result}}</li>
+            {{/each}}
+          </ul>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>

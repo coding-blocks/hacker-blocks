@@ -12,7 +12,7 @@ export default Ember.Route.extend({
     title: 'Description'
   },
   model() {
-    var problem_id = this.modelFor('contests/contest/problem').problem_id;
+    var problem_id = this.modelFor('practice/weekly-problem').problem_id;
     return Ember.RSVP.hash({
       lang_codes: lang_codes,
       problem: this.get('store').findRecord('problem', problem_id)

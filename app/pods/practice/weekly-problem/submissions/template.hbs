@@ -1,0 +1,36 @@
+<div class="card col s12">
+  <div class="card-content">
+    <span class="card-title"><h4>Submissions</h4></span>
+    <div class="divider"></div>
+    <table class="striped">
+      <thead>
+      <tr>
+        <th data-field="id">#</th>
+        <th data-field="time">Submit time</th>
+        <th data-field="score">Score</th>
+        <th data-field="language">Language</th>
+        <th data-field="result">Result</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      {{#each model as |submission index|}}
+        {{log submission}}
+        <tr>
+          <td>{{sum index 1}}</td>
+          <td>{{ago-time submission.submitAt}}</td>
+          <td>{{submission.score}}</td>
+          <td>{{getlang submission.language}}</td>
+          {{#if (eq submission.result 1)}}
+            <td><span class="new badge result-badge" data-badge-caption="Passed"></span></td>
+          {{else if (eq submission.result 0)}}
+              <td><span class="new badge result-badge red" data-badge-caption="Wrong Answer"></span></td>
+          {{else if (eq submission.result -1)}}
+            <td><span class="new badge result-badge yellow darker-5" data-badge-caption="Compilation Error"></span></td>
+          {{/if}}
+        </tr>
+      {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

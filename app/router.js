@@ -16,7 +16,13 @@ Router.map(function() {
       });
     });
   });
-  this.route('practice', function() {});
+  this.route('practice', function() {
+    this.route('weekly-problem', {path: '/p/:problem_id'}, function () {
+      this.route('main');
+      this.route('submissions');
+      this.route('leaderboard');
+    });
+  });
 });
 
 export default Router;

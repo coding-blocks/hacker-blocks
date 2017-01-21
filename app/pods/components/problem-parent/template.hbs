@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col s12">
+    <ul class="tabs">
+      <li class="tab col s4">
+        {{#link-to (sum parentRoute ".main") class="waves-effect waves-red" }}Problem{{/link-to}}
+      </li>
+      <li class="tab col s4">
+        {{#link-to (sum parentRoute ".submissions") class="waves-effect waves-red"}}My Submissions{{/link-to}}
+      </li>
+      <li class="tab col s4">
+        {{#link-to (sum parentRoute ".leaderboard") class="waves-effect waves-red"}}Leaderboard{{/link-to}}
+      </li>
+    </ul>
+    {{yield}}
+  </div>
+</div>
