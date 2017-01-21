@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     title: 'My Submissions'
   },
   model() {
-    var id = this.modelFor('contests.contest.problem').problem_id;
+    var id = this.modelFor('practice.weekly-problem').problem_id;
     return this.get('store').query('submission', {problem_id : id});
   }
 });
