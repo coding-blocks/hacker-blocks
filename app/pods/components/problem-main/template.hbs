@@ -14,7 +14,7 @@
       <a id="editor-lang" class="dropdown-button btn red lighten-1" href="#" data-activates='lang-dropdown'>c</a>
       <ul id='lang-dropdown' class='dropdown-content'>
         {{#each-in lang_codes as |langId langName|}}
-          <li><a {{action "langChange" langId}} href="#!">{{langName}}</a></li>
+          <li><a {{action "langChange" langId}} href="#!">{{langName.name}}</a></li>
         {{/each-in}}
       </ul>
     </div>

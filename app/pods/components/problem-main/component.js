@@ -14,7 +14,7 @@ export default Ember.Component.extend({
   output: "",
   result: "",
   langId: "c",
-  lang: {
+  lang_codes: {
     "c": {
       name: "C",
       mode: "ace/mode/c_cpp"
@@ -37,8 +37,8 @@ export default Ember.Component.extend({
   },
   actions: {
     langChange(langId) {
-      $("#editor-lang").text(this.lang[langId]["name"]);
-      ace.edit("editor").getSession().setMode(this.lang[langId]["mode"]);
+      $("#editor-lang").text(this.lang_codes[langId]["name"]);
+      ace.edit("editor").getSession().setMode(this.lang_codes[langId]["mode"]);
       this.langId = langId;
     },
     submit(problem) {
