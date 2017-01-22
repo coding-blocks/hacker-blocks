@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from '../../../config/environment';
 
 function startLoading() {
   $('#code-submit-loader .preloader-wrapper').addClass('active');

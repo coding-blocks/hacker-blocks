@@ -57,7 +57,8 @@ export default Ember.Component.extend({
       let breadCrumb = getWithDefault(route, 'breadCrumb', {
         title: routeTitle
       });
-      breadCrumbs.push({name: breadCrumb.title, route: modifiedRouteName});
+      console.log("breadcrumb title = " + breadCrumb.title);
+      breadCrumbs.push({name: breadCrumb.title, route: modifiedRouteName, id: 'bcrumb-' + routeTitle});
       lastRouteName = (lastRouteName === ''? '' : lastRouteName + '.') + routeTitle;
     }
     return breadCrumbs;
