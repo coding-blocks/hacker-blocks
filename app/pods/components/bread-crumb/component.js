@@ -30,7 +30,7 @@ const indexPath = {
   'contests.contest.problem.leaderboard': false,
   'contests.contest.problem.submissions': false,
   'practice': true
-}
+};
 
 export default Ember.Component.extend({
   routing: Ember.inject.service('-routing'),
@@ -47,7 +47,7 @@ export default Ember.Component.extend({
     let breadCrumbs = [];
     for (let i = 0; i < routeNames.length; ++i) {
       let routeTitle = routeNames[i];
-      if (routeTitle === 'index') break;
+      if (routeTitle === 'index') { break; }
       let modifiedRouteName = (lastRouteName === ''? '' : lastRouteName + '.') + routeTitle;
       let route;
       if (indexPath[modifiedRouteName] == true) {
@@ -57,7 +57,7 @@ export default Ember.Component.extend({
       let breadCrumb = getWithDefault(route, 'breadCrumb', {
         title: routeTitle
       });
-      console.log("breadcrumb title = " + breadCrumb.title);
+      // console.log("breadcrumb title = " + breadCrumb.title);
       breadCrumbs.push({name: breadCrumb.title, route: modifiedRouteName, id: 'bcrumb-' + routeTitle});
       lastRouteName = (lastRouteName === ''? '' : lastRouteName + '.') + routeTitle;
     }

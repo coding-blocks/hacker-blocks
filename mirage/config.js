@@ -112,7 +112,7 @@ export default function() {
         id: 1,
         type: 'contest',
         attributes: {
-          name: "The Great CodingBlocks Conundrum"
+          name: "The Great Coding Blocks Conundrum"
         }
       }
     }
