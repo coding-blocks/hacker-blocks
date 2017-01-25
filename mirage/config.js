@@ -105,7 +105,7 @@ export default function() {
   });*/
   this.passthrough('/users/me');
   this.passthrough('http://localhost:3000/api/login');
-
+/*
   this.get('/contests/:contest_id', function () {
     return {
       data: {
@@ -116,5 +116,6 @@ export default function() {
         }
       }
     }
-  });
+  }); */
+  this.passthrough('/contests/:contest_id');
 }
