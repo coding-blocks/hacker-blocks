@@ -15,7 +15,6 @@
     "test": "ember test"
   },
   "devDependencies": {
-    "broccoli-asset-rev": "^2.4.5",
     "broccoli-funnel": "^1.1.0",
     "ember-ajax": "2.5.3",
     "ember-breadcrumbs": "0.1.9",
