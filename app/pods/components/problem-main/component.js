@@ -44,6 +44,10 @@ export default Ember.Component.extend({
       this.langId = langId;
     },
     submit(problem) {
+      if (this.get('session.isAuthenticated') != true) {
+        Materialize.toast('You must login before submitting a solution.', 3000, 'rounded');
+        return;
+      }
       startLoading();
       var self = this;
       var submission = this.get('store').createRecord('submission', {
