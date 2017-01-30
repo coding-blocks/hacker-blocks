@@ -12,6 +12,7 @@ function stopLoading() {
 }
 
 export default Ember.Component.extend({
+  session: Ember.inject.service('session'),
   output: "",
   result: "",
   langId: "c",
@@ -46,7 +47,7 @@ export default Ember.Component.extend({
       startLoading();
       var self = this;
       var submission = this.get('store').createRecord('submission', {
-        user: 1,
+        user_id: self.get('session.data.authenticated.user_id'),
         language: self.langId,
         problemId: problem.id,
         source: window.btoa(ace.edit("editor").getValue())
