@@ -21,12 +21,12 @@
             <td>{{ago-time submission.submitAt}}</td>
             <td>{{submission.score}}</td>
             <td>{{getlang submission.language}}</td>
-            {{#if (eq submission.result 1)}}
-              <td><span class="new badge result-badge" data-badge-caption="Passed"></span></td>
-            {{else if (eq submission.result 0)}}
-              <td><span class="new badge result-badge red" data-badge-caption="Wrong Answer"></span></td>
-            {{else if (eq submission.result -1)}}
+            {{#if (eq submission.result -1)}}
               <td><span class="new badge result-badge yellow darker-5" data-badge-caption="Compilation Error"></span></td>
+            {{else if (eq submission.score 100)}}
+              <td><span class="new badge result-badge" data-badge-caption="Passed"></span></td>
+            {{else }}
+              <td><span class="new badge result-badge red" data-badge-caption="Some or all testcases failed"></span></td>
             {{/if}}
           </tr>
         {{/each}}
