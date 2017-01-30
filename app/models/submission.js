@@ -5,7 +5,8 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
-  user: DS.attr(),
+  user_id: DS.attr(),
+  userName: DS.attr(),
   source: DS.attr(),
   submitAt: DS.attr(),
   language: DS.attr(),
