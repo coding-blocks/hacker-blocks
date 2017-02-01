@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import config from '../../../config/environment';
+import getSnippet from '../../../utils/get-snippet';
 
 function startLoading() {
   $('#code-submit-loader .preloader-wrapper').addClass('active');
@@ -40,7 +41,9 @@ export default Ember.Component.extend({
   actions: {
     langChange(langId) {
       $("#editor-lang").text(this.lang_codes[langId]["name"]);
-      ace.edit("editor").getSession().setMode(this.lang_codes[langId]["mode"]);
+      let editor = ace.edit("editor");
+      editor.getSession().setMode(this.lang_codes[langId]["mode"]);
+      editor.setValue(getSnippet(langId));
       this.langId = langId;
     },
     submit(problem) {
