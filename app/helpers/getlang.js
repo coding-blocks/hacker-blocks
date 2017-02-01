@@ -4,14 +4,13 @@
 
 import Ember from 'ember';
 
-var lang_codes = {
-  "c": "C",
-  "cpp": "C++",
-  "py2": "Python",
-  "java": "Java"
-};
-
 export function getlang(param) {
+  let lang_codes = {
+    "c": "C",
+    "cpp": "C++",
+    "py2": "Python",
+    "java": "Java"
+  };
   return lang_codes[param];
 }
 
