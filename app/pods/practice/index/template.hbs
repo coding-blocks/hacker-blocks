@@ -1,6 +1,6 @@
 <h5>Problem of the day</h5>
-{{#each model as |problem|}}
-  {{#link-to "practice.weekly-problem.main" "1" tagName="div"}}
-    {{#problem-card problem=problem isWeekly=true}}{{/problem-card}}
+{{#each model.problems as |problem index|}}
+  {{#link-to "practice.weekly-problem.main" problem.id tagName="div"}}
+    {{#problem-card problem=problem isWeekly=true dayName=(get-day-name index model.today)}}{{/problem-card}}
   {{/link-to}}
 {{/each}}

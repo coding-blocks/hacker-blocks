@@ -5,6 +5,9 @@ export default Ember.Route.extend({
     title: "Practice"
   },
   model() {
-    return this.get('store').query('problem', {weekly: true});
+    return Ember.RSVP.hash({
+      problems: this.get('store').query('problem', {weekly: true}),
+      today: new Date().getDay()
+    });
   }
 });

@@ -9,7 +9,7 @@ var diff_codes = {
   1: "Medium",
   2: "Hard",
   3: "Very Hard"
-}
+};
 
 export function getDifficulty(param) {
   return diff_codes[param];
