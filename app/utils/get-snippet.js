@@ -6,7 +6,7 @@ var getSnippet = function(lang) {
   let snippets = {};
   snippets['c'] =
     '#include <stdio.h>\n' +
-    'void main() {\n' +
+    'int main() {\n' +
     '    \n' +
     '}\n';
 
