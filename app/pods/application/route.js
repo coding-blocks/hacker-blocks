@@ -7,7 +7,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   session:     service('session'),
   currentUserSer: service('current-user'),
   model() {
-    console.log("application model");
     var self = this;
     if (this.get('session.isAuthenticated')) {
       return this._loadCurrentUser().then((user) => {

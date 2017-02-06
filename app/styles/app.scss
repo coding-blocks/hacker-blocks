@@ -113,3 +113,11 @@ body > .ember-view {
 .arrows li:nth-of-type(2) a { color: hsl(0, 0%, 65%); }
 .arrows li:nth-of-type(3) a { color: hsl(0, 0%, 50%); }
 .arrows li:nth-of-type(4) a { color: hsl(0, 0%, 45%); }
+
+.share-buttons img {
+  width: 35px;
+  padding: 5px;
+  border: 0;
+  box-shadow: 0;
+  display: inline;
+}
