@@ -3,7 +3,24 @@
     <div class="card col s12">
       <div class="card-content">
         <span class="card-title"><h4>{{problem.name}}</h4></span>
-        <p>{{markdown-to-html problem.content}}</p>
+        <p>{{markdown-to-html problem.contentObj.description}}</p>
+        <div id="inputFormat">
+          <span><b>Input Format:</b></span>
+          {{markdown-to-html problem.contentObj.inputFormat}}
+        </div>
+        <div id="inputFormat">
+          <span><b>Output Format:</b></span>
+          {{markdown-to-html problem.contentObj.outputFormat}}
+        </div>
+        <div id="inputFormat">
+          <span><b>Sample Input:</b></span>
+          <pre>{{problem.contentObj.sampleInput}}</pre>
+        </div>
+        <div id="inputFormat">
+          <span><b>Sample Output:</b></span>
+          <pre>{{problem.contentObj.sampleOutput}}</pre>
+        </div>
+        <div></div>
       </div>
     </div>
   </div>

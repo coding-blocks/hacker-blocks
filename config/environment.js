@@ -45,7 +45,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.hostUrl = 'http://cb.lk:3004'
+    ENV.hostUrl = 'http://api.cb.lk'
   }
 
   return ENV;
