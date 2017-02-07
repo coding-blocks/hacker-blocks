@@ -7,8 +7,8 @@
       <span class="card-title">{{contest.name}}</span>
       <p>Contest description with some extra information.</p>
       <div class="contest-dates">
-        <div class="contest-start-date">Start Date: Jan 1, 2017</div>
-        <div class="contest-end-date">End Date: Jan 31, 2017</div>
+        <div class="contest-start-date">Start At: {{unix-to-time contest.startTime}}</div>
+        <div class="contest-end-date">End At: {{unix-to-time contest.endTime}}</div>
       </div>
     </div>
   </div>

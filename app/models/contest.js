@@ -6,8 +6,8 @@ import DS from 'ember-data';
 
 export default DS.Model.extend({
   name: DS.attr(),
-  start_time: DS.attr(),
-  end_time: DS.attr(),
+  startTime: DS.attr(),
+  endTime: DS.attr(),
   location: DS.attr(),
   image: DS.attr(),
   problems: DS.attr()
