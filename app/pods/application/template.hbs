@@ -1,5 +1,4 @@
 <div class="wrapper">
-  {{log currentUrl}}
   <header>
     <div class="navbar-fixed">
       <nav class="z-depth-3 primary-color">
@@ -10,7 +9,6 @@
             {{#link-to 'practice' tagName="li"}} <a>Practice</a> {{/link-to}}
           </ul>
           <ul class="right">
-            {{log "currentuser" currentUser}}
             {{#if session.isAuthenticated}}
               Logged in as <b>{{model.name}}</b> <a {{action 'invalidateSession'}} class="btn waves-effect waves-light">Logout</a>
             {{else}}
@@ -30,7 +28,8 @@
           {{outlet}}
         </div>
         <div class="col s3">
-          {{#share-buttons}}{{/share-buttons}}
+          {{log "link" link}}
+          {{#share-buttons link=link}}{{/share-buttons}}
           <div class="fb-page"
                data-href="https://www.facebook.com/codingblocksindia"
                data-tabs="timeline,events,messages"

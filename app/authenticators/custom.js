@@ -4,6 +4,7 @@
 
 import Ember from 'ember';
 import Base from 'ember-simple-auth/authenticators/base';
+import env from '../config/environment';
 
 export default Base.extend({
   restore(data) {
@@ -23,7 +24,8 @@ export default Base.extend({
         form.roll_number = args[0];
       }
       form.password = args[1];
-      $.post('http://localhost:3000/api/login', form, function (data) {
+      console.log("hosturl = " + env.hostUrl);
+      $.post(env.hostUrl + '/api/login', form, function (data) {
         if (data.access_token != undefined) {
           resolve(data);
         } else {

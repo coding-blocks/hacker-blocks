@@ -15,7 +15,6 @@
         </thead>
         <tbody>
         {{#each submissions as |submission index|}}
-          {{log submission}}
           <tr>
             <td>{{sum index 1}}</td>
             <td>{{ago-time submission.submitAt}}</td>
