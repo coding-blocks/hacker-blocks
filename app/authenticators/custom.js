@@ -15,10 +15,14 @@ export default Base.extend({
   authenticate() {
     var args = [...arguments];
     return new Ember.RSVP.Promise(function(resolve, reject) {
-      var form = {
-        username: args[0],
-        password: args[1]
-      };
+      let form = {};
+      if (args[0].indexOf('@') > -1) {
+        //user entered an email
+        form.username = args[0];
+      } else {
+        form.roll_number = args[0];
+      }
+      form.password = args[1];
       $.post('http://localhost:3000/api/login', form, function (data) {
         if (data.access_token != undefined) {
           resolve(data);

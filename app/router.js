@@ -23,6 +23,7 @@ Router.map(function() {
       this.route('leaderboard');
     });
   });
+  this.route('application-loading');
 });
 
 export default Router;
