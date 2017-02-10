@@ -24,8 +24,7 @@ export default Base.extend({
         form.roll_number = args[0];
       }
       form.password = args[1];
-      console.log("hosturl = " + env.hostUrl);
-      $.post(env.hostUrl + '/api/login', form, function (data) {
+      $.post(env.apiEndpoint + '/api/login', form, function (data) {
         if (data.access_token != undefined) {
           resolve(data);
         } else {

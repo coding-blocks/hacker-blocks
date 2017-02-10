@@ -60,7 +60,7 @@ export default Ember.Component.extend({
         source: window.btoa(ace.edit("editor").getValue())
       });
       $.ajax({
-        url: config.hostUrl + '/api/submissions',
+        url: config.apiEndpoint + '/api/submissions',
         data: JSON.stringify(submission),
         type: "POST",
         contentType: "application/json",

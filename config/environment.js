@@ -31,7 +31,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.hostUrl = 'http://localhost:3000'
+    ENV.apiEndpoint = 'http://localhost:3000'
   }
 
   if (environment === 'test') {
@@ -46,7 +46,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.hostUrl = 'http://api.cb.lk'
+    ENV.apiEndpoint = 'http://api.cb.lk'
   }
 
   return ENV;

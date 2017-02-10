@@ -3,7 +3,7 @@ import env from '../../config/environment';
 
 export default DS.JSONAPIAdapter.extend({
   namespace: 'api',
-  host: env.hostUrl,
+  host: env.apiEndpoint,
   urlForQueryRecord(query) {
     if (query.me) {
       delete query.me;
