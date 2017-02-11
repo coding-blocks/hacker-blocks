@@ -46,7 +46,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.apiEndpoint = 'http://api.cb.lk'
+    ENV.apiEndpoint = 'https://api.cb.lk'
   }
 
   return ENV;
