@@ -7,6 +7,11 @@ export default Ember.Component.extend({
     let editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
     editor.getSession().setMode("ace/mode/c_cpp");
-    editor.setValue(getSnippet('c'));
+    if (this.get('showDefaultSnippet') !== false) {
+      editor.setValue(getSnippet('c'));
+    }
+    if (this.get('readOnly') === true) {
+      editor.setReadOnly(true);
+    }
   }
 });

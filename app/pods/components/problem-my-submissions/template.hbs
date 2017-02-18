@@ -15,7 +15,7 @@
         </thead>
         <tbody>
         {{#each submissions as |submission index|}}
-          <tr>
+          {{#link-to "submission" submission.id tagName="tr" class="pointer"}}
             <td>{{sum index 1}}</td>
             <td>{{ago-time submission.submitAt}}</td>
             <td>{{submission.score}}</td>
@@ -27,7 +27,7 @@
             {{else }}
               <td><span class="new badge result-badge red" data-badge-caption="Some or all testcases failed"></span></td>
             {{/if}}
-          </tr>
+          {{/link-to}}
         {{/each}}
         </tbody>
       </table>

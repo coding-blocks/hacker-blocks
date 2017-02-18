@@ -121,3 +121,11 @@ body > .ember-view {
   box-shadow: 0;
   display: inline;
 }
+
+.pointer {
+  cursor: pointer;
+}
+
+span.badge.new {
+  color: black !important;
+}

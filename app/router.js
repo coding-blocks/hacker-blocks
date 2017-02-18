@@ -24,6 +24,7 @@ Router.map(function() {
     });
   });
   this.route('application-loading');
+  this.route('submission', {path: '/submission/:submission_id'});
 });
 
 export default Router;
