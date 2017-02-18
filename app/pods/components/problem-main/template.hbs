@@ -58,7 +58,13 @@
         {{else}}
           <ul class="collection">
             {{#each output as |testcase index|}}
-              <li class="collection-item"><b>Testcase #{{sum index 1}} </b> {{testcase.result}}</li>
+              <li class="collection-item"><b>Testcase #{{sum index 1}} </b>
+                {{#if (eq testcase.result "timelimit")}}
+                  Time Limit Exceeded
+                {{else}}
+                  {{testcase.result}}
+                {{/if}}
+              </li>
             {{/each}}
           </ul>
         {{/if}}
