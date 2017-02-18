@@ -1,0 +1,15 @@
+{{#ace-editor readOnly=true showDefaultSnippet=false}}{{base64-decode model.source}}{{/ace-editor}}
+<div class="card ">
+  <div class="card-content">
+    <span class="card-title">Result</span>
+    <p>
+      {{#if (eq model.result -1)}}
+        <span style="color:black" class="new badge result-badge yellow darker-5" data-badge-caption="Compilation Error"></span>
+      {{else if (eq model.score 100)}}
+        <span class="new badge result-badge" data-badge-caption="Passed"></span>
+      {{else }}
+        <span class="new badge result-badge red" data-badge-caption="Some or all testcases failed"></span>
+      {{/if}}
+    </p>
+  </div>
+</div>
