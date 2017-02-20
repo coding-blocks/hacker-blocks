@@ -3,13 +3,19 @@
   <div class="card-content">
     <span class="card-title">Result</span>
     <p>
-      {{#if (eq model.result -1)}}
-        <span style="color:black" class="new badge result-badge yellow darker-5" data-badge-caption="Compilation Error"></span>
-      {{else if (eq model.score 100)}}
-        <span class="new badge result-badge" data-badge-caption="Passed"></span>
-      {{else }}
-        <span class="new badge result-badge red" data-badge-caption="Some or all testcases failed"></span>
-      {{/if}}
+    {{#if (eq submission.result -1)}}
+      <td>
+        <div class="isa_warning"><i class="material-icons">warning</i>Compilation Error</div>
+      </td>
+    {{else if (eq submission.score 100)}}
+      <td>
+        <div class="isa_success"><i class="material-icons">done</i>Correct Answer</div>
+      </td>
+    {{else }}
+      <td>
+        <div class="isa_error"><i class="material-icons">error</i>Wrong Answer</div>
+      </td>
+    {{/if}}
     </p>
   </div>
 </div>

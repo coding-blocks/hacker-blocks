@@ -14,6 +14,7 @@
       <tbody>
       {{#each submissions as |submission index|}}
         <tr>
+          {{log submission}}
           <td>{{sum index 1}}</td>
           <td>{{submission.userName}}</td>
           <td>{{submission.score}}</td>

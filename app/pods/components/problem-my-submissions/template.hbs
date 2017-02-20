@@ -21,11 +21,17 @@
             <td>{{submission.score}}</td>
             <td>{{getlang submission.language}}</td>
             {{#if (eq submission.result -1)}}
-              <td><span class="new badge result-badge yellow darker-5" data-badge-caption="Compilation Error"></span></td>
+              <td>
+                <div class="isa_warning"><i class="material-icons">warning</i>Compilation Error</div>
+              </td>
             {{else if (eq submission.score 100)}}
-              <td><span class="new badge result-badge" data-badge-caption="Passed"></span></td>
+              <td>
+                <div class="isa_success"><i class="material-icons">done</i>Correct Answer</div>
+              </td>
             {{else }}
-              <td><span class="new badge result-badge red" data-badge-caption="Some or all testcases failed"></span></td>
+              <td>
+                <div class="isa_error"><i class="material-icons">error</i>Wrong Answer</div>
+              </td>
             {{/if}}
           {{/link-to}}
         {{/each}}
