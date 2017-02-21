@@ -1,7 +1,8 @@
 import DS from 'ember-data';
 import env from '../../config/environment';
+import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
-export default DS.JSONAPIAdapter.extend({
+export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   namespace: 'api',
   host: env.apiEndpoint,
   urlForQueryRecord(query) {
