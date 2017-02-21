@@ -11,5 +11,6 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
       return `${this._super(...arguments)}/me`;
     }
     return this._super(...arguments);
-  }
+  },
+  authorizer: 'authorizer:custom'
 });
