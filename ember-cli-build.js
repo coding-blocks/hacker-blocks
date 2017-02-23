@@ -9,24 +9,16 @@ module.exports = function(defaults) {
     // Add options here
   });
 
-  app.import('vendor/materialize.min.js');
-  // app.import('vendor/ace/ace.js');
-  // app.import('vendor/ace/worker-javascript.js');
-  // app.import('vendor/ace/theme-monokai.js');
-  // app.import('vendor/ace/mode-javascript.js');
+  app.import('vendor/css/bootstrap.min.css');
+  app.import('vendor/css/bootstrap-theme.min.css');
+  app.import('vendor/css/font-awesome.css');
+  app.import('vendor/css/style.css');
+  app.import('vendor/css/autoptimize.css');
 
-  // Use `app.import` to add additional libraries to the generated
-  // output files.
-  //
-  // If you need to use different assets in different
-  // environments, specify an object as the first parameter. That
-  // object's keys should be the environment name and the values
-  // should be the asset to use in that environment.
-  //
-  // If the library that you are including contains AMD or ES6
-  // modules that you would like to import into your application
-  // please specify an object with the list of modules as keys
-  // along with the exports of each module as its value.
+  app.import('vendor/js/jquery.min.js');
+  app.import('vendor/js/bootstrap.min.js');
+  app.import('vendor/js/autoptimize.js');
+  app.import('vendor/materialize.min.js');
 
   var extraAssets = new Funnel('bower_components/ace-builds/src-min-noconflict', {
     srcDir: '/',
