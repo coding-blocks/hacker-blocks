@@ -1,6 +1,15 @@
-<h5>Active Contests</h5>
-{{#each model as |contest|}}
-  {{#link-to 'contests.contest' contest.id tagName="div"}}
-    {{#contest-card contest=contest}} {{/contest-card}}
-  {{/link-to}}
-{{/each}}
+<div id="main-content">
+  <div class="innerbannerimg clearfix" style="height:350px; overflow:hidden"><img src="images/mainimage.jpg" style="width:100%;" alt=""/></div>
+  <div class="container site-content">
+    <div class="row">
+      <main id="main" class="site-main col-sm-12 full-width">
+        <div class="archive-event thim-list-event" style="display: block;">
+          <p><h3>Active Contests</h3></p>
+          {{#each model as |contest|}}
+            {{#contest-view link='contests.contest' contest=contest}} {{/contest-view}}
+          {{/each}}
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

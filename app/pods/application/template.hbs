@@ -9,7 +9,7 @@
                 <div class="textwidget">
                   <div class="thim-have-any-question">
                     <div class="mobile"><i class="fa fa-phone"></i><a href="tel:00123456789" class="value"> 1800 274 4504</a></div>
-                    <div class="email"><i class="fa fa-envelope"></i><a href="mailto:hello@coaching.com">info@codingblocks.com</a></div>
+                    <div class="email"><i class="fa fa-envelope"></i><a href="mailto:info@codingblocks.com">info@codingblocks.com</a></div>
                   </div>
                 </div>
               </aside>
@@ -45,11 +45,11 @@
               <div class="width-logo table-cell sm-logo"> <a href="index.html" rel="home" class="no-sticky-logo"><img src="images/logo.png" alt="Daily Dose" width="157"></a><a href="index.html" rel="home" class="sticky-logo"> <img src="images/logo-sticky.png" alt="Daily Dose" width="157"></a></div>
               <nav class="width-navigation table-cell table-right">
                 <ul class="nav navbar-nav menu-main-menu">
-                  <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard current-menu-item"> <a href="index.html"><span data-hover="About">About</span></a></li>
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard current-menu-item"> <a href="index.html"><span data-hover="About">Contests</span></a></li>
                   <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="dailydose.html"><span data-hover="Daily Dose">Daily Dose</span></a></li>
-                  <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="learning.html"><span data-hover="Learn">Learn</span></a></li>
-                  <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="#"><span data-hover="Coding Blocks">Coding Blocks</span></a></li>
-                  <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="#"><span data-hover="Contact">Contact</span></a></li>
+                  <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="learning.html"><span data-hover="Learn">Learn</span></a></li> -->
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="http://codingblocks.com" target="_blank"><span data-hover="Coding Blocks">Coding Blocks</span></a></li>
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="http://www.codingblocks.com/contactus/" target="_blank"><span data-hover="Contact">Contact</span></a></li>
                 </ul>
               </nav>
               <div class="menu-mobile-effect navbar-toggle" data-effect="mobile-effect"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></div>
@@ -66,8 +66,10 @@
         <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="#"><span data-hover="Contact">Contact</span></a></li>
       </ul>
     </nav>
+    {{outlet}}
   </div>
 </div>
+<!--
 <div class="wrapper">
   <header>
     <div class="navbar-fixed">
@@ -95,7 +97,6 @@
     <div class="container grey lighten-5">
       <div class="row">
         <div class="col s9">
-          {{outlet}}
         </div>
         <div class="col s3">
           {{#share-buttons link=link}}{{/share-buttons}}
@@ -118,7 +119,7 @@
     </div>
   </main>
   <div class="push"></div>
-</div>
+</div> -->
 {{#foot-er}}{{/foot-er}}
 {{#if session.isAuthenticated}}
 {{else}}
