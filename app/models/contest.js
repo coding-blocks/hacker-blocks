@@ -10,5 +10,6 @@ export default DS.Model.extend({
   endTime: DS.attr(),
   location: DS.attr(),
   image: DS.attr(),
-  problems: DS.attr()
+  problems: DS.attr(),
+  description: DS.attr()
 });

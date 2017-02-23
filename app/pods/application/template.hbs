@@ -68,6 +68,7 @@
     </nav>
     {{outlet}}
   </div>
+  {{#foot-er}}{{/foot-er}}
 </div>
 <!--
 <div class="wrapper">
@@ -120,8 +121,3 @@
   </main>
   <div class="push"></div>
 </div> -->
-{{#foot-er}}{{/foot-er}}
-{{#if session.isAuthenticated}}
-{{else}}
-  {{#login-dialog}}{{/login-dialog}}
-{{/if}}
