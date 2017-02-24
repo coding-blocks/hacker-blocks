@@ -1,6 +1,15 @@
-<h5>All Problems</h5>
-{{#each model as |problem|}}
-  {{#link-to 'contests.contest.problem.main' problem.id tagName="div"}}
-    {{#problem-card problem=problem}} {{/problem-card}}
-  {{/link-to}}
-{{/each}}
+<div id="main-content">
+  <div class="innerbannerimg clearfix" style="height:350px; overflow:hidden"><img src="/images/mainimage.jpg" style="width:100%;" alt=""/></div>
+  <div class="container site-content">
+    <div class="row">
+      <main id="main" class="site-main col-sm-12 full-width">
+        <div class="thim-list-event" style="display: block;">
+          <p><h3>Active Contests</h3></p>
+          {{#each model as |problem|}}
+            {{#problem-view link='contests.contest.problem.main' problem=problem}}{{/problem-view}}
+          {{/each}}
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

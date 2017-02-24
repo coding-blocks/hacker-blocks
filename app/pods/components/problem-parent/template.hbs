@@ -1,16 +1,36 @@
-<div class="row">
-  <div class="col s12">
-    <ul class="tabs">
-      <li class="tab col s4">
-        {{#link-to (sum parentRoute ".main") class="waves-effect waves-red" }}Problem{{/link-to}}
-      </li>
-      <li class="tab col s4">
-        {{#link-to (sum parentRoute ".submissions") class="waves-effect waves-red"}}My Submissions{{/link-to}}
-      </li>
-      <li class="tab col s4">
-        {{#link-to (sum parentRoute ".leaderboard") class="waves-effect waves-red"}}Leaderboard{{/link-to}}
-      </li>
-    </ul>
-    {{yield}}
+<div id="main-content">
+  <div class="" style="background-color:#fc4f4f;">
+    <div class="white-wide-container clearfix">
+      <div class="container clearfix">
+        <div class="row mt30">
+          <div class="col-md-8">
+            <div class="headsection clearfix">
+              <span class="fntblue">
+                <ul class="list-inline" style="display: inline;">
+                  <li class="active">
+                      {{#link-to (sum parentRoute ".main") }}<h4>Problem</h4>{{/link-to}}
+                  </li>
+                  <li class="seprate">|</li>
+                  <li>
+                    {{#link-to (sum parentRoute ".submissions") }}<h4>My Submissions</h4>{{/link-to}}
+                  </li>
+                  <li class="seprate">|</li>
+                  <li>
+                    {{#link-to (sum parentRoute ".leaderboard") }}<h4>Leaderboard</h4>{{/link-to}}
+                  </li>
+                </ul>
+              </span>
+              <h4>
+                <span class="pull-right">
+                  <small>Maximum Marks :100</small> &nbsp;
+                  &nbsp;<a href="#"><i class="fa fa-question-circle"></i></a>
+                </span>
+              </h4>
+            </div>
+            {{yield}}
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
