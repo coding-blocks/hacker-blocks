@@ -23,13 +23,21 @@
                   <div class=" megaWrapper">
                     <ul id="menu-useful-links" class="menu">
                       <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="http://www.codingblocks.com"><span data-hover="CodingBlocks">Coding Blocks</span></a></li>
-                      <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="dailydose.html"><span data-hover="DailyDose">Daily Dose</span></a></li>
-                      <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="learning.html"><span data-hover="Contact">Learning</span></a></li>
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="index.html"><span data-hover="About">About</span></a></li>
+                      <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard">
+                        {{#link-to 'contests'}}
+                          <span data-hover="DailyDose">All Contests</span>
+                        {{/link-to}}
+                      </li>
+                      <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard">
+                        {{#link-to 'practice'}}
+                          <span data-hover="Contact">Daily Dose</span>
+                        {{/link-to}}
+                      </li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="http://www.codingblocks.com/#home_team"><span data-hover="About">About</span></a></li>
                       <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="http://www.codingblocks.com/contactus/"><span data-hover="Contact">Contact</span></a></li>
                       <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="http://lab.codingblocks.com/"><span data-hover="LABS">Labs</span></a></li>
-                      <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="terms.html"><span data-hover="Terms">Terms</span></a></li>
-                      <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="privacypolicy.html"><span data-hover="Privacy policy">Privacy policy</span></a></li>
+                      <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="#"><span data-hover="Terms">Terms</span></a></li>
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="#"><span data-hover="Privacy policy">Privacy policy</span></a></li>
                     </ul>
                   </div>
                 </div>
