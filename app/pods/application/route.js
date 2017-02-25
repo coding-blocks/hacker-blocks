@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
-import initMagicLine from '../../utils/init-magic-line';
+import initNavAnim from '../../utils/init-nav-anim';
 
 const { inject: { service }, Route } = Ember;
 
@@ -21,7 +21,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   },
   setupController: function(controller){
     Ember.run.schedule('afterRender', this, function () {
-      initMagicLine();
+      initNavAnim();
     });
   },
   sessionAuthenticated() {

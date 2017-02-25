@@ -17,7 +17,6 @@ module.exports = function(defaults) {
 
   app.import('vendor/js/jquery.min.js');
   app.import('vendor/js/bootstrap.min.js');
-  app.import('vendor/js/autoptimize.js');
   app.import('vendor/materialize.min.js');
 
   var extraAssets = new Funnel('bower_components/ace-builds/src-min-noconflict', {
