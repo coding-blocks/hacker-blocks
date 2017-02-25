@@ -1,32 +1,27 @@
 <div id="thim-popup-login" class="has-shortcode">
   <div class="thim-login-container" style="top: 116px;"> <span class="close-popup fa fa-times"></span>
     <div class="mo-openid-app-icons">
-      <p> Connect with:</p>
-      <a style="width: 300px !important;padding-top:13px !important;padding-bottom:13px !important;margin-bottom: -1px !important;border-radius: 0px !important;" class="btn btn-block btn-social btn-facebook btn-custom-dec login-button" onclick="moOpenIdLogin('facebook');"> <i style="padding-top:7px !important" class="fa fa-facebook"></i>Login with Facebook</a><a style="width: 300px !important;padding-top:13px !important;padding-bottom:13px !important;margin-bottom: -1px !important;border-radius: 0px !important;" class="btn btn-block btn-social btn-google btn-custom-dec login-button"> <i style="padding-top:7px !important" class="fa fa-google-plus"></i>Login with Google</a><a style="width: 300px !important;padding-top:13px !important;padding-bottom:13px !important;margin-bottom: -1px !important;border-radius: 0px !important;" class="btn btn-block btn-social btn-twitter btn-custom-dec login-button"> <i style="padding-top:7px !important" class="fa fa-twitter"></i>Login with Twitter</a><a style="width: 300px !important;padding-top:13px !important;padding-bottom:13px !important;margin-bottom: -1px !important;border-radius: 0px !important;" class="btn btn-block btn-social btn-instagram btn-custom-dec login-button"> <i style="padding-top:7px !important" class="fa fa-instagram"></i>Login with Instagram</a></div>
+      <p>Register Now:</p>
+      <a style="width: 300px !important;padding-top:13px !important;padding-bottom:13px !important;margin-bottom: -1px !important;border-radius: 0px !important;" class="btn btn-block btn-social btn-google btn-custom-dec login-button" href="http://students.codingblocks.com/login#signup">Sign Up at CodingBlocks.com</a>
+    </div>
     <br>
     <div class="thim-login">
       <h2 class="title">Login with your site account</h2>
       <form name="loginform" id="loginform" action="" method="post">
         <p class="login-username">
-          <label for="thim_login">Username or email</label>
-          <input type="text" name="log" id="thim_login" class="input" value="" size="20" placeholder="Username">
+          <label for="thim_login">Roll number or Email</label>
+          <input type="text" name="log" id="thim_login" class="input" value="" size="20" placeholder="Roll number or Email">
         </p>
         <p class="login-password">
           <label for="thim_pass">Password</label>
           <input type="password" name="pwd" id="thim_pass" class="input" value="" size="20" placeholder="Password">
         </p>
-        <a class="lost-pass-link" href="#" title="Lost Password">Lost your password?</a>
-        <p class="login-remember">
-          <label>
-            <input name="rememberme" type="checkbox" id="rememberme" value="forever">
-            Remember me</label>
-        </p>
+        <a class="lost-pass-link" href="http://students.codingblocks.com/login#forget_password" title="Lost Password">Lost your password?</a>
         <p class="login-submit">
           <input type="submit" name="wp-submit" id="wp-submit" class="button button-primary" value="Login">
           <input type="hidden" name="redirect_to" value="">
         </p>
       </form>
-      <p class="link-bottom">Not a member yet? <a href="user_registration.html">Register now</a></p>
     </div>
     <span class="close-popup"><i class="fa fa-times" aria-hidden="true"></i></span>
   </div>

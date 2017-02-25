@@ -10230,8 +10230,8 @@ transform:rotate(359deg)
 	-ms-transform: translate(0, 0);
 	-o-transform: translate(0, 0)
 }
-/*.thim-search-active #masthead#masthead.affix.menu-hidden-v4, 
-.thim-search-active #masthead#masthead.affix.menu-hidden-v2, 
+/*.thim-search-active #masthead#masthead.affix.menu-hidden-v4,
+.thim-search-active #masthead#masthead.affix.menu-hidden-v2,
 .thim-search-active #masthead#masthead.affix.menu-hidden-v3 {
 	transform: translate(0, -98px);
 	-webkit-transform: translate(0, -98px);
@@ -10239,8 +10239,8 @@ transform:rotate(359deg)
 	-ms-transform: translate(0, -98px);
 	-o-transform: translate(0, -98px)
 }
-.thim-search-active #masthead.affix.menu-hidden-v4, 
-.thim-search-active #masthead.affix.menu-hidden-v2, 
+.thim-search-active #masthead.affix.menu-hidden-v4,
+.thim-search-active #masthead.affix.menu-hidden-v2,
 .thim-search-active #masthead.affix.menu-hidden-v3 {
 	-webkit-transform: none;
 	-moz-transform: none;
@@ -22906,7 +22906,7 @@ transition:none
 #thim-popup-login .thim-login-container {
 	background: #fff;
 	position: relative;
-	padding: 50px 50px 80px;
+	padding: 50px 50px 50px;
 	overflow: hidden;
 	max-width: 900px;
 	margin: auto;
@@ -31458,30 +31458,30 @@ form#lostpasswordform p input[type=text]:focus, form#lostpasswordform p input[ty
 	color: #2e8ece !important
 }
 .rev-btn.thim-slider-button {
-	 font-size: 14px; 
-	 line-height: 22px; 
-	 font-weight: 700; 
-	 background-color: rgb(252, 79, 79); 
-	 padding: 10px 30px; 
-	 border-radius: 30px; 
-	 outline: none; 
-	 box-shadow: none; 
-	 box-sizing: border-box; 
-	 cursor: pointer; 
-	 transition: none; 
-	 font-style: normal; 
-	 text-decoration: none; 
-	 margin: 0px; 
-	 min-height: 0px; 
-	 min-width: 0px; 
-	 max-height: none; 
-	 max-width: none; 
+	 font-size: 14px;
+	 line-height: 22px;
+	 font-weight: 700;
+	 background-color: rgb(252, 79, 79);
+	 padding: 10px 30px;
+	 border-radius: 30px;
+	 outline: none;
+	 box-shadow: none;
+	 box-sizing: border-box;
+	 cursor: pointer;
+	 transition: none;
+	 font-style: normal;
+	 text-decoration: none;
+	 margin: 0px;
+	 min-height: 0px;
+	 min-width: 0px;
+	 max-height: none;
+	 max-width: none;
 	 opacity: 1;
 	color: #fff;
 	text-transform: uppercase;
 }
 .rev-btn.thim-slider-button:hover {
-	background-color: rgb(0, 91, 155); 
+	background-color: rgb(0, 91, 155);
 	color: #fff
 }
 .thim-buy-now .thim-widget-button .widget-button:hover {
