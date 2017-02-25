@@ -11,5 +11,6 @@ export default DS.Model.extend({
   location: DS.attr(),
   image: DS.attr(),
   problems: DS.attr(),
-  description: DS.attr()
+  description: DS.attr(),
+  problemCount: DS.attr()
 });

@@ -14,7 +14,7 @@ export function unixToTime(unix_time) {
   var hour = date.getHours();
   var minutes = ("0"+date.getMinutes()).substr(-2);
 
-  return day+" "+month+" "+hour+":"+minutes;
+  return day+" "+month;
 }
 
 export default Ember.Helper.helper(unixToTime);
