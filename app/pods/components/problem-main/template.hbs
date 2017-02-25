@@ -47,9 +47,27 @@
   </p>
 
   <div class="form-group" style="background:#f5f5f5;">
+    <div class="clearfix p5-10">
+      Language:
+      <select id="langSelect" {{action "langChange" on="change"}} >
+        {{#each-in lang_codes as |langId langName|}}
+          <option value={{langId}} >{{langName.name}}</option>
+        {{/each-in}}
+      </select>
+    </div>
     {{#ace-editor}}{{/ace-editor}}
-    <div class="clearfix p5-10 small"><a href="#" class="fntblue pull-left"><i class="fa fa-caret-down"></i> Provide custom input</a><a href="#" class="pull-right fntblue"><i class="fa fa-info-circle"></i> Press Ctrl+Space for autocomplete suggestions </a></div>
-    <div class="clearfix p5-10"><a href="#" class="btn btn-primary">Compile Test</a><a href="practice_test_submit.html" class="btn btn-secondary ml20" style="border-color:#27ae61;">Submit</a></div>
+    <div class="clearfix p5-10 small">
+      <!-- <a href="#" class="fntblue pull-left"><i class="fa fa-caret-down"></i> Provide custom input</a> -->
+      <!-- <a href="#" class="pull-right fntblue"><i class="fa fa-info-circle"></i> Press Ctrl+Space for autocomplete suggestions </a> -->
+    </div>
+    <div class="clearfix p5-10">
+      {{#if session.isAuthenticated}}
+        <a href="#" class="btn btn-primary" {{action "submit" problem}}>Submit</a>
+      {{else}}
+        <strong>Please login to submit the solution.</strong>
+      {{/if}}
+      <!-- <a href="practice_test_submit.html" class="btn btn-secondary ml20" style="border-color:#27ae61;">Submit</a> -->
+    </div>
   </div>
   <p>&nbsp;</p>
 </div>

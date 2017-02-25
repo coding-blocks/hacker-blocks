@@ -39,7 +39,8 @@ export default Ember.Component.extend({
     $('.dropdown-button').dropdown();
   },
   actions: {
-    langChange(langId) {
+    langChange() {
+      var langId = $('#langSelect :selected').val();
       $("#editor-lang").text(this.lang_codes[langId]["name"]);
       let editor = ace.edit("editor");
       editor.getSession().setMode(this.lang_codes[langId]["mode"]);
