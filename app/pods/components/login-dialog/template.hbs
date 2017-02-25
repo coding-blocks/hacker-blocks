@@ -7,19 +7,18 @@
     <br>
     <div class="thim-login">
       <h2 class="title">Login with your site account</h2>
-      <form name="loginform" id="loginform" action="" method="post">
+      <form name="loginform" id="loginform" {{ action "authenticate" on="submit"}}>
         <p class="login-username">
-          <label for="thim_login">Roll number or Email</label>
-          <input type="text" name="log" id="thim_login" class="input" value="" size="20" placeholder="Roll number or Email">
+          <label for="username">Roll number or Email</label>
+          <input type="text" name="username" id="username" class="input validate" value="" size="20" placeholder="Roll number or Email">
         </p>
         <p class="login-password">
-          <label for="thim_pass">Password</label>
-          <input type="password" name="pwd" id="thim_pass" class="input" value="" size="20" placeholder="Password">
+          <label for="password">Password</label>
+          <input type="password" name="pwd" id="password" class="input" value="" size="20" placeholder="Password">
         </p>
         <a class="lost-pass-link" href="http://students.codingblocks.com/login#forget_password" title="Lost Password">Lost your password?</a>
         <p class="login-submit">
           <input type="submit" name="wp-submit" id="wp-submit" class="button button-primary" value="Login">
-          <input type="hidden" name="redirect_to" value="">
         </p>
       </form>
     </div>
