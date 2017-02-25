@@ -55,14 +55,10 @@
               <nav class="width-navigation table-cell table-right">
                 <ul class="nav navbar-nav menu-main-menu">
                   <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard current-menu-item">
-                    {{#link-to 'contests'}}
-                      <span data-hover="About">Contests</span>
-                    {{/link-to}}
+                    {{#link-to 'contests'}}<span data-hover="About">Contests</span>{{/link-to}}
                   </li>
                   <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard">
-                    {{#link-to 'practice'}}
-                      <span data-hover="Daily Dose">Daily Dose</span>
-                    {{/link-to}}
+                    {{#link-to 'practice'}}<span data-hover="Daily Dose">Daily Dose</span>{{/link-to}}
                   </li>
                   <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="learning.html"><span data-hover="Learn">Learn</span></a></li> -->
                   <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="http://codingblocks.com" target="_blank"><span data-hover="Coding Blocks">Coding Blocks</span></a></li>
@@ -77,9 +73,9 @@
     </header>
     <nav class="mobile-menu-container mobile-effect">
       <ul class="nav navbar-nav">
-        <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="dailydose.html"><span data-hover="Daily Dose">Daily Dose</span></a></li>
-        <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="learning.html"><span data-hover="Learn">Learn</span></a></li>
-        <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="#"><span data-hover="Coding Blocks">Coding Blocks</span></a></li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard">{{#link-to 'contests'}}<span data-hover="About">Contests</span>{{/link-to}}</li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard">{{#link-to 'practice'}}<span data-hover="Daily Dose">Daily Dose</span>{{/link-to}}</li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="http://codingblocks.com" target="_blank"><span data-hover="Coding Blocks">Coding Blocks</span></a></li>
         <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="#"><span data-hover="Contact">Contact</span></a></li>
       </ul>
     </nav>
@@ -87,34 +83,3 @@
   </div>
   {{#foot-er}}{{/foot-er}}
 </div>
-<!--
-<div class="wrapper">
-  <main>
-    {{#bread-crumb}}{{/bread-crumb}}
-    <div class="divider"></div>
-    <div class="container grey lighten-5">
-      <div class="row">
-        <div class="col s9">
-        </div>
-        <div class="col s3">
-          {{#share-buttons link=link}}{{/share-buttons}}
-          <div class="fb-page"
-               data-href="https://www.facebook.com/codingblocksindia"
-               data-tabs="timeline,events,messages"
-               data-width="300"
-               data-height="500"
-               data-small-header="false"
-               data-adapt-container-width="true"
-               data-hide-cover="false"
-               data-show-facepile="true">
-            <blockquote cite="https://www.facebook.com/codingblocksindia"
-                        class="fb-xfbml-parse-ignore">
-              <a href="https://www.facebook.com/codingblocksindia">Coding Blocks</a>
-            </blockquote>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-  <div class="push"></div>
-</div> -->

@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
+import initMagicLine from '../../utils/init-magic-line';
 
 const { inject: { service }, Route } = Ember;
 
@@ -17,6 +18,11 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
         return user;
       });
     }
+  },
+  setupController: function(controller){
+    Ember.run.schedule('afterRender', this, function () {
+      initMagicLine();
+    });
   },
   sessionAuthenticated() {
     this._super(...arguments);
