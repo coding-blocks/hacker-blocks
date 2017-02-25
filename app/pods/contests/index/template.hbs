@@ -6,6 +6,7 @@
         <div class="thim-list-event" style="display: block;">
           <p><h3>Active Contests</h3></p>
           {{#each model as |contest|}}
+            <hr>
             {{#contest-view link='contests.contest' contest=contest}} {{/contest-view}}
           {{/each}}
         </div>
