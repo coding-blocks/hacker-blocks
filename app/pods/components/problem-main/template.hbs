@@ -69,7 +69,25 @@
       <!-- <a href="practice_test_submit.html" class="btn btn-secondary ml20" style="border-color:#27ae61;">Submit</a> -->
     </div>
   </div>
-  <p>&nbsp;</p>
+
+  <div class="form-group" id="run-output" >
+    {{#if (eq result "compile_error")}}
+      <p>Compilation Error:</p>
+      <p><pre>{{output}}</pre></p>
+    {{else}}
+      <ul class="collection">
+        {{#each output as |testcase index|}}
+          <li class="collection-item"><b>Testcase #{{sum index 1}} </b>
+            {{#if (eq testcase.result "timelimit")}}
+              Time Limit Exceeded
+            {{else}}
+              {{testcase.result}}
+            {{/if}}
+          </li>
+        {{/each}}
+      </ul>
+    {{/if}}
+  </div>
 </div>
 <!--
 <div class="col s12">
