@@ -12,5 +12,6 @@ export default DS.Model.extend({
     return JSON.parse(this.get('content'))
   }),
   submitCount: DS.attr(),
-  difficulty: DS.attr()
+  difficulty: DS.attr(),
+  image: DS.attr()
 });

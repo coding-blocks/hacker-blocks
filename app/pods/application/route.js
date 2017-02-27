@@ -12,14 +12,12 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     this.set('controller.link', this.get('router.url'));
   }),
   model() {
-    var self = this;
     if (this.get('session.isAuthenticated')) {
-      return this._loadCurrentUser().then((user) => {
-        return user;
-      });
+      return this._loadCurrentUser();
     }
   },
-  setupController: function(controller){
+  setupController: function(controller, model){
+    this._super(controller, model);
     Ember.run.schedule('afterRender', this, function () {
       initNavAnim();
     });

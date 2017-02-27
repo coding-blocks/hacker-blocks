@@ -16,6 +16,7 @@
               <aside id="login-popup-5" class="widget widget_login-popup">
                 <div class="thim-widget-login-popup thim-widget-login-popup-base">
                   {{#if session.isAuthenticated}}
+                    {{log model}}
                     <div class="thim-link-login">Logged in as <b>{{model.name}}</b>
                       <a {{action 'invalidateSession'}} href="javascript:;" class="login"><strong>Logout</strong></a>
                     </div>
@@ -46,10 +47,10 @@
             <div class="tm-table">
               <div class="width-logo table-cell sm-logo">
                 {{#link-to 'contests' rel="home" class="no-sticky-logo"}}
-                  <img src="/images/logo.png" alt="Daily Dose" width="157">
+                  <img src="/images/logo.png" alt="Daily Bytes" width="157">
                 {{/link-to}}
                 {{#link-to 'contests' rel="home" class="sticky-logo"}}
-                  <img src="/images/logo-sticky.png" alt="Daily Dose" width="157">
+                  <img src="/images/logo-sticky.png" alt="Daily Bytes" width="157">
                 {{/link-to}}
               </div>
               <nav class="width-navigation table-cell table-right">
@@ -58,7 +59,7 @@
                     {{#link-to 'contests'}}<span data-hover="About">Contests</span>{{/link-to}}
                   </li>
                   <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard">
-                    {{#link-to 'practice'}}<span data-hover="Daily Dose">Daily Dose</span>{{/link-to}}
+                    {{#link-to 'practice'}}<span data-hover="Daily Bytes">Daily Bytes</span>{{/link-to}}
                   </li>
                   <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="learning.html"><span data-hover="Learn">Learn</span></a></li> -->
                   <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="http://codingblocks.com" target="_blank"><span data-hover="Coding Blocks">Coding Blocks</span></a></li>
@@ -74,7 +75,7 @@
     <nav class="mobile-menu-container mobile-effect">
       <ul class="nav navbar-nav">
         <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard">{{#link-to 'contests'}}<span data-hover="About">Contests</span>{{/link-to}}</li>
-        <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard">{{#link-to 'practice'}}<span data-hover="Daily Dose">Daily Dose</span>{{/link-to}}</li>
+        <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard">{{#link-to 'practice'}}<span data-hover="Daily Bytes">Daily Bytes</span>{{/link-to}}</li>
         <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="http://codingblocks.com" target="_blank"><span data-hover="Coding Blocks">Coding Blocks</span></a></li>
         <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="#"><span data-hover="Contact">Contact</span></a></li>
       </ul>
