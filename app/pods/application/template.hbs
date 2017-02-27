@@ -54,12 +54,12 @@
               </div>
               <nav class="width-navigation table-cell table-right">
                 <ul class="nav navbar-nav menu-main-menu">
-                  <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard current-menu-item">
-                    {{#link-to 'contests'}}<span data-hover="About">Contests</span>{{/link-to}}
-                  </li>
-                  <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard">
-                    {{#link-to 'practice'}}<span data-hover="Daily Bytes">Daily Bytes</span>{{/link-to}}
-                  </li>
+                  {{#link-to 'contests' class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard" tagName="li"}}
+                    <a href="javascript;"><span data-hover="About">Contests</span></a>
+                  {{/link-to}}
+                  {{#link-to 'practice' class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard" tagName="li"}}
+                    <a href="javascript;"><span data-hover="Daily Bytes">Daily Bytes</span></a>
+                  {{/link-to}}
                   <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="learning.html"><span data-hover="Learn">Learn</span></a></li> -->
                   <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="http://codingblocks.com" target="_blank"><span data-hover="Coding Blocks">Coding Blocks</span></a></li>
                   <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="http://www.codingblocks.com/contactus/" target="_blank"><span data-hover="Contact">Contact</span></a></li>

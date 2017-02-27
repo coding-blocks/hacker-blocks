@@ -11262,7 +11262,7 @@ header .navbar-nav>li .sub-menu li>a:hover, header .navbar-nav>li .sub-menu li>s
 .mobile-menu-container {
 	background: #232323
 }
-.mobile-menu-container li.current-menu-ancestor li.current-menu-parent>a, .mobile-menu-container li.current-page-parent>a, .mobile-menu-container li.current-menu-item>a, .mobile-menu-container li.current-menu-ancestor li.current-menu-parent>span, .mobile-menu-container li.current-page-parent>span, .mobile-menu-container li.current-menu-item>span {
+.mobile-menu-container li.current-menu-ancestor li.current-menu-parent>a, .mobile-menu-container li.current-page-parent>a, .mobile-menu-container li.active>a, .mobile-menu-container li.current-menu-ancestor li.current-menu-parent>span, .mobile-menu-container li.current-page-parent>span, .mobile-menu-container li.active>span {
 	color: #fff
 }
 .mobile-menu-container li>a, .mobile-menu-container li>span {
@@ -11276,7 +11276,7 @@ header .navbar-nav>li .sub-menu li>a:hover, header .navbar-nav>li .sub-menu li>s
 }
 
 @media(min-width:769px) {
-.navigation .sub-menu>li.current-menu-item>a, .navigation .sub-menu>li.current-menu-item span {
+.navigation .sub-menu>li.active>a, .navigation .sub-menu>li.active span {
 	color: #333
 }
 }
@@ -30210,7 +30210,7 @@ header.site-header.header_v3>.container {
 .header_v3 .width-logo {
 	background-color: #2e8ece
 }
-.header_v3.site-header .navigation .navbar-nav>li:hover>a, .header_v3.site-header .navigation .navbar-nav>li.current-menu-item>a, .header_v3.site-header .navigation .navbar-nav>li.current_page_item>a {
+.header_v3.site-header .navigation .navbar-nav>li:hover>a, .header_v3.site-header .navigation .navbar-nav>li.active>a, .header_v3.site-header .navigation .navbar-nav>li.current_page_item>a {
 	color: #2e8ece
 }
 .header_v3.site-header:before {
@@ -30234,7 +30234,7 @@ header.site-header.header_v3>.container {
 .navigation .navbar-nav>li .sub-menu li>a:hover, .navigation .navbar-nav>li .sub-menu li>span:hover {
 	color: #333
 }
-.navigation .navbar-nav>li .sub-menu>li.current-menu-item>a, .navigation .navbar-nav>li .sub-menu>li.current-menu-item span {
+.navigation .navbar-nav>li .sub-menu>li.active>a, .navigation .navbar-nav>li .sub-menu>li.active span {
 	color: #333
 }
 .navigation .navbar-nav>li .sub-menu>li:last-child>a, .navigation .navbar-nav>li .sub-menu>li:last-child>span {
@@ -30272,7 +30272,7 @@ nav.mobile-menu-container ul li>a, nav.mobile-menu-container ul li>span {
 nav.mobile-menu-container ul li>a:hover, nav.mobile-menu-container ul li>span:hover {
 	color: #fff
 }
-nav.mobile-menu-container ul li.current-menu-item>a, nav.mobile-menu-container ul li.current-menu-item>span {
+nav.mobile-menu-container ul li.active>a, nav.mobile-menu-container ul li.active>span {
 	color: #fff
 }
 .menu-mobile-effect span {
@@ -31803,7 +31803,7 @@ nav.comment-navigation a {
 nav.comment-navigation a:hover {
 	color: #2e8ece
 }
-#masthead.header_v4 li.current-menu-item>a {
+#masthead.header_v4 li.active>a {
 	color: #2e8ece
 }
 #masthead.header_v4 .width-logo .top-left .thim-have-any-question .email a {
@@ -31828,7 +31828,7 @@ nav.comment-navigation a:hover {
 a.wishlist-link {
 	color: #2e8ece
 }
-footer#colophon .footer ul li.current-menu-item a, footer#colophon .footer ul li.current_page_item a {
+footer#colophon .footer ul li.active a, footer#colophon .footer ul li.current_page_item a {
 	color: #2e8ece
 }
 .become_health .widget_text ul li i {

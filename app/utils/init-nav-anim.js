@@ -3,7 +3,7 @@
  */
 
 var initNavAnim = function () {
-  var menu_active = $('#masthead.header_v1 .navbar-nav>li.menu-item.current-menu-item,#masthead.header_v1 .navbar-nav>li.menu-item.current-menu-parent, #masthead.header_v1 .navbar-nav>li.menu-item.current-menu-ancestor');
+  var menu_active = $('#masthead.header_v1 .navbar-nav>li.menu-item.active,#masthead.header_v1 .navbar-nav>li.menu-item.current-menu-parent, #masthead.header_v1 .navbar-nav>li.menu-item.current-menu-ancestor');
   if (menu_active.length > 0) {
     menu_active.before('<span id="magic-line"></span>');
     var menu_active_child = menu_active.find('>a,>span.disable_link'),
@@ -190,7 +190,7 @@ var initNavAnim = function () {
     }
   });
   if ($(window).width() > 768) {
-    var menu_active = $('#masthead.header_v1 .navbar-nav>li.menu-item.current-menu-item,#masthead.header_v1 .navbar-nav>li.menu-item.current-menu-parent, #masthead.header_v1 .navbar-nav>li.menu-item.current-menu-ancestor');
+    var menu_active = $('#masthead.header_v1 .navbar-nav>li.menu-item.active,#masthead.header_v1 .navbar-nav>li.menu-item.current-menu-parent, #masthead.header_v1 .navbar-nav>li.menu-item.current-menu-ancestor');
     if (menu_active.length > 0) {
       menu_active.before('<span id="magic-line"></span>');
       var menu_active_child = menu_active.find('>a,>span.disable_link'),
