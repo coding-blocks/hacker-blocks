@@ -3,12 +3,12 @@ import config from '../../../config/environment';
 import getSnippet from '../../../utils/get-snippet';
 
 function startLoading() {
-  $('#code-submit-loader .preloader-wrapper').addClass('active');
+  $('#code-submit-loader').css("display","inline-block");
   $('#code-submit').addClass('disabled');
 }
 
 function stopLoading() {
-  $('#code-submit-loader .preloader-wrapper').removeClass('active');
+  $('#code-submit-loader').hide();
   $('#code-submit').removeClass('disabled');
 }
 

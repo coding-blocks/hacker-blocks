@@ -16,7 +16,6 @@
               <aside id="login-popup-5" class="widget widget_login-popup">
                 <div class="thim-widget-login-popup thim-widget-login-popup-base">
                   {{#if session.isAuthenticated}}
-                    {{log model}}
                     <div class="thim-link-login">Logged in as <b>{{model.name}}</b>
                       <a {{action 'invalidateSession'}} href="javascript:;" class="login"><strong>Logout</strong></a>
                     </div>

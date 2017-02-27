@@ -62,11 +62,12 @@
     </div>
     <div class="clearfix p5-10">
       {{#if session.isAuthenticated}}
-        <a href="#" class="btn btn-primary" {{action "submit" problem}}>Submit</a>
+        <a id="code-submit" href="#" class="btn btn-primary" {{action "submit" problem}}>Submit</a>
       {{else}}
         <strong>Please login to submit the solution.</strong>
       {{/if}}
-      <!-- <a href="practice_test_submit.html" class="btn btn-secondary ml20" style="border-color:#27ae61;">Submit</a> -->
+       <!--<a href="practice_test_submit.html" class="btn btn-secondary ml20" style="border-color:#27ae61;">Submit</a>-->
+      <div id="code-submit-loader" class="loader"></div>
     </div>
   </div>
 
