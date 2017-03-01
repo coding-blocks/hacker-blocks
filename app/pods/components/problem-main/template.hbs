@@ -81,6 +81,8 @@
           <li class="collection-item"><b>Testcase #{{sum index 1}} </b>
             {{#if (eq testcase.result "timelimit")}}
               Time Limit Exceeded
+            {{else if (eq testcase.result "correct")}}
+                  Passed
             {{else}}
               {{testcase.result}}
             {{/if}}
