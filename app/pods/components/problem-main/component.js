@@ -17,6 +17,7 @@ export default Ember.Component.extend({
   output: "",
   result: "",
   langId: "c",
+  onceEdit: false,
   lang_codes: {
     "c": {
       name: "C",
@@ -36,7 +37,11 @@ export default Ember.Component.extend({
     }
   },
   didRender() {
-    $('.dropdown-button').dropdown();
+    let editor = ace.edit("editor");
+    var self = this;
+    editor.textInput.getElement().onkeyup = function (event) {
+      self.set("onceEdit", true);
+    };
   },
   actions: {
     langChange() {
@@ -44,7 +49,9 @@ export default Ember.Component.extend({
       $("#editor-lang").text(this.lang_codes[langId]["name"]);
       let editor = ace.edit("editor");
       editor.getSession().setMode(this.lang_codes[langId]["mode"]);
-      editor.setValue(getSnippet(langId));
+      if (this.get("onceEdit") == false) {
+        editor.setValue(getSnippet(langId));
+      }
       this.langId = langId;
     },
     submit(problem) {
