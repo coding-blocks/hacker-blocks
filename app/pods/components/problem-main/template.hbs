@@ -58,10 +58,11 @@
     {{#ace-editor}}{{/ace-editor}}
     <div class="clearfix p5-10 small">
       <!-- <a href="#" class="fntblue pull-left"><i class="fa fa-caret-down"></i> Provide custom input</a> -->
-      <!-- <a href="#" class="pull-right fntblue"><i class="fa fa-info-circle"></i> Press Ctrl+Space for autocomplete suggestions </a> -->
+
     </div>
     <div class="clearfix p5-10">
       {{#if session.isAuthenticated}}
+        <a href="code-reset" class="btn btn-danger" {{action "reset" problem}}>Reset</a>
         <a id="code-submit" href="#" class="btn btn-primary" {{action "submit" problem}}>Submit</a>
       {{else}}
         <strong>Please login to submit the solution.</strong>
@@ -92,55 +93,3 @@
     {{/if}}
   </div>
 </div>
-<!--
-<div class="col s12">
-  <div class="row">
-  </div>
-  <div class="row">
-    <div class="left">Editor</div>
-    <div class="right">
-      <span >Language:</span>
-      <a id="editor-lang" class="dropdown-button btn red lighten-1" href="#" data-activates='lang-dropdown'>c</a>
-      <ul id='lang-dropdown' class='dropdown-content'>
-        {{#each-in lang_codes as |langId langName|}}
-          <li><a {{action "langChange" langId}} href="#!">{{langName.name}}</a></li>
-        {{/each-in}}
-      </ul>
-    </div>
-  </div>
-  <div class="row">
-    {{#ace-editor}}{{/ace-editor}}
-  </div>
-  <div class="row right">
-    <div class="col s3">
-      {{#circular-loader id="code-submit-loader"}}{{/circular-loader}}
-    </div>
-    <a id="code-submit" class="col s9 btn red lighten-1 waves-effect" {{action "submit" problem}}>
-      Submit
-      <i class="material-icons left">send</i>
-    </a>
-  </div>
-  <div class="row">
-    <div class="card col s12">
-      <div class="card-content">
-        <span class="card-title">Output</span>
-        {{#if (eq result "compile_error")}}
-          <p>Compilation Error:</p>
-          <p><pre>{{output}}</pre></p>
-        {{else}}
-          <ul class="collection">
-            {{#each output as |testcase index|}}
-              <li class="collection-item"><b>Testcase #{{sum index 1}} </b>
-                {{#if (eq testcase.result "timelimit")}}
-                  Time Limit Exceeded
-                {{else}}
-                  {{testcase.result}}
-                {{/if}}
-              </li>
-            {{/each}}
-          </ul>
-        {{/if}}
-      </div>
-    </div>
-  </div>
-</div> -->

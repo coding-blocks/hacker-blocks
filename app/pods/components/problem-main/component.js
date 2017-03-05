@@ -38,14 +38,14 @@ export default Ember.Component.extend({
   },
   didRender() {
     let editor = ace.edit("editor");
-    var self = this;
+    let self = this;
     editor.textInput.getElement().onkeyup = function (event) {
       self.set("onceEdit", true);
     };
   },
   actions: {
     langChange() {
-      var langId = $('#langSelect :selected').val();
+      let langId = $('#langSelect :selected').val();
       $("#editor-lang").text(this.lang_codes[langId]["name"]);
       let editor = ace.edit("editor");
       editor.getSession().setMode(this.lang_codes[langId]["mode"]);
@@ -86,6 +86,12 @@ export default Ember.Component.extend({
         stopLoading();
       });
       console.log("created submission object = " + JSON.stringify(submission));
+    },
+    reset() {
+      let langId = $('#langSelect :selected').val();
+      let editor = ace.edit("editor");
+      editor.setValue(getSnippet(langId));
+      this.set("onceEdit", false);
     }
   }
 });
