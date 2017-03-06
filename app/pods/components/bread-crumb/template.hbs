@@ -1,7 +1,6 @@
-
-  <ol class="arrows">
-    {{#each breadCrumbs as |breadCrumb|}}
-      <li>{{#link-to breadCrumb.route id=breadCrumb.id}}{{breadCrumb.name}}{{/link-to}}</li>
-    {{/each}}
-  </ol>
+<ul class="breadcrumb">
+  {{#each breadCrumbs as |breadCrumb|}}
+    <li>{{#link-to breadCrumb.route id=breadCrumb.id}}{{breadCrumb.name}}{{/link-to}}</li>
+  {{/each}}
+</ul>
 {{yield}}

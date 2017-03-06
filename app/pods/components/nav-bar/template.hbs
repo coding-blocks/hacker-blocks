@@ -51,12 +51,12 @@
             {{/link-to}}
           </div>
           <nav class="width-navigation table-cell table-right">
-            <ul class="nav navbar-nav menu-main-menu">
+            <ul id="main-menu" class="nav navbar-nav menu-main-menu">
               {{#link-to 'contests' class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard" tagName="li"}}
-                {{#link-to 'contests'}}<span data-hover="Contests">Contests</span>{{/link-to}}
+                <a href="#"><span data-hover="Contests">Contests</span></a>
               {{/link-to}}
               {{#link-to 'practice' class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard" tagName="li"}}
-                {{#link-to 'practice'}}<span data-hover="Daily Bytes">Daily Bytes</span>{{/link-to}}
+                <a href="#"><span data-hover="Daily CodeBytes">Daily CodeBytes</span></a>
               {{/link-to}}
               <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="learning.html"><span data-hover="Learn">Learn</span></a></li> -->
               <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="http://codingblocks.com" target="_blank"><span data-hover="Coding Blocks">Coding Blocks</span></a></li>
@@ -68,11 +68,12 @@
       </div>
     </div>
   </div>
+  {{#bread-crumb}}{{/bread-crumb}}
 </header>
 <nav class="mobile-menu-container mobile-effect">
   <ul class="nav navbar-nav">
     <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard">{{#link-to 'contests'}}<span data-hover="About">Contests</span>{{/link-to}}</li>
-    <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard">{{#link-to 'practice'}}<span data-hover="Daily Bytes">Daily Bytes</span>{{/link-to}}</li>
+    <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard">{{#link-to 'practice'}}<span data-hover="Daily CodeBytes">Daily CodeBytes</span>{{/link-to}}</li>
     <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="http://codingblocks.com" target="_blank"><span data-hover="Coding Blocks">Coding Blocks</span></a></li>
     <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="#"><span data-hover="Contact">Contact</span></a></li>
   </ul>

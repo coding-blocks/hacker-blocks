@@ -138,3 +138,16 @@ span.badge.new {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+#magic-line {
+  position: absolute;
+  height: 2px;
+  z-index: 999;
+  bottom: 26px;
+  background-color: #2e8ece;
+  margin-left: -20px;
+}
+
+.breadcrumb li a {
+  color: #cccccc;
+}

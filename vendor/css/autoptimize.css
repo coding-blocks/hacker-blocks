@@ -11094,13 +11094,7 @@ body.admin-bar .wrapper-container.mobile-menu-open {
 	list-style: none;
 	padding: 10px 15px
 }
-#magic-line {
-	position: absolute;
-	height: 2px;
-	z-index: 999;
-	bottom: 26px;
-	background-color: #2e8ece
-}
+
 .thim-mobile-login {
 	padding: 20px 20px 0;
 	display: none
