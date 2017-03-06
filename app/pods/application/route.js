@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
-import initNavAnim from '../../utils/init-nav-anim';
 
 const { inject: { service }, Route } = Ember;
 
@@ -19,7 +18,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   setupController: function(controller, model){
     this._super(controller, model);
     Ember.run.schedule('afterRender', this, function () {
-      initNavAnim();
+
     });
   },
   sessionAuthenticated() {
