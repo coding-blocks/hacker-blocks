@@ -139,16 +139,6 @@ span.badge.new {
   100% { transform: rotate(360deg); }
 }
 
-#magic-line {
-  position: absolute;
-  height: 2px;
-  z-index: 999;
-  bottom: 26px;
-  background-color: #2e8ece;
-  margin-left: -20px;
-  top: 60px;
-  transition: .9s ease-in-out
-}
 
 .width-navigation {
   .container {
@@ -170,31 +160,7 @@ span.badge.new {
 
   }
 
-  .one:hover ~ hr {
-    width: 15%;
-    display: block;
-  }
-
-  .two:hover ~ hr {
-    margin-left: 22%;
-    width: 25%;
-    display: block;
-  }
-
-  .three:hover ~ hr {
-    margin-left: 52%;
-    width: 22%;
-    display: block;
-  }
-
-  .four:hover ~ hr {
-    margin-left: 80%;
-    width: 15%;
-    display: block;
-  }
-
   hr {
-    position: relative;
     height: .15rem;
     width: 0;
     margin: 0;
@@ -203,6 +169,39 @@ span.badge.new {
     transition: .3s ease-in-out;
     left: 20px;
 
+  }
+
+
+  .one.active ~ hr {
+    width: 15%;
+    margin-left: 4%;
+  }
+
+  .two:hover ~ hr {
+    margin-left: 25%;
+    width: 23%;
+    display: block;
+  }
+  .two.active  ~ hr {
+    margin-left: 25%;
+    width: 25%;
+    display: block;
+  }
+
+  .three:hover ~ hr {
+    margin-left: 56%;
+    width: 22%;
+    display: block;
+  }
+
+  .four:hover ~ hr {
+    margin-left: 83%;
+    width: 15%;
+    display: block;
+  }
+  .one:hover ~ hr {
+    width: 15%;
+    margin-left: 4%;
   }
 
 }
