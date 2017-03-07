@@ -146,6 +146,65 @@ span.badge.new {
   bottom: 26px;
   background-color: #2e8ece;
   margin-left: -20px;
+  top: 60px;
+  transition: .9s ease-in-out
+}
+
+.width-navigation {
+  .container {
+    width: 600px;
+    margin-right: 0;
+  }
+}
+#main-menu {
+  ul li {
+    display: inline;
+    text-align: center;
+  }
+
+  a {
+    display: inline-block;
+    margin: 0;
+    text-decoration: none;
+    padding-bottom: 2px;
+
+  }
+
+  .one:hover ~ hr {
+    width: 15%;
+    display: block;
+  }
+
+  .two:hover ~ hr {
+    margin-left: 22%;
+    width: 25%;
+    display: block;
+  }
+
+  .three:hover ~ hr {
+    margin-left: 52%;
+    width: 22%;
+    display: block;
+  }
+
+  .four:hover ~ hr {
+    margin-left: 80%;
+    width: 15%;
+    display: block;
+  }
+
+  hr {
+    position: relative;
+    height: .15rem;
+    width: 0;
+    margin: 0;
+    background: #2e8ece;
+    border: none;
+    transition: .3s ease-in-out;
+    left: 20px;
+
+  }
+
 }
 
 .breadcrumb li a {

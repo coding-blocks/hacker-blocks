@@ -15,20 +15,6 @@ export default Ember.Component.extend({
       .data("origLeft", $magicLine.position().left)
       .data("origWidth", $magicLine.width());
 
-    $("#main-menu li a").hover(function() {
-      $el = $(this);
-      leftPos = $el.offset().left;
-      newWidth = $el.width();
-      $magicLine.stop().animate({
-        left: leftPos,
-        width: newWidth
-      });
-    }, function() {
-      $magicLine.stop().animate({
-        left: $magicLine.data("origLeft"),
-        width: $magicLine.data("origWidth")
-      });
-    });
-    initNavAnim();
+       initNavAnim();
   }
 });
