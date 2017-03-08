@@ -139,13 +139,71 @@ span.badge.new {
   100% { transform: rotate(360deg); }
 }
 
-#magic-line {
-  position: absolute;
-  height: 2px;
-  z-index: 999;
-  bottom: 26px;
-  background-color: #2e8ece;
-  margin-left: -20px;
+
+.width-navigation {
+  .container {
+    width: 600px;
+    margin-right: 0;
+  }
+}
+#main-menu {
+  ul li {
+    display: inline;
+    text-align: center;
+  }
+
+  a {
+    display: inline-block;
+    margin: 0;
+    text-decoration: none;
+    padding-bottom: 2px;
+
+  }
+
+  hr {
+    height: .15rem;
+    width: 0;
+    margin: 0;
+    background: #2e8ece;
+    border: none;
+    transition: .3s ease-in-out;
+    left: 20px;
+
+  }
+
+
+  .one.active ~ hr {
+    width: 15%;
+    margin-left: 4%;
+  }
+
+  .two:hover ~ hr {
+    margin-left: 25%;
+    width: 23%;
+    display: block;
+  }
+  .two.active  ~ hr {
+    margin-left: 25%;
+    width: 25%;
+    display: block;
+  }
+
+  .three:hover ~ hr {
+    margin-left: 56%;
+    width: 22%;
+    display: block;
+  }
+
+  .four:hover ~ hr {
+    margin-left: 83%;
+    width: 15%;
+    display: block;
+  }
+  .one:hover ~ hr {
+    width: 15%;
+    margin-left: 4%;
+  }
+
 }
 
 .breadcrumb li a {

@@ -1,3 +1,4 @@
+
 <header id="masthead" class="site-header bg-custom-sticky sticky-header header_overlay header_v1 affix-top">
   <div id="toolbar" class="toolbar">
     <div class="container">
@@ -51,17 +52,29 @@
             {{/link-to}}
           </div>
           <nav class="width-navigation table-cell table-right">
-            <ul id="main-menu" class="nav navbar-nav menu-main-menu">
-              {{#link-to 'contests' class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard" tagName="li"}}
-                <a href="#"><span data-hover="Contests">Contests</span></a>
-              {{/link-to}}
-              {{#link-to 'practice' class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard" tagName="li"}}
-                <a href="#"><span data-hover="Daily CodeBytes">Daily CodeBytes</span></a>
-              {{/link-to}}
-              <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="learning.html"><span data-hover="Learn">Learn</span></a></li> -->
-              <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="http://codingblocks.com" target="_blank"><span data-hover="Coding Blocks">Coding Blocks</span></a></li>
-              <li class="menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard"><a href="http://www.codingblocks.com/contactus/" target="_blank"><span data-hover="Contact">Contact</span></a></li>
-            </ul>
+            <div class="container">
+              <ul id="main-menu" class="nav navbar-nav menu-main-men">
+
+                {{#link-to 'contests' class="one menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard" tagName="li"}}
+                  <a href="#">Contests</a>
+                {{/link-to}}
+                {{#link-to 'practice' class="two menu-item menu-item-type-post_type menu-item-object-page drop_to_right standard" tagName="li"}}
+                  <a href="#">Daily CodeBytes</a>
+                {{/link-to}}
+                <li class="three">
+                  <a href="http://codingblocks.com" target="_blank">Coding Blocks</a>
+                </li>
+                <li class="four">
+                  <a href="http://www.codingblocks.com/contactus/" target="_blank">
+                    Contact
+                  </a>
+                </li>
+                <!-- <li class="menu-item menu-item-type-custom menu-item-object-custom drop_to_right standard"><a href="learning.html"><span data-hover="Learn">Learn</span></a></li> -->
+
+                <hr/>
+              </ul>
+            </div>
+
           </nav>
           <div class="menu-mobile-effect navbar-toggle" data-effect="mobile-effect"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></div>
         </div>
