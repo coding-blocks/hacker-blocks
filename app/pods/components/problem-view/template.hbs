@@ -2,8 +2,13 @@
   <div id="event-2953" class="item-event feature-item post-2953 tp_event type-tp_event status-tp-event-happenning has-post-thumbnail hentry">
     <div class="event-wrapper">
       <div class="time-from">
-        <div class="date">{{get-difficulty problem.difficulty}}</div>
+        {{#if isWeekly}}
+          <div class="date">{{problem.UTCDay}}</div>
+          <div class="month">{{problem.UTCMonth}}</div>
+        {{else}}
+          <div class="date">{{get-difficulty problem.difficulty}}</div>
           <div class="month">Difficulty</div>
+        {{/if}}
       </div>
       <div class="top-heading">
         <h4 class="title">{{#link-to link problem.id}}{{problem.name}}{{/link-to}}</h4>

@@ -7,7 +7,7 @@
           <p><h3>This Week's Daily Dose</h3></p>
           {{log model}}
           {{#each model as |problem|}}
-            {{#problem-view link='practice.weekly-problem.main' problem=problem}}{{/problem-view}}
+            {{#problem-view isWeekly=true link='practice.weekly-problem.main' problem=problem}}{{/problem-view}}
           {{/each}}
         </div>
       </main>
