@@ -10,15 +10,11 @@ let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oc
 export default DS.Model.extend({
   name: DS.attr(),
   content: DS.attr(),
-  contentObj: Ember.computed('content', function () {
-    return JSON.parse(this.get('content'))
-  }),
   submitCount: DS.attr(),
   difficulty: DS.attr(),
   image: DS.attr(),
   day: DS.attr(),
   UTCDay: Ember.computed('day', function () {
-    console.log(this.get('day'));
     return this.get('day').toString().substring(6,8);
   }),
   UTCMonth: Ember.computed('day', function () {

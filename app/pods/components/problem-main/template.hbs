@@ -1,24 +1,24 @@
 <div class="clearfix">
   <h4>{{problem.name}}</h4>
-  <p>{{markdown-to-html problem.contentObj.description}}</p>
+  <p>{{markdown-to-html problem.content.description}}</p>
   <hr />
   <p class="small">
-    {{#if problem.contentObj.inputFormat}}
+    {{#if problem.content.inputFormat}}
       <div id="inputFormat">
         <span><b>Input Format:</b></span>
-        {{markdown-to-html problem.contentObj.inputFormat}}
+        {{markdown-to-html problem.content.inputFormat}}
       </div>
     {{/if}}
-    {{#if problem.contentObj.constraint}}
+    {{#if problem.content.constraint}}
       <div id="constraint">
         <span><b>Constraints:</b></span>
-        <span>{{problem.contentObj.constraint}}</span>
+        <span>{{problem.content.constraint}}</span>
       </div>
     {{/if}}
-    {{#if problem.contentObj.outputFormat}}
+    {{#if problem.content.outputFormat}}
       <div id="outputFormat">
         <span><b>Output Format:</b></span>
-        {{markdown-to-html problem.contentObj.outputFormat}}
+        {{markdown-to-html problem.content.outputFormat}}
       </div>
     {{/if}}
   </p>
@@ -26,22 +26,22 @@
   <hr />
 
   <p class="small">
-    {{#if problem.contentObj.sampleInput}}
+    {{#if problem.content.sampleInput}}
       <div id="sampleInput">
         <span><b>Sample Input:</b></span>
-        <pre>{{problem.contentObj.sampleInput}}</pre>
+        <pre>{{problem.content.sampleInput}}</pre>
       </div>
     {{/if}}
-    {{#if problem.contentObj.sampleOutput}}
+    {{#if problem.content.sampleOutput}}
       <div id="sampleOutput">
         <span><b>Sample Output:</b></span>
-        <pre>{{problem.contentObj.sampleOutput}}</pre>
+        <pre>{{problem.content.sampleOutput}}</pre>
       </div>
     {{/if}}
-    {{#if problem.contentObj.explanation}}
+    {{#if problem.content.explanation}}
       <div id="sampleOutput">
         <span><b>Explanation:</b></span>
-        <span>{{problem.contentObj.explanation}}</span>
+        <span>{{problem.content.explanation}}</span>
       </div>
     {{/if}}
   </p>
