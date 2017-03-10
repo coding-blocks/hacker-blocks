@@ -10,28 +10,11 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     if (query.me) {
       delete query.me;
       return `${this._super(...arguments)}/me`;
+    } else if (query.weekly) {
+      delete query.weekly;
+      return `${this._super(...arguments)}/weekly/${query.problem_id}`;
     }
     return this._super(...arguments);
   },
-  authorizer: 'authorizer:custom',
-  findRecord: function (store, type, id, snapshot) {
-    if (Ember.get(snapshot.adapterOptions, 'query')) {
-      let adapterOptions = snapshot.adapterOptions;
-      let url = this.buildURL(type.modelName, id, snapshot, 'findRecord');
-      if (adapterOptions.query) {
-        let query = adapterOptions.query;
-        url += '?';
-        for (let key in query) {
-          if (query.hasOwnProperty(key)) {
-            url += key + '=' + query[key];
-            url += '&';
-          }
-        }
-      }
-      return this.ajax(url, 'GET', {weekly: true});
-    } else {
-      console.log("adapter else");
-      this._super(...arguments);
-    }
-  }
+  authorizer: 'authorizer:custom'
 });
