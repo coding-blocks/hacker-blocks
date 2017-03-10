@@ -120,4 +120,6 @@ export default function() {
   this.passthrough('/contests/:contest_id');
 
   this.passthrough('/submissions/:submission_id');
+
+  this.passthrough('/problems/weekly/:problem_id');
 }
