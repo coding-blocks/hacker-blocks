@@ -198,6 +198,15 @@ var initNavAnim = function () {
       $('#thim-popup-login').removeClass('active');
     }
   });
+  console.log("adding listener");
+  $('.menu-mobile-effect').on('click', function(e) {
+    e.stopPropagation();
+    console.log("hamburger clicked");
+    jQuery('.wrapper-container').toggleClass('mobile-menu-open');
+  });
+  $(document).on('click', '.mobile-menu-open #main-content', function() {
+    jQuery('.wrapper-container.mobile-menu-open').removeClass('mobile-menu-open');
+  });
 };
 
 export default initNavAnim;
