@@ -8,6 +8,9 @@
     <div class="thim-login">
       <h2 class="title">Login with your site account</h2>
       <form name="loginform" id="loginform" {{ action "authenticate" on="submit"}}>
+        {{#if errorMessage}}
+          <div class="alert alert-danger">{{errorMessage.message}}</div>
+        {{/if}}
         <p class="login-username">
           <label for="username">Roll number or Email</label>
           <input type="text" name="username" id="username" class="input validate" value="" size="20" placeholder="Roll number or Email">
