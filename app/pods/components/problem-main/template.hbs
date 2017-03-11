@@ -3,10 +3,10 @@
   <p>{{markdown-to-html problem.content.description}}</p>
   <hr />
   <p class="small">
-    {{#if problem.content.inputFormat}}
+    {{#if problem.content.input-format}}
       <div id="inputFormat">
         <span><b>Input Format:</b></span>
-        {{markdown-to-html problem.content.inputFormat}}
+        {{markdown-to-html problem.content.input-format}}
       </div>
     {{/if}}
     {{#if problem.content.constraint}}
@@ -15,10 +15,10 @@
         <span>{{problem.content.constraint}}</span>
       </div>
     {{/if}}
-    {{#if problem.content.outputFormat}}
+    {{#if problem.content.output-format}}
       <div id="outputFormat">
         <span><b>Output Format:</b></span>
-        {{markdown-to-html problem.content.outputFormat}}
+        {{markdown-to-html problem.content.output-format}}
       </div>
     {{/if}}
   </p>
@@ -26,16 +26,16 @@
   <hr />
 
   <p class="small">
-    {{#if problem.content.sampleInput}}
+    {{#if problem.content.sample-input}}
       <div id="sampleInput">
         <span><b>Sample Input:</b></span>
-        <pre>{{problem.content.sampleInput}}</pre>
+        <pre>{{problem.content.sample-input}}</pre>
       </div>
     {{/if}}
-    {{#if problem.content.sampleOutput}}
+    {{#if problem.content.sample-output}}
       <div id="sampleOutput">
         <span><b>Sample Output:</b></span>
-        <pre>{{problem.content.sampleOutput}}</pre>
+        <pre>{{problem.content.sample-output}}</pre>
       </div>
     {{/if}}
     {{#if problem.content.explanation}}

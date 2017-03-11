@@ -15,12 +15,13 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       return this._loadCurrentUser();
     }
   },
+  /*
   setupController: function(controller, model){
     this._super(controller, model);
     Ember.run.schedule('afterRender', this, function () {
 
     });
-  },
+  },*/
   sessionAuthenticated() {
     this._super(...arguments);
     // this._loadCurrentUser().catch(() => this.get('session').invalidate());
