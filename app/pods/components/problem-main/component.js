@@ -12,6 +12,40 @@ function stopLoading() {
   $('#code-submit').removeClass('disabled');
 }
 
+function judge(component, problemId) {
+  startLoading();
+  let submission = {
+    user_id: component.get('session.data.authenticated.user_id'),
+    language: component.langId,
+    problemId: problemId,
+    source: window.btoa(ace.edit("editor").getValue()),
+    custom_input: window.btoa($('#custom-input').val())
+  };
+  $.ajax({
+    url: config.apiEndpoint + '/api/submissions',
+    data: JSON.stringify(submission),
+    type: "POST",
+    contentType: "application/json",
+    timeout: 50000
+  }).done(function(data) {
+    stopLoading();
+    console.log("data returned = " + JSON.stringify(data));
+    if (data.result == "compile_error") {
+      component.set('output', window.atob(data.error));
+    } else {
+      if (problemId === undefined) {
+        data.result = 'output';
+        component.set('output', data.data.testcases[0].output);
+      } else {
+        component.set('output', data.data.testcases);
+      }
+    }
+    component.set('result', data.result);
+  }).fail(function(jqXHR, textStatus, errorThrown) {
+    stopLoading();
+  });
+}
+
 export default Ember.Component.extend({
   session: Ember.inject.service('session'),
   output: "",
@@ -55,37 +89,10 @@ export default Ember.Component.extend({
       this.langId = langId;
     },
     submit(problem) {
-      if (this.get('session.isAuthenticated') != true) {
-        Materialize.toast('You must login before submitting a solution.', 3000, 'rounded');
-        return;
-      }
-      startLoading();
-      var self = this;
-      var submission = this.get('store').createRecord('submission', {
-        user_id: self.get('session.data.authenticated.user_id'),
-        language: self.langId,
-        problemId: problem.id,
-        source: window.btoa(ace.edit("editor").getValue())
-      });
-      $.ajax({
-        url: config.apiEndpoint + '/api/submissions',
-        data: JSON.stringify(submission),
-        type: "POST",
-        contentType: "application/json",
-        timeout: 10000
-      }).done(function(data){
-        stopLoading();
-        console.log("data returned = " + JSON.stringify(data));
-        self.set('result', data.result);
-        if (data.result == "compile_error") {
-          self.set('output', window.atob(data.error));
-        } else {
-          self.set('output', data.data.testcases);
-        }
-      }).fail(function(jqXHR, textStatus, errorThrown) {
-        stopLoading();
-      });
-      console.log("created submission object = " + JSON.stringify(submission));
+      judge(this, problem.id);
+    },
+    run() {
+      judge(this);
     },
     reset() {
       let langId = $('#langSelect :selected').val();

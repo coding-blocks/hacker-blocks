@@ -57,18 +57,24 @@
     </div>
     {{#ace-editor}}{{/ace-editor}}
     <div class="clearfix p5-10 small">
-      <!-- <a href="#" class="fntblue pull-left"><i class="fa fa-caret-down"></i> Provide custom input</a> -->
-
+       <a href="javascript:;" class="fntblue pull-left"><i class="fa fa-caret-down" {{action "customInput" problem}}></i>
+         Provide custom input</a>
     </div>
-    <div class="clearfix p5-10">
-      {{#if session.isAuthenticated}}
-        <a href="code-reset" class="btn btn-danger" {{action "reset" problem}}>Reset</a>
-        <a id="code-submit" href="#" class="btn btn-primary" {{action "submit" problem}}>Submit</a>
-      {{else}}
-        <strong>Please login to submit the solution.</strong>
-      {{/if}}
-       <!--<a href="practice_test_submit.html" class="btn btn-secondary ml20" style="border-color:#27ae61;">Submit</a>-->
-      <div id="code-submit-loader" class="loader"></div>
+    <div class="clearfix p5-10"><textarea class="col-md-12" id="custom-input"></textarea></div>
+    <div class="col-md-12">
+      <div class="p5-10 pull-left">
+        <a id="code-run" href="#" class="btn btn-primary" {{action "run" problem}}>Run</a>
+      </div>
+      <div class="clearfix p5-10 pull-right">
+        <div id="code-submit-loader" class="loader"></div>
+        {{#if session.isAuthenticated}}
+          <a href="code-reset" class="btn btn-danger" {{action "reset" problem}}>Reset</a>
+          <a id="code-submit" href="#" class="btn btn-primary" {{action "submit" problem}}>Submit</a>
+        {{else}}
+          <strong>Please login to submit the solution.</strong>
+        {{/if}}
+        <!--<a href="practice_test_submit.html" class="btn btn-secondary ml20" style="border-color:#27ae61;">Submit</a>-->
+      </div>
     </div>
   </div>
 
@@ -76,6 +82,9 @@
     {{#if (eq result "compile_error")}}
       <p>Compilation Error:</p>
       <p><pre>{{output}}</pre></p>
+    {{else if (eq result 'output')}}
+      <p>Output:</p>
+      <p><pre>{{base64-decode output}}</pre></p>
     {{else}}
       <ul class="collection">
         {{#each output as |testcase index|}}
