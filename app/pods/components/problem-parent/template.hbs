@@ -6,18 +6,16 @@
           <div class="col-md-8">
             <div class="headsection clearfix">
               <span class="fntblue">
-                <ul class="list-inline" style="display: inline;">
-                  <li class="active">
-                      {{#link-to (sum parentRoute ".main") }}<h4>Problem</h4>{{/link-to}}
-                  </li>
-                  <li class="seprate">|</li>
-                  <li>
-                    {{#link-to (sum parentRoute ".submissions") }}<h4>My Submissions</h4>{{/link-to}}
-                  </li>
-                  <li class="seprate">|</li>
-                  <li>
-                    {{#link-to (sum parentRoute ".leaderboard") }}<h4>Leaderboard</h4>{{/link-to}}
-                  </li>
+                <ul class="nav nav-tabs">
+                  {{#link-to (sum parentRoute ".main") tagName="li" }}
+                    <a href="javascript;"><strong>Problem</strong></a>
+                  {{/link-to}}
+                  {{#link-to (sum parentRoute ".submissions") tagName="li" }}
+                    <a href="javascript;"><strong>My Submissions</strong></a>
+                  {{/link-to}}
+                  {{#link-to (sum parentRoute ".leaderboard") tagName="li" }}
+                    <a href="javascript;"><strong>Leaderboard</strong></a>
+                  {{/link-to}}
                 </ul>
               </span>
               <span class="pull-right">
