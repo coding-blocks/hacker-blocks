@@ -25,6 +25,13 @@
       <div class="view-detail"> {{#link-to link problem.id}}Solve This Problem{{/link-to}}</div>
     </div>
     <div class="image"><a href="#"> <img src="{{problem.image}}" alt="event-4" title="event-4" width="560" height="240"> </a></div>
+    <div class="event-wrapper">
+      <ul class="list-inline">
+      {{#each problem.tags as | tag|}}
+        <li class="btn btn-primary">{{tag}}</li>
+      {{/each}}
+      </ul>
+      </div>
   </div>
 </div>
 
