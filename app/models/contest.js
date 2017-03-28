@@ -11,8 +11,5 @@ export default DS.Model.extend({
   location: DS.attr(),
   image: DS.attr(),
   questions: DS.hasMany('problems'),
-  description: DS.attr(),
-  questionsCount: Ember.computed('questions', function () {
-    return this.get('questions.length');
-  })
+  description: DS.attr()
 });
