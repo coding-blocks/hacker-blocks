@@ -13,6 +13,7 @@ export default DS.Model.extend({
   submitCount: DS.attr(),
   difficulty: DS.attr(),
   image: DS.attr(),
+  tags: DS.attr(),
   day: DS.attr(),
   UTCDay: Ember.computed('day', function () {
     return this.get('day').toString().substring(6,8);
