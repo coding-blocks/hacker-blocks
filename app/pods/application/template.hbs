@@ -1,7 +1,19 @@
+<!-- Overlay For Sidebars -->
+<div class="overlay"></div>
+<!-- #END# Overlay For Sidebars -->
+
+{{#nav-bar model=model}}{{/nav-bar}}
+
+<!--
 <div id="wrapper-container" class="wrapper-container">
   <div class="content-pusher ">
-    {{#nav-bar model=model}}{{/nav-bar}}
+
     {{outlet}}
   </div>
   {{#foot-er}}{{/foot-er}}
-</div>
+</div> -->
+
+{{#left-side-bar model=model}}{{/left-side-bar}}
+{{#right-side-bar}}{{/right-side-bar}}
+
+<div class="color-bg"></div>

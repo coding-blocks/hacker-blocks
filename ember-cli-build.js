@@ -9,15 +9,13 @@ module.exports = function(defaults) {
     // Add options here
   });
 
-  app.import('vendor/css/bootstrap.min.css');
-  app.import('vendor/css/bootstrap-theme.min.css');
-  app.import('vendor/css/font-awesome.css');
-  app.import('vendor/css/style.css');
-  app.import('vendor/css/autoptimize.css');
+  app.import('vendor/css/all-themes.css');
+  app.import('vendor/css/main.css');
+  app.import('vendor/css/morris.css');
 
-  app.import('vendor/js/jquery.min.js');
-  app.import('vendor/js/bootstrap.min.js');
-  app.import('vendor/materialize.min.js');
+  app.import('vendor/js/libscripts.bundle.js');
+  app.import('vendor/js/mainscripts.bundle.js');
+  app.import('vendor/js/vendorscripts.bundle.js');
 
   var extraAssets = new Funnel('bower_components/ace-builds/src-min-noconflict', {
     srcDir: '/',
