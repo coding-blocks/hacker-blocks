@@ -1,8 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  beforeModel() {
-    this._super(...arguments);
-    this.replaceWith('contests');
+  model() {
+    return Ember.RSVP.hash({
+      daily: this.get('store').query('problem', {weekly: true, per_page: 4}),
+      contests: this.get('store').findAll('contest')
+    });
   }
 });

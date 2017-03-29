@@ -1,1 +1,90 @@
-{{outlet}}
+<section class="content home">
+  <div class="container-fluid">
+    <div class="block-header">
+      <h2>Home</h2>
+    </div>
+    <div class="row clearfix top-report">
+      <div class="col-lg-3 col-sm-6 col-md-6 col-xs-12">
+        <div class="card">
+          <div class="panel-body">
+            <h3>100</h3>
+            <p class="text-muted">Total Registered Users</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6 col-md-6 col-xs-12">
+        <div class="card">
+          <div class="panel-body">
+            <h3>2</h3>
+            <p class="text-muted">Active Contests</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6 col-md-6 col-xs-12">
+        <div class="card">
+          <div class="panel-body">
+            <h3>15</h3>
+            <p class="text-muted">Daily Code Bytes</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6 col-md-6 col-xs-12">
+        <div class="card">
+          <div class="panel-body">
+            <h3>15,000</h3>
+            <p class="text-muted">Points Distributed</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="header">
+            <h2>Daily Code Bytes</h2>
+            <ul class="header-dropdown m-r--5">
+              <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="zmdi zmdi-more-vert"></i></a>
+                <ul class="dropdown-menu pull-right">
+                  <li><a href="javascript:void(0);">Go to Daily code Bytes</a></li>
+
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="body">
+            <div class="row clearfix">
+              {{#each model.daily as |problem index|}}
+                {{#problem-view link='practice.weekly-problem.main' problem=problem i=index}}{{/problem-view}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+          <div class="header">
+            <h2>Contests</h2>
+            <ul class="header-dropdown m-r--5">
+              <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="zmdi zmdi-more-vert"></i></a>
+                <ul class="dropdown-menu pull-right">
+                  <li><a href="javascript:void(0);">Go to Contests</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="body">
+            <div class="row clearfix">
+              {{#each model.contests as |contest|}}
+                {{#contest-view link='contests.contest' contest=contest}}{{/contest-view}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- main content -->

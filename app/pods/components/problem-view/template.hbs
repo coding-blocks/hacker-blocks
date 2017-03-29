@@ -1,3 +1,39 @@
+<div class="col-xs-12 col-sm-6 col-md-3">
+  <div class="thumbnail card"><span class="point-circle"><span class="number"><strong>100</strong></span><span class="pointtxt"><strong>Points</strong></span></span>
+    <img src="{{problem.image}}">
+    <div class="posrel">
+      <span class="card-date">{{problem.UTCDay}} {{problem.UTCMonth}}</span>
+    </div>
+    <!--
+    <div class="clearfix timeLeft">
+      <span class="timetxt">TIME LEFT:</span>
+      <span class="pull-right text-center">
+        <span class="pull-left marginR10">
+          <span class="hours">10</span> HRS</span>
+        <span class="pull-left marginR10"><span class="minutes">00</span> MIN</span>
+        <span class="pull-left"><span class="seconds">00</span> SEC</span>
+      </span>
+    </div> -->
+    <div class="caption">
+      <h3>{{#link-to link problem.id}}{{problem.name}}{{/link-to}}</h3>
+      <!--
+        {{#if (eq i 0)}}
+          <span class="label label-info">Today's CodeByte</span>
+        {{/if}} -->
+      <span class="marginR10">
+        <img src="images/tag.png" alt=""/>
+        <font size="1">Complex<img src="images/tag.png" alt=""> Data Structures</font>
+      </span>
+      <!--
+      <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+        text ever since the 1500s </p> -->
+
+      <p> {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}</p>
+    </div>
+  </div>
+</div>
+
+<!--
 <div class="event-archive-happening active">
   <div id="event-2953" class="item-event feature-item post-2953 tp_event type-tp_event status-tp-event-happenning has-post-thumbnail hentry">
     <div class="event-wrapper">
@@ -13,15 +49,10 @@
       <div class="top-heading">
         <h4 class="title">{{#link-to link problem.id}}{{problem.name}}{{/link-to}}</h4>
         <div class="meta">
-          <!-- <div class="time"> <i class="fa fa-clock-o"></i> 12:00 am - 11:59 pm</div> -->
           <div class="location"> <span class="fa fa-check"></span>{{problem.submitCount}} submissions</div>
           <div> <span class="fa fa-bar-chart"></span>100 Points</div>
         </div>
       </div>
-      <!--
-      <div class="description">
-        <div class="thim-excerpt">{{problem.description}}</div>
-      </div> -->
       <div class="view-detail"> {{#link-to link problem.id}}Solve This Problem{{/link-to}}</div>
     </div>
     <div class="image"><a href="#"> <img src="{{problem.image}}" alt="event-4" title="event-4" width="560" height="240"> </a></div>
@@ -33,5 +64,5 @@
       </ul>
       </div>
   </div>
-</div>
+</div>-->
 
