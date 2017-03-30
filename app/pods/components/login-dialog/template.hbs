@@ -1,30 +1,42 @@
-<div id="thim-popup-login" class="has-shortcode">
-  <div class="thim-login-container" style="top: 116px;"> <span class="close-popup fa fa-times"></span>
-    <div class="mo-openid-app-icons">
-      <p>Register Now:</p>
-      <a style="width: 300px !important;padding-top:13px !important;padding-bottom:13px !important;margin-bottom: -1px !important;border-radius: 0px !important;" class="btn btn-block btn-social btn-google btn-custom-dec login-button" href="http://students.codingblocks.com/login#signup">Sign Up at CodingBlocks.com</a>
+<div class="modal close" tabindex="-1" role="dialog" id="loginModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="gridSystemModalLabel">Login</h4>
+      </div>
+      <div class="modal-body">
+        <div class="card">
+          <h1 class="title"><span>Hacker Blocks</span>Login
+            <div class="msg">Sign in to start your session</div>
+          </h1>
+          <div class="col-md-12">
+            <form name="loginform" id="loginform" {{ action "authenticate" on="submit" }}>
+              {{#if errorMessage}}
+              <div class="alert alert-danger">{{errorMessage.message}}</div>
+              {{/if}}
+              <div class="input-group"> <span class="input-group-addon"> <i class="zmdi zmdi-account"></i> </span>
+                <div class="form-line">
+                  <input type="text" name="username" class="form-control" id="username" value="" size="20" placeholder="Roll number or Email">
+                </div>
+              </div>
+              <div class="input-group"> <span class="input-group-addon"> <i class="zmdi zmdi-lock"></i> </span>
+                <div class="form-line">
+                  <input type="password" name="pwd" class="form-control" id="password" value="" size="20" placeholder="Password">
+                </div>
+              </div>
+              <div class="text-center">
+                <input type="submit" name="wp-submit" id="wp-submit" class="btn btn-success" value="SIGN IN">
+                <a href= "signup.html" class = "btn btn-default">SIGN UP</a>
+              </div>
+              <br>
+              <div class="text-center"><a class="lost-pass-link" href="http://students.codingblocks.com/login#forget_password" title="Forgot Password">Forgot password?</a></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+      </div>
     </div>
-    <br>
-    <div class="thim-login">
-      <h2 class="title">Login with your site account</h2>
-      <form name="loginform" id="loginform" {{ action "authenticate" on="submit"}}>
-        {{#if errorMessage}}
-          <div class="alert alert-danger">{{errorMessage.message}}</div>
-        {{/if}}
-        <p class="login-username">
-          <label for="username">Roll number or Email</label>
-          <input type="text" name="username" id="username" class="input validate" value="" size="20" placeholder="Roll number or Email">
-        </p>
-        <p class="login-password">
-          <label for="password">Password</label>
-          <input type="password" name="pwd" id="password" class="input" value="" size="20" placeholder="Password">
-        </p>
-        <a class="lost-pass-link" href="http://students.codingblocks.com/login#forget_password" title="Forgot Password">Forgot password?</a>
-        <p class="login-submit">
-          <input type="submit" name="wp-submit" id="wp-submit" class="button button-primary" value="Login">
-        </p>
-      </form>
     </div>
-    <span class="close-popup"><i class="fa fa-times" aria-hidden="true"></i></span>
-  </div>
-</div>
+    </div>
