@@ -16,6 +16,7 @@ export default DS.Model.extend({
   tags: DS.attr(),
   day: DS.attr(),
   UTCDay: Ember.computed('day', function () {
+    console.log(typeof day);
     return this.get('day').toString().substring(6,8);
   }),
   UTCMonth: Ember.computed('day', function () {
