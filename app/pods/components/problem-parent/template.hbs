@@ -22,6 +22,44 @@
                 </div>
                 <p>{{markdown-to-html problem.content.description}}</p>
                 <hr />
+                {{#if problem.content.input-format}}
+                  <div id="inputFormat">
+                    <span><b>Input Format:</b></span>
+                    {{markdown-to-html problem.content.input-format}}
+                  </div>
+                {{/if}}
+                {{#if problem.content.constraints}}
+                  <div id="constraint">
+                    <span><b>Constraints:</b></span>
+                    <span>{{problem.content.constraints}}</span>
+                  </div>
+                {{/if}}
+                {{#if problem.content.output-format}}
+                  <div id="outputFormat">
+                    <span><b>Output Format:</b></span>
+                    {{markdown-to-html problem.content.output-format}}
+                  </div>
+                {{/if}}
+                <hr />
+                {{#if problem.content.sample-input}}
+                  <div id="sampleInput">
+                    <span><b>Sample Input:</b></span>
+                    <pre>{{problem.content.sample-input}}</pre>
+                  </div>
+                {{/if}}
+                {{#if problem.content.sample-output}}
+                  <div id="sampleOutput">
+                    <span><b>Sample Output:</b></span>
+                    <pre>{{problem.content.sample-output}}</pre>
+                  </div>
+                {{/if}}
+                {{#if problem.content.explanation}}
+                  <div id="sampleOutput">
+                    <span><b>Explanation:</b></span>
+                    <span>{{problem.content.explanation}}</span>
+                  </div>
+                {{/if}}
+                <hr />
                 <div class="row clearfix">
                   <div class="col-md-12 pt-detail"><ul class="pt-category">
                     <li>
