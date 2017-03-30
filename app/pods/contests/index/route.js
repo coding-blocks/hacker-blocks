@@ -12,20 +12,17 @@ export default Ember.Route.extend({
 
     this.get('store').findAll('contest').then(function (contest) {
       var presentDate = Math.floor(new Date().valueOf() / 1000);
-      console.log(presentDate);
       contest.forEach(function (element) {
         if (element.get('startTime') <= presentDate && element.get('endTime') >= presentDate) {
           activeContests.pushObject(element);
-        }
-        else if (element.get('startTime') > presentDate) {
+        } else if (element.get('startTime') > presentDate) {
           upcomingContests.pushObject(element);
-        }
-        else {
+        } else {
           previousContests.pushObject(element);
         }
       })
-    })
-    
+    });
+
     return Ember.RSVP.hash({
       activeContests: activeContests,
       upcomingContests: upcomingContests,
