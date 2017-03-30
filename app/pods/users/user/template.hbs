@@ -1,0 +1,64 @@
+<section class="content profile-page">
+    <div class="container-fluid">
+        <div class="row clearfix">
+            <div class="col-md-12 p-l-0 p-r-0">
+                <section class="boxs-simple">
+                    <div class="profile-header">
+                        <div class="profile_info">
+                            <div class="profile-image col-md-offset-5">
+                                {{#if user.image}}
+                                <img src="{{user.image}}" class="img-responsive" alt=""> {{else}}
+                                <img src="https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1" class="img-responsive"
+                                    alt=""> {{/if}}
+                            </div>
+                            <h4 class="mb-0"><strong>{{user.name}}</strong></h4>
+                            <span class="text-muted col-white">Java Specialist</span>
+                        </div>
+                    </div>
+                    <div class="profile-sub-header">
+
+                    </div>
+                </section>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <h2 class = "text-center">Problems Solved</h2>
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <div class="card">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr class="uppercase">
+                                <th>
+                                    Problem
+                                </th>
+                                <th>
+                                    Score
+                                </th>
+                                <th>
+                                    Language
+                                </th>
+
+                            </tr>
+                        </thead>
+                        {{#each submission as |attempt|}}
+                        <tr>
+                            <td>
+                                <a href="javascript:;" class="primary-link">{{attempt.problemName}}</a>
+                            </td>
+                            <td>
+                                {{attempt.score}}
+                            </td>
+                            <td>
+                                {{attempt.language}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </table>
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>

@@ -3,6 +3,44 @@ export default function() {
   // let lorem_ipseum = "Lorem ipsum dolor sit `amet`, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
 
   this.namespace = 'http://localhost:3000/api';
+   this.passthrough('/users');
+  this.passthrough('/users/:user_id');
+
+  // this.get('/users', function () {
+  //   return {
+  //     "data":
+  //     [{
+  //       "type": "user",
+  //       "id": "72",
+  //       "attributes": {
+  //         "user-id": 1557,
+  //         "name": "Gourav",
+  //         "courses": null
+  //       }
+  //     },
+  //     {
+  //       "type": "user",
+  //       "id": "103",
+  //       "attributes": {
+  //         "user-id": 1581,
+  //         "name": "Siddhant",
+  //         "courses": null
+  //       }
+  //     }]
+  //   };
+  // });
+  // // this.get('/users/:user_id', function () {
+  //   return {
+  //     data: {
+  //       id: 1,
+  //       type: "user",
+  //       attributes: {
+  //         name: "Ankit",
+  //         email: "abc@gmail.com"
+  //       }
+  //     }
+  //   };
+  // });
 /*
   this.get('/contests', function() {
     return {

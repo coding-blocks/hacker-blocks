@@ -1,17 +1,20 @@
 <aside id="leftsidebar" class="sidebar">
   <!-- User Info -->
   <div class="user-info">
-    <div class="admin-image"> <img src="images/placeholder-avatar.png" alt=""> </div>
+    <div class="admin-image"> <img src="/images/placeholder-avatar.png" alt="">
     {{#if session.isAuthenticated}}
       <div class="admin-action-info"> <span><strong>Welcome</strong></span>
         <h3><strong>{{model.name}}</strong></h3>
       </div>
     {{else}}
-      Login
+      <button class = "login-btn btn btn-info" {{action 'popup'}}data-toggle="modal" data-target="#loginModal">Login</button>
     {{/if}}
+     </div>
+    
   </div>
   <!-- #User Info -->
   <!-- Menu -->
+  <hr>
   <div class="menu">
     <ul class="list">
       <li class="header">MAIN NAVIGATION</li>
@@ -23,3 +26,4 @@
   </div>
   <!-- #Menu -->
 </aside>
+{{#login-dialog}}{{/login-dialog}}
