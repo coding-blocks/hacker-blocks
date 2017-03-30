@@ -29,12 +29,13 @@ Router.map(function() {
       this.route('leaderboard');
     });
   });
-   this.route('users', function() {
-    this.route('index', { path: '/all' });
-    this.route('user',{path: '/:user_id'});
-  });
+  this.route('users', function() {
+   this.route('index', { path: '/all' });
+   this.route('user',{path: '/:user_id'});
+ });
   this.route('application-loading');
   this.route('submission', {path: '/submission/:submission_id'});
+  this.route('courses');
 });
 
 export default Router;
