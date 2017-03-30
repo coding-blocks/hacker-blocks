@@ -1,16 +1,92 @@
-<div id="main-content">
+{{!--<div id="main-content" style="margin-left: 170px;">
   <div class="innerbannerimg clearfix" style="height:350px; overflow:hidden"><img src="/images/mainimage.jpg" style="width:100%;" alt=""/></div>
   <div class="container site-content">
     <div class="row">
       <main id="main" class="site-main col-sm-12 full-width">
+        {{#if upcomingContests.length}}
         <div class="thim-list-event" style="display: block;">
           <p><h3>Active Contests</h3></p>
-          {{#each model as |contest|}}
-            <hr>
+          <hr>
+        <div class="col-sm-12">
+          {{#each activeContests as |contest|}}
             {{#contest-view link='contests.contest' contest=contest}} {{/contest-view}}
           {{/each}}
+        </div>
+        </div>
+        {{/if}}
+        {{#if upcomingContests.length}}
+        <div class="thim-list-event" style="display: block;">
+          <p><h3>Upcoming Contests</h3></p>
+          <hr>
+          <div class="col-sm-12">
+          {{#each upcomingContests as |contest|}}
+            {{#contest-view link='contests.contest' contest=contest}} {{/contest-view}}
+          {{/each}}
+          </div>
+        </div>
+        {{/if}}
+        <div class="thim-list-event" style="display: block;">
+          <p><h3>Previous Contests</h3></p>
+          <hr>
+          <div class="col-sm-12">
+          {{#each previousContests as |contest|}}
+            {{#contest-view link='contests.contest' contest=contest}} {{/contest-view}}
+          {{/each}}
+          </div>
         </div>
       </main>
     </div>
   </div>
+</div>--}}
+
+<section class="content">
+  <div class="container-fluid">
+        
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+
+          {{#if (not-eq activeContests.length 0)}}
+          <div class="header">
+            <h2>ACTIVE CONTESTS</h2>
+          </div>
+          <div class="body">
+            <div class="row clearfix">
+              {{#each activeContests as |contest|}}
+                {{#contest-view link='contests.contest' contest=contest}} {{/contest-view}}
+              {{/each}}
+            </div>
+          </div>
+          {{/if}}
+
+          {{#if (not-eq upcomingContests.length 0)}}
+           <div class="header">
+            <h2>UPCOMING CONTESTS</h2>
+           </div>
+            <div class="body">
+              <div class="row clearfix">
+                {{#each upcomingContests as |contest|}}
+                  {{#contest-view link='contests.contest' contest=contest}} {{/contest-view}}
+                {{/each}}
+              </div>
+            </div>
+            {{/if}}
+
+            {{#if (not-eq previousContests.length 0)}}
+           <div class="header">
+            <h2>PREVIOUS CONTESTS</h2>
+          </div>
+          <div class="body">
+            <div class="row clearfix">
+              {{#each previousContests as |contest|}}
+                {{#contest-view link='contests.contest' contest=contest}} {{/contest-view}}
+              {{/each}}
+            </div>
+          </div>
+          {{/if}}
+
+        </div>
+    </div>
+  </div>
 </div>
+</section>
