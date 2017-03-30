@@ -1,1 +1,4 @@
-{{outlet}}
+{{log model.problem}}
+{{#problem-parent problem=model.problem parentRoute='contests.contest.problem'}}
+  {{outlet}}
+{{/problem-parent}}
