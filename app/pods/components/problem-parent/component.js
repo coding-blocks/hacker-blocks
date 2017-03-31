@@ -28,7 +28,6 @@ function judge(component, problemId) {
     timeout: 50000
   }).done(function(data) {
     stopLoading();
-    console.log("data returned = " + JSON.stringify(data));
     if (data.result == "compile_error") {
       component.set('output', window.atob(data.error));
     } else {
