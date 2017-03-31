@@ -45,8 +45,7 @@
             <ul class="header-dropdown m-r--5">
               <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="zmdi zmdi-more-vert"></i></a>
                 <ul class="dropdown-menu pull-right">
-                  <li><a href="javascript:void(0);">Go to Daily code Bytes</a></li>
-
+                  {{#link-to 'practice' tagName="li"}}<a href="javascript:void(0);">Go to Daily code Bytes</a>{{/link-to}}
                 </ul>
               </li>
             </ul>
@@ -70,7 +69,7 @@
             <ul class="header-dropdown m-r--5">
               <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="zmdi zmdi-more-vert"></i></a>
                 <ul class="dropdown-menu pull-right">
-                  <li><a href="javascript:void(0);">Go to Contests</a></li>
+                  {{#link-to 'contests' tagName="li"}}<a href="javascript:void(0);">Go to Contests</a>{{/link-to}}
                 </ul>
               </li>
             </ul>
