@@ -2,9 +2,9 @@
   <div class="thumbnail card problemCard"><span class="point-circle"><span class="number"><strong>100</strong></span><span class="pointtxt"><strong>Points</strong></span></span>
     <img src="{{problem.image}}">
     {{#if isWeekly}}
-    <div class="posrel">
-      <span class="card-date">{{problem.UTCDay}} {{problem.UTCMonth}}</span>
-    </div>
+      <div class="posrel">
+        <span class="card-date">{{problem.UTCDay}} {{problem.UTCMonth}}</span>
+      </div>
     {{/if}}
     <!--
     <div class="clearfix timeLeft">
@@ -18,13 +18,14 @@
     </div> -->
     <div class="caption">
       <h3>{{#link-to link problem.id}}{{problem.name}}{{/link-to}}</h3>
-      <!--
         {{#if (eq i 0)}}
           <span class="label label-info">Today's CodeByte</span>
-        {{/if}} -->
+        {{/if}}
       <span class="marginR10">
-        <img src="/images/tag.png" alt=""/>
-        <font size="1">Complex<img src="/images/tag.png" alt=""> Data Structures</font>
+        {{log "tags" problem.tags}}
+        {{#each problem.tags as |tag|}}
+          <span class="label label-success">{{tag}}</span>
+        {{/each}}
       </span>
       <!--
       <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
