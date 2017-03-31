@@ -231,7 +231,7 @@ span.badge.new {
     display: block;
     width: 115px;
     height: 35px;
-    background: red !important;
+    background: #9d3030 !important;
     padding: 10px;
     text-align: center;
     border-radius: 5px;
@@ -239,7 +239,7 @@ span.badge.new {
     font-weight: bold;
 }
 
-.logout li a:hover {
-  color: red; 
+.logout-button:hover {
+  color: #9d3030 !important;
   background: white !important;
-  }
+}
