@@ -2,14 +2,19 @@
   <!-- User Info -->
   <div class="user-info">
     {{#if session.isAuthenticated}}
-      <div class="admin-image"> <img src="/images/placeholder-avatar.png" alt=""></div>
-      <div class="admin-action-info"> <span><strong>Welcome</strong></span>
-        <h3><strong>{{model.name}}</strong></h3>
-      </div>
+    <div class="admin-image">
+
+      {{#link-to "users.user" model.userId}} 
+        <img src="/images/placeholder-avatar.png" class = "img-resize" alt=""> 
+        {{/link-to}} 
+    </div>
+    <div class="admin-action-info"> <span><strong>Welcome</strong></span> {{#link-to "users.user" model.userId}}
+      <h3><strong>{{model.name}}</strong></h3>{{/link-to}}
+    </div>
     {{else}}
-      <div class="admin-action-info">
-        <button class="login-btn btn btn-info" {{action 'popup'}}data-toggle="modal" data-target="#loginModal">Login | Sign Up</button>
-      </div>
+    <div class="admin-action-info">
+      <button class="login-btn btn btn-info" {{action 'popup'}}data-toggle="modal" data-target="#loginModal">Login | Sign Up</button>
+    </div>
     {{/if}}
   </div>
   <!-- #User Info -->
@@ -17,8 +22,8 @@
   <div class="menu">
     <ul class="list">
       <li class="header">MAIN NAVIGATION</li>
-      {{#link-to 'index' tagName="li"}}<a href="#"><i class="zmdi zmdi-home"></i><span>Home</span></a>{{/link-to}}
-      {{#link-to 'practice' tagName="li"}}<a href="#"><i class="material-icons">code</i><span>Daily Code Byte</span></a>{{/link-to}}
+      {{#link-to 'index' tagName="li"}}<a href="#"><i class="zmdi zmdi-home"></i><span>Home</span></a>{{/link-to}} {{#link-to
+      'practice' tagName="li"}}<a href="#"><i class="material-icons">code</i><span>Daily Code Byte</span></a>{{/link-to}}
       {{#link-to 'contests' tagName="li"}}<a href="#"><i class="material-icons">assignment_ind</i><span>Contests</span></a>{{/link-to}}
       {{#link-to 'courses' tagName="li"}}<a href="#"><i class="zmdi zmdi-graduation-cap"></i><span>Courses</span></a>{{/link-to}}
     </ul>
