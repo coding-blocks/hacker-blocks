@@ -3,13 +3,12 @@ import config from '../../../config/environment';
 import getSnippet from '../../../utils/get-snippet';
 
 function startLoading() {
-  $('#code-submit-loader').css("display","inline-block");
-  $('#code-submit').addClass('disabled');
+  $('.runner').addClass('disabled');
 }
 
 function stopLoading() {
-  $('#code-submit-loader').hide();
-  $('#code-submit').removeClass('disabled');
+  $('.runner').removeClass('disabled');
+  $('.runner').button('reset');
 }
 
 function judge(component, problemId) {
@@ -90,9 +89,11 @@ export default Ember.Component.extend({
       this.langId = langId;
     },
     submit(problem) {
+      $('#submit').button('loading');
       judge(this, problem.id);
     },
     run() {
+      $('#run').button('loading');
       judge(this);
     },
     reset() {
