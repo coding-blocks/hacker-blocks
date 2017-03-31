@@ -6,6 +6,24 @@ color:#fff !important;
   height:auto;
   width:72px !important;
 }
+.profile-align{
+  float:none;
+  margin: 0 auto !important;
+  width:256px;
+}
+
+th {
+    background-color:black;
+    color: white;
+}
+tr:nth-child(odd) {
+    background-color:grey;
+    color:white;
+}
+table, table td, table th {
+  border: 1px solid black;
+}
+
 #run-output {
   background:#f5f5f5;
   border-color: #3c3c3c;
