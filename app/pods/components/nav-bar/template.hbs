@@ -9,10 +9,10 @@
       </a>
       {{#link-to 'index' class="navbar-brand"}}<img src="/images/logo.png" alt="">{{/link-to}}
     </div>
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right logout">
       <!-- #END# Notifications -->
       {{#if session.isAuthenticated}}
-        <li><a {{action 'invalidateSession'}} data-placement="bottom" title="Full Screen" href="#" >Logout<i class="zmdi zmdi-sign-in"></i></a></li>
+        <li><a class="logout-button" {{action 'invalidateSession'}} data-placement="bottom" title="Logout" href="#">Logout<i class="zmdi zmdi-sign-in"></i></a></li>
       {{/if}}
       <li><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="zmdi zmdi-settings"></i></a></li>
     </ul>
