@@ -1,4 +1,3 @@
-{{log model.problem}}
-{{#problem-parent problem=model.problem parentRoute='contests.contest.problem'}}
+{{#problem-parent problem=model.problem submissions=model.submissions parentRoute='contests.contest.problem'}}
   {{outlet}}
 {{/problem-parent}}

@@ -8,7 +8,6 @@ import env from '../config/environment';
 
 export default Base.extend({
   restore(data) {
-    console.log("authenticator restore data = " + JSON.stringify(data));
     return new Ember.RSVP.Promise(function (resolve, reject) {
       resolve(data);
     });

@@ -116,6 +116,7 @@
               <div class="body">
                 {{#ace-editor}}{{/ace-editor}}
                 <a {{action "reset" problem}} href="javascript:void(0);" class="btn btn-raised btn-sm" role="button">Reset</a>
+                <a {{action "run" problem}} href="javascript:void(0);" class="btn btn-raised g-bg-blush2 btn-sm" role="button">Run</a>
                 <a {{action "submit" problem}} href="javascript:void(0);" class="btn btn-raised g-bg-blush2 btn-sm pull-right" role="button">Submit</a>
                 {{#if (eq result "compile_error")}}
                   <hr/>
@@ -148,7 +149,6 @@
                 </div>
                 {{#if customInput}}
                   <textarea id="custom-input" class="col-md-12" id="custom-input"></textarea>
-                  <a {{action "run" problem}} href="javascript:void(0);" class="btn btn-raised g-bg-blush2 btn-sm" role="button">Run</a>
                 {{/if}}
               </div>
             </div>
