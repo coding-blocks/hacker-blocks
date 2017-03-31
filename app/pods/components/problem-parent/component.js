@@ -52,6 +52,7 @@ export default Ember.Component.extend({
   result: "",
   langId: "c",
   onceEdit: false,
+  customInput: false,
   lang_codes: {
     "c": {
       name: "C",
@@ -99,6 +100,13 @@ export default Ember.Component.extend({
       let editor = ace.edit("editor");
       editor.setValue(getSnippet(langId));
       this.set("onceEdit", false);
+    },
+    customInput() {
+      if (this.get('customInput') === true) {
+        this.set('customInput', false);
+      } else {
+        this.set('customInput', true);
+      }
     }
   }
 });

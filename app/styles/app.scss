@@ -13,11 +13,6 @@ color:#fff !important;
   height: 400px;
 }
 
-.primary-color {
-  background: #fc4f4f !important;
-  background-color: #fc4f4f !important;
-}
-
 .arrows li:nth-of-type(1) a { color: hsl(0, 0%, 70%); }
 .arrows li:nth-of-type(2) a { color: hsl(0, 0%, 65%); }
 .arrows li:nth-of-type(3) a { color: hsl(0, 0%, 50%); }
@@ -222,4 +217,8 @@ span.badge.new {
 .problemCard {
   height: 280px;
   margin-top: 10px;
+}
+
+#custom-input {
+  margin-bottom: 10px;
 }
