@@ -226,3 +226,20 @@ span.badge.new {
 #custom-input {
   margin-bottom: 10px;
 }
+
+.logout-button {
+    display: block;
+    width: 115px;
+    height: 35px;
+    background: red !important;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+
+.logout li a:hover {
+  color: red; 
+  background: white !important;
+  }
