@@ -13,6 +13,7 @@ module.exports = function(defaults) {
   app.import('vendor/css/main.css');
   app.import('vendor/css/morris.css');
   app.import('vendor/css/bootstrap.min.css');
+  app.import('vendor/css/login-popup.css');
 
   app.import('vendor/js/jquery.min.js');
   app.import('vendor/js/libscripts.bundle.js');
