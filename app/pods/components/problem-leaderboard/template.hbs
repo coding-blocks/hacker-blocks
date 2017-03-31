@@ -1,27 +1,21 @@
-<div class="card col s12">
-  <div class="card-content">
-    <span class="card-title"><h4>Leaderboard</h4></span>
-    <div class="divider"></div>
-    <table class="table-striped">
-      <thead>
-      <tr>
-        <th data-field="rank">Rank</th>
-        <th data-field="user">User</th>
-        <th data-field="score">Score</th>
-        <th data-field="language">Language</th>
-      </tr>
-      </thead>
-      <tbody>
-      {{#each submissions as |submission index|}}
-        <tr>
-          {{log submission}}
-          <td>{{sum index 1}}</td>
-          <td>{{submission.userName}}</td>
-          <td>{{submission.score}}</td>
-          <td>{{getlang submission.language}}</td>
-        </tr>
-      {{/each}}
-      </tbody>
-    </table>
-  </div>
-</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th data-field="rank">Rank</th>
+    <th data-field="user">User</th>
+    <th data-field="score">Score</th>
+    <th data-field="language">Language</th>
+  </tr>
+  </thead>
+  <tbody>
+  {{#each leaderboard as |submission index|}}
+    <tr>
+      {{log submission}}
+      <td>{{sum index 1}}</td>
+      <td>{{submission.userName}}</td>
+      <td>{{submission.score}}</td>
+      <td>{{getlang submission.language}}</td>
+    </tr>
+  {{/each}}
+  </tbody>
+</table>
