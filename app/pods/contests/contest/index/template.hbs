@@ -25,7 +25,7 @@
         <div class="card">
           <div class="body">
             <div class="row clearfix">
-               {{#each model as |problem|}}
+               {{#each model.problems as |problem|}}
                   {{#problem-view link='contests.contest.problem.index' problem=problem}}{{/problem-view}}
                {{/each}}
             </div>
