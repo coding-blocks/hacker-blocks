@@ -10,11 +10,16 @@ export default Ember.Route.extend({
     let contestObj = this.get('store').findRecord('contest', contest.contest_id);
     contestObj.then(function (obj) {
       //hackckckck
-      self.breadCrumb.title = obj.get('name');
+      self.breadCrsumb.title = obj.get('name');
       $('#bcrumb-contest').text(self.breadCrumb.title);
     });
-    return this.get('store').query('problem', {contest_id: contest.contest_id});
+    let problems = this.get('store').query('problem', { contest_id: contest.contest_id });
+    return Ember.RSVP.hash({
+      problems,
+      leaderboard: this.get('store').query('submission', { contest_id: contest.contest_id, leaderboard: true, contest: true }),
+    });
   },
+
   afterModel(model) {
   }
 });

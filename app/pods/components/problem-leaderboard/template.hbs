@@ -1,21 +1,25 @@
 <table class="table table-striped">
   <thead>
-  <tr>
-    <th data-field="rank">Rank</th>
-    <th data-field="user">User</th>
-    <th data-field="score">Score</th>
-    <th data-field="language">Language</th>
-  </tr>
+    <tr>
+      <th data-field="rank">Rank</th>
+      <th data-field="user">User</th>
+      <th data-field="score">Score</th>
+       {{#if submission.language}}
+      <th data-field="language">Language</th>
+      {{/if}}
+    </tr>
   </thead>
   <tbody>
-  {{#each leaderboard as |submission index|}}
+    {{#each leaderboard as |submission index|}}
     <tr>
       {{log submission}}
       <td>{{sum index 1}}</td>
       <td>{{submission.userName}}</td>
       <td>{{submission.score}}</td>
+      {{#if submission.language}}
       <td>{{getlang submission.language}}</td>
+      {{/if}}
     </tr>
-  {{/each}}
+    {{/each}}
   </tbody>
 </table>
