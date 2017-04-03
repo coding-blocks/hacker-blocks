@@ -1,5 +1,6 @@
 <div class="col-xs-12 col-sm-6 col-md-3">
-  <div class="thumbnail card problemCard"><span class="point-circle"><span class="number"><strong>100</strong></span><span class="pointtxt"><strong>Points</strong></span></span>
+  <div class="thumbnail card problemCard">
+    <!--<span class="point-circle"><span class="number"><strong>100</strong></span><span class="pointtxt"><strong>Points</strong></span></span>-->
     <img src="{{problem.image}}">
     {{#if isWeekly}}
       <div class="posrel">
@@ -21,15 +22,16 @@
         {{#if (eq i 0)}}
           <span class="label label-info">Today's CodeByte</span>
         {{/if}}
-      <span class="marginR10">
+      <div id="tags">
         {{log "tags" problem.tags}}
         {{#each problem.tags as |tag|}}
           <span class="label label-success">{{tag}}</span>
         {{/each}}
-      </span>
+      </div>
       <!--
       <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
         text ever since the 1500s </p> -->
+      <p class="smallcircle"><span class="circlepoint">100</span><span class="lblcircle">Points</span></p>
 
       <p> {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}</p>
     </div>
