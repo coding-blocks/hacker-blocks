@@ -22,5 +22,7 @@ export default DS.Model.extend({
   UTCMonth: Ember.computed('day', function () {
     let month = this.get('day').toString().substring(4, 6);
     return months[parseInt(month)];
-  })
+  }),
+  submissions: DS.hasMany('submissions'),
+  leaderboard: DS.hasMany('submissions')
 });

@@ -11,15 +11,17 @@ function stopLoading() {
   $('.runner').button('reset');
 }
 
-function judge(component, problemId) {
+function judge(component, problemId, contestId) {
   startLoading();
   let submission = {
     user_id: component.get('session.data.authenticated.user_id'),
     language: component.langId,
     problemId: problemId,
+    contestId: contestId,
     source: window.btoa(ace.edit("editor").getValue()),
     custom_input: window.btoa($('#custom-input').val())
   };
+  console.log("submission", submission);
   $.ajax({
     url: config.apiEndpoint + '/api/submissions',
     data: JSON.stringify(submission),
@@ -88,8 +90,9 @@ export default Ember.Component.extend({
       this.langId = langId;
     },
     submit(problem) {
+      console.log("submit");
       $('#submit').button('loading');
-      judge(this, problem.id);
+      judge(this, problem.id, this.get('contestId'));
     },
     run() {
       $('#run').button('loading');

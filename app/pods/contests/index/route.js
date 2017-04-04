@@ -22,7 +22,6 @@ export default Ember.Route.extend({
         }
       })
     });
-
     return Ember.RSVP.hash({
       activeContests: activeContests,
       upcomingContests: upcomingContests,

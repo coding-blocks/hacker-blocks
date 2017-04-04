@@ -13,13 +13,14 @@ export default Ember.Route.extend({
     title: 'Problem'
   },
   model() {
-    let userId = this.get('session.data.authenticated.user_id');
+    let contest_id = this.modelFor('contests.contest').id;
     let problem_id = this.modelFor('contests/contest/problem').problem_id;
     return Ember.RSVP.hash({
       lang_codes: lang_codes,
-      problem: this.get('store').findRecord('problem', problem_id),
+      problem: this.get('store').queryRecord('problem', {problem_id, contest_id}),
+      contestId: contest_id/*,
       submissions: this.get('store').query('submission', {problem_id : problem_id, user_id: userId}),
-      leaderboard: this.get('store').query('submission', {problem_id : problem_id, leaderboard: true})
+      leaderboard: this.get('store').query('submission', {problem_id : problem_id, leaderboard: true})*/
     });
   }
 });
