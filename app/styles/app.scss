@@ -293,3 +293,6 @@ ul#clock li{
     z-index: 1;
 }
 
+.ls-closed .bars:after, .ls-closed .bars:before{
+   display: none;
+}
