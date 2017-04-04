@@ -22,7 +22,6 @@
           <span class="label label-info">Today's CodeByte</span>
         {{/if}}
       <span class="marginR10">
-        {{log "tags" problem.tags}}
         {{#each problem.tags as |tag|}}
           <span class="label label-success">{{tag}}</span>
         {{/each}}
@@ -30,7 +29,6 @@
       <!--
       <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy
         text ever since the 1500s </p> -->
-
       <p> {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}</p>
     </div>
   </div>
