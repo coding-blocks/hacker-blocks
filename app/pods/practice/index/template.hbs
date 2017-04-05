@@ -36,7 +36,7 @@
                   <p class="para">{{problem.content.description}}</p>
                 </div>
                   {{#each problem.tags as |tag|}}
-                    <span class="marginR10"><img src="/images/tag.png" alt=""/><font size="3">{{tag}}</font></span> 
+                    <span class="marginR10"><img src="/images/tag.png" alt=""/><font size="3">{{tag}}</font></span>
                   {{/each}}
                 <div class="row">
                    <hr>
@@ -77,7 +77,8 @@
         <div class="card">
           <div class="body">
             <div class="row clearfix">
-              {{log model}} {{#each otherProblems as |problem|}} {{#problem-view isWeekly=true link='practice.weekly-problem.index' problem=problem}}{{/problem-view}}
+              {{#each otherProblems as |problem|}}
+                {{#problem-view isWeekly=true link='practice.weekly-problem.index' problem=problem}}{{/problem-view}}
               {{/each}}
             </div>
           </div>
