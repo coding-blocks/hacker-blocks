@@ -18,9 +18,10 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash({
       lang_codes: lang_codes,
       problem: this.get('store').queryRecord('problem', {problem_id, contest_id}),
-      contestId: contest_id/*,
+      contestId: contest_id,
+      leaderboard: this.get('store').query('submission', {problem_id : problem_id, leaderboard: true})/*
       submissions: this.get('store').query('submission', {problem_id : problem_id, user_id: userId}),
-      leaderboard: this.get('store').query('submission', {problem_id : problem_id, leaderboard: true})*/
+      */
     });
   }
 });
