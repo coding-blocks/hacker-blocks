@@ -203,3 +203,99 @@ span.badge.new {
   color: #9d3030 !important;
   background: white !important;
 }
+
+
+// CSS code for clock
+
+
+*{ padding:0; margin:0; outline:none;}
+body{font-family:"Roboto",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.428571429;color:#333;background-color:#fff}
+
+// .card {
+//     background: #fff;
+//     min-height: 50px;
+//     box-shadow: none;
+//     position: relative;
+//     margin-bottom: 20px;
+//     transition: .5s;
+//     border: 1px solid #f2f2f2;
+//     border-radius: 0;
+// }
+// .card .body {
+//     font-size: 14px;
+//     color: #444;
+//     padding: 15px;
+//     font-weight: 400;
+// 	text-align:left;
+// }
+.terques-bg {
+    background: #1fb5ad;
+}
+
+.clock-row {
+    text-transform: uppercase;
+    min-height: 170px;
+}
+.user-heading {
+    color: #fff;
+    padding: 30px;
+    text-align: center;
+}
+.user-heading.clock-row {
+    padding: 20px;
+}
+.user-heading.alt {
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+}
+.clock-row h1 {
+    font-size: 22px ;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin: 0 0 5px 0;
+    letter-spacing: 1px;
+}
+.clock-row p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #fff ;
+    margin: 0;
+}
+ul#clock li{
+    border: none;
+}
+
+#clock {
+    position: relative;
+    width: 185px;
+    height: 185px;
+    margin: -95px auto 0;
+    background: url(/images/clockface.png) no-repeat;
+    list-style: none;
+}
+
+#sec, #min, #hour {
+    position: absolute;
+    width: 15px;
+    height: 185px;
+    top: 0px;
+    left: 83px;
+}
+
+#sec {
+    background: url(/images/sechand.png);
+    z-index: 3;
+    overflow: hidden;
+}
+
+#min {
+    background: url(/images/minhand.png);
+    z-index: 2;
+}
+
+#hour {
+    background: url(/images/hourhand.png);
+    z-index: 1;
+}
+
