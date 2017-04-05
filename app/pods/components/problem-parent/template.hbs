@@ -116,7 +116,12 @@
                 {{#ace-editor}}{{/ace-editor}}
                 <a {{action "reset" problem}} href="javascript:void(0);" class="btn btn-raised btn-sm" role="button">Reset</a>
                 <a id="run" {{action "run" problem}} data-loading-text="Running..." href="javascript:void(0);" class="btn btn-raised g-bg-blush2 btn-sm runner" role="button">Run</a>
-                <a id="submit" {{action "submit" problem}} data-loading-text="Submitting..." href="javascript:void(0);" class="btn btn-raised g-bg-blush2 btn-sm pull-right runner" role="button">Submit</a>
+                {{#if session.isAuthenticated}}
+                  <a id="submit" {{action "submit" problem}} data-loading-text="Submitting..." href="javascript:void(0);" class="btn btn-raised g-bg-blush2 btn-sm pull-right runner" role="button">Submit</a>
+                {{else}}
+                   <a id="submit" class="btn g-bg-blush2 btn-sm pull-right disabled" role="button">Submit</a>
+                {{/if}}
+                
                 {{#if (eq result "compile_error")}}
                   <hr/>
                   <p>Compilation Error:</p>
