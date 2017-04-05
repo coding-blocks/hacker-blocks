@@ -32,20 +32,22 @@
           <div class="body">
             <div class="row">
               <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-                <div class="row" style="height: 200px">
-                <p>{{problem.content.description}}</p>
+                <div class="row daily-problem-div">
+                  <p class="para">{{problem.content.description}}</p>
                 </div>
                   {{#each problem.tags as |tag|}}
                     <span class="marginR10"><img src="/images/tag.png" alt=""/><font size="3">{{tag}}</font></span> 
                   {{/each}}
-                <div class="row clearfix">
+                <div class="row">
                    <hr>
-                    <div class="col-md-4">
-                      <p>{{#link-to 'practice.weekly-problem.index' problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-md" role="button"}}See Details & Attempt{{/link-to}}</p>
+                    <div class="col-md-6 col-sm-6">
+                      <p>{{#link-to 'practice.weekly-problem.index' problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-lg" role="button"}}See Details & Attempt{{/link-to}}</p>
                     </div>
 
-                    <div class="col-md-8 p-t-20">
-                      <span class="smallcircle m-r-20" style="display:inline-block;"><span class="circlepoint">2</span>
+                    <div class="col-md-6 col-sm-6" style="margin-top: 18px;">
+
+                      <span class="smallcircle m-r-20" style="display:inline-block;">
+                        <span class="circlepoint">2</span>
                         <span class="lblcircle">Problems</span>
                       </span>
 
