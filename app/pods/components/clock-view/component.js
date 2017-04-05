@@ -46,7 +46,6 @@ export default Ember.Component.extend({
         }, 1000 );
 
         Ember.run.later( function() {
-            console.log('hello');
             var date = new Date();
             _this.set('seconds', date.getSeconds()< 10 ? '0' + date.getSeconds() : date.getSeconds());
             _this.set('minutes',date.getMinutes()< 10 ? '0' + date.getMinutes() + ':': date.getMinutes() + ':');
