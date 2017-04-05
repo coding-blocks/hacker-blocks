@@ -47,9 +47,11 @@ export default Ember.Component.extend({
 
         Ember.run.later( function() {
             var date = new Date();
-            _this.set('seconds', date.getSeconds()< 10 ? '0' + date.getSeconds() : date.getSeconds());
+            var ampm = date.getHours() < 12 ? " AM" : " PM";
+            console.log(date.getHours() % 12);
+            _this.set('seconds', date.getSeconds()< 10 ? '0' + date.getSeconds() + ampm : date.getSeconds() + ampm);
             _this.set('minutes',date.getMinutes()< 10 ? '0' + date.getMinutes() + ':': date.getMinutes() + ':');
-            _this.set('hours',date.getHours()< 10 ? '0' + date.getHours() + ':': date.getHours() + ':');
+            _this.set('hours', (date.getHours() % 12) < 10 ? '0' + (date.getHours() % 12) + ':': (date.getHours() % 12) + ':');
             _this.set('date', date.getDate());
             _this.set('day', daysArray[date.getDay()]);
             _this.set('month', monthNames[date.getMonth()]);
