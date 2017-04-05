@@ -173,8 +173,11 @@ span.badge.new {
 }
 
 .problemCard {
-  height: 300px;
+  height: 325px;
   margin-top: 10px;
+  padding:30px;
+  display: flex;
+  flex-direction: column;
 }
 
 #custom-input {
@@ -296,3 +299,17 @@ ul#clock li{
 .ls-closed .bars:after, .ls-closed .bars:before{
    display: none;
 }
+.custom-card{
+  padding:30px;
+}
+.flex-grid {
+  flex-grow: 1;
+  word-wrap:break-word;
+}
+.custom-align{
+  position: absolute;
+  bottom:10px;
+  float:none;
+  margin:0 auto !important;
+}
+
