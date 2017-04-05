@@ -16,18 +16,10 @@ color:#fff !important;
   margin-bottom: 10px;
 }
 
-/*
-th {
-    background-color:black;
-    color: white;
+.generate-scroll-y{
+  max-height:200px;
+  overflow-y:scroll;
 }
-tr:nth-child(odd) {
-    background-color:grey;
-    color:white;
-}
-table, table td, table th {
-  border: 1px solid black;
-}*/
 
 #run-output {
   background:#f5f5f5;

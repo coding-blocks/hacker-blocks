@@ -5,8 +5,12 @@ export default Ember.Route.extend({
     title: 'Contest'
   },
   model() {
-    return this.modelFor('contests.contest');
+    return Ember.RSVP.hash({
+      contest: this.modelFor('contests.contest'),
+      leaderboard: this.get('store').query('submission', { contest_id: contest.contest_id, leaderboard: true, contest: true })
+    });
   },
+
   afterModel(model) {
   }
 });

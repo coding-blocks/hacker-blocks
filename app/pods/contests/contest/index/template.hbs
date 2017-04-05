@@ -1,13 +1,14 @@
-{{!--<div id="main-content">
-  <div class="innerbannerimg clearfix" style="height:350px; overflow:hidden"><img src="/images/mainimage.jpg" style="width:100%;" alt=""/></div>
+{{!--
+<div id="main-content">
+  <div class="innerbannerimg clearfix" style="height:350px; overflow:hidden"><img src="/images/mainimage.jpg" style="width:100%;" alt="" /></div>
   <div class="container site-content">
     <div class="row">
       <main id="main" class="site-main col-sm-12 full-width">
         <div class="thim-list-event" style="display: block;">
-          <p><h3>All Problems</h3></p>
-          {{#each model as |problem|}}
-            {{#problem-view link='contests.contest.problem.index' problem=problem}}{{/problem-view}}
-          {{/each}}
+          <p>
+            <h3>All Problems</h3>
+          </p>
+          {{#each model as |problem|}} {{#problem-view link='contests.contest.problem.index' problem=problem}}{{/problem-view}} {{/each}}
         </div>
       </main>
     </div>
@@ -16,22 +17,50 @@
 
 <section class="content">
   <div class="container-fluid">
-      <div class="block-header">
-        <h2>All Problems</h2>
-        <small class="text-muted">Solve these problem and prove yourself </small>
-      </div>
+    <div class="block-header">
+      <h2>All Problems</h2>
+      <small class="text-muted">Solve these problem and prove yourself </small>
+    </div>
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
+          <div class="row">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <br>
+              <h4 class="text-center"><strong>Statistics</strong></h4>
+              <div class="card">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <div class="col-sm-6 col-md-6 col-lg-6 text-center">
+                   <i class="material-icons">format_list_numbered</i>
+                    <h4>{{model.problems.length}} </h4>
+                    <h4>Problems </h4>
+                  </div>
+                  <div class="col-sm-6 col-md-6 col-lg-6 text-center">
+                    <i class="material-icons">done</i>
+                    <h4>{{submissionCount}}</h4>
+                    <h4>Submissions</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+              <br>
+              <h4 class="text-center strong"><strong>Leaderboard</strong></h4>
+              <div class="card generate-scroll-y">{{#problem-leaderboard leaderboard = model.leaderboard}}{{/problem-leaderboard}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card">
           <div class="body">
             <div class="row clearfix">
-               {{#each model.problems as |problem|}}
+               {{#each model.contest.problems as |problem|}}
                   {{#problem-view link='contests.contest.problem.index' problem=problem}}{{/problem-view}}
                {{/each}}
             </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
-</div>
 </section>
