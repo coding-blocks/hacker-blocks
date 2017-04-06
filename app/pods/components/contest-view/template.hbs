@@ -9,12 +9,12 @@
         <span class="pull-left marginR10"><span class="minutes">00</span> MIN</span>
         <span class="pull-left"><span class="seconds">00</span> SEC</span></span>
     </div> -->
-    <div class="caption">
+    <div class="caption wrapper-grid">
       <h3>{{#link-to link contest.id}}{{contest.name}}{{/link-to}}</h3>
       <p>{{contest.description}}</p>
       <p class="smallcircle"><span class="circlepoint">{{contest.problems.length}}</span><span class="lblcircle">Problems</span></p>
       <p class="smallcircle"><span class="circlepoint">{{multiply contest.problems.length 100}}</span><span class="lblcircle">Points</span></p>
-      <p> {{#link-to link contest.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}</p>
+      {{#link-to link contest.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}
     </div>
   </div>
 </div>

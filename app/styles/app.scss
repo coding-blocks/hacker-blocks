@@ -170,7 +170,11 @@ span.badge.new {
 
 .contestCard {
   margin-top: 10px;
+  height:480px;
+  display: flex;
+  flex-direction: column;
 }
+
 
 .problemCard {
   height: 325px;
@@ -312,6 +316,23 @@ ul#clock li{
 
 .custom-card{
   padding:30px;
+}
+.contestCard img{
+  margin-bottom: auto;
+  
+}
+.wrapper-grid{
+  margin-top:auto;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+.wrapper-grid a{
+  margin-top:auto;
+  width: 40%;
+}
+.wrapper-grid p{
+  margin-bottom: auto;
 }
 .flex-grid {
   flex-grow: 1;

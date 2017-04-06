@@ -14,7 +14,7 @@
     <tr>
       <td>{{sum index 1}}</td>
       <td>{{submission.userName}}</td>
-      <td>{{submission.score}}</td>
+      <td>{{decimal-to-whole submission.score}}</td>
       {{#if submission.language}}
       <td>{{getlang submission.language}}</td>
       {{/if}}
