@@ -8,8 +8,13 @@ export default Ember.Route.extend({
     let contest = this.modelFor('contests.contest');
     return Ember.RSVP.hash({
       contest: contest,
-      leaderboard: this.get('store').query('submission', { contest_id: contest.id, leaderboard: true, contest: true }),
-
+      leaderboard: this.get('store').query('submission',
+        {contest_id: contest.id, leaderboard: true, contest: true }).then(submissions => {
+          submissions.forEach((sub) => {
+            sub.set('score', Math.floor(sub.get('score')));
+          });
+          return submissions;
+      }),
     });
   },
 
