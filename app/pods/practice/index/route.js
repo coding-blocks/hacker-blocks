@@ -12,8 +12,7 @@ export default Ember.Route.extend({
       problem.forEach(function (element, index){
         if(index == 0){
           mainProblem.pushObject(element);
-        }
-        else{
+        } else{
           otherProblems.pushObject(element);
         }
       })
