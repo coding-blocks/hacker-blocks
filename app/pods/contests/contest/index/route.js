@@ -16,7 +16,6 @@ export default Ember.Route.extend({
   afterModel(model) {
   },
   setupController: function (controller, model) {
-
     this._super(controller, model);
     let contest = model.contest;
     let contestId = contest.get('id');
@@ -32,9 +31,5 @@ export default Ember.Route.extend({
          controller.set('submissionCount', 0);
       }
     });
-
-
-
   }
-
 });
