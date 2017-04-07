@@ -14,7 +14,12 @@
       <p>{{contest.description}}</p>
       <p class="smallcircle"><span class="circlepoint">{{contest.problems.length}}</span><span class="lblcircle">Problems</span></p>
       <p class="smallcircle"><span class="circlepoint">{{multiply contest.problems.length 100}}</span><span class="lblcircle">Points</span></p>
+    
+      {{#if active}}
       {{#link-to link contest.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}
+      {{else}}
+      {{#link-to 'contests.upcoming' contest.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}
+      {{/if}}
     </div>
   </div>
 </div>

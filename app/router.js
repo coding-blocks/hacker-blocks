@@ -21,6 +21,7 @@ Router.map(function() {
         this.route('leaderboard');
       });
     });
+    this.route('upcoming',{ path: '/upcoming/c/:contest_id' });
   });
   this.route('practice', function() {
     this.route('weekly-problem', {path: '/p/:problem_id'}, function () {
