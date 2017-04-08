@@ -1,13 +1,11 @@
 <section class="content">
     <div class="container-fluid">
      <div class = "wrapper-overlay">
-     <img src= "https://images5.alphacoders.com/695/thumb-1920-695931.jpg">
-     <h1>{{model.contest.name}}</h1>
-     <h2> {{moment-format model.contest.startTime 'MMMM Do YYYY, hh:mm a' 'X'}} to  {{moment-format model.contest.endTime 'MMMM Do YYYY, hh:mm a' 'X'}}</h2>
-     <h3>Contest Starts in</h3>
-     <h4>{{#live-reload contest=model.contest}} {{/live-reload}}</h4>
+     <h1 class = "col-md-12 col-lg-12 col-sm-12">{{model.contest.name}}</h1>
+     <h2 class = "col-md-12 col-lg-12 col-sm-12"> {{moment-format model.contest.startTime 'MMMM Do YYYY, hh:mm a' 'X'}} to  {{moment-format model.contest.endTime 'MMMM Do YYYY, hh:mm a' 'X'}}</h2>
+     <h3 class = "col-md-12 col-lg-12 col-sm-12">Contest Starts In</h3>
+     <h4 class = "col-md-12 col-lg-12 col-sm-12">{{#live-reload contest=model.contest}} {{/live-reload}}</h4>
     </div>
-   
     </div>
 </section>
 {{outlet}}
