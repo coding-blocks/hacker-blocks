@@ -12,7 +12,7 @@ export default DS.Model.extend({
   content: DS.attr(),
   submitCount: DS.attr(),
   difficulty: DS.attr(),
-  image: DS.attr(),
+  image: DS.attr('string', {defaultValue: "https://s1.postimg.org/wyhyiimtb/image.png"}),
   tags: DS.attr(),
   day: DS.attr(),
   UTCDay: Ember.computed('day', function () {
