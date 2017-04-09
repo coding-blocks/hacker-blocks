@@ -1,3 +1,4 @@
-{{#problem-parent problem=model.problem leaderboard=model.leaderboard contestId=model.contestId parentRoute='contests.contest.problem'}}
+{{log "meta" model.problem.meta}}
+{{#problem-parent problem=model.problem leaderboard=model.leaderboard contestId=model.contestId userCount=model.meta.userCount parentRoute='contests.contest.problem'}}
   {{outlet}}
 {{/problem-parent}}

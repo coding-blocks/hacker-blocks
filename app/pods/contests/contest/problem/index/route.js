@@ -22,6 +22,10 @@ export default Ember.Route.extend({
       leaderboard: this.get('store').query('submission', {contest_id, problem_id : problem_id, leaderboard: true})/*
       submissions: this.get('store').query('submission', {problem_id : problem_id, user_id: userId}),
       */
+    }).then(result => {
+      console.log(result.problem);
+      console.log("derp", result.problem.get('meta'));
+      return result;
     });
   }
 });

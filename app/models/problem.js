@@ -24,5 +24,6 @@ export default DS.Model.extend({
     return months[parseInt(month)];
   }),
   submissions: DS.hasMany('submissions'),
-  leaderboard: DS.hasMany('submissions', {async: true})
+  leaderboard: DS.hasMany('submissions', {async: true}),
+  userCount: DS.attr()
 });
