@@ -26,25 +26,28 @@
         <div class="card custom-card">
           <div class="row">
             <div class="col-sm-6 col-md-6 col-lg-6">
-
               <h4 class="text-center"><strong>Statistics</strong></h4>
               <div class="card">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                  <div class="col-sm-6 col-md-6 col-lg-6 text-center">
-                   <i class="material-icons">format_list_numbered</i>
-                    <h4>{{model.contest.problems.length}} </h4>
-                    <h4>Problems </h4>
-                  </div>
-                  <div class="col-sm-6 col-md-6 col-lg-6 text-center">
-                    <i class="material-icons">done</i>
-                    <h4>{{submissionCount}}</h4>
-                    <h4>Submissions</h4>
-                  </div>
+                  <table class="align-center table table-striped">
+                    <thead>
+                      <tr><th>Problems</th><th>Submissions</th></tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                      <td><i class="material-icons">format_list_numbered</i></td>
+                      <td><i class="material-icons">done</i></td>
+                    </tr>
+                    <tr>
+                      <td>{{model.contest.problems.length}}</td>
+                      <td>{{submissionCount}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>
             <div class="col-sm-6 col-md-6 col-lg-6">
-
               <h4 class="text-center strong"><strong>Leaderboard</strong></h4>
               <div class="card generate-scroll-y">{{#problem-leaderboard leaderboard=model.leaderboard}}{{/problem-leaderboard}}
               </div>
