@@ -28,8 +28,10 @@
         {{#each problem.tags as |tag|}}
         <span class="label label-success">{{tag}}</span> {{/each}}
       </div>
-      <div class="row custom-align">
+      <div class="row">
         <p class="smallcircle col-sm-3 col-md-3 col-lg-3"><span class="circlepoint">100</span><span class="lblcircle">Points</span></p>
+      </div>
+      <div class="row">
         <p class="col-sm-3 col-md-3 col-lg-3"> {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}</p>
       </div>
     </div>

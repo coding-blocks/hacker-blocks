@@ -80,18 +80,6 @@ span.badge.new {
   vertical-align:middle;
 }
 
-.loader {
-  border: 5px solid #f3f3f3; /* Light grey */
-  border-top: 5px solid #3498db; /* Blue */
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  animation: spin 1s linear infinite;
-  display: none;
-  margin-top: -5px;
-  margin-bottom: -5px;
-}
-
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
@@ -337,12 +325,6 @@ ul#clock li{
   flex-grow: 1;
   word-wrap:break-word;
 }
-.custom-align{
-  position: absolute;
-  bottom:10px;
-  float:none;
-  margin:0 auto !important;
-}
 
 //----------------------------
 
@@ -373,7 +355,7 @@ ul#clock li{
   margin:0 auto;
 }
 .side-align{
-margin-left:5px;  
+margin-left:5px;
 float:left;
 border:1px solid #f44336;
 border-radius: 10px;
