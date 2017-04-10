@@ -1,0 +1,11 @@
+<section class="content">
+    <div class="container-fluid">
+     <div class = "wrapper-overlay">
+     <h1 class = "col-md-12 col-lg-12 col-sm-12">{{model.contest.name}}</h1>
+     <h2 class = "col-md-12 col-lg-12 col-sm-12"> {{moment-format model.contest.startTime 'MMMM Do YYYY, hh:mm a' 'X'}} to  {{moment-format model.contest.endTime 'MMMM Do YYYY, hh:mm a' 'X'}}</h2>
+     <h3 class = "col-md-12 col-lg-12 col-sm-12">Contest Starts In</h3>
+     <h4 class = "col-md-12 col-lg-12 col-sm-12">{{#live-reload contest=model.contest}} {{/live-reload}}</h4>
+    </div>
+    </div>
+</section>
+{{outlet}}
