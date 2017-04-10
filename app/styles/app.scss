@@ -362,7 +362,7 @@ ul#clock li{
   margin:0 auto;
   border: 1px solid;
 }
-.time-wrapper{
+.time-wrapper {
   height:125px;
   width:500px;
   text-align:center;
@@ -370,86 +370,82 @@ ul#clock li{
   float:none;
   margin:0 auto;
 }
-.side-align{
-margin-left:5px;  
-float:left;
-border:1px solid #f44336;
-border-radius: 10px;
-height:50px;
-width:22%;
-text-align: center;
-padding-top:10px;
+.side-align {
+  margin-left:5px;  
+  float:left;
+  border:1px solid #f44336;
+  border-radius: 10px;
+  height:50px;
+  width:22%;
+  text-align: center;
+  padding-top:10px;
 }
-.upcoming-contest-card{
+.upcoming-contest-card {
   padding-left: 0px !important;
   padding-right: 0px !important;
 }
-.description-overlay{
+.description-overlay {
   float:none;
   margin:0 auto;
   text-align: center;
 }
-.light-weight{
-font-size: 2em;
-    font-weight: 100;
+.light-weight {
+  font-size: 2em;
+  font-weight: 100;
 }
 
 @media (min-width:320px)  { 
-  
   /* smartphones, iPhone, portrait 480x320 phones */ 
-  .contest-sub-card{
+  .contest-sub-card {
     height:480px;
   }
-   .problem-sub-card{
+   .problem-sub-card {
     height:425px;
-  }
- 
-  }
+  } 
+}
 @media (min-width:481px)  { 
   /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
-  .contest-sub-card{
+  .contest-sub-card {
     height:470px;
   }
-   .problem-sub-card{
+   .problem-sub-card {
     height:410px;
   }
-   }
-@media (min-width:641px)  { 
-  
+}
+@media (min-width:641px)  {   
   /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ 
-.contest-sub-card{
+.contest-sub-card {
     height:460px;
   }
-   .problem-sub-card{
+   .problem-sub-card {
     height:400px;
   }
 }
 @media (min-width:961px)  { 
   /* tablet, landscape iPad, lo-res laptops ands desktops */ 
-  .contest-sub-card{
+  .contest-sub-card {
     height:450px;
   }
-   .problem-sub-card{
+   .problem-sub-card {
     height:390px;
   }
-  }
+}
 @media (min-width:1025px) { 
-  .contest-sub-card{
+  .contest-sub-card {
     height:430px;
   }
   /* big landscape tablets, laptops, and desktops */ 
- .problem-sub-card{
+ .problem-sub-card {
     height:380px;
   }
-
-  }
+}
 @media (min-width:1281px) { 
   /* hi-res laptops and desktops */ 
-  .contest-sub-card{
+  .contest-sub-card {
     height:410px;
   }
-   .problem-sub-card{
+   .problem-sub-card {
     height:370px;
   }
-  }
+}
 
