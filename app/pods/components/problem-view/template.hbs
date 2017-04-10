@@ -1,14 +1,14 @@
 <div class="col-xs-12 col-sm-6 col-md-3">
-  <div class="thumbnail card problemCard">
+  <div class="thumbnail card problemCard problem-sub-card">
     <!--<span class="point-circle"><span class="number"><strong>100</strong></span><span class="pointtxt"><strong>Points</strong></span></span>-->
-      <div class = "img-responsive">
-        <img src={{problem.image}} width="100%"/>
-      </div>
-      {{#if isWeekly}}
-        <div class="posrel">
-          <span class="card-date">{{problem.UTCDay}} {{problem.UTCMonth}}</span>
-        </div>
-      {{/if}}
+    <div>
+      <img src={{problem.image}} width="100%" />
+    </div>
+    {{#if isWeekly}}
+    <div class="posrel">
+      <span class="card-date">{{problem.UTCDay}} {{problem.UTCMonth}}</span>
+    </div>
+    {{/if}}
 
     <!--
     <div class="clearfix timeLeft">
@@ -20,20 +20,18 @@
         <span class="pull-left"><span class="seconds">00</span> SEC</span>
       </span>
     </div> -->
-    <div class="caption flex-grid">
+    <div class="caption problem-wrapper-grid">
       <h3>{{#link-to link problem.id data-toggle="tooltip" data-placement="right" title=problem.name}}{{problem.name}}{{/link-to}}</h3>
       {{#if (eq i 0)}}
       <span class="label label-info">Today's CodeByte</span> {{/if}}
-      <div id="tags" class="row">
-        {{#each problem.tags as |tag|}}
-        <span class="label label-success">{{tag}}</span> {{/each}}
+      <div id="tags">
+        <p>
+          {{#each problem.tags as |tag|}}
+          <span class="label label-success">{{tag}}</span> {{/each}}
+        </p>
       </div>
-      <div class="row">
-        <p class="smallcircle col-sm-3 col-md-3 col-lg-3"><span class="circlepoint">100</span><span class="lblcircle">Points</span></p>
-      </div>
-      <div class="row">
-        <p class="col-sm-3 col-md-3 col-lg-3"> {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}</p>
-      </div>
+      <p class="smallcircle"><span class="circlepoint">100</span><span class="lblcircle">Points</span></p>
+        {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}
     </div>
   </div>
 </div>
