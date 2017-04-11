@@ -5,7 +5,7 @@
 
     Setting `disableAnalytics` to true will prevent any data from being sent.
   */
-  "disableAnalytics": false,
+  "disableAnalytics": true,
   "usePods": true,
   "liveReload": true,
   "watcher": "polling"
