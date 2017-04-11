@@ -97,7 +97,7 @@ export default function() {
   });*/
   this.passthrough('/problems/:problem_id');
 
-  
+
   /*
   this.get('/submissions', function () {
     return {
@@ -161,4 +161,6 @@ export default function() {
   this.passthrough('/submissions/:submission_id');
 
   this.passthrough('/problems/weekly/:problem_id');
+
+  this.passthrough('/dailycbs/:problem_id');
 }

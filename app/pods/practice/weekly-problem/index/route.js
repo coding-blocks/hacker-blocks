@@ -16,7 +16,7 @@ export default Ember.Route.extend({
     let problem_id = this.modelFor('practice/weekly-problem').problem_id;
     return Ember.RSVP.hash({
       lang_codes: lang_codes,
-      problem: this.get('store').queryRecord('problem', {problem_id, weekly:true})
+      dailycb: this.get('store').findRecord('dailycb', problem_id)
     });
   }
 });

@@ -21,7 +21,6 @@ function judge(component, problemId, contestId) {
     source: window.btoa(ace.edit("editor").getValue()),
     custom_input: window.btoa($('#custom-input').val())
   };
-  console.log("submission", submission);
   $.ajax({
     url: config.apiEndpoint + '/api/submissions',
     data: JSON.stringify(submission),
@@ -90,7 +89,7 @@ export default Ember.Component.extend({
       this.langId = langId;
     },
     submit(problem) {
-      console.log("submit");
+      console.log("problem.id", problem);
       $('#submit').button('loading');
       judge(this, problem.id, this.get('contestId'));
     },
