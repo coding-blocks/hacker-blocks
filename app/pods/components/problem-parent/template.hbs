@@ -122,7 +122,10 @@
                    <span class="pull-right submit-login-message">Please login to submit</span>
                 {{/if}}
 
-                {{#if (eq result "compile_error")}}
+                {{#if (eq result "error")}}
+                  <hr/>
+                  <div class="alert alert-danger">Something wrong with this problem. Please report to Hacker Blocks admins - info@hackerblocks.com</div>
+                {{else if (eq result "compile_error")}}
                   <hr/>
                   <p>Compilation Error:</p>
                   <p><pre>{{output}}</pre></p>

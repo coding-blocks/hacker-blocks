@@ -41,6 +41,7 @@ function judge(component, problemId, contestId) {
     }
     component.set('result', data.result);
   }).fail(function(jqXHR, textStatus, errorThrown) {
+    component.set('result', 'error');
     stopLoading();
   });
 }
