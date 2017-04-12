@@ -140,7 +140,38 @@ export default function () {
 
   //           }
   //         }
-  //       }]
+  //       }, {
+  //         type: "problem",
+  //         id: 20170401,
+  //         attributes: {
+  //           day: 20170401,
+  //           name: "Answer Deepak's Query",
+  //           content: {
+  //             name: "Answer Deepak's Query",
+  //             constraints: "1 <= length of string <= 50000\n\n1 <= K <= 1000000\n\n1 <= No. of type 2 queries <= 800\n",
+  //             description: "Deepak and Gautam arrived Coding Blocks Centre at 1:30 PM. As class starts from 2 PM, they decided to play a game. \n\nGautam loves strings.So, Deepak gives him a challenge on string. Deepak will give Gautam a string of lowercase alphabets and will ask Gautam 2 types of queries.\n\nIn Type 1 query, Deepak will give Gautam a number 'P' and Gautam will have to shift each character of the string by 'P'.\n\nEx - If current string is **apmz**, and P=3, the string will become **dspc**. The shift will be cyclic i.e after z,cycle will start from 'a'.\n\nIn Type 2 query, Deepak will again give a number 'Q' and this time Gautam will have to print first 'Q' characters of the string.\n\nEx - If current string is abcdefghi and Q = 4, the output will be **abcd**     \n\nRemember,Gautam only changes the string in Type - 1 query. He prints them for type - 2 query.\n\nGautam has to prepare hackathon questions for Coding Blocks Launchpad students. Can you do his work ?\n",
+  //             explanation: "Output for type - 2 query.",
+  //             "input-format": "Each input file will have following -\n\nFirst line will be the string given by Deepak.\n\nSecond line contains a number K, which gives the number of times Deepak asks Gautam to perform the operation.\n\nEach of the K subsequent lines describe a query in the form 1 P or 2 Q.\n\n1 P - Shift each character of string by 'P' in cyclic order as described above.\n\n2 Q - Print first 'Q' characters of the string.\n",
+  //             "sample-input": "bnchmfaknbjr\n2\n1 1\n2 12\n",
+  //             "output-format": "print first 'Q' characters of the string for each type 2 query.\n",
+  //             "sample-output": "codingblocks"
+  //           },
+  //           "difficulty": 1,
+  //           "mem-limit": 512,
+  //           "time-limit": 2,
+  //           image: "https://i.imgur.com/st1PXiZ.png",
+  //           "submit-count": "2"
+  //         },
+  //         relationships: {
+  //           submissions: {
+
+  //           },
+  //           testcases: {
+
+  //           }
+  //         }
+  //       }
+  //       ]
   //     }
 
   //   }
