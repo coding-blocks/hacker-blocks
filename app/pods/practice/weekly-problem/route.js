@@ -5,6 +5,6 @@ export default Ember.Route.extend({
     title: 'Problem'
   },
   model(params) {
-    return {problem_id: params.problem_id};
+    return {p_id: params.problem_id};
   }
 });
