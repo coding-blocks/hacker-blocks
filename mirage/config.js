@@ -163,4 +163,6 @@ export default function() {
   this.passthrough('/problems/weekly/:problem_id');
 
   this.passthrough('/dailycbs/:problem_id');
+
+  this.passthrough('/dailycbs');
 }

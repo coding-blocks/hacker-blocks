@@ -5,17 +5,17 @@ export default Ember.Route.extend({
     title: "Daily CodeBytes"
   },
   model() {
-    var mainProblem = [];
-    var otherProblems = [];
+    let mainProblem = [];
+    let otherProblems = [];
 
-    this.get('store').query('problem', {weekly: true}).then(function (problem){
-      problem.forEach(function (element, index){
-        if(index == 0){
+    this.get('store').query('dailycb', {count: 7}).then(function (problem) {
+      problem.forEach(function (element, index) {
+        if (index == 0) {
           mainProblem.pushObject(element);
-        } else{
+        } else {
           otherProblems.pushObject(element);
         }
-      })
+      });
     });
 
     return Ember.RSVP.hash({

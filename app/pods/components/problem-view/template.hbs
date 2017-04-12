@@ -4,9 +4,9 @@
     <div>
       <img src={{problem.image}} width="100%" />
     </div>
-    {{#if isWeekly}}
+    {{#if dailycb}}
     <div class="posrel">
-      <span class="card-date">{{problem.UTCDay}} {{problem.UTCMonth}}</span>
+      <span class="card-date">{{dailycb.UTCDay}} {{dailycb.UTCMonth}}</span>
     </div>
     {{/if}}
 
