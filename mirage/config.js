@@ -38,7 +38,7 @@ export default function () {
   //     }
   //   };
   // });
- this.passthrough('/contests');
+  this.passthrough('/contests');
   // this.get('/contests', function () {
   //   return {
   //     meta: {
@@ -111,8 +111,8 @@ export default function () {
   //   else {
   //     return {
   //       data: [{
-  //         "type": "problem",
-  //         id: "20170403",
+  //         type: "problem",
+  //         id: 20170403,
   //         attributes: {
   //           day: 20170403,
   //           name: "Finquest",
@@ -146,7 +146,7 @@ export default function () {
   //   }
   // });
   this.passthrough('/problems/:problem_id');
-  
+
   // this.get('/problems/:problem_id', function () {
   //   return {
   //     data: {
@@ -226,7 +226,7 @@ export default function () {
   // });
 
   this.passthrough('/users/me');
-  
+
   // this.get('/users/me', function () {
   //   return {
   //     data: {
@@ -241,10 +241,10 @@ export default function () {
   //     }
   //   }
   // });
- this.passthrough('http://localhost:3000/api/login');
-//this.post('http://localhost:3000/api/login',function(){
-//   return [{user_id:1015,access_token:"2039ec223014abf2d11fa3b6624a32d6"}];
-// });
+  this.passthrough('http://localhost:3000/api/login');
+  //this.post('http://localhost:3000/api/login',function(){
+  //   return [{user_id:1015,access_token:"2039ec223014abf2d11fa3b6624a32d6"}];
+  // });
 
   this.passthrough('/contests/:contest_id');
   // this.get('/contests/:contest_id', function () {
@@ -352,37 +352,63 @@ export default function () {
   // this.get('/dailycbs/:problem_id', function () {
   //   return {
   //     data: {
-  //       type: "problem",
-  //       id: 20170403,
+  //       type: "dailycb",
+  //       id: "17",
   //       attributes: {
-  //         day: 20170403,
-  //         name: "Finquest",
-  //         content: {
-  //           name: "Finquest",
-  //           constraints: "1 <= T <= 10\n1 <= N <= 50000\nAll share prices are between 1 and 100000\n",
-  //           description: "Finquest Event hosted by ABC Company is all about share market and who can make the best profit out of it.\nImagine that your algorithms have become so good at predicting the market that you now know what the share price of Das Motors Inc. (DM) will be for the next N days.\nEach day, you can either buy one share of DM, sell any number of shares of DM that you own, or not make any transaction at all. What is the maximum profit you can obtain with an optimum trading strategy?\n",
-  //           explanation: "For the first case, you cannot obtain any profit because the share price never rises. \nFor the second case, you can buy one share on the first two days, and sell both of them on the third day. \nFor the third case, you can buy one share on day 1, sell one on day 2, buy one share on day 3, and sell one share on day 4.\n",
-  //           input_format: "The first line contains the number of test cases T. T test cases follow:\nThe first line of each test case contains a number N. The next line contains N integers, denoting the predicted price of DM shares for the next N days.\n",
-  //           sample_input: "3\n3\n5 3 2\n3\n1 2 100\n4\n1 3 1 2\n",
-  //           output_format: "Output T lines, containing the maximum profit which can be obtained for the corresponding test case.",
-  //           sample_output: "0\n197\n3\n"
-  //         },
-  //         difficulty: 2,
-  //         mem_limit: 512,
-  //         time_limit: 2,
-  //         image: "httpS://i.imgur.com/IbOsN5j.png",
-  //         'submit_count': 12
+  //         day: 20170407,
+  //         "created-at": "2017-04-12T05:34:09.783Z",
+  //         "updated-at": "2017-04-12T05:34:10.025Z",
+  //         problem_id: 92
   //       },
   //       relationships: {
-  //         submissions: {
-
-  //         },
-  //         testcases: {
-
+  //         problem: {
+  //           data: {
+  //             type: "problem",
+  //             id: 92
+  //           }
   //         }
   //       }
-  //     }
-  //   }
+  //     },
+  //     included: [
+  //       {
+  //         type: "problem",
+  //         id: 92,
+  //         attributes: {
+  //           name: "Light’s New Car",
+  //           content: {
+  //             name: "Light’s New Car",
+  //             constraints: "1 <= T <= 10 \n1 <= A,B <= 10^100000 \nA % (10^9 + 7) != 0\n",
+  //             description: "Light wants to purchase a new car. The price of the car is A. After each passing day, the price of the car becomes A times the price on the previous day. However, B days have passed since the launch of the new car. Light doesn’t know how to calculate the price of the car on the Bth day, he has asked for your help.\n\nYour task is to tell the price of the car on the Bth day. Since, the price can be a very large number, please tell him the price modulo 10^9 + 7.\n",
+  //             "input-format": "The first line contains an integer T, the number of testcases. It's followed by T lines. \nEach testcase will contain two integers A & B separated by a space.\n",
+  //             "sample-input": "5\n3 2\n4 5\n7 4\n34534985349875439875439875349875 93475349759384754395743975349573495\n34543987529435983745230948023948 3498573497543987543985743989120393097595572309482304\n",
+  //             "output-format": "Output T lines, each corresponding to the answer of the testcase.",
+  //             "sample-output": "9\n1024\n2401\n735851262\n985546465\n"
+  //           },
+  //           difficulty: 2,
+  //           "mem-limit": 512,
+  //           "time-limit": 2,
+  //           "created-by":null,
+  //           'submit-count':10,
+  //           image: "httpS://i.imgur.com/nMD0fGp.png",
+  //           tags: [
 
+  //           ],
+  //           status: null,
+  //           "created-at": "2017-03-28T07:56:24.513Z",
+  //           "updated-at": "2017-04-10T18:21:19.884Z"
+  //         },
+  //         relationships: {
+  //           submissions: {
+  //             data: [
+
+  //             ]
+  //           },
+  //           testcases: {
+
+  //           }
+  //         }
+  //       }
+  //     ]
+  //   }
   // });
 }
