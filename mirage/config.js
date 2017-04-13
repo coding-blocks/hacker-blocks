@@ -273,8 +273,8 @@ export default function () {
   //   }
   // });
   this.passthrough('http://localhost:3000/api/login');
-  //this.post('http://localhost:3000/api/login',function(){
-  //   return [{user_id:1015,access_token:"2039ec223014abf2d11fa3b6624a32d6"}];
+  // this.post('http://localhost:3000/api/login',function(){
+  //   return {user_id:1015,access_token:"2039ec223014abf2d11fa3b6624a32d6"};
   // });
 
   this.passthrough('/contests/:contest_id');
