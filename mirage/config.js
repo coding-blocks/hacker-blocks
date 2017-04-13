@@ -472,155 +472,155 @@ export default function () {
 
   this.passthrough('/problems/weekly/:problem_id');
 
-  //this.passthrough('/dailycbs');
+  this.passthrough('/dailycbs');
 
-   this.get('/dailycbs',function(){
-  return {
-      data: [{  
-         type:"dailycb",
-         id:6,
-         attributes:{  
-            day:20170303,
-            "created-at":null,
-            "updated-at":null,
-            problem_id:64
-         },
-         relationships:{  
-            problem:{  
-               data:{  
-                  type:"problem",
-                  id:64
-               }
-            }
-         }
-      },
-      {  
-         type:"dailycb",
-         id:"4",
-         attributes:{  
-            day:20170305,
-            "created-at":null,
-            "updated-at":null,
-            problem_id:49
-         },
-         relationships:{  
-            problem:{  
-               data:{  
-                  type:"problem",
-                  id:49
-               }
-            }
-         }
-      }],
-      included:[  
-      {  
-         type:"problem",
-         id:64,
-         attributes:{  
-            name:"Super Power",
-            content:{  
-               name:"Super Power",
-               constraints:"",
-               description:"Input two numbers a and b . We need to calculate a power b."
-            },
-            difficulty:1,
-            "mem-limit":15,
-            "time-limit":15,
-            "created-by":3,
-             'submit-count': 10,
-              'user-count':100, 
-            image:"https://i.imgur.com/0tqqF6B.png",
-            tags:null,
-            status:null,
-            "created-at":"2017-03-28T07:56:24.513Z",
-            "updated-at":null
-         },
-         relationships:{  
-            submissions:{  
+  // this.get('/dailycbs', function () {
+  //   return {
+  //     data: [{
+  //       type: "dailycb",
+  //       id: 6,
+  //       attributes: {
+  //         day: 20170303,
+  //         "created-at": null,
+  //         "updated-at": null,
+  //         problem_id: 64
+  //       },
+  //       relationships: {
+  //         problem: {
+  //           data: {
+  //             type: "problem",
+  //             id: 64
+  //           }
+  //         }
+  //       }
+  //     },
+  //     {
+  //       type: "dailycb",
+  //       id: "4",
+  //       attributes: {
+  //         day: 20170305,
+  //         "created-at": null,
+  //         "updated-at": null,
+  //         problem_id: 49
+  //       },
+  //       relationships: {
+  //         problem: {
+  //           data: {
+  //             type: "problem",
+  //             id: 49
+  //           }
+  //         }
+  //       }
+  //     }],
+  //     included: [
+  //       {
+  //         type: "problem",
+  //         id: 64,
+  //         attributes: {
+  //           name: "Super Power",
+  //           content: {
+  //             name: "Super Power",
+  //             constraints: "",
+  //             description: "Input two numbers a and b . We need to calculate a power b."
+  //           },
+  //           difficulty: 1,
+  //           "mem-limit": 15,
+  //           "time-limit": 15,
+  //           "created-by": 3,
+  //           'submit-count': 10,
+  //           'user-count': 100,
+  //           image: "https://i.imgur.com/0tqqF6B.png",
+  //           tags: null,
+  //           status: null,
+  //           "created-at": "2017-03-28T07:56:24.513Z",
+  //           "updated-at": null
+  //         },
+  //         relationships: {
+  //           submissions: {
 
-            },
-            testcases:{  
+  //           },
+  //           testcases: {
 
-            }
-         }
-      },
-      {  
-         type:"problem",
-         id:49,
-         attributes:{  
-            name:"Pattern Magic",
-            content:{  
-               name:"Pattern Magic",
-               constraints:"N<=1000",
-               description:"Code the given pattern.\n<img src=\"https://s3.amazonaws.com/hr-challenge-images/22060/1465463925-b22d8d8dfe-ScreenShot2016-06-09at2.47.18pm.png\" title=\"Screen Shot 2016-06-09 at 2.47.18 pm.png\" />"
-            },
-            difficulty:1,
-            "mem-limit":512,
-            "time-limit":2,
-            "created-by":2,
-             'submit-count': 10,
- 'user-count':100,             
-image:"https://i.imgur.com/pxxMSyn.png",
-            tags:[  
-               "Implementation"
-            ],
-            status:null,
-            "created-at":"2017-03-28T07:56:24.513Z",
-            "updated-at":null
-         },
-         relationships:{  
-            submissions:{  
+  //           }
+  //         }
+  //       },
+  //       {
+  //         type: "problem",
+  //         id: 49,
+  //         attributes: {
+  //           name: "Pattern Magic",
+  //           content: {
+  //             name: "Pattern Magic",
+  //             constraints: "N<=1000",
+  //             description: "Code the given pattern.\n<img src=\"https://s3.amazonaws.com/hr-challenge-images/22060/1465463925-b22d8d8dfe-ScreenShot2016-06-09at2.47.18pm.png\" title=\"Screen Shot 2016-06-09 at 2.47.18 pm.png\" />"
+  //           },
+  //           difficulty: 1,
+  //           "mem-limit": 512,
+  //           "time-limit": 2,
+  //           "created-by": 2,
+  //           'submit-count': 10,
+  //           'user-count': 100,
+  //           image: "https://i.imgur.com/pxxMSyn.png",
+  //           tags: [
+  //             "Implementation"
+  //           ],
+  //           status: null,
+  //           "created-at": "2017-03-28T07:56:24.513Z",
+  //           "updated-at": null
+  //         },
+  //         relationships: {
+  //           submissions: {
 
-            },
-            testcases:{  
+  //           },
+  //           testcases: {
 
-            }
-         }
-      }]
-  }
-});
+  //           }
+  //         }
+  //       }]
+  //   }
+  // });
 
-//this.passthrough('/dailycbs/:problem_id');
+  this.passthrough('/dailycbs/:problem_id');
 
 
-  this.get('/dailycbs/:problem_id', function () {
-    return {
-      data: {
-      type:"dailycb",
-      id:6,
-      attributes:{  
-         day:20170303,
-         "created-at":null,
-         "updated-at":null,
-         "problem-id":64
-      },
-      relationships:{  
-         problem:{  
-            data:{  
-               type:"problem",
-               id:64
-            }
-         }
-      }
-   },
-   included:[  
-      {  
-         type:"submission",
-         id:2541,
-         attributes:{  
-            "user-id":1015,
-            source:"I2luY2x1ZGUgPHN0ZGlvLmg+CmludCBtYWluKCkgewogICAgcHJpbnRmKCJ5byB5byIpOwp9Cg==",
-            "submit-at":1491996673,
-            language:"c",
-            score:0,
-            result:-1,
-            "problem-id":-1,
-            "created-at":"2017-04-12T11:31:13.404Z",
-            "updated-at":"2017-04-12T11:31:13.404Z",
-            p_id:64,
-            c_id:0
-         }
-      }]      
-    }
-  });
+  // this.get('/dailycbs/:problem_id', function () {
+  //   return {
+  //     data: {
+  //       type: "dailycb",
+  //       id: 6,
+  //       attributes: {
+  //         day: 20170303,
+  //         "created-at": null,
+  //         "updated-at": null,
+  //         "problem-id": 64
+  //       },
+  //       relationships: {
+  //         problem: {
+  //           data: {
+  //             type: "problem",
+  //             id: 64
+  //           }
+  //         }
+  //       }
+  //     },
+  //     included: [
+  //       {
+  //         type: "submission",
+  //         id: 2541,
+  //         attributes: {
+  //           "user-id": 1015,
+  //           source: "I2luY2x1ZGUgPHN0ZGlvLmg+CmludCBtYWluKCkgewogICAgcHJpbnRmKCJ5byB5byIpOwp9Cg==",
+  //           "submit-at": 1491996673,
+  //           language: "c",
+  //           score: 0,
+  //           result: -1,
+  //           "problem-id": -1,
+  //           "created-at": "2017-04-12T11:31:13.404Z",
+  //           "updated-at": "2017-04-12T11:31:13.404Z",
+  //           p_id: 64,
+  //           c_id: 0
+  //         }
+  //       }]
+  //   }
+  // });
 }
