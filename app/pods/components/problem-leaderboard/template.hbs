@@ -4,8 +4,8 @@
       <th data-field="rank">Rank</th>
       <th data-field="user">User</th>
       <th data-field="score">Score</th>
-       {{#if submission.language}}
-      <th data-field="language">Language</th>
+      {{#if language}}
+        <th data-field="language">Language</th>
       {{/if}}
     </tr>
   </thead>
@@ -13,7 +13,12 @@
     {{#each leaderboard as |submission index|}}
     <tr>
       <td>{{sum index 1}}</td>
-      <td>{{submission.userName}}</td>
+      <td>
+        {{#if avatar}}
+          <img src="/images/student/random-avatar{{get-rand 5}}.jpg" width="25" class="img-circle marginR10">
+        {{/if}}
+        {{submission.userName}}
+      </td>
       <td>{{decimal-to-whole submission.score}}</td>
       {{#if submission.language}}
       <td>{{getlang submission.language}}</td>
