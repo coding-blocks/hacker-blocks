@@ -56,7 +56,102 @@ export default function () {
   //         status: 1,
   //         created_at: "2017-03-28T06:23:07.909Z",
   //         updated_at: null
-  //       }
+  //       },
+  //       relationships:{  
+  //           problems:{  
+  //              data:[  
+  //                 {  
+  //                    type:"problem",
+  //                    id:45
+  //                 },
+  //                 {  
+  //                    type:"problem",
+  //                    id:54
+  //                 },     
+  //              ]
+  //           }
+  //        }
+  //     }],
+  //     included:[  
+  //     {  
+  //        type:"problem",
+  //        id:"45",
+  //        attributes:{  
+  //           name:"Hello Coding Blocks",
+  //           content:{  
+  //              name:"Hello Coding Blocks",
+  //              constraints:"",
+  //              description:"Write a program to print \"Hello Coding Blocks !\" on the screen.\t\t",
+  //              "input-format":"",
+  //              "sample-input":"",
+  //              "output-format":"Hello Coding Blocks !",
+  //              "sample-output":"Hello Coding Blocks !"
+  //           },
+  //           difficulty:1,
+  //           "mem-limit":512,
+  //           "time-limit":2,
+  //           "created-by":2,
+  //           image:"https://i.imgur.com/XYy1jZi.png",
+  //           tags:[  
+  //              "Implementation"
+  //           ],
+  //           status:null,
+  //           "created-at":"2017-03-28T07:56:24.513Z",
+  //           "updated-at":null,
+  //           cproblems:{  
+  //              "created-at":"2017-04-09T05:53:05.220Z",
+  //              "updated-at":"2017-04-09T05:53:05.220Z",
+  //              "p-id":45,
+  //              "c-id":6
+  //           }
+  //        },
+  //        relationships:{  
+  //           submissions:{  
+
+  //           },
+  //           testcases:{  
+
+  //           }
+  //        }
+  //     },
+  //     {  
+  //        type:"problem",
+  //        id:"54",
+  //        attributes:{  
+  //           name:"Hollow Rhombus Pattern",
+  //           content:{  
+  //              name:"Hollow Rhombus Pattern",
+  //              constraints:"N <= 20",
+  //              description:"Given number of rows N, you have to print a Hollow Rhombus.",
+  //              "input-format":"Single integer N.",
+  //              "sample-input":"5",
+  //              "output-format":"Print pattern.",
+  //              "sample-output":"    *****\n   *   *\n  *   *\n *   *\n*****"
+  //           },
+  //           difficulty:1,
+  //           "mem-limit":15,
+  //           "time-limit":5,
+  //           "created-by":3,
+  //           image:"https://i.imgur.com/rpiexu7.png",
+  //           tags:null,
+  //           status:null,
+  //           "created-at":"2017-03-28T07:56:24.513Z",
+  //           "updated-at":null,
+  //           cproblems:{  
+  //              "created-at":"2017-04-09T05:53:05.220Z",
+  //              "updated-at":"2017-04-09T05:53:05.220Z",
+  //              "p-id":54,
+  //              "c-id":6
+  //           }
+  //        },
+  //        relationships:{  
+  //           submissions:{  
+
+  //           },
+  //           testcases:{  
+
+  //           }
+  //        }
   //     }]
   //   };
   // });
@@ -264,7 +359,7 @@ export default function () {
   //       id: 1,
   //       type: "user",
   //       attributes: {
-  //         'user_id':'1015',
+  //         user_id:1015,
   //         name: "Ankit",
   //         'roll-number': "1234",
   //         email: "ankit@gmail.com"
@@ -376,70 +471,156 @@ export default function () {
 
 
   this.passthrough('/problems/weekly/:problem_id');
-  this.passthrough('/dailycbs/:problem_id');
 
-  this.passthrough('/dailycbs');
+  //this.passthrough('/dailycbs');
 
-  // this.get('/dailycbs/:problem_id', function () {
-  //   return {
-  //     data: {
-  //       type: "dailycb",
-  //       id: "17",
-  //       attributes: {
-  //         day: 20170407,
-  //         "created-at": "2017-04-12T05:34:09.783Z",
-  //         "updated-at": "2017-04-12T05:34:10.025Z",
-  //         problem_id: 92
-  //       },
-  //       relationships: {
-  //         problem: {
-  //           data: {
-  //             type: "problem",
-  //             id: 92
-  //           }
-  //         }
-  //       }
-  //     },
-  //     included: [
-  //       {
-  //         type: "problem",
-  //         id: 92,
-  //         attributes: {
-  //           name: "Light’s New Car",
-  //           content: {
-  //             name: "Light’s New Car",
-  //             constraints: "1 <= T <= 10 \n1 <= A,B <= 10^100000 \nA % (10^9 + 7) != 0\n",
-  //             description: "Light wants to purchase a new car. The price of the car is A. After each passing day, the price of the car becomes A times the price on the previous day. However, B days have passed since the launch of the new car. Light doesn’t know how to calculate the price of the car on the Bth day, he has asked for your help.\n\nYour task is to tell the price of the car on the Bth day. Since, the price can be a very large number, please tell him the price modulo 10^9 + 7.\n",
-  //             "input-format": "The first line contains an integer T, the number of testcases. It's followed by T lines. \nEach testcase will contain two integers A & B separated by a space.\n",
-  //             "sample-input": "5\n3 2\n4 5\n7 4\n34534985349875439875439875349875 93475349759384754395743975349573495\n34543987529435983745230948023948 3498573497543987543985743989120393097595572309482304\n",
-  //             "output-format": "Output T lines, each corresponding to the answer of the testcase.",
-  //             "sample-output": "9\n1024\n2401\n735851262\n985546465\n"
-  //           },
-  //           difficulty: 2,
-  //           "mem-limit": 512,
-  //           "time-limit": 2,
-  //           "created-by":null,
-  //           'submit-count':10,
-  //           image: "httpS://i.imgur.com/nMD0fGp.png",
-  //           tags: [
+   this.get('/dailycbs',function(){
+  return {
+      data: [{  
+         type:"dailycb",
+         id:6,
+         attributes:{  
+            day:20170303,
+            "created-at":null,
+            "updated-at":null,
+            problem_id:64
+         },
+         relationships:{  
+            problem:{  
+               data:{  
+                  type:"problem",
+                  id:64
+               }
+            }
+         }
+      },
+      {  
+         type:"dailycb",
+         id:"4",
+         attributes:{  
+            day:20170305,
+            "created-at":null,
+            "updated-at":null,
+            problem_id:49
+         },
+         relationships:{  
+            problem:{  
+               data:{  
+                  type:"problem",
+                  id:49
+               }
+            }
+         }
+      }],
+      included:[  
+      {  
+         type:"problem",
+         id:64,
+         attributes:{  
+            name:"Super Power",
+            content:{  
+               name:"Super Power",
+               constraints:"",
+               description:"Input two numbers a and b . We need to calculate a power b."
+            },
+            difficulty:1,
+            "mem-limit":15,
+            "time-limit":15,
+            "created-by":3,
+             'submit-count': 10,
+              'user-count':100, 
+            image:"https://i.imgur.com/0tqqF6B.png",
+            tags:null,
+            status:null,
+            "created-at":"2017-03-28T07:56:24.513Z",
+            "updated-at":null
+         },
+         relationships:{  
+            submissions:{  
 
-  //           ],
-  //           status: null,
-  //           "created-at": "2017-03-28T07:56:24.513Z",
-  //           "updated-at": "2017-04-10T18:21:19.884Z"
-  //         },
-  //         relationships: {
-  //           submissions: {
-  //             data: [
+            },
+            testcases:{  
 
-  //             ]
-  //           },
-  //           testcases: {
+            }
+         }
+      },
+      {  
+         type:"problem",
+         id:49,
+         attributes:{  
+            name:"Pattern Magic",
+            content:{  
+               name:"Pattern Magic",
+               constraints:"N<=1000",
+               description:"Code the given pattern.\n<img src=\"https://s3.amazonaws.com/hr-challenge-images/22060/1465463925-b22d8d8dfe-ScreenShot2016-06-09at2.47.18pm.png\" title=\"Screen Shot 2016-06-09 at 2.47.18 pm.png\" />"
+            },
+            difficulty:1,
+            "mem-limit":512,
+            "time-limit":2,
+            "created-by":2,
+             'submit-count': 10,
+ 'user-count':100,             
+image:"https://i.imgur.com/pxxMSyn.png",
+            tags:[  
+               "Implementation"
+            ],
+            status:null,
+            "created-at":"2017-03-28T07:56:24.513Z",
+            "updated-at":null
+         },
+         relationships:{  
+            submissions:{  
 
-  //           }
-  //         }
-  //       }
-  //     ]
-  //   }
-  // });
+            },
+            testcases:{  
+
+            }
+         }
+      }]
+  }
+});
+
+//this.passthrough('/dailycbs/:problem_id');
+
+
+  this.get('/dailycbs/:problem_id', function () {
+    return {
+      data: {
+      type:"dailycb",
+      id:6,
+      attributes:{  
+         day:20170303,
+         "created-at":null,
+         "updated-at":null,
+         "problem-id":64
+      },
+      relationships:{  
+         problem:{  
+            data:{  
+               type:"problem",
+               id:64
+            }
+         }
+      }
+   },
+   included:[  
+      {  
+         type:"submission",
+         id:2541,
+         attributes:{  
+            "user-id":1015,
+            source:"I2luY2x1ZGUgPHN0ZGlvLmg+CmludCBtYWluKCkgewogICAgcHJpbnRmKCJ5byB5byIpOwp9Cg==",
+            "submit-at":1491996673,
+            language:"c",
+            score:0,
+            result:-1,
+            "problem-id":-1,
+            "created-at":"2017-04-12T11:31:13.404Z",
+            "updated-at":"2017-04-12T11:31:13.404Z",
+            p_id:64,
+            c_id:0
+         }
+      }]      
+    }
+  });
 }
