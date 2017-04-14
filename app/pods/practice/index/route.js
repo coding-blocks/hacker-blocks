@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Route.extend({
   breadCrumb: {
@@ -7,8 +8,9 @@ export default Ember.Route.extend({
   model() {
     let mainProblem = [];
     let otherProblems = [];
+    let day = moment(moment().unix(), 'X').format("YYYYMMDD");
 
-    this.get('store').query('dailycb', {count: 7}).then(function (problem) {
+    this.get('store').query('dailycb', {count: 7, day}).then(function (problem) {
       problem.forEach(function (element, index) {
         if (index == 0) {
           mainProblem.pushObject(element);
