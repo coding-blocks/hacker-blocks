@@ -6,10 +6,10 @@ let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oc
 
 export default DS.Model.extend({
     date : Ember.computed('day', {
-        get(key){
+        get(key) {
             return moment(this.get('day'), 'YYYYMMDD').format('YYYY-MM-DD');
         },
-        set(key,val){
+        set(key,val) {
             this.set('day', moment(val,'YYYY-MM-DD').format('YYYYMMDD'));
         }
     }),
