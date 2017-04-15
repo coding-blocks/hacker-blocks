@@ -15,12 +15,11 @@ export default DS.Model.extend({
     }),
     day : DS.attr(),
     UTCDay: Ember.computed('day', function () {
-      console.log(typeof day);
       return this.get('day').toString().substring(6,8);
     }),
     UTCMonth: Ember.computed('day', function () {
       let month = this.get('day').toString().substring(4, 6);
-      return months[parseInt(month)];
+      return months[parseInt(month) - 1];
     }),
     problem : DS.belongsTo()
 });
