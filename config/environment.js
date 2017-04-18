@@ -31,7 +31,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.apiEndpoint = 'http://localhost:3000'
+    ENV.apiEndpoint = 'http://localhost:3000',
+    ENV.mirageEnabled = process.env.HACK_FRONTEND_MIRAGE_ENABLED
   }
 
   if (environment === 'test') {
