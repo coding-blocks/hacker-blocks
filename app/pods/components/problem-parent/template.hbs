@@ -135,19 +135,6 @@
                   <p><pre>{{base64-decode output}}</pre></p>
                 {{else if output}}
                   <hr/>
-                  {{!--<ul class="collection">
-                    {{#each output as |testcase index|}}
-                      <li class="collection-item"><b>Testcase #{{sum index 1}} </b>
-                        {{#if (eq testcase.result "timelimit")}}
-                          Time Limit Exceeded
-                        {{else if (eq testcase.result "correct")}}
-                          Passed
-                        {{else}}
-                          {{testcase.result}}
-                        {{/if}}
-                      </li>
-                    {{/each}}
-                  </ul>--}}
                 <table class="table table-striped">
                   <thead>
                     <tr>
