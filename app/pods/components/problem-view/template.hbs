@@ -24,10 +24,8 @@
       <h3>{{problem.name}}</h3>
       {{#if (eq i 0)}}<span class="label label-info">Today's CodeByte</span>{{/if}}
       <div id="tags">
-        <p>
-          {{#each problem.tags as |tag|}}
-          <span class="label label-success">{{tag}}</span> {{/each}}
-        </p>
+        {{#each problem.tags as |tag|}}
+          <img src="/images/tag.png" alt=""/><font size="1">{{tag}}</font>{{/each}}
       </div>
       <hr />
       <p class="smallcircle"><span class="circlepoint">100</span><span class="lblcircle">Points</span></p>
