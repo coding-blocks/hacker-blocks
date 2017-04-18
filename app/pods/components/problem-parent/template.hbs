@@ -119,7 +119,7 @@
                 {{#if session.isAuthenticated}}
                   <a id="submit" {{action "submit" problem}} data-loading-text="Submitting..." href="javascript:void(0);" class="btn btn-raised g-bg-blush2 btn-sm pull-right runner" role="button">Submit</a>
                 {{else}}
-                   <span class="pull-right submit-login-message">Please login to submit</span>
+                   <span class="pull-right submit-login-message">Login to attempt</span>
                 {{/if}}
 
                 {{#if (eq result "error")}}
