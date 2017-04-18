@@ -205,7 +205,7 @@ export default function () {
             }
           }
         }
-      }
+      };
     }
     else {
       return {
@@ -271,8 +271,7 @@ export default function () {
           }
         }
         ]
-      }
-
+      };
     }
   });
 
@@ -283,7 +282,7 @@ export default function () {
         type: "problem",
         attributes: {
           name: "The Great Coding Blocks Conundrum",
-          content: lorem_ipseum
+          content: "Lorem Ipsum Dolor Sit Amet"
         }
       }
     };
@@ -364,7 +363,7 @@ export default function () {
           email: "ankit@gmail.com"
         }
       }
-    }
+    };
   });
   this.post('http://localhost:3000/api/login',function(){
     return {user_id:1015,access_token:"2039ec223014abf2d11fa3b6624a32d6"};
@@ -438,7 +437,7 @@ export default function () {
           }
         }
       ]
-    }
+    };
   });
 
   this.get('/submissions/:submission_id', function () {
@@ -461,7 +460,7 @@ export default function () {
           updated_at: null
         }
       }
-    }
+    };
   });
 
 
@@ -571,7 +570,7 @@ export default function () {
             }
           }
         }]
-    }
+    };
   });
 
 
@@ -614,6 +613,6 @@ export default function () {
             c_id: 0
           }
         }]
-    }
+    };
   });
 }
