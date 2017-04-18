@@ -22,49 +22,16 @@
     </div> -->
     <div class="caption problem-wrapper-grid">
       <h3>{{problem.name}}</h3>
-      {{#if (eq i 0)}}
-      <span class="label label-info">Today's CodeByte</span> {{/if}}
+      {{#if (eq i 0)}}<span class="label label-info">Today's CodeByte</span>{{/if}}
       <div id="tags">
         <p>
           {{#each problem.tags as |tag|}}
           <span class="label label-success">{{tag}}</span> {{/each}}
         </p>
       </div>
+      <hr />
       <p class="smallcircle"><span class="circlepoint">100</span><span class="lblcircle">Points</span></p>
         {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}
     </div>
   </div>
 </div>
-
-<!--
-<div class="event-archive-happening active">
-  <div id="event-2953" class="item-event feature-item post-2953 tp_event type-tp_event status-tp-event-happenning has-post-thumbnail hentry">
-    <div class="event-wrapper">
-      <div class="time-from">
-        {{#if isWeekly}}
-          <div class="date">{{problem.UTCDay}}</div>
-          <div class="month">{{problem.UTCMonth}}</div>
-        {{else}}
-          <div class="date">{{get-difficulty problem.difficulty}}</div>
-          <div class="month">Difficulty</div>
-        {{/if}}
-      </div>
-      <div class="top-heading">
-        <h4 class="title">{{#link-to link problem.id}}{{problem.name}}{{/link-to}}</h4>
-        <div class="meta">
-          <div class="location"> <span class="fa fa-check"></span>{{problem.submitCount}} submissions</div>
-          <div> <span class="fa fa-bar-chart"></span>100 Points</div>
-        </div>
-      </div>
-      <div class="view-detail"> {{#link-to link problem.id}}Solve This Problem{{/link-to}}</div>
-    </div>
-    <div class="image"><a href="#"> <img src="{{problem.image}}" alt="event-4" title="event-4" width="560" height="240"> </a></div>
-    <div class="event-wrapper">
-      <ul class="list-inline">
-      {{#each problem.tags as | tag|}}
-        <li class="btn btn-primary">{{tag}}</li>
-      {{/each}}
-      </ul>
-      </div>
-  </div>
-</div>-->
