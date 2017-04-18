@@ -25,10 +25,10 @@
       {{#if (eq i 0)}}
       <span class="label label-info">Today's CodeByte</span> {{/if}}
       <div id="tags">
-        <p>
+        
           {{#each problem.tags as |tag|}}
-          <span class="label label-success">{{tag}}</span> {{/each}}
-        </p>
+          <div class="chip">{{tag}}</div> {{/each}}
+       
       </div>
       <p class="smallcircle"><span class="circlepoint">100</span><span class="lblcircle">Points</span></p>
         {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}
