@@ -19,10 +19,12 @@
                 <div class="tabheader">
                   <h2>{{problem.name}}</h2>
                 </div>
-                {{#if (and dailycb (is-archived-cb dailycb))}}
-                  <div class="alert alert-warning">
-                    This Code Byte is finished. You'll NOT be awarded any score for solving this problem.
-                  </div>
+                {{#if dailycb}}
+                  {{#if (is-archived-cb dailycb)}}
+                    <div class="alert alert-warning">
+                      This Code Byte is finished. You'll NOT be awarded any score for solving this problem.
+                    </div>
+                  {{/if}}
                 {{/if}}
                 <p>{{markdown-to-html problem.content.description}}</p>
                 <hr />
