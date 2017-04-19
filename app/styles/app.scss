@@ -435,3 +435,14 @@ ul#clock li{
 .problem-image-wrapper {
   height: 100px;
 }
+
+.problem-wrapper-dailycb-grid{
+  margin-top:auto;
+  height: 375px;
+  display: flex;
+  flex-direction: column;
+}
+
+.icon-dailycb{
+    color: grey;
+}

@@ -22,7 +22,7 @@
                   {{/each}}
                 <div class="row">
                    <hr>
-                    <div class="col-md-6 col-sm-6">
+                    <div class="col-md-4 col-sm-4">
                       <p>{{#link-to 'practice.weekly-problem.index' dailycb.problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-lg" role="button"}}See Details & Attempt{{/link-to}}</p>
                     </div>
 <!--
@@ -44,6 +44,38 @@
                       </span>
                   </div> -->
 
+                  <div class="col-md-8 pt-detail">
+                    <ul class="pt-category">
+                      <li>
+                          <a href="#">
+                          <span>Points</span>
+                          <i class="material-icons">grade</i>
+                              <span>100</span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#">
+                          <span>Time</span>
+                              <i class="material-icons">access_time</i>
+                              <span>24 Hours</span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#">
+                          <span>Max</span>
+                              <i class="material-icons">trending_up</i>
+                              <span>{{dailycb.maxscore}}/100</span>
+                          </a>
+                      </li>
+                      <li>
+                          <a href="#">
+                          <span>Total</span>
+                              <i class="material-icons">group</i>
+                              <span>{{dailycb.count}}</span>
+                          </a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </div>
               {{#clock-view}}{{/clock-view}}

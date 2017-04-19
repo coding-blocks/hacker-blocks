@@ -1,5 +1,5 @@
 <div class="col-xs-12 col-sm-6 col-md-3">
-  <div class="thumbnail card problemCard problem-sub-card">
+  <div class="{{if dailycb 'thumbnail card' 'thumbnail card problemCard problem-sub-card'}}">
     <!--<span class="point-circle"><span class="number"><strong>100</strong></span><span class="pointtxt"><strong>Points</strong></span></span>-->
     <div class="problem-image-wrapper">
       <img src={{problem.image}} width="100%" />
@@ -20,16 +20,54 @@
         <span class="pull-left"><span class="seconds">00</span> SEC</span>
       </span>
     </div> -->
-    <div class="caption problem-wrapper-grid">
+    <div class="{{if dailycb 'caption problem-wrapper-dailycb-grid' 'caption problem-wrapper-grid'}}">
       <h3>{{problem.name}}</h3>
       {{#if (eq i 0)}}<span class="label label-info">Today's CodeByte</span>{{/if}}
       <div id="tags">
         {{#each problem.tags as |tag|}}
-          <img src="/images/tag.png" alt=""/><font size="1">{{tag}}</font>{{/each}}
+        <img src="/images/tag.png" alt="" />
+        <font size="1">{{tag}}</font>{{/each}}
       </div>
       <hr />
-      <p class="smallcircle"><span class="circlepoint">100</span><span class="lblcircle">Points</span></p>
-        {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}
+      {{#if dailycb}}
+      <div class="pt-detail row">
+        <div class="pt-category pt-txt col-md-6 col-sm-6 col-xs-6">
+          <a class="icon-dailycb" href="#">
+            <span class="center-block">Points</span>
+            <i class="material-icons">grade</i>
+            <span class="center-block">100</span>
+          </a>
+        </div>
+
+        <div class="pt-category  pt-txt col-md-6 col-sm-6 col-xs-6">
+          <a class="icon-dailycb" href="#">
+            <span class="center-block">Time</span>
+            <i class="material-icons">access_time</i>
+            <span class="center-block">24 Hours</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="pt-detail row m-t-20">
+        <div class="pt-category pt-txt col-md-6 col-sm-6 col-xs-6">
+          <a class="icon-dailycb" href="#">
+            <span class="center-block">Max</span>
+            <i class="material-icons">trending_up</i>
+            <span class="center-block">{{dailycb.maxscore}}/100</span>
+          </a>
+        </div>
+        <div class="pt-category  pt-txt col-md-6 col-sm-6 col-xs-6">
+          <a  class="icon-dailycb" href="#">
+            <span class="center-block">Total</span>
+            <i class="material-icons">group</i>
+            <span class="center-block">{{dailycb.count}}</span>
+          </a>
+        </div>
+      </div>
+      {{else}}
+        <p class="smallcircle"><span class="circlepoint">100</span><span class="lblcircle">Points</span></p>
+      {{/if}}
+      {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}
     </div>
   </div>
 </div>

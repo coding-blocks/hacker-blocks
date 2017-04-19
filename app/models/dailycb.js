@@ -21,5 +21,7 @@ export default DS.Model.extend({
       let month = this.get('day').toString().substring(4, 6);
       return months[parseInt(month) - 1];
     }),
-    problem : DS.belongsTo()
+    problem : DS.belongsTo(),
+    maxscore :  DS.attr(),
+    count :DS.attr()
 });
