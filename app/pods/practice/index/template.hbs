@@ -63,7 +63,7 @@
           <div class="body">
             <div class="row clearfix">
               {{#each otherProblems as |dailycb|}}
-                {{#problem-view dailycb=dailycb link='practice.weekly-problem.index' problem=dailycb.problem.content}}{{/problem-view}}
+                {{#problem-view dailycb=dailycb archived=true link='practice.weekly-problem.index' problem=dailycb.problem.content}}{{/problem-view}}
               {{/each}}
             </div>
           </div>

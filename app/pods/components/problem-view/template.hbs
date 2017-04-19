@@ -29,7 +29,9 @@
       </div>
       <hr />
       <p class="smallcircle"><span class="circlepoint">100</span><span class="lblcircle">Points</span></p>
-        {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}
+        {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}
+          {{#if archived}}Leaderboard{{else}}Attempt{{/if}}
+        {{/link-to}}
     </div>
   </div>
 </div>
