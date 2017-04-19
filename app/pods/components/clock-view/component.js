@@ -55,6 +55,16 @@ export default Ember.Component.extend({
             _this.set('day', daysArray[date.getDay()]);
             _this.set('month', monthNames[date.getMonth()]);
             _this.set('year', date.getFullYear() + ', ');
+
+            if(date.getHours() % 12 === 0){
+                if(date.getHours() === 0){
+                    _this.set('hours', '12:');
+                }
+                else{
+                    _this.set('hours', date.getHours() + ':');
+                }
+            }
+
         }, 1000);
   }
 });
