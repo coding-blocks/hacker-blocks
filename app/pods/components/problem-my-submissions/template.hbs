@@ -20,7 +20,11 @@
         {{#link-to "submission" submission.id tagName="tr" class="pointer"}}
           <td>{{sum index 1}}</td>
           <td>{{ago-time submission.submitAt}}</td>
-          <td>{{submission.score}}</td>
+          {{#if (eq submission.result -2)}}
+            <td>N/A</td>
+          {{else}}
+            <td>{{submission.score}}</td>
+          {{/if}}
           <td>{{getlang submission.language}}</td>
           {{#if (eq submission.result -1)}}
             <td>

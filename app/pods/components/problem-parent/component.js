@@ -11,7 +11,7 @@ function stopLoading() {
   $('.runner').button('reset');
 }
 
-function judge(component, problemId, contestId) {
+function judge(component, problemId, contestId, noScore) {
   startLoading();
   let submission = {
     user_id: component.get('session.data.authenticated.user_id'),
@@ -19,14 +19,15 @@ function judge(component, problemId, contestId) {
     problemId: problemId,
     contestId: contestId,
     source: window.btoa(ace.edit("editor").getValue()),
-    custom_input: window.btoa($('#custom-input').val())
+    custom_input: window.btoa($('#custom-input').val()),
+    no_score: noScore
   };
   $.ajax({
     url: config.apiEndpoint + '/api/submissions',
     data: JSON.stringify(submission),
     type: "POST",
     contentType: "application/json",
-    timeout: 50000
+    timeout: 100000
   }).done(function(data) {
     stopLoading();
     if (data.result == "compile_error") {
@@ -89,10 +90,9 @@ export default Ember.Component.extend({
       }
       this.langId = langId;
     },
-    submit(problem) {
-      console.log("problem.id", problem);
+    submit(problem, noScore) {
       $('#submit').button('loading');
-      judge(this, problem.id, this.get('contestId'));
+      judge(this, problem.id, this.get('contestId'), noScore);
     },
     run() {
       $('#run').button('loading');
