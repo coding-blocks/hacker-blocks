@@ -17,6 +17,4 @@ export function isArchivedCB(dailyCB) {
   return false;
 }
 
-
-
 export default Ember.Helper.helper(isArchivedCB);
