@@ -19,7 +19,8 @@
 }
 
 #tags {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+  height: 25px;
 }
 
 .generate-scroll-y{
@@ -169,8 +170,6 @@ span.badge.new {
 
 .problemCard {
   margin-top: 10px;
-  display: flex;
-  flex-direction: column;
 }
 
 #custom-input {
@@ -201,23 +200,6 @@ span.badge.new {
 *{ padding:0; margin:0; outline:none;}
 body{font-family:"Roboto",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.428571429;color:#333;background-color:#fff}
 
-// .card {
-//     background: #fff;
-//     min-height: 50px;
-//     box-shadow: none;
-//     position: relative;
-//     margin-bottom: 20px;
-//     transition: .5s;
-//     border: 1px solid #f2f2f2;
-//     border-radius: 0;
-// }
-// .card .body {
-//     font-size: 14px;
-//     color: #444;
-//     padding: 15px;
-//     font-weight: 400;
-// 	text-align:left;
-// }
 .terques-bg {
     background: #1fb5ad;
 }
@@ -226,6 +208,7 @@ body{font-family:"Roboto",Helvetica,Arial,sans-serif;font-size:14px;line-height:
     text-transform: uppercase;
     min-height: 170px;
 }
+
 .user-heading {
     color: #fff;
     padding: 30px;
@@ -310,21 +293,6 @@ ul#clock li{
   margin-bottom: auto;
 
 }
-.wrapper-grid, .problem-wrapper-grid{
-  margin-top:auto;
-  height: 300px;
-  display: flex;
-  flex-direction: column;
-}
-.wrapper-grid a {
-  margin-top:auto;
-}
-.wrapper-grid p{
-  margin-bottom: auto;
-}
-.problem-wrapper-grid p, .problem-wrapper-grid a{
-  margin-top: auto;
-}
 
 .submit-login-message {
     margin-top: 15px;
@@ -345,6 +313,7 @@ ul#clock li{
   margin:0 auto;
   border: 1px solid;
 }
+
 .time-wrapper {
   height:125px;
   width:500px;
@@ -439,4 +408,17 @@ ul#clock li{
 .problem-image-wrapper {
   height: 100px;
   min-height: 100px;
+}
+
+.icon-dailycb{
+    color: grey;
+}
+
+.problem-name-wrapper {
+  height: 46px;
+}
+
+.caption a {
+  margin-top: 10px;
+  width: 100%;
 }
