@@ -9,6 +9,7 @@
       </a>
       {{#link-to 'index' class="navbar-brand"}}<img src="/images/logo.png" alt="">{{/link-to}}
     </div>
+    {{#bread-crumb}}{{/bread-crumb}}
     <ul class="nav navbar-nav navbar-right logout">
       <!-- #END# Notifications -->
       {{#if session.isAuthenticated}}
