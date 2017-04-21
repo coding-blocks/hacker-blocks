@@ -12,7 +12,6 @@
       <div class="problem-name-wrapper">
         <h3>{{problem.name}}</h3>
       </div>
-      {{#if (eq i 0)}}<span class="label label-info">Today's CodeByte</span>{{/if}}
       <div id="tags">
         {{#each problem.tags as |tag|}}
           <img src="/images/tag.png" alt="" />
@@ -56,7 +55,7 @@
         <p class="smallcircle"><span class="circlepoint">100</span><span class="lblcircle">Points</span></p>
       {{/if}}
       {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}
-        {{#if archived}}Leaderboard{{else}}Attempt{{/if}}
+        {{#if dailycb.isArchived}}Leaderboard{{else}}Attempt{{/if}}
       {{/link-to}}
     </div>
   </div>
