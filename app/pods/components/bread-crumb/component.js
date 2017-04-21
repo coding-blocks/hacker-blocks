@@ -25,7 +25,7 @@ const {
 const indexPath = {
   'contests': true,
   'contests.contest': true,
-  'contests.contest.problem': false,
+  'contests.contest.problem': true,
   'contests.contest.problem.main': false,
   'contests.contest.problem.leaderboard': false,
   'contests.contest.problem.submissions': false,
