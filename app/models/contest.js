@@ -3,6 +3,7 @@
  */
 
 import DS from 'ember-data';
+import moment from 'npm:moment';
 
 export default DS.Model.extend({
   name: DS.attr(),
@@ -11,5 +12,19 @@ export default DS.Model.extend({
   location: DS.attr(),
   image: DS.attr(),
   problems: DS.hasMany('problems'),
-  description: DS.attr()
+  description: DS.attr(),
+  endTimeObj: Ember.computed('endTime', {
+    get() {
+      let obj = {};
+      let unix = moment.unix(this.get('endTime'));
+      obj.day = unix.format('DD');
+      obj.month = moment.monthsShort()[unix.format('M')].toUpperCase();
+      obj.hour = unix.format('h');
+      obj.min = unix.format('mm');
+      let meri = unix.format('a');
+      obj.meri1 = meri.substring(0, 1).toUpperCase();
+      obj.meri2 = meri.substring(1).toUpperCase();
+      return obj;
+    }
+  })
 });

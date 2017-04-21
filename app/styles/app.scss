@@ -347,60 +347,6 @@ ul#clock li{
   font-weight: 100;
 }
 
-@media (min-width:320px)  {
-  /* smartphones, iPhone, portrait 480x320 phones */
-  .contest-sub-card {
-    height:480px;
-  }
-   .problem-sub-card {
-    height:425px;
-  }
-}
-@media (min-width:481px)  {
-  /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */
-  .contest-sub-card {
-    height:470px;
-  }
-   .problem-sub-card {
-    height:410px;
-  }
-}
-@media (min-width:641px)  {
-  /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
-.contest-sub-card {
-    height:460px;
-  }
-   .problem-sub-card {
-    height:400px;
-  }
-}
-@media (min-width:961px)  {
-  /* tablet, landscape iPad, lo-res laptops ands desktops */
-  .contest-sub-card {
-    height:450px;
-  }
-   .problem-sub-card {
-    height:390px;
-  }
-}
-@media (min-width:1025px) {
-  .contest-sub-card {
-    height:430px;
-  }
-  /* big landscape tablets, laptops, and desktops */
- .problem-sub-card {
-    height:360px;
-  }
-}
-@media (min-width:1281px) {
-  /* hi-res laptops and desktops */
-  .contest-sub-card {
-    height:410px;
-  }
-   .problem-sub-card {
-    height:370px;
-  }
-}
 .vc-table tr td {
   vertical-align:middle !important;
 }

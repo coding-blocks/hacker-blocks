@@ -41,7 +41,7 @@
           <div class="body">
             <div class="row clearfix">
               {{#each previousContests as |contest|}}
-                {{#contest-view link='contests.contest' contest=contest}} {{/contest-view}}
+                {{#contest-view link='contests.contest' contest=contest archived=true}}{{/contest-view}}
               {{/each}}
             </div>
           </div>
