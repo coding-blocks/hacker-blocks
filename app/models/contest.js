@@ -18,7 +18,7 @@ export default DS.Model.extend({
       let obj = {};
       let unix = moment.unix(this.get('endTime'));
       obj.day = unix.format('DD');
-      obj.month = moment.monthsShort()[unix.format('M')].toUpperCase();
+      obj.month = moment.monthsShort()[unix.format('M') - 1].toUpperCase();
       obj.hour = unix.format('h');
       obj.min = unix.format('mm');
       let meri = unix.format('a');
