@@ -23,5 +23,12 @@ export default DS.Model.extend({
     }),
     problem : DS.belongsTo(),
     maxscore :  DS.attr(),
-    count :DS.attr()
+    count: DS.attr(),
+    isArchived: Ember.computed('day', function () {
+      let dayStamp = moment.unix(moment().unix()).format('YYYYMMDD');
+      if (this.get('day') < dayStamp) {
+        return true;
+      }
+      return false;
+    })
 });
