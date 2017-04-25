@@ -103,6 +103,10 @@ export default Ember.Component.extend({
       let editor = ace.edit("editor");
       editor.setValue(getSnippet(langId));
       this.set("onceEdit", false);
+      $('#custom-input').val("");
+      this.set('customInput', false);
+      this.set("result", null);
+      this.set("output", null);
     },
     customInput() {
       if (this.get('customInput') === true) {
