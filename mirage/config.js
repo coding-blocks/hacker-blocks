@@ -2,7 +2,8 @@ import ENV from "../config/environment";
 
 export default function () {
 
-  this.namespace = `${ENV.apiEndpoint}/api`;
+  this.urlPrefix = `${ENV.apiEndpoint}`
+  this.namespace = `/api`;
 
   if (! ENV.mirageEnabled) {
     this.passthrough();
