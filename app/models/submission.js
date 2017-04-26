@@ -13,5 +13,6 @@ export default DS.Model.extend({
   score: DS.attr(),
   result: DS.attr(),
   problemId: DS.attr('string'),
-  problemName:DS.attr('string')
+  problemName:DS.attr('string'),
+  tcRuns: DS.attr()
 });
