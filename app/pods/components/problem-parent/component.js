@@ -29,6 +29,7 @@ function judge(component, problemId, contestId, noScore) {
     contentType: "application/json",
     timeout: 100000
   }).done(function(data) {
+    component.sendAction('refreshModel');
     stopLoading();
     if (data.result == "compile_error") {
       component.set('output', window.atob(data.error));
