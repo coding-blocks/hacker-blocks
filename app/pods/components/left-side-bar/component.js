@@ -15,8 +15,8 @@ export default Ember.Component.extend({
      // $('#loginModal').modal('toggle');
       window.location = "https://account.codingblocks.com/oauth/authorize?" +
       "response_type=code" +
-      "&client_id=3393643009" +
-      "&redirect_uri=http://dc12e9d8.ngrok.io/oneauth";
+      "&client_id=5420309729" +
+      "&redirect_uri=http://localhost:4200";
     }
   }
 });

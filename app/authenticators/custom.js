@@ -24,8 +24,9 @@ export default Base.extend({
         form.roll_number = args[0];
       }
       form.password = args[1];*/
-      $.get(env.apiEndpoint + '/oneauth/loggedIn?id=' + args[0], function (data) {
-        if (data.authorized != undefined && data.authorized == true) {
+      $.get(env.apiEndpoint + '/oneauth/login?grant_code=' + args[0], function (data) {
+        console.log(data);
+        if (data.auth_token != undefined) {
           resolve(data);
         } else {
           reject(data);

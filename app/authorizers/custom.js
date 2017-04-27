@@ -6,6 +6,7 @@ import Base from 'ember-simple-auth/authorizers/base';
 
 export default Base.extend({
   authorize(sessionData, block) {
-    block("user-id", sessionData.user_id);
+    block("oauth-id", sessionData.oauth_id);
+    block("access-token", sessionData.auth_token);
   }
 });

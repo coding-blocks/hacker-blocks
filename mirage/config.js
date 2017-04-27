@@ -7,7 +7,7 @@ export default function () {
 
   if (! ENV.mirageEnabled) {
     this.passthrough();
-    this.passthrough('http://localhost:3000/oneauth/loggedIn');
+    this.passthrough('http://localhost:3000/oneauth/login');
     return;
   }
 

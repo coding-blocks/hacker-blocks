@@ -16,9 +16,13 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     }
   },
   beforeModel(transition) {
-    this.get('session').authenticate('authenticator:custom', transition.queryParams.id).catch((reason) => {
-      // console.log("not logged in", reason);
-    });
+    if (!this.get('session.isAuthenticated') && transition.queryParams.code != undefined) {
+      this.get('session').authenticate('authenticator:custom', transition.queryParams.code).catch((reason) => {
+        // console.log("not logged in", reason);
+      });
+    } else {
+      console.log("before model session already authenticated");
+    }
   },
   /*
   setupController: function(controller, model){
