@@ -4,7 +4,7 @@
     {{#if session.isAuthenticated}}
     <div class="admin-image">
       {{#link-to "users.user" model.userId}}
-        <img src="/images/placeholder-avatar.png" class = "img-resize" alt="">
+        <img src="{{model.photo}}" class="img-resize img-circle" alt="" />
         {{/link-to}}
     </div>
     <div class="admin-action-info"> <span><strong>Welcome</strong></span> {{#link-to "users.user" model.userId}}
