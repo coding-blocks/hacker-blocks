@@ -15,6 +15,11 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       return this._loadCurrentUser();
     }
   },
+  beforeModel(transition) {
+    this.get('session').authenticate('authenticator:custom', transition.queryParams.id).catch((reason) => {
+      // console.log("not logged in", reason);
+    });
+  },
   /*
   setupController: function(controller, model){
     this._super(controller, model);

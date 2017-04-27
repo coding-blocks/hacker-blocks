@@ -15,6 +15,7 @@ export default Base.extend({
   authenticate() {
     var args = [...arguments];
     return new Ember.RSVP.Promise(function(resolve, reject) {
+      /*
       let form = {};
       if (args[0].indexOf('@') > -1) {
         //user entered an email
@@ -22,9 +23,9 @@ export default Base.extend({
       } else {
         form.roll_number = args[0];
       }
-      form.password = args[1];
-      $.post(env.apiEndpoint + '/api/login', form, function (data) {
-        if (data.access_token != undefined) {
+      form.password = args[1];*/
+      $.get(env.apiEndpoint + '/oneauth/loggedIn?id=' + args[0], function (data) {
+        if (data.authorized != undefined && data.authorized == true) {
           resolve(data);
         } else {
           reject(data);

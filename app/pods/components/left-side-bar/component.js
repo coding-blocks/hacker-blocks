@@ -12,7 +12,11 @@ export default Ember.Component.extend({
   session: Ember.inject.service('session'),
   actions: {
     popup() {
-     $('#loginModal').modal('toggle');
+     // $('#loginModal').modal('toggle');
+      window.location = "https://account.codingblocks.com/oauth/authorize?" +
+      "response_type=code" +
+      "&client_id=3393643009" +
+      "&redirect_uri=http://dc12e9d8.ngrok.io/oneauth";
     }
   }
 });

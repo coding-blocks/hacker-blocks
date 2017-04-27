@@ -7,11 +7,12 @@ export default function () {
 
   if (! ENV.mirageEnabled) {
     this.passthrough();
+    this.passthrough('http://localhost:3000/oneauth/loggedIn');
     return;
   }
 
   this.get('/users', function () { return {
-    "data": [{ 
+    "data": [{
       "type": "user",
       "id": "72",
       "attributes": {
@@ -20,8 +21,8 @@ export default function () {
         "courses": null
       }
     },
-      { 
-        "type": "user", 
+      {
+        "type": "user",
         "id": "103",
         "attributes": {
           "user-id": 1581,
@@ -63,28 +64,28 @@ export default function () {
           created_at: "2017-03-28T06:23:07.909Z",
           updated_at: null
         },
-        relationships:{  
-          problems:{  
-            data:[  
-              {  
+        relationships:{
+          problems:{
+            data:[
+              {
                 type:"problem",
                 id:45
               },
-              {  
+              {
                 type:"problem",
                 id:54
-              },     
+              },
             ]
           }
         }
       }],
-      included:[  
-        {  
+      included:[
+        {
           type:"problem",
           id:"45",
-          attributes:{  
+          attributes:{
             name:"Hello Coding Blocks",
-            content:{  
+            content:{
               name:"Hello Coding Blocks",
               constraints:"",
               description:"Write a program to print \"Hello Coding Blocks !\" on the screen.\t\t",
@@ -98,34 +99,34 @@ export default function () {
             "time-limit":2,
             "created-by":2,
             image:"https://i.imgur.com/XYy1jZi.png",
-            tags:[  
+            tags:[
               "Implementation"
             ],
             status:null,
             "created-at":"2017-03-28T07:56:24.513Z",
             "updated-at":null,
-            cproblems:{  
+            cproblems:{
               "created-at":"2017-04-09T05:53:05.220Z",
               "updated-at":"2017-04-09T05:53:05.220Z",
               "p-id":45,
               "c-id":6
             }
           },
-          relationships:{  
-            submissions:{  
+          relationships:{
+            submissions:{
 
             },
-            testcases:{  
+            testcases:{
 
             }
           }
         },
-        {  
+        {
           type:"problem",
           id:"54",
-          attributes:{  
+          attributes:{
             name:"Hollow Rhombus Pattern",
-            content:{  
+            content:{
               name:"Hollow Rhombus Pattern",
               constraints:"N <= 20",
               description:"Given number of rows N, you have to print a Hollow Rhombus.",
@@ -143,18 +144,18 @@ export default function () {
             status:null,
             "created-at":"2017-03-28T07:56:24.513Z",
             "updated-at":null,
-            cproblems:{  
+            cproblems:{
               "created-at":"2017-04-09T05:53:05.220Z",
               "updated-at":"2017-04-09T05:53:05.220Z",
               "p-id":54,
               "c-id":6
             }
           },
-          relationships:{  
-            submissions:{  
+          relationships:{
+            submissions:{
 
             },
-            testcases:{  
+            testcases:{
 
             }
           }
