@@ -3,11 +3,11 @@
   <div class="user-info">
     {{#if session.isAuthenticated}}
     <div class="admin-image">
-      {{#link-to "users.user" model.userId}}
+      {{#link-to "users.user" model.id}}
         <img src="{{model.photo}}" class="img-resize img-circle" alt="" />
-        {{/link-to}}
+      {{/link-to}}
     </div>
-    <div class="admin-action-info"> <span><strong>Welcome</strong></span> {{#link-to "users.user" model.userId}}
+    <div class="admin-action-info"> <span><strong>Welcome</strong></span> {{#link-to "users.user" model.id}}
       <h3><strong>{{model.name}}</strong></h3>{{/link-to}}
     </div>
     {{else}}
