@@ -370,32 +370,38 @@ ul#clock li{
 }
 
 
-.breadcrumbs { 
-  font-size: 1.1em; 
+.breadcrumbs {
+  font-size: 1.1em;
   line-height: 1.5;
-  margin: 18px; 
+  margin: 18px;
   padding-left: 0;
-  li { 
-    display: inline; 
+  li {
+    display: inline;
     color: #fff !important;
-    list-style-type: none; 
-    margin-left: 0; 
+    list-style-type: none;
+    margin-left: 0;
       a {
         color: #fff !important;
       }
     }
-  li:before { 
-    content: "/"; 
-    padding-right: 3px; 
+  li:before {
+    content: "/";
+    padding-right: 3px;
     }
-  li:first-child:before { 
-    content: ""; 
-    padding-right: 0; 
+  li:first-child:before {
+    content: "";
+    padding-right: 0;
     }
-  li:last-child { 
+  li:last-child {
       a{
         pointer-events: none;
         cursor: default;
-      } 
+      }
     }
+}
+
+// Small Chat
+#Smallchat, #Smallchat * {
+  right: unset !important;
+  left: 0px !important;
 }
