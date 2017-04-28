@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from '../../../config/environment';
 
 export default Ember.Component.extend({
   didRenderDone: false,
@@ -15,8 +16,8 @@ export default Ember.Component.extend({
      // $('#loginModal').modal('toggle');
       window.location = "https://account.codingblocks.com/oauth/authorize?" +
       "response_type=code" +
-      "&client_id=5420309729" +
-      "&redirect_uri=http://localhost:4200";
+      "&client_id=2146237097" +
+      "&redirect_uri=" + config.publicUrl
     }
   }
 });

@@ -33,6 +33,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.apiEndpoint = 'http://localhost:3000',
     ENV.mirageEnabled = process.env.HACK_FRONTEND_MIRAGE_ENABLED
+    ENV.publicUrl = 'http://localhost:4200'
   }
 
   if (environment === 'test') {
