@@ -9,24 +9,51 @@
           <div class="panel-body clearfix">
             <h4>Submission #{{model.id}}</h4>
             {{#ace-editor readOnly=true showDefaultSnippet=false}}{{base64-decode model.source}}{{/ace-editor}}
+            <br/>
+            <br/>
             <div class="card ">
-              <div class="card-content">
-                <span class="card-title">Result</span>
+              <div class="body">
+                <div class="row">
+                <div class="card-title col-lg-1"><b>Result:</b></div>
+                <div class="col-lg-11">
               <p>
                 {{#if (eq model.result -1)}}
-                  <td>
-                    <div class="isa_warning"><i class="material-icons">warning</i>Compilation Error</div>
-                  </td>
+                    <span class="isa_warning"><i class="material-icons">warning</i>Compilation Error</span>
                 {{else if (eq model.score 100)}}
-                  <td>
-                    <div class="isa_success"><i class="material-icons">done</i>Correct Answer</div>
-                  </td>
+                    <span class="isa_success"><i class="material-icons">done</i>Correct Answer</span>
                 {{else }}
-                  <td>
-                    <div class="isa_error"><i class="material-icons">error</i>Wrong Answer</div>
-                  </td>
+                    <span class="isa_error"><i class="material-icons">error</i>Wrong Answer</span>
                 {{/if}}
                 </p>
+                </div>
+                </div>
+                <hr>
+                {{!----}}
+                <table class="table table-striped">
+                  <thead>
+                    <tr>
+                      <th>Test Case Number</th>
+                      <th>Result</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each model.tcRuns.testcases as |testcase index|}}
+                    <tr>
+                      <td> #{{sum index 1}}</td>
+                      <td>
+                        {{#if (eq testcase.result "timelimit")}}
+                            Time Limit Exceeded
+                        {{else if (eq testcase.result "correct")}}
+                            Passed
+                        {{else}}
+                            {{testcase.result}}
+                        {{/if}}
+                      </td>
+                    </tr>
+                    {{/each}}
+                  </tbody>
+                </table>
+                {{!----}}
               </div>
             </div>
           </div>
