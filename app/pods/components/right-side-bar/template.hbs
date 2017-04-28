@@ -1,97 +1,40 @@
 <aside id="rightsidebar" class="right-sidebar">
   <ul class="nav nav-tabs tab-nav-right" role="tablist">
-    <li role="presentation" class="active"><a href="#skins" data-toggle="tab">Skins</a></li>
-    <!--<li role="presentation"><a href="#chat" data-toggle="tab">Chat</a></li>-->
+    <li role="presentation" class="active"><a href="#online-users" data-toggle="tab">Online Users</a></li>
+    <li role="presentation"><a href="#chat" data-toggle="tab">Chat</a></li>
   </ul>
   <div class="tab-content">
-    <div role="tabpanel" class="tab-pane fade in active in active" id="skins">
-      <ul class="demo-choose-skin">
-        <li data-theme="red">
-          <div class="red"></div>
-          <span>Red</span> </li>
-        <li data-theme="purple">
-          <div class="purple"></div>
-          <span>Purple</span> </li>
-        <li data-theme="blue">
-          <div class="blue"></div>
-          <span>Blue</span> </li>
-        <li data-theme="cyan">
-          <div class="cyan"></div>
-          <span>Cyan</span> </li>
-        <li data-theme="green">
-          <div class="green"></div>
-          <span>Green</span> </li>
-        <li data-theme="deep-orange">
-          <div class="deep-orange"></div>
-          <span>Deep Orange</span> </li>
-        <li data-theme="blue-grey">
-          <div class="blue-grey"></div>
-          <span>Blue Grey</span> </li>
-        <li data-theme="black">
-          <div class="black"></div>
-          <span>Black</span> </li>
-        <li data-theme="blush" class="active">
-          <div class="blush"></div>
-          <span>Blush</span> </li>
-      </ul>
+    <div role="tabpanel" class="tab-pane fade in active in active" id="online-users">
+      <div class="list-group" id="online-users"></div>
     </div>
-    <!--
     <div role="tabpanel" class="tab-pane fade" id="chat">
-      <div class="demo-settings">
-        <div class="search">
-          <div class="input-group">
-            <div class="form-line">
-              <input type="text" class="form-control" placeholder="Search..." required autofocus>
-            </div>
+      <div class="col-sm-9 message_section">
+        <div class="row">
+          <div class="chat_area">
+            <ul class="list-unstyled">
+              {{#each messages as |message|}}
+              <li class="left clearfix">
+                <span class="chat-img1 pull-left">
+                      <img src="/images/student/random-avatar2.jpg" width="25" class="img-circle marginR10">
+                    <span>{{message.sender}}</span>
+                     </span>
+                <div class="chat-body1 clearfix">
+                  <p>{{message.text}}</p>
+                  <div class="chat_time pull-right">{{message.sentTime}}</div>
+                </div>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+          <!--chat_area-->
+          <div class="message_write">
+            {{textarea class="form-control" value=message cols="80" rows="6" placeholder="Type a message"}}
+            <div class="clearfix"></div>
+            <button {{action "sendMessage"}} class="pull-right btn btn-raised g-bg-blush2 waves-effect btn-sm">Send</button>
           </div>
         </div>
-        <h6>Recent</h6>
-        <ul>
-          <li class="online">
-            <div class="media"> <a class="pull-left" role="button" tabindex="0"> <img class="media-object " src="assets/images/random-avatar4.jpg" alt=""> </a>
-              <div class="media-body"> <span class="name">Claire Sassu</span> <span class="message">Can you share the...</span> <span class="badge badge-outline status"></span> </div>
-            </div>
-          </li>
-          <li class="online">
-            <div class="media"> <a class="pull-left" role="button" tabindex="0"> <img class="media-object " src="assets/images/random-avatar5.jpg" alt=""> </a>
-              <div class="media-body">
-                <div class="media-body"> <span class="name">Maggie jackson</span> <span class="message">Can you share the...</span> <span class="badge badge-outline status"></span> </div>
-              </div>
-            </div>
-          </li>
-          <li class="online">
-            <div class="media"> <a class="pull-left" role="button" tabindex="0"> <img class="media-object " src="assets/images/random-avatar3.jpg" alt=""> </a>
-              <div class="media-body">
-                <div class="media-body"> <span class="name">Joel King</span> <span class="message">Ready for the meeti...</span> <span class="badge badge-outline status"></span> </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <h6>Contacts</h6>
-        <ul>
-          <li class="offline">
-            <div class="media"> <a class="pull-left" role="button" tabindex="0"> <img class="media-object " src="assets/images/random-avatar4.jpg" alt=""> </a>
-              <div class="media-body">
-                <div class="media-body"> <span class="name">Joel King</span> <span class="badge badge-outline status"></span> </div>
-              </div>
-            </div>
-          </li>
-          <li class="online">
-            <div class="media"> <a class="pull-left" role="button" tabindex="0"> <img class="media-object " src="assets/images/random-avatar5.jpg" alt=""> </a>
-              <div class="media-body">
-                <div class="media-body"> <span class="name">Joel King</span> <span class="badge badge-outline status"></span> </div>
-              </div>
-            </div>
-          </li>
-          <li class="offline">
-            <div class="media"> <a class="pull-left " role="button" tabindex="0"> <img class="media-object " src="assets/images/random-avatar6.jpg" alt=""> </a>
-              <div class="media-body">
-                <div class="media-body"> <span class="name">Joel King</span> <span class="badge badge-outline status"></span> </div>
-              </div>
-            </div>
-          </li>
-        </ul>
       </div>
-    </div>-->
+    </div>
   </div>
+
 </aside>

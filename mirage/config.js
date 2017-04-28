@@ -5,22 +5,43 @@ export default function () {
   this.urlPrefix = `${ENV.apiEndpoint}`
   this.namespace = `/api`;
 
-  if (! ENV.mirageEnabled) {
+  if (!ENV.mirageEnabled) {
     this.passthrough();
     this.passthrough('http://localhost:3000/oneauth/login');
+    this.passthrough('http://ps1.pubnub.com/**');
+    this.passthrough('http://ps2.pubnub.com/**');
+    this.passthrough('http://ps3.pubnub.com/**');
+    this.passthrough('http://ps4.pubnub.com/**');
+    this.passthrough('http://ps5.pubnub.com/**');
+    this.passthrough('http://ps6.pubnub.com/**');
+    this.passthrough('http://ps7.pubnub.com/**');
+    this.passthrough('http://ps8.pubnub.com/**');
+    this.passthrough('http://ps9.pubnub.com/**');
+    this.passthrough('http://ps10.pubnub.com/**');
+    this.passthrough('http://ps11.pubnub.com/**');
+    this.passthrough('http://ps12.pubnub.com/**');
+    this.passthrough('http://ps13.pubnub.com/**');
+    this.passthrough('http://ps14.pubnub.com/**');
+    this.passthrough('http://ps15.pubnub.com/**');
+    this.passthrough('http://ps16.pubnub.com/**');
+    this.passthrough('http://ps17.pubnub.com/**');
+    this.passthrough('http://ps18.pubnub.com/**');
+    this.passthrough('http://ps19.pubnub.com/**');
+    this.passthrough('http://ps20.pubnub.com/**');
     return;
   }
 
-  this.get('/users', function () { return {
-    "data": [{
-      "type": "user",
-      "id": "72",
-      "attributes": {
-        "user-id": 1557,
-        "name": "Gaurav",
-        "courses": null
-      }
-    },
+  this.get('/users', function () {
+    return {
+      "data": [{
+        "type": "user",
+        "id": "72",
+        "attributes": {
+          "user-id": 1557,
+          "name": "Gaurav",
+          "courses": null
+        }
+      },
       {
         "type": "user",
         "id": "103",
@@ -30,7 +51,7 @@ export default function () {
           "courses": null
         }
       }]
-  };
+    };
   });
 
   this.get('/users/:user_id', function () {
@@ -64,98 +85,98 @@ export default function () {
           created_at: "2017-03-28T06:23:07.909Z",
           updated_at: null
         },
-        relationships:{
-          problems:{
-            data:[
+        relationships: {
+          problems: {
+            data: [
               {
-                type:"problem",
-                id:45
+                type: "problem",
+                id: 45
               },
               {
-                type:"problem",
-                id:54
+                type: "problem",
+                id: 54
               },
             ]
           }
         }
       }],
-      included:[
+      included: [
         {
-          type:"problem",
-          id:"45",
-          attributes:{
-            name:"Hello Coding Blocks",
-            content:{
-              name:"Hello Coding Blocks",
-              constraints:"",
-              description:"Write a program to print \"Hello Coding Blocks !\" on the screen.\t\t",
-              "input-format":"",
-              "sample-input":"",
-              "output-format":"Hello Coding Blocks !",
-              "sample-output":"Hello Coding Blocks !"
+          type: "problem",
+          id: "45",
+          attributes: {
+            name: "Hello Coding Blocks",
+            content: {
+              name: "Hello Coding Blocks",
+              constraints: "",
+              description: "Write a program to print \"Hello Coding Blocks !\" on the screen.\t\t",
+              "input-format": "",
+              "sample-input": "",
+              "output-format": "Hello Coding Blocks !",
+              "sample-output": "Hello Coding Blocks !"
             },
-            difficulty:1,
-            "mem-limit":512,
-            "time-limit":2,
-            "created-by":2,
-            image:"https://i.imgur.com/XYy1jZi.png",
-            tags:[
+            difficulty: 1,
+            "mem-limit": 512,
+            "time-limit": 2,
+            "created-by": 2,
+            image: "https://i.imgur.com/XYy1jZi.png",
+            tags: [
               "Implementation"
             ],
-            status:null,
-            "created-at":"2017-03-28T07:56:24.513Z",
-            "updated-at":null,
-            cproblems:{
-              "created-at":"2017-04-09T05:53:05.220Z",
-              "updated-at":"2017-04-09T05:53:05.220Z",
-              "p-id":45,
-              "c-id":6
+            status: null,
+            "created-at": "2017-03-28T07:56:24.513Z",
+            "updated-at": null,
+            cproblems: {
+              "created-at": "2017-04-09T05:53:05.220Z",
+              "updated-at": "2017-04-09T05:53:05.220Z",
+              "p-id": 45,
+              "c-id": 6
             }
           },
-          relationships:{
-            submissions:{
+          relationships: {
+            submissions: {
 
             },
-            testcases:{
+            testcases: {
 
             }
           }
         },
         {
-          type:"problem",
-          id:"54",
-          attributes:{
-            name:"Hollow Rhombus Pattern",
-            content:{
-              name:"Hollow Rhombus Pattern",
-              constraints:"N <= 20",
-              description:"Given number of rows N, you have to print a Hollow Rhombus.",
-              "input-format":"Single integer N.",
-              "sample-input":"5",
-              "output-format":"Print pattern.",
-              "sample-output":"    *****\n   *   *\n  *   *\n *   *\n*****"
+          type: "problem",
+          id: "54",
+          attributes: {
+            name: "Hollow Rhombus Pattern",
+            content: {
+              name: "Hollow Rhombus Pattern",
+              constraints: "N <= 20",
+              description: "Given number of rows N, you have to print a Hollow Rhombus.",
+              "input-format": "Single integer N.",
+              "sample-input": "5",
+              "output-format": "Print pattern.",
+              "sample-output": "    *****\n   *   *\n  *   *\n *   *\n*****"
             },
-            difficulty:1,
-            "mem-limit":15,
-            "time-limit":5,
-            "created-by":3,
-            image:"https://i.imgur.com/rpiexu7.png",
-            tags:null,
-            status:null,
-            "created-at":"2017-03-28T07:56:24.513Z",
-            "updated-at":null,
-            cproblems:{
-              "created-at":"2017-04-09T05:53:05.220Z",
-              "updated-at":"2017-04-09T05:53:05.220Z",
-              "p-id":54,
-              "c-id":6
+            difficulty: 1,
+            "mem-limit": 15,
+            "time-limit": 5,
+            "created-by": 3,
+            image: "https://i.imgur.com/rpiexu7.png",
+            tags: null,
+            status: null,
+            "created-at": "2017-03-28T07:56:24.513Z",
+            "updated-at": null,
+            cproblems: {
+              "created-at": "2017-04-09T05:53:05.220Z",
+              "updated-at": "2017-04-09T05:53:05.220Z",
+              "p-id": 54,
+              "c-id": 6
             }
           },
-          relationships:{
-            submissions:{
+          relationships: {
+            submissions: {
 
             },
-            testcases:{
+            testcases: {
 
             }
           }
@@ -280,7 +301,7 @@ export default function () {
   this.get('/problems/:problem_id', function () {
     return {
       data: {
-        id:1,
+        id: 1,
         type: "problem",
         attributes: {
           name: "The Great Coding Blocks Conundrum",
@@ -302,24 +323,24 @@ export default function () {
             "user-name": "Nishant Bhargava"
           }
         },
-          {
-            type: "submission",
-            id: "262",
-            attributes: {
-              "user-id": 1015,
-              score: 200,
-              "user-name": "Kamaldeep Singh"
-            }
-          },
-          {
-            type: "submission",
-            id: "952",
-            attributes: {
-              "user-id": 1768,
-              score: 200,
-              "user-name": "Rishab Arora"
-            }
-          },]
+        {
+          type: "submission",
+          id: "262",
+          attributes: {
+            "user-id": 1015,
+            score: 200,
+            "user-name": "Kamaldeep Singh"
+          }
+        },
+        {
+          type: "submission",
+          id: "952",
+          attributes: {
+            "user-id": 1768,
+            score: 200,
+            "user-name": "Rishab Arora"
+          }
+        },]
       };
     }
     else {
@@ -359,7 +380,7 @@ export default function () {
         id: 1,
         type: "user",
         attributes: {
-          user_id:1015,
+          user_id: 1015,
           name: "Ankit",
           'roll-number': "1234",
           email: "ankit@gmail.com"
@@ -367,8 +388,8 @@ export default function () {
       }
     };
   });
-  this.post('http://localhost:3000/api/login',function(){
-    return {user_id:1015,access_token:"2039ec223014abf2d11fa3b6624a32d6"};
+  this.post('http://localhost:3000/api/login', function () {
+    return { user_id: 1015, access_token: "2039ec223014abf2d11fa3b6624a32d6" };
   });
 
   this.get('/contests/:contest_id', function () {
@@ -421,7 +442,7 @@ export default function () {
             status: null,
             created_at: "2017-03-28T07:56:24.513Z",
             updated_at: null,
-            'submit-count':12,
+            'submit-count': 12,
             cproblems: {
               created_at: "2017-04-09T05:53:05.220Z",
               updated_at: "2017-04-09T05:53:05.220Z",
@@ -489,24 +510,24 @@ export default function () {
           }
         }
       },
-        {
-          type: "dailycb",
-          id: "4",
-          attributes: {
-            day: 20170305,
-            "created-at": null,
-            "updated-at": null,
-            problem_id: 49
-          },
-          relationships: {
-            problem: {
-              data: {
-                type: "problem",
-                id: 49
-              }
+      {
+        type: "dailycb",
+        id: "4",
+        attributes: {
+          day: 20170305,
+          "created-at": null,
+          "updated-at": null,
+          problem_id: 49
+        },
+        relationships: {
+          problem: {
+            data: {
+              type: "problem",
+              id: 49
             }
           }
-        }],
+        }
+      }],
       included: [
         {
           type: "problem",

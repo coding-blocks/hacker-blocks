@@ -399,3 +399,70 @@ ul#clock li{
       } 
     }
 }
+.message_section {
+  border: 1px solid #dddddd;
+  width: 100%;
+}
+.chat_area {
+  float: left;
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 100%;
+}
+.chat_area li {
+  padding: 14px 14px 0;
+}
+.chat_area li .chat-img1 img {
+  height: 40px;
+  width: 40px;
+}
+.chat_area .chat-body1 {
+  margin-left: 50px;
+}
+.chat-body1 p {
+  background: #fbf9fa none repeat scroll 0 0;
+  padding: 10px;
+}
+.chat_area .admin_chat .chat-body1 {
+  margin-left: 0;
+  margin-right: 50px;
+}
+.chat_area li:last-child {
+  padding-bottom: 10px;
+}
+.chat_area li{
+  border-bottom:1px dotted #a59a9a;
+}
+.message_write {
+  background: #f5f3f3 none repeat scroll 0 0;
+  float: left;
+  padding: 15px;
+  width: 100%;
+}
+.chat_time{
+  font-size: 10px;
+    font-weight: bold;
+    font-family:'Times New Roman';
+}
+.message_write textarea.form-control {
+  height: 70px;
+  padding: 10px;
+  border:1px solid lightgray;
+}
+
+
+.chat_bottom {
+  float: left;
+  margin-top: 13px;
+  width: 100%;
+}
+.sub_menu_ > li a, .sub_menu_ > li {
+  float: left;
+  width:100%;
+}
+.member_list li:hover {
+  background: #428bca none repeat scroll 0 0;
+  color: #fff;
+  cursor:pointer;
+}
