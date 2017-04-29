@@ -11,6 +11,7 @@ export default DS.Model.extend({
   endTime: DS.attr(),
   location: DS.attr(),
   image: DS.attr(),
+  duration: DS.attr(),
   problems: DS.hasMany('problems'),
   description: DS.attr(),
   endTimeObj: Ember.computed('endTime', {
