@@ -15,9 +15,10 @@ export default Ember.Controller.extend({
         `${ENV.apiEndpoint}/api/contest_attempts/${contestId}`,
         { userId: userId },
         (result) => {
+          this.transitionToRoute('contests.contest', contestId)
         }
       )
-        .fail(() => console.log ("You done goofed"));
+        .fail(() => console.log ("You done goofed!"));
     }
   }
 });
