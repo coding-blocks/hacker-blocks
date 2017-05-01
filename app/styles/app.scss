@@ -399,3 +399,9 @@ ul#clock li{
       } 
     }
 }
+
+.countdown-timer-container {
+  &, .card {
+    padding: 1em;
+  }
+}

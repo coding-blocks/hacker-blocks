@@ -14,9 +14,13 @@ export default Ember.Component.extend({
   // in child timers to achieve different kinds of effects.
   displayString: Ember.computed('now', function () {
     let now = this.get('now'),
-      endTime = this.get('endTime');
+      endTime = this.get('endTime'),
+      secondsLeft = Math.floor(endTime - (now / 1000)),
+      displaySeconds = secondsLeft % 60,
+      displayMinutes = Math.floor(secondsLeft / 60),
+      displayHours = Math.floor(secondsLeft / 3600);
 
-    return `${Math.floor(endTime - (now / 1000))}`;
+    return `${displayHours}h, ${displayMinutes}m, and ${displaySeconds}s`;
   }),
 
   // The update logic. You can update this in child timers to achieve different
