@@ -13,9 +13,9 @@ export default Ember.Component.extend({
     this._super(...arguments);
     if (this.get('session.isAuthenticated')) {
       var self = this;
-      self.get('PN').subscribe(['global-chat-prac']);
-      self.get('PN').presence(['global-chat-prac'], res => {
-        res.channels['global-chat-prac'].occupants.forEach(user => {
+      self.get('PN').subscribe(['global-new-chat']);
+      self.get('PN').presence(['global-new-chat'], res => {
+        res.channels['global-new-chat'].occupants.forEach(user => {
           self.get('store').queryRecord('user', { user_id: user.uuid, chat: true }).then(user => {
 
             let myUserId = self.get('session.data.authenticated.user_id');
@@ -33,11 +33,13 @@ export default Ember.Component.extend({
 
       self.get('PN').addListener(
         listenerObj => {
+            var photo = (listenerObj.message.sender.photo === '')?'/images/student/random-avatar2.jpg':listenerObj.message.sender.photo;
           var sentTime = new Date(listenerObj.timetoken / 1e4);
           var messageObj = {
             text: listenerObj.message.text,
-            sender: listenerObj.message.sender,
-            sentTime: moment(sentTime).format('llll')
+            senderName: listenerObj.sender.name,
+            senderPhoto:photo,
+            sentTime: moment(sentTime).format('MMM Do YYYY, h:mm a')
           };
           self.get('messages').pushObject(messageObj);
         },
@@ -57,7 +59,6 @@ export default Ember.Component.extend({
             });
           }
           else if (presenceObject.action === 'leave') {
-            console.log('left');
             $('#' + presenceObject.uuid).remove();
           }
           else {
@@ -65,20 +66,24 @@ export default Ember.Component.extend({
           }
         }
       );
-      self.get('PN').history('global-chat-prac', res => {
-        res.messages.forEach(message => {
+      self.get('PN').history('global-new-chat', res => {
+      res.messages.forEach(message => {
+            var photo = (message.entry.sender.photo === '')?'/images/student/random-avatar2.jpg':message.entry.sender.photo; 
           var sentTime = new Date(message.timetoken / 1e4);
           var obj = {
             text: message.entry.text,
-            sender: message.entry.sender,
+            senderName: message.entry.sender.name,
+            senderPhoto:photo,
             sentTime: moment(sentTime).format('MMM Do YYYY, h:mm a')
           };
           self.get('cachedMessages').pushObject(obj);
+          console.log(self.get('cachedMessages'));
         });
       });
     }
   },
   didRender() {
+     this._super(...arguments);
     $.AdminBSB.rightSideBar.activate();
     if (this.get('session.isAuthenticated')) {
       var self = this;
@@ -87,7 +92,7 @@ export default Ember.Component.extend({
   },
   actions: {
     sendMessage() {
-      this.get('PN').publishMessage('global-chat-prac', { text: this.get('message'), sender: this.get('model').get('name') });
+      this.get('PN').publishMessage('global-new-chat', { text: this.get('message'), sender: this.get('model') });
       this.set('message', '');
     }
   },

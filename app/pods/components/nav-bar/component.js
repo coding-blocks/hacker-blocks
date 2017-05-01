@@ -8,7 +8,7 @@ export default Ember.Component.extend({
   session: Ember.inject.service('session'),
   actions: {
     invalidateSession() {
-        this.get('PN').unsubscribe(['global-chat-prac']);
+        this.get('PN').unsubscribe(['global-new-chat']);
       this.get('PN').removeListener();
       this.get('session').invalidate();
     }

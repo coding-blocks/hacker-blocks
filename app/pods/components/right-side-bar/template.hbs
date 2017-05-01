@@ -1,4 +1,5 @@
 <aside id="rightsidebar" class="right-sidebar">
+  {{#if session.isAuthenticated}}
   <ul class="nav nav-tabs tab-nav-right" role="tablist">
     <li role="presentation" class="active"><a href="#online-users" data-toggle="tab">Online Users</a></li>
     <li role="presentation"><a href="#chat" data-toggle="tab">Chat</a></li>
@@ -14,13 +15,14 @@
             <ul class="list-unstyled">
               {{#each messages as |message|}}
               <li class="left clearfix">
-                <span class="chat-img1 pull-left">
-                      <img src="/images/student/random-avatar2.jpg" width="25" class="img-circle marginR10">
-                    <span>{{message.sender}}</span>
-                     </span>
                 <div class="chat-body1 clearfix">
+                  <div class="chat_time pull-right"><i class="material-icons">&#xE924;</i>{{message.sentTime}}</div>
                   <p>{{message.text}}</p>
-                  <div class="chat_time pull-right">{{message.sentTime}}</div>
+                <div class = "triangular_tip"></div>
+                </div>
+                <div class="chat-img1 pull-right">
+                  <img src={{message.senderPhoto}} width="25" class="img-circle marginR10">
+                  <span class="chat_sender">{{message.senderName}}</span>
                 </div>
               </li>
               {{/each}}
@@ -36,5 +38,7 @@
       </div>
     </div>
   </div>
-
+  {{else}}
+  <div>Please login to chat and view Online Users</div>
+  {{/if}}
 </aside>
