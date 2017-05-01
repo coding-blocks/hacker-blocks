@@ -402,12 +402,18 @@ ul#clock li{
 .message_section {
   border: 1px solid #dddddd;
   width: 100%;
+  height: 420px;
+  .row {
+    height: 100%;
+    #chatbox {
+      height: 100%;
+    }
+  }
 }
 .chat_area {
   float: left;
-  height: 300px;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
   width: 100%;
 }
 .chat_area li {
@@ -418,14 +424,14 @@ ul#clock li{
   width: 40px;
 }
 .chat_area .chat-body1 {
-  
+
 }
 .chat-body1 p {
   background: lightgray none repeat scroll 0 0;
   padding: 10px;
   border-radius: 10px;
   margin-top: 31px;
-  font-weight:normal !important; 
+  font-weight:normal !important;
 }
 .triangular_tip{
     content:'';

@@ -6,8 +6,8 @@ export default Ember.Service.extend({
   init(user_id) {
     console.log(user_id);
     this.pubnub = new PubNub({
-      publishKey: 'pub-c-f2a77069-0a29-453f-8140-a8cc1fd879a8',
-      subscribeKey: 'sub-c-3222e9f0-29a0-11e7-bc52-02ee2ddab7fe',
+      publishKey: 'pub-c-025e09ff-15ab-4e1f-ba9c-339e51eacc4d',
+      subscribeKey: 'sub-c-669496ec-2e5b-11e7-97de-0619f8945a4f',
       uuid: user_id
     });
   },
@@ -44,7 +44,7 @@ export default Ember.Service.extend({
       {
         channel,
         reverse: true,
-        stringifiedTimeToken: true, 
+        stringifiedTimeToken: true,
       },
       function (status, response) {
         callback(response);
@@ -72,9 +72,9 @@ export default Ember.Service.extend({
   removeListener(){
     var existingListener = {
     message: function() {
-    } 
+    }
 }
- 
+
 this.pubnub.removeListener(existingListener);
   }
 });

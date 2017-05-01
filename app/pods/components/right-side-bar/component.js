@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import moment from 'moment';
+import config from '../../../config/environment';
 
 const { inject: { service } } = Ember;
 
@@ -13,9 +14,9 @@ export default Ember.Component.extend({
     this._super(...arguments);
     if (this.get('session.isAuthenticated')) {
       var self = this;
-      self.get('PN').subscribe(['global-new-chat']);
-      self.get('PN').presence(['global-new-chat'], res => {
-        res.channels['global-new-chat'].occupants.forEach(user => {
+      self.get('PN').subscribe([config.GLOBAL_CHAT_NAME]);
+      self.get('PN').presence([config.GLOBAL_CHAT_NAME], res => {
+        res.channels[config.GLOBAL_CHAT_NAME].occupants.forEach(user => {
           self.get('store').queryRecord('user', { user_id: user.uuid, chat: true }).then(user => {
 
             let myUserId = self.get('session.data.authenticated.user_id');
@@ -67,7 +68,7 @@ export default Ember.Component.extend({
           }
         }
       );
-      self.get('PN').history('global-new-chat', res => {
+      self.get('PN').history(config.GLOBAL_CHAT_NAME, res => {
         res.messages.forEach(message => {
           var photo = (message.entry.sender.photo === '') ? '/images/student/random-avatar2.jpg' : message.entry.sender.photo;
           var sentTime = new Date(message.timetoken / 1e4);
@@ -78,7 +79,7 @@ export default Ember.Component.extend({
             sentTime: moment(sentTime).format('MMM Do YYYY, h:mm a')
           };
           self.get('cachedMessages').pushObject(obj);
-         
+
         });
         });
     }
@@ -93,7 +94,7 @@ export default Ember.Component.extend({
   },
   actions: {
     sendMessage() {
-      this.get('PN').publishMessage('global-new-chat', { text: this.get('message'), sender: this.get('model') });
+      this.get('PN').publishMessage(config.GLOBAL_CHAT_NAME, { text: this.get('message'), sender: this.get('model') });
       this.set('message', '');
     }
   },

@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import config from '../../../config/environment';
+
 const { inject: { service } } = Ember;
 export default Ember.Component.extend({
   navBarInitDone: false,
@@ -8,7 +10,7 @@ export default Ember.Component.extend({
   session: Ember.inject.service('session'),
   actions: {
     invalidateSession() {
-        this.get('PN').unsubscribe(['global-new-chat']);
+        this.get('PN').unsubscribe([config.GLOBAL_CHAT_NAME]);
       this.get('PN').removeListener();
       this.get('session').invalidate();
     }
