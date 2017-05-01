@@ -6,10 +6,12 @@
                     <div class="profile-header">
                         <div class="profile_info profile-align">
                             <div class="profile-image profile-align">
-                                {{#if user.image}}
-                                <img src="{{user.image}}" class="img-responsive" alt=""> {{else}}
-                                <img src="https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1" class="img-responsive"
-                                    alt=""> {{/if}}
+                                {{#if user.photo}}
+                                    <!--<img src="{{user.photo}}" class="img-responsive" alt="">-->
+                                  <img src="https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1" class="img-responsive" alt="">
+                                {{else}}
+                                    <img src="https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1" class="img-responsive" alt="">
+                                {{/if}}
                             </div>
                             <h4><strong>{{user.name}}</strong></h4>
                             <!--<span class="text-muted col-white">Java Specialist</span>-->

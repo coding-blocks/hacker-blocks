@@ -33,15 +33,16 @@ export default Ember.Component.extend({
 
       self.get('PN').addListener(
         listenerObj => {
-            var photo = (listenerObj.message.sender.photo === '')?'/images/student/random-avatar2.jpg':listenerObj.message.sender.photo;
+          var photo = (listenerObj.message.sender.photo === '') ? '/images/student/random-avatar2.jpg' : listenerObj.message.sender.photo;
           var sentTime = new Date(listenerObj.timetoken / 1e4);
           var messageObj = {
             text: listenerObj.message.text,
-            senderName: listenerObj.sender.name,
-            senderPhoto:photo,
+            senderName: listenerObj.message.sender.name,
+            senderPhoto: photo,
             sentTime: moment(sentTime).format('MMM Do YYYY, h:mm a')
           };
           self.get('messages').pushObject(messageObj);
+          $("#chatbox").animate({ scrollTop: $('#chatbox').prop("scrollHeight")}, 1000);
         },
         presenceObject => {
           if (presenceObject.action === 'join') {
@@ -67,23 +68,23 @@ export default Ember.Component.extend({
         }
       );
       self.get('PN').history('global-new-chat', res => {
-      res.messages.forEach(message => {
-            var photo = (message.entry.sender.photo === '')?'/images/student/random-avatar2.jpg':message.entry.sender.photo; 
+        res.messages.forEach(message => {
+          var photo = (message.entry.sender.photo === '') ? '/images/student/random-avatar2.jpg' : message.entry.sender.photo;
           var sentTime = new Date(message.timetoken / 1e4);
           var obj = {
             text: message.entry.text,
             senderName: message.entry.sender.name,
-            senderPhoto:photo,
+            senderPhoto: photo,
             sentTime: moment(sentTime).format('MMM Do YYYY, h:mm a')
           };
           self.get('cachedMessages').pushObject(obj);
-          console.log(self.get('cachedMessages'));
+         
         });
-      });
+        });
     }
   },
   didRender() {
-     this._super(...arguments);
+    this._super(...arguments);
     $.AdminBSB.rightSideBar.activate();
     if (this.get('session.isAuthenticated')) {
       var self = this;

@@ -11,7 +11,7 @@
     <div role="tabpanel" class="tab-pane fade" id="chat">
       <div class="col-sm-9 message_section">
         <div class="row">
-          <div class="chat_area">
+          <div class="chat_area" id = "chatbox">
             <ul class="list-unstyled">
               {{#each messages as |message|}}
               <li class="left clearfix">
@@ -39,6 +39,6 @@
     </div>
   </div>
   {{else}}
-  <div>Please login to chat and view Online Users</div>
+  <div class = "mid-page">Please login to chat</div>
   {{/if}}
 </aside>

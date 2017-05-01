@@ -4,7 +4,7 @@
     {{#if session.isAuthenticated}}
     <div class="admin-image">
       {{#link-to "users.user" model.id}}
-        <img src="{{model.photo}}" class="img-resize img-circle" alt="" />
+        <img src="{{if model.photo model.photo 'https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1'}}" class="img-resize img-circle" alt="" />
       {{/link-to}}
     </div>
     <div class="admin-action-info"> <span><strong>Welcome</strong></span> {{#link-to "users.user" model.id}}
