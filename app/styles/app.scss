@@ -515,3 +515,26 @@ ul#clock li{
     padding: 1em;
   }
 }
+@media (max-width: 767px) {
+  .header-right-section{
+    width:100%
+  }
+
+  .header-right-section .breadcrumbs{
+    float:left
+  }
+
+  .header-right-section .logout{
+    float:right;
+    text-align: right;
+    margin-top:-10px
+  }
+
+  .header-right-section .logout li{
+    display:inline-block
+  }
+  .header-right-section li{
+  vertical-align: top !important;
+
+  }
+}
