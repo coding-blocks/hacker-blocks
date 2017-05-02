@@ -1,0 +1,19 @@
+<section class="content text-center">
+  <div class="container-fluid">
+    <div class="block-header">
+      <h2>Attempt</h2>
+	  <small class="text-muted">
+		  Click below to start this contest. Note that if you close your
+		  browser, your session will resume from where you left off, but the
+		  timer will NOT stop.
+	  </small>
+    </div>
+	<div class="row clearfix">
+		<button
+			{{action 'attemptContest' this.model.id currentUser}}
+			class='btn btn-raised g-bg-blush2 waves-effect btn-sm'>
+			Attempt Contest
+		</button>
+	</div>
+  </div>
+</section>

@@ -509,3 +509,9 @@ ul#clock li{
   right: unset !important;
   left: 0px !important;
 }
+
+.countdown-timer-container {
+  &, .card {
+    padding: 1em;
+  }
+}
