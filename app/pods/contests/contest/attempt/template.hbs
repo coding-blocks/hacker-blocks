@@ -8,6 +8,11 @@
 		  timer will NOT stop.
 	  </small>
     </div>
+    {{#if error}}
+      <div class="alert alert-danger">
+        {{error}}
+      </div>
+    {{/if}}
 	<div class="row clearfix">
 		<button
 			{{action 'attemptContest' this.model.id currentUser}}
