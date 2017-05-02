@@ -399,6 +399,10 @@ ul#clock li{
       }
     }
 }
+#chat {
+  display: flex;
+  flex-direction: column-reverse;
+}
 .message_section {
   border: 1px solid #dddddd;
   width: 100%;
@@ -462,6 +466,7 @@ ul#clock li{
   float: left;
   padding: 15px;
   width: 100%;
+  margin-bottom: 30px;
 }
 .chat_time{
   font-size: 10px;
@@ -471,8 +476,8 @@ ul#clock li{
 }
 
 .message_write textarea.form-control {
-  height: 70px;
-  padding: 10px;
+  height: 50px;
+  padding: 5px;
   border:1px solid lightgray;
 }
 .chat_sender{

@@ -4,37 +4,32 @@
     <li role="presentation" class="active"><a href="#online-users" data-toggle="tab">Online Users</a></li>
     <li role="presentation"><a href="#chat" data-toggle="tab">Chat</a></li>
   </ul>
-  <div class="tab-content">
-    <div role="tabpanel" class="tab-pane fade in active in active" id="online-users">
+  <div class="tab-content" style="height: 100%;">
+    <div role="tabpanel" class="tab-pane fade in active in active" id="online-users" style="height: 100%;">
       <div class="list-group" id="online-users"></div>
     </div>
-    <div role="tabpanel" class="tab-pane fade" id="chat">
-      <div class="col-sm-9 message_section">
-        <div class="row">
-          <div class="chat_area" id = "chatbox">
-            <ul class="list-unstyled">
-              {{#each messages as |message|}}
-              <li class="left clearfix">
-                <div class="chat-body1 clearfix">
-                  <div class="chat_time pull-right"><i class="material-icons">&#xE924;</i>{{message.sentTime}}</div>
-                  <p>{{message.text}}</p>
+    <div role="tabpanel" class="tab-pane fade" id="chat" style="height: 100%;">
+      <div class="message_write">
+        {{textarea class="form-control" value=message cols="80" rows="6" placeholder="Type a message"}}
+        <div class="clearfix"></div>
+        <button {{action "sendMessage"}} class="pull-right btn btn-raised g-bg-blush2 waves-effect btn-sm">Send</button>
+      </div>
+      <div class="chat_area" id = "chatbox">
+        <ul class="list-unstyled">
+          {{#each messages as |message|}}
+            <li class="left clearfix">
+              <div class="chat-body1 clearfix">
+                <div class="chat_time pull-right"><i class="material-icons">&#xE924;</i>{{message.sentTime}}</div>
+                <p>{{message.text}}</p>
                 <div class = "triangular_tip"></div>
-                </div>
-                <div class="chat-img1 pull-right">
-                  <img src={{message.senderPhoto}} width="25" class="img-circle marginR10">
-                  <span class="chat_sender">{{message.senderName}}</span>
-                </div>
-              </li>
-              {{/each}}
-            </ul>
-          </div>
-          <!--chat_area-->
-          <div class="message_write">
-            {{textarea class="form-control" value=message cols="80" rows="6" placeholder="Type a message"}}
-            <div class="clearfix"></div>
-            <button {{action "sendMessage"}} class="pull-right btn btn-raised g-bg-blush2 waves-effect btn-sm">Send</button>
-          </div>
-        </div>
+              </div>
+              <div class="chat-img1 pull-right">
+                <img src={{message.senderPhoto}} width="25" class="img-circle marginR10">
+                <span class="chat_sender">{{message.senderName}}</span>
+              </div>
+            </li>
+          {{/each}}
+        </ul>
       </div>
     </div>
   </div>
