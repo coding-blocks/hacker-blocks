@@ -1,8 +1,21 @@
 <section class="content home">
   <div class="container-fluid">
-    <div class="block-header">
-      <h2>Problem</h2>
-      <small class="text-muted">Solve this problem and get ranked among your peers</small>
+    <div class="row clearfix" style="margin-left: 0">
+      <div class="col-md-6 block-header">
+        <h2>Problem</h2>
+        <small class="text-muted">Solve this problem and get ranked among your peers</small>
+      </div>
+      {{#if contest.duration}}
+        <div class="countdown-timer-container col-md-offset-3 col-md-3">
+          <div class="card">
+            {{#countdown-timer
+              startTime=currentAttempt.data.attributes.start-time
+              duration=contest.duration
+              onComplete=onComplete}}
+            {{/countdown-timer}}
+          </div>
+        </div>
+      {{/if}}
     </div>
     <div class="row clearfix">
       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
