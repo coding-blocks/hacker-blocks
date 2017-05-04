@@ -1,12 +1,17 @@
 <aside id="rightsidebar" class="right-sidebar">
   {{#if session.isAuthenticated}}
   <ul class="nav nav-tabs tab-nav-right" role="tablist">
-    <li role="presentation" class="active"><a href="#online-users" data-toggle="tab">Online Users</a></li>
+    <li role="presentation" class="active"><a href="#online-users-wrapper" data-toggle="tab">Online Users</a></li>
     <li role="presentation"><a href="#chat" data-toggle="tab">Chat</a></li>
   </ul>
   <div class="tab-content" style="height: 100%;">
-    <div role="tabpanel" class="tab-pane fade in active in active" id="online-users" style="height: 100%;">
-      <div class="list-group" id="online-users"></div>
+    <div role="tabpanel" class="tab-pane fade in active in active" id="online-users-wrapper" style="height: 100%;">
+      <ul class="list-group" id="online-users">
+        {{#each onlineUsers as |user|}}
+          {{log "user" user}}
+          <li id="{{user.id}}" class="list-group-item"><img src ={{user.photo}} width="25" class="img-circle marginR10">{{user.name}}</li>
+        {{/each}}
+      </ul>
     </div>
     <div role="tabpanel" class="tab-pane fade" id="chat" style="height: 100%;">
       <div class="message_write">

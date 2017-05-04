@@ -8,6 +8,7 @@ export default Ember.Component.extend({
   didRenderDone: false,
   PN: service('pn'),
   messages: Ember.A([]),
+  onlineUsers:  Ember.A([]),
   session: service('session'),
   store: Ember.inject.service(),
   intervalId: null,
@@ -17,18 +18,16 @@ export default Ember.Component.extend({
       var self = this;
       self.set('messages', Ember.A([]));
       self.get('PN').subscribe([config.GLOBAL_CHAT_NAME]);
+
       self.get('PN').presence([config.GLOBAL_CHAT_NAME], res => {
         res.channels[config.GLOBAL_CHAT_NAME].occupants.forEach(user => {
           self.get('store').queryRecord('user', { user_id: user.uuid, chat: true }).then(user => {
-
             let myUserId = self.get('session.data.authenticated.user_id');
-
             if (user.get('id') !== String(myUserId)) {
               if (user.get('photo') === null || user.get('photo') === '') {
                 user.set('photo', '/images/student/random-avatar2.jpg');
               }
-              var $new_user = $('<li id="' + user.get('id') + '" class="list-group-item"><img src =' + user.get('photo') + ' width="25" class="img-circle marginR10">' + user.get('name') + '</li>')
-              $('#online-users').append($new_user);
+              this.get('onlineUsers').pushObject(user);
             }
           });
         });
@@ -53,7 +52,6 @@ export default Ember.Component.extend({
               $('#chat-icon .material-icons').fadeTo('slow', 0.5).fadeTo('slow', 1.0);
             }, 2000);
 
-            console.log(intervalId);
             self.set('intervalId', intervalId);
           }
         },
@@ -65,14 +63,12 @@ export default Ember.Component.extend({
                 if (user.get('photo') === null || user.get('photo') === '') {
                   user.set('photo', '/images/student/random-avatar2.jpg');
                 }
-                var $new_user = $('<li id="' + user.get('id') + '" class="list-group-item"><img src =' + user.get('photo') + ' width="25" class="img-circle marginR10">' + user.get('name') + '</li>');
-                $('#online-users').append($new_user);
+                console.log("userObj", user);
+                this.get('onlineUsers').pushObject(user);
               }
             });
           } else if (presenceObject.action === 'leave') {
             $('#' + presenceObject.uuid).remove();
-          } else {
-            console.log(presenceObject.action);
           }
         }
       );
