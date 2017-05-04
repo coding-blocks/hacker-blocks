@@ -373,7 +373,7 @@ ul#clock li{
 .breadcrumbs {
   font-size: 1.1em;
   line-height: 1.5;
-  margin: 18px;
+  margin: 15px;
   padding-left: 0;
   li {
     display: inline;
@@ -516,25 +516,29 @@ ul#clock li{
   }
 }
 @media (max-width: 767px) {
-  .header-right-section{
+  .block-header {
+    margin-top: 46px;
+  }
+ 
+  .header-right-section {
     width:100%
   }
 
-  .header-right-section .breadcrumbs{
+  .header-right-section .breadcrumbs {
     float:left
   }
 
-  .header-right-section .logout{
+  .header-right-section .logout {
     float:right;
     text-align: right;
     margin-top:-10px
   }
 
-  .header-right-section .logout li{
+  .header-right-section .logout li {
     display:inline-block
   }
-  .header-right-section li{
-  vertical-align: top !important;
 
+  .header-right-section li {
+  vertical-align: top !important
   }
 }
