@@ -5,19 +5,16 @@ import config from '../../../config/environment';
 const { inject: { service } } = Ember;
 
 export default Ember.Component.extend({
+  didRenderDone: false,
   PN: service('pn'),
   messages: Ember.A([]),
   session: service('session'),
   store: Ember.inject.service(),
   intervalId: null,
-  cachedMessages: Ember.A([]),
   init() {
     this._super(...arguments);
-
-
     if (this.get('session.isAuthenticated')) {
       var self = this;
-      self.set('cachedMessages', Ember.A([]));
       self.set('messages', Ember.A([]));
       self.get('PN').subscribe([config.GLOBAL_CHAT_NAME]);
       self.get('PN').presence([config.GLOBAL_CHAT_NAME], res => {
@@ -47,11 +44,11 @@ export default Ember.Component.extend({
             senderPhoto: photo,
             sentTime: moment(sentTime).format('MMM Do YYYY, h:mm a')
           };
-          self.get('cachedMessages').pushObject(messageObj);
+          self.get('messages').pushObject(messageObj);
           $("#chatbox").animate({ scrollTop: $('#chatbox').prop("scrollHeight") }, 1000);
 
           new Audio("/media/notification-tone.mp3").play();
-         if (!$('#rightsidebar').hasClass('open')) {
+          if (!$('#rightsidebar').hasClass('open')) {
             var intervalId = window.setInterval(function () {
               $('#chat-icon .material-icons').fadeTo('slow', 0.5).fadeTo('slow', 1.0);
             }, 2000);
@@ -70,15 +67,11 @@ export default Ember.Component.extend({
                 }
                 var $new_user = $('<li id="' + user.get('id') + '" class="list-group-item"><img src =' + user.get('photo') + ' width="25" class="img-circle marginR10">' + user.get('name') + '</li>');
                 $('#online-users').append($new_user);
-
-
               }
             });
-          }
-          else if (presenceObject.action === 'leave') {
+          } else if (presenceObject.action === 'leave') {
             $('#' + presenceObject.uuid).remove();
-          }
-          else {
+          } else {
             console.log(presenceObject.action);
           }
         }
@@ -93,8 +86,7 @@ export default Ember.Component.extend({
             senderPhoto: photo,
             sentTime: moment(sentTime).format('MMM Do YYYY, h:mm a')
           };
-          self.get('cachedMessages').pushObject(obj);
-
+          self.get('messages').pushObject(obj);
         });
       });
 
@@ -102,15 +94,16 @@ export default Ember.Component.extend({
   },
   didRender() {
     this._super(...arguments);
-    $.AdminBSB.rightSideBar.activate();
+    if (this.get('didRenderDone') === false) {
+      $.AdminBSB.rightSideBar.activate();
+      this.set('didRenderDone', true);
+    }
     if (this.get('session.isAuthenticated')) {
-      var self = this;
-      self.set('messages', self.get('cachedMessages'));
-      $('#chat-icon').click(function () {
-        if (self.get('intervalId') !== null) {
+      $('#chat-icon').click(() => {
+        if (this.get('intervalId') !== null) {
           window.clearInterval(self.get('intervalId'));
         }
-      });  
+      });
   }
   },
   actions: {
