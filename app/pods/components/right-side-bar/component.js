@@ -9,11 +9,16 @@ export default Ember.Component.extend({
   messages: Ember.A([]),
   session: service('session'),
   store: Ember.inject.service(),
+  intervalId: null,
   cachedMessages: Ember.A([]),
   init() {
     this._super(...arguments);
+
+
     if (this.get('session.isAuthenticated')) {
       var self = this;
+      self.set('cachedMessages', Ember.A([]));
+      self.set('messages', Ember.A([]));
       self.get('PN').subscribe([config.GLOBAL_CHAT_NAME]);
       self.get('PN').presence([config.GLOBAL_CHAT_NAME], res => {
         res.channels[config.GLOBAL_CHAT_NAME].occupants.forEach(user => {
@@ -34,7 +39,7 @@ export default Ember.Component.extend({
 
       self.get('PN').addListener(
         listenerObj => {
-          var photo = (listenerObj.message.sender.photo === '') ? '/images/student/random-avatar2.jpg' : listenerObj.message.sender.photo;
+          var photo = (listenerObj.message.sender.photo === '') || (listenerObj.message.sender.photo === null) ? '/images/student/random-avatar2.jpg' : listenerObj.message.sender.photo;
           var sentTime = new Date(listenerObj.timetoken / 1e4);
           var messageObj = {
             text: listenerObj.message.text,
@@ -42,8 +47,18 @@ export default Ember.Component.extend({
             senderPhoto: photo,
             sentTime: moment(sentTime).format('MMM Do YYYY, h:mm a')
           };
-          self.get('messages').pushObject(messageObj);
-          $("#chatbox").animate({ scrollTop: $('#chatbox').prop("scrollHeight")}, 1000);
+          self.get('cachedMessages').pushObject(messageObj);
+          $("#chatbox").animate({ scrollTop: $('#chatbox').prop("scrollHeight") }, 1000);
+
+          new Audio("/media/notification-tone.mp3").play();
+         if (!$('#rightsidebar').hasClass('open')) {
+            var intervalId = window.setInterval(function () {
+              $('#chat-icon .material-icons').fadeTo('slow', 0.5).fadeTo('slow', 1.0);
+            }, 2000);
+
+            console.log(intervalId);
+            self.set('intervalId', intervalId);
+          }
         },
         presenceObject => {
           if (presenceObject.action === 'join') {
@@ -70,7 +85,7 @@ export default Ember.Component.extend({
       );
       self.get('PN').history(config.GLOBAL_CHAT_NAME, res => {
         res.messages.forEach(message => {
-          var photo = (message.entry.sender.photo === '') ? '/images/student/random-avatar2.jpg' : message.entry.sender.photo;
+          var photo = (message.entry.sender.photo === '') || (message.entry.sender.photo === null) ? '/images/student/random-avatar2.jpg' : message.entry.sender.photo;
           var sentTime = new Date(message.timetoken / 1e4);
           var obj = {
             text: message.entry.text,
@@ -81,7 +96,8 @@ export default Ember.Component.extend({
           self.get('cachedMessages').pushObject(obj);
 
         });
-        });
+      });
+
     }
   },
   didRender() {
@@ -90,7 +106,12 @@ export default Ember.Component.extend({
     if (this.get('session.isAuthenticated')) {
       var self = this;
       self.set('messages', self.get('cachedMessages'));
-    }
+      $('#chat-icon').click(function () {
+        if (self.get('intervalId') !== null) {
+          window.clearInterval(self.get('intervalId'));
+        }
+      });  
+  }
   },
   actions: {
     sendMessage() {
