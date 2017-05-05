@@ -2,8 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   actions: {
-    redirectToContest() {
-      this.get('target.router').refresh()
+    redirectToContest(model) {
+      //this.get('target.router').refresh()
+      this.transitionToRoute('contests.contest.contest-result', model.contest.id);
     }
   }
 });

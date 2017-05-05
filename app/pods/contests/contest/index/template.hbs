@@ -11,7 +11,7 @@
             {{#countdown-timer
               startTime=model.currentAttempt.data.attributes.start-time
               duration=model.contest.duration
-              onComplete=(action 'redirectToContest')}}
+              onComplete=(action 'redirectToContest' model)}}
             {{/countdown-timer}}
           </div>
         </div>
