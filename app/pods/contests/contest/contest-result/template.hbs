@@ -1,17 +1,15 @@
 <section class="content">
-
     <div class="container-fluid">
         <div class="block-header">
-            <h3 class="text-center">Result</h3>
-            <p class="text-center">Here is the result of contest</p>
-            <h2 class = "text-center">Total Score - {{totalScore}}</h2> 
-           
+            <h2>Result</h2>
+            <small class="text-muted">The result of your contest is available</small>
         </div>
         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-md-offset-4">
+            <h3 class = "text-center">Total Score - {{totalScore}}</h3>
             <table class="table table-striped text-center">
                 <thead>
                     <tr class = "text-center">
-                        <th data-field="serial-id">Serial Id</th>
+                        <th data-field="serial-id">#</th>
                         <th data-field="problem">Problem</th>
                         <th data-field="score">Score</th>
                         <th data-field="language">Language</th>
@@ -27,19 +25,19 @@
                         <td>{{decimal-to-whole submission.score}}</td>
                         <td>{{getlang submission.language}}</td>
                     </tr>
-                    {{/each}} 
-                    {{else}} 
-                    {{#each model.contest.problems as |problem index|}} 
+                    {{/each}}
+                    {{else}}
+                    {{#each model.contest.problems as |problem index|}}
                    <tr>
                     <td>{{sum index 1}}</td>
                         <td>
-                            {{problem.name}} 
+                            {{problem.name}}
                         </td>
                         <td>0</td>
-                        <td>NA</td>   
+                        <td>NA</td>
                    </tr>
-                    {{/each}} 
-                    {{/if}} 
+                    {{/each}}
+                    {{/if}}
                 </tbody>
             </table>
         </div>
