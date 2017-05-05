@@ -1,6 +1,6 @@
 {{log "meta" model.problem.meta}}
 {{#problem-parent problem=model.problem leaderboard=model.leaderboard contestId=model.contest.id
-                  userCount=model.meta.userCount onComplete=(action 'redirectToContest') contest=model.contest
+                  userCount=model.meta.userCount onComplete=(action 'redirectToContest' model) contest=model.contest
                   currentAttempt=model.currentAttempt
                   parentRoute='contests.contest.problem'}}
   {{outlet}}

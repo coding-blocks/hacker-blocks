@@ -25,33 +25,33 @@ export default Ember.Component.extend({
 
   // The update logic. You can update this in child timers to achieve different
   // steps (say, increment the clock by five each second, etc).
-  tick () {
+  tick() {
     let now = this.get('now'),
       endTime = this.get('endTime');
 
     this.set('now', (new Date().getTime()));
   },
 
-  init (timestamp) {
+  init(timestamp) {
     this._super(...arguments);
 
     let startTime = this.get('startTime'),
-        duration = this.get('duration');
+      duration = this.get('duration');
 
     this.tick()
   },
 
-  didRender () {
+  didRender() {
     let now = this.get('now'),
       endTime = this.get('endTime');
 
     if ((now / 1000) > endTime) {
       this.get('onComplete')();
+    } else {
+      Ember.run.later(
+        this.get('tick').bind(this),
+        1000
+      );
     }
-
-    Ember.run.later(
-      this.get('tick').bind(this),
-      1000
-    )
   }
 });

@@ -21,6 +21,7 @@ Router.map(function() {
         this.route('leaderboard');
       });
       this.route('attempt', { path: '/attempt' });
+      this.route('contest-result');
     });
     this.route('upcoming',{ path: '/upcoming/c/:contest_id' });
   });
