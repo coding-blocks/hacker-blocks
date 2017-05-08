@@ -2,34 +2,38 @@ import ENV from "../config/environment";
 
 export default function () {
 
-  this.urlPrefix = `${ENV.apiEndpoint}`
+  this.urlPrefix = `${ENV.apiEndpoint}`;
   this.namespace = `/api`;
+
+
+  this.passthrough('https://ps1.pubnub.com/**');
+  this.passthrough('https://ps2.pubnub.com/**');
+  this.passthrough('https://ps3.pubnub.com/**');
+  this.passthrough('https://ps4.pubnub.com/**');
+  this.passthrough('https://ps5.pubnub.com/**');
+  this.passthrough('https://ps6.pubnub.com/**');
+  this.passthrough('https://ps7.pubnub.com/**');
+  this.passthrough('https://ps8.pubnub.com/**');
+  this.passthrough('https://ps9.pubnub.com/**');
+  this.passthrough('https://ps10.pubnub.com/**');
+  this.passthrough('https://ps11.pubnub.com/**');
+  this.passthrough('https://ps12.pubnub.com/**');
+  this.passthrough('https://ps13.pubnub.com/**');
+  this.passthrough('https://ps14.pubnub.com/**');
+  this.passthrough('https://ps15.pubnub.com/**');
+  this.passthrough('https://ps16.pubnub.com/**');
+  this.passthrough('https://ps17.pubnub.com/**');
+  this.passthrough('https://ps18.pubnub.com/**');
+  this.passthrough('https://ps19.pubnub.com/**');
+  this.passthrough('https://ps20.pubnub.com/**');
+
 
   if (!ENV.mirageEnabled) {
     this.passthrough();
     this.passthrough('http://localhost:3000/oneauth/login');
-    this.passthrough('http://ps1.pubnub.com/**');
-    this.passthrough('http://ps2.pubnub.com/**');
-    this.passthrough('http://ps3.pubnub.com/**');
-    this.passthrough('http://ps4.pubnub.com/**');
-    this.passthrough('http://ps5.pubnub.com/**');
-    this.passthrough('http://ps6.pubnub.com/**');
-    this.passthrough('http://ps7.pubnub.com/**');
-    this.passthrough('http://ps8.pubnub.com/**');
-    this.passthrough('http://ps9.pubnub.com/**');
-    this.passthrough('http://ps10.pubnub.com/**');
-    this.passthrough('http://ps11.pubnub.com/**');
-    this.passthrough('http://ps12.pubnub.com/**');
-    this.passthrough('http://ps13.pubnub.com/**');
-    this.passthrough('http://ps14.pubnub.com/**');
-    this.passthrough('http://ps15.pubnub.com/**');
-    this.passthrough('http://ps16.pubnub.com/**');
-    this.passthrough('http://ps17.pubnub.com/**');
-    this.passthrough('http://ps18.pubnub.com/**');
-    this.passthrough('http://ps19.pubnub.com/**');
-    this.passthrough('http://ps20.pubnub.com/**');
     return;
   }
+
 
   this.get('/users', function () {
     return {
@@ -78,12 +82,46 @@ export default function () {
         attributes: {
           name: "Blocks Of Code : March Edition",
           description: "Public contest for anyone to try their hand on",
-          start_time: 1488326400,
-          end_time: 1490918400,
+          "start-time": 1488326400,
+          "end-time": 1490918400,
+          duration: null,
+          "private-code": null,
           image: "https://bizcircle.att.com/wp-content/uploads/2015/03/buildingblocks_737.jpg",
           status: 1,
-          created_at: "2017-03-28T06:23:07.909Z",
-          updated_at: null
+          "max-attempts": null,
+          "created-at": "2017-03-28T06:23:07.909Z",
+          "updated-at": null
+        },
+        relationships: {
+          problems: {
+            data: [
+              {
+                type: "problem",
+                id: 45
+              },
+              {
+                type: "problem",
+                id: 54
+              },
+            ]
+          }
+        }
+      },
+      {
+        type: "contest",
+        id: 24,
+        attributes: {
+          name: "Blocks of Code: May Edition",
+          description: "Public contest for anyone to try their hands on.",
+          "start-time": 1493609400,
+          "end-time": 1496211900,
+          duration: 1000,
+          "private-code": null,
+          image: "https://i.imgur.com/pxxMSyn.png",
+          status: 1,
+          "max-attempts": 1,
+          "created-at": "2017-05-01T05:35:31.950Z",
+          "updated-at": "2017-05-01T05:36:46.244Z"
         },
         relationships: {
           problems: {
@@ -343,6 +381,67 @@ export default function () {
         },]
       };
     }
+    else if (request.queryParams.timedContest) {
+      return {
+        data: [
+          {
+            type: "submission",
+            id: 3687,
+            attributes: {
+              "user-id": 262,
+              source: "I2luY2x1ZGUgPGlvc3RyZWFtPgp1c2luZyBuYW1lc3BhY2Ugc3RkOwppbnQgbWFpbigpIHsKICAgIAp9Cg==",
+              "submit-at": 1494239873,
+              language: "cpp",
+              score: 0,
+              result: 1,
+              "problem-id": -1,
+              "tc-runs": {
+                testcases: [
+                  {
+                    output: "",
+                    result: "no-output"
+                  }
+                ]
+              },
+              "created-at": "2017-05-08T10:37:53.320Z",
+              "updated-at": "2017-05-08T10:37:53.320Z",
+              "p-id": 140,
+              "c-id": 24,
+              "problem-name": "Tree - Find sum"
+            }
+          },
+          {
+            type: "submission",
+            id: "3688",
+            attributes: {
+              "user-id": 262,
+              source: "cHVibGljIGNsYXNzIE1haW4gewogICAgcHVibGljIHN0YXRpYyB2b2lkIG1haW4oU3RyaW5nIGFyZ3NbXSkgewogICAgICAgIAogICAgfQp9",
+              "submit-at": 1494239959,
+              language: "java",
+              score: 0,
+              result: 1,
+              "problem-id": -1,
+              "tc-runs": {
+                testcases: [
+                  {
+                    output: "",
+                    result: "no-output"
+                  },
+                  {
+                    output: "",
+                    result: "no-output"
+                  }
+                ]
+              },
+              "created-at": "2017-05-08T10:39:19.322Z",
+              "updated-at": "2017-05-08T10:39:19.322Z",
+              "p-id": 133,
+              "c-id": 24,
+              "problem-name": "Alex Goes Shopping"
+            }
+          }]
+      };
+    }
     else {
       return {
         data: [{
@@ -486,156 +585,210 @@ export default function () {
     };
   });
 
-
-
-
-
-  this.get('/dailycbs', function () {
-    return {
-      data: [{
-        type: "dailycb",
-        id: 6,
-        attributes: {
-          day: 20170303,
-          "created-at": null,
-          "updated-at": null,
-          problem_id: 64
-        },
-        relationships: {
-          problem: {
-            data: {
-              type: "problem",
-              id: 64
-            }
-          }
-        }
-      },
-      {
-        type: "dailycb",
-        id: "4",
-        attributes: {
-          day: 20170305,
-          "created-at": null,
-          "updated-at": null,
-          problem_id: 49
-        },
-        relationships: {
-          problem: {
-            data: {
-              type: "problem",
-              id: 49
-            }
-          }
-        }
-      }],
-      included: [
-        {
-          type: "problem",
-          id: 64,
+  this.get('/dailycbs', function (db, request) {
+    if (request.queryParams.p_id) {
+      return {
+        data: {
+          type: "dailycb",
+          id: "33",
           attributes: {
-            name: "Super Power",
-            content: {
+            day: 20170504,
+            "created-at": "2017-05-01T05:38:32.529Z",
+            "updated-at": "2017-05-01T05:38:32.551Z",
+            "problem-id": 92
+          },
+          relationships: {
+            problem: {
+              data: {
+                type: "problem",
+                id: 92
+              }
+            }
+          }
+        },
+        included: [
+          {
+            type: "problem",
+            id: "92",
+            attributes: {
+              name: "Light’s New Car",
+              content: {
+                name: "Light’s New Car",
+                constraints: "1 <= T <= 10 \n1 <= A,B <= 10^100000 \nA % (10^9 + 7) != 0\n",
+                description: "Light wants to purchase a new car. The price of the car is A. After each passing day, the price of the car becomes A times the price on the previous day. However, B days have passed since the launch of the new car. Light doesn’t know how to calculate the price of the car on the Bth day, he has asked for your help.\n\nYour task is to tell the price of the car on the Bth day. Since, the price can be a very large number, please tell him the price modulo 10^9 + 7.\n",
+                "input-format": "The first line contains an integer T, the number of testcases. It's followed by T lines. \nEach testcase will contain two integers A & B separated by a space.\n",
+                "sample-input": "5\n3 2\n4 5\n7 4\n34534985349875439875439875349875 93475349759384754395743975349573495\n34543987529435983745230948023948 3498573497543987543985743989120393097595572309482304\n",
+                "output-format": "Output T lines, each corresponding to the answer of the testcase.",
+                "sample-output": "9\n1024\n2401\n735851262\n985546465\n"
+              },
+              difficulty: 2,
+              "mem-limit": 512,
+              "time-limit": 2,
+              "created-by": null,
+              image: "httpS://i.imgur.com/nMD0fGp.png",
+              tags: [
+
+              ],
+              status: null,
+              source: null,
+              "created-at": "2017-03-28T07:56:24.513Z",
+              "updated-at": "2017-04-10T18:21:19.884Z",
+              "submit-count": 13,
+              meta: {
+                "user-count": "5"
+              },
+              "user-count": "5"
+            },
+            relationships: {
+              submissions: {
+                data: [
+
+                ]
+              },
+              testcases: {
+
+              }
+            }
+          }
+        ]
+      };
+    }
+    else if(request.queryParams.count && request.queryParams.day){
+      return {
+        data: [{
+          type: "dailycb",
+          id: 6,
+          attributes: {
+            day: 20170303,
+            "created-at": null,
+            "updated-at": null,
+            problem_id: 64
+          },
+          relationships: {
+            problem: {
+              data: {
+                type: "problem",
+                id: 64
+              }
+            }
+          }
+        },
+        {
+          type: "dailycb",
+          id: "4",
+          attributes: {
+            day: 20170305,
+            "created-at": null,
+            "updated-at": null,
+            problem_id: 49
+          },
+          relationships: {
+            problem: {
+              data: {
+                type: "problem",
+                id: 49
+              }
+            }
+          }
+        }],
+        included: [
+          {
+            type: "problem",
+            id: 64,
+            attributes: {
               name: "Super Power",
-              constraints: "",
-              description: "Input two numbers a and b . We need to calculate a power b."
+              content: {
+                name: "Super Power",
+                constraints: "",
+                description: "Input two numbers a and b . We need to calculate a power b."
+              },
+              difficulty: 1,
+              "mem-limit": 15,
+              "time-limit": 15,
+              "created-by": 3,
+              'submit-count': 10,
+              'user-count': 100,
+              image: "https://i.imgur.com/0tqqF6B.png",
+              tags: null,
+              status: null,
+              "created-at": "2017-03-28T07:56:24.513Z",
+              "updated-at": null
             },
-            difficulty: 1,
-            "mem-limit": 15,
-            "time-limit": 15,
-            "created-by": 3,
-            'submit-count': 10,
-            'user-count': 100,
-            image: "https://i.imgur.com/0tqqF6B.png",
-            tags: null,
-            status: null,
-            "created-at": "2017-03-28T07:56:24.513Z",
-            "updated-at": null
-          },
-          relationships: {
-            submissions: {
+            relationships: {
+              submissions: {
 
-            },
-            testcases: {
+              },
+              testcases: {
 
+              }
             }
-          }
-        },
-        {
-          type: "problem",
-          id: 49,
-          attributes: {
-            name: "Pattern Magic",
-            content: {
+          },
+          {
+            type: "problem",
+            id: 49,
+            attributes: {
               name: "Pattern Magic",
-              constraints: "N<=1000",
-              description: "Code the given pattern.\n<img src=\"https://s3.amazonaws.com/hr-challenge-images/22060/1465463925-b22d8d8dfe-ScreenShot2016-06-09at2.47.18pm.png\" title=\"Screen Shot 2016-06-09 at 2.47.18 pm.png\" />"
+              content: {
+                name: "Pattern Magic",
+                constraints: "N<=1000",
+                description: "Code the given pattern.\n<img src=\"https://s3.amazonaws.com/hr-challenge-images/22060/1465463925-b22d8d8dfe-ScreenShot2016-06-09at2.47.18pm.png\" title=\"Screen Shot 2016-06-09 at 2.47.18 pm.png\" />"
+              },
+              difficulty: 1,
+              "mem-limit": 512,
+              "time-limit": 2,
+              "created-by": 2,
+              'submit-count': 10,
+              'user-count': 100,
+              image: "https://i.imgur.com/pxxMSyn.png",
+              tags: [
+                "Implementation"
+              ],
+              status: null,
+              "created-at": "2017-03-28T07:56:24.513Z",
+              "updated-at": null
             },
-            difficulty: 1,
-            "mem-limit": 512,
-            "time-limit": 2,
-            "created-by": 2,
-            'submit-count': 10,
-            'user-count': 100,
-            image: "https://i.imgur.com/pxxMSyn.png",
-            tags: [
-              "Implementation"
-            ],
-            status: null,
-            "created-at": "2017-03-28T07:56:24.513Z",
-            "updated-at": null
-          },
-          relationships: {
-            submissions: {
+            relationships: {
+              submissions: {
 
-            },
-            testcases: {
+              },
+              testcases: {
 
+              }
             }
-          }
-        }]
-    };
+          }]
+      };
+    }
   });
 
 
-
-  this.get('/dailycbs/:problem_id', function () {
+  this.post('/contest_attempts/:contest_id', function () {
     return {
       data: {
-        type: "dailycb",
-        id: 6,
+        type: "contest_attempt",
+        id: "1",
         attributes: {
-          day: 20170303,
-          "created-at": null,
-          "updated-at": null,
-          "problem-id": 64
-        },
-        relationships: {
-          problem: {
-            data: {
-              type: "problem",
-              id: 64
-            }
-          }
+          "user-id": 542,
+          "contest-id": 24,
+          "start-time": new Date().getTime() / 1000
         }
-      },
-      included: [
-        {
-          type: "submission",
-          id: 2541,
-          attributes: {
-            "user-id": 1015,
-            source: "I2luY2x1ZGUgPHN0ZGlvLmg+CmludCBtYWluKCkgewogICAgcHJpbnRmKCJ5byB5byIpOwp9Cg==",
-            "submit-at": 1491996673,
-            language: "c",
-            score: 0,
-            result: -1,
-            "problem-id": -1,
-            "created-at": "2017-04-12T11:31:13.404Z",
-            "updated-at": "2017-04-12T11:31:13.404Z",
-            p_id: 64,
-            c_id: 0
-          }
-        }]
+      }
     };
   });
+
+  this.get('/contest_attempts/:contest_id', function (db, request) {
+    if (request.queryParams.userId) {
+      return {
+        data: {
+          type: "contest_attempt",
+          id: "1",
+          attributes: {
+            "user-id": 542,
+            "contest-id": 24,
+            "start-time": new Date().getTime() / 1000
+          }
+        }
+      };
+    }
+  });
+
 }
