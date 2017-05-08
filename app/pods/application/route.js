@@ -5,7 +5,7 @@ const { inject: { service }, Route } = Ember;
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
   routing: Ember.inject.service('-routing'),
-   PN: service('pn'),
+  PN: service('pn'),
   session:     service('session'),
   currentUserSer: service('current-user'),
   url: Ember.observer('router.url', function () {
