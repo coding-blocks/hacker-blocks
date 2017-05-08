@@ -14,11 +14,15 @@
       </div>
     {{/if}}
 	<div class="row clearfix">
-		<button
-			{{action 'attemptContest' this.model.id currentUser}}
-			class='btn btn-raised g-bg-blush2 waves-effect btn-sm'>
-			Attempt Contest
-		</button>
+    {{#if session.isAuthenticated}}
+      <button
+        {{action 'attemptContest' this.model.id}}
+        class='btn btn-raised g-bg-blush2 waves-effect btn-sm'>
+        Attempt Contest
+      </button>
+    {{else}}
+      <strong>Please login to attempt this contest.</strong>
+    {{/if}}
 	</div>
   </div>
 </section>
