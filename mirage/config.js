@@ -8,26 +8,26 @@ export default function () {
   if (!ENV.mirageEnabled) {
     this.passthrough();
     this.passthrough('http://localhost:3000/oneauth/login');
-    this.passthrough('http://ps1.pubnub.com/**');
-    this.passthrough('http://ps2.pubnub.com/**');
-    this.passthrough('http://ps3.pubnub.com/**');
-    this.passthrough('http://ps4.pubnub.com/**');
-    this.passthrough('http://ps5.pubnub.com/**');
-    this.passthrough('http://ps6.pubnub.com/**');
-    this.passthrough('http://ps7.pubnub.com/**');
-    this.passthrough('http://ps8.pubnub.com/**');
-    this.passthrough('http://ps9.pubnub.com/**');
-    this.passthrough('http://ps10.pubnub.com/**');
-    this.passthrough('http://ps11.pubnub.com/**');
-    this.passthrough('http://ps12.pubnub.com/**');
-    this.passthrough('http://ps13.pubnub.com/**');
-    this.passthrough('http://ps14.pubnub.com/**');
-    this.passthrough('http://ps15.pubnub.com/**');
-    this.passthrough('http://ps16.pubnub.com/**');
-    this.passthrough('http://ps17.pubnub.com/**');
-    this.passthrough('http://ps18.pubnub.com/**');
-    this.passthrough('http://ps19.pubnub.com/**');
-    this.passthrough('http://ps20.pubnub.com/**');
+    this.passthrough('https://ps1.pubnub.com/**');
+    this.passthrough('https://ps2.pubnub.com/**');
+    this.passthrough('https://ps3.pubnub.com/**');
+    this.passthrough('https://ps4.pubnub.com/**');
+    this.passthrough('https://ps5.pubnub.com/**');
+    this.passthrough('https://ps6.pubnub.com/**');
+    this.passthrough('https://ps7.pubnub.com/**');
+    this.passthrough('https://ps8.pubnub.com/**');
+    this.passthrough('https://ps9.pubnub.com/**');
+    this.passthrough('https://ps10.pubnub.com/**');
+    this.passthrough('https://ps11.pubnub.com/**');
+    this.passthrough('https://ps12.pubnub.com/**');
+    this.passthrough('https://ps13.pubnub.com/**');
+    this.passthrough('https://ps14.pubnub.com/**');
+    this.passthrough('https://ps15.pubnub.com/**');
+    this.passthrough('https://ps16.pubnub.com/**');
+    this.passthrough('https://ps17.pubnub.com/**');
+    this.passthrough('https://ps18.pubnub.com/**');
+    this.passthrough('https://ps19.pubnub.com/**');
+    this.passthrough('https://ps20.pubnub.com/**');
     return;
   }
 
