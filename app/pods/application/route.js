@@ -5,8 +5,8 @@ const { inject: { service }, Route } = Ember;
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
   routing: Ember.inject.service('-routing'),
-   PN: service('pn'),
-  session:     service('session'),
+  PN: service('pn'),
+  session: service('session'),
   currentUserSer: service('current-user'),
   url: Ember.observer('router.url', function () {
     this.set('controller.link', this.get('router.url'));
@@ -21,6 +21,10 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       this.get('session').authenticate('authenticator:custom', transition.queryParams.code).catch((reason) => {
         // console.log("not logged in", reason);
       });
+      if (this.get('session.isAuthenticated')) {
+        var retrievedPath = localStorage.getItem('redirection-path');
+        window.location.href = retrievedPath;
+      }
     } else {
       console.log("before model session already authenticated");
     }
@@ -40,10 +44,10 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   _loadCurrentUser() {
     return this.get('currentUserSer').load();
   },
-  afterModel(){
-    if (this.get('session.isAuthenticated')){
-    let user_id = this.get('session.data.authenticated.user_id');
-        this.get('PN').init(user_id);
+  afterModel() {
+    if (this.get('session.isAuthenticated')) {
+      let user_id = this.get('session.data.authenticated.user_id');
+      this.get('PN').init(user_id);
     }
   }
 });

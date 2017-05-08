@@ -63,7 +63,6 @@ export default Ember.Component.extend({
                 if (user.get('photo') === null || user.get('photo') === '') {
                   user.set('photo', '/images/student/random-avatar2.jpg');
                 }
-                console.log("userObj", user);
                 this.get('onlineUsers').pushObject(user);
               }
             });
