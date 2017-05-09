@@ -22,18 +22,7 @@ export default Ember.Route.extend({
     this._super(controller, model);
     let contest = model.contest;
     let contestId = contest.get('id');
-    $.ajax({
-      url: Env.apiEndpoint + '/api/submissions/submissionCount',
-      type: 'GET',
-      data: { contestId: contestId },
-      accepts: 'application/json',
-      success: function (data) {
-        controller.set('submissionCount', data[0].count);
-      },
-      error: function () {
-         controller.set('submissionCount', 0);
-      }
-    });
+    controller.set('submissionCount', 0);
   },
   afterModel(model, transition) {
     const { currentAttempt, contest } = model;
@@ -42,7 +31,7 @@ export default Ember.Route.extend({
       return
     }
 
-    if ( Ember.isNone(currentAttempt.data) ) {
+    if (currentAttempt.id === "0")  {
       this.transitionTo('contests.contest.attempt', model.contest.id)
     }
   }
