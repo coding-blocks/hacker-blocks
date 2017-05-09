@@ -18,13 +18,13 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   },
   beforeModel(transition) {
     if (!this.get('session.isAuthenticated') && transition.queryParams.code != undefined) {
-      this.get('session').authenticate('authenticator:custom', transition.queryParams.code).catch((reason) => {
+      this.get('session').authenticate('authenticator:custom', transition.queryParams.code).then(()=>{
+        var retrievedPath = localStorage.getItem('redirection-path');
+        localStorage.removeItem('redirection-path');
+        window.location.href = retrievedPath;
+      }).catch((reason) => {
         // console.log("not logged in", reason);
       });
-      if (this.get('session.isAuthenticated')) {
-        var retrievedPath = localStorage.getItem('redirection-path');
-        window.location.href = retrievedPath;
-      }
     } else {
       console.log("before model session already authenticated");
     }
