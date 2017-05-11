@@ -11,8 +11,9 @@ function stopLoading() {
   $('.runner').button('reset');
 }
 
-function judge(component, problemId, contestId, noScore) {
+function judge(component, problemId, contestId, noScore, headers) {
   startLoading();
+  let authHeaders = component.get('currentUser').getAuthHeaders();
   let submission = {
     user_id: component.get('session.data.authenticated.user_id'),
     language: component.langId,
@@ -26,6 +27,7 @@ function judge(component, problemId, contestId, noScore) {
     url: config.apiEndpoint + '/api/submissions',
     data: JSON.stringify(submission),
     type: "POST",
+    headers: authHeaders,
     contentType: "application/json",
     timeout: 100000
   }).done(function(data) {
@@ -50,6 +52,7 @@ function judge(component, problemId, contestId, noScore) {
 
 export default Ember.Component.extend({
   session: Ember.inject.service('session'),
+  currentUser: Ember.inject.service('current-user'),
   output: "",
   result: "",
   langId: "c",
