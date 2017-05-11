@@ -7,24 +7,33 @@
                         <div class="profile_info profile-align">
                             <div class="profile-image profile-align">
                                 {{#if user.photo}}
-                                    <img src="{{user.photo}}" width = "100%" class="img-responsive" alt="">
-                                  {{!--<img src="https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1" class="img-responsive" alt="">--}}
-                                {{else}}
-                                    <img src="https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1" class="img-responsive" alt="">
-                                {{/if}}
+                                <img src="{{user.photo}}" width="100%" class="img-responsive" alt=""> {{!--
+                                <img src="https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1" class="img-responsive"
+                                    alt="">--}} {{else}}
+                                <img src="https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1" class="img-responsive"
+                                    alt=""> {{/if}}
                             </div>
                             <h4><strong>{{user.name}}</strong></h4>
                             <!--<span class="text-muted col-white">Java Specialist</span>-->
                         </div>
                     </div>
                     <div class="profile-sub-header">
-
+                        <h3 class="text-center">Course Enrolled</h3>
+                        {{#if user.courseDescription}}
+                        <h5 class="text-center">{{user.courseDescription}}</h5>
+                        {{else}}
+                        {{#link-to "courses"}}
+                             <p class="text-center">Please enroll to a course</p>
+                        {{/link-to}}
+                        {{/if}}
                     </div>
                 </section>
             </div>
         </div>
         <div class="row clearfix">
-            <h3 class = "text-center">Problems Solved</h3>
+
+
+            <h3 class="text-center">Problems Solved</h3>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-md-offset-4">
                 <div>
                     <table class="table text-center submission-table">
