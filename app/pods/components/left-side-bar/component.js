@@ -13,8 +13,6 @@ export default Ember.Component.extend({
   session: Ember.inject.service('session'),
   actions: {
     popup() {
-     // $('#loginModal').modal('toggle');
-    
      var redirectionPath = window.location.pathname;
      redirectionPath = redirectionPath.replace(/^\/|\/$/g, '');
      localStorage.setItem('redirection-path', redirectionPath);

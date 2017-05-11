@@ -10,9 +10,9 @@ export default Ember.Route.extend({
         let { contest } = this.modelFor('contests.contest');
 
         let userId = this.get('session.data.authenticated.user_id');
-         return Ember.RSVP.hash({
-             contest,
-             submissionModel:this.get('store').query('submission', { contest_id: contest.id, user_id: userId, timedContest: true }),
-         });
+        return Ember.RSVP.hash({
+            contest,
+            submissionModel:this.get('store').query('submission', { contest_id: contest.id, user_id: userId, timedContest: true }),
+        });
     },
 });
