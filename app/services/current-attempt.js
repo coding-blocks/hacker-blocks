@@ -9,11 +9,11 @@ const { inject: { service }, Route } = Ember;
 
 export default Ember.Service.extend({
   session:     service('session'),
+  store: service(),
+
   getCurrentAttempts(contestId) {
     let userId = this.get('session').get('data').authenticated.user_id
-    return Ember.$.getJSON(
-      `${Env.apiEndpoint}/api/contest_attempts/${contestId}`,
-      { userId: userId }
-    );
+    let record = this.get('store').queryRecord('ContestAttempt', { contestId: contestId })
+    return record
   }
 });

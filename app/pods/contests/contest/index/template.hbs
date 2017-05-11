@@ -9,7 +9,7 @@
         <div class="countdown-timer-container col-md-offset-3 col-md-3">
           <div class="card">
             {{#countdown-timer
-              startTime=model.currentAttempt.data.attributes.start-time
+              startTime=model.currentAttempt.startTime
               duration=model.contest.duration
               onComplete=(action 'redirectToContest' model)}}
             {{/countdown-timer}}

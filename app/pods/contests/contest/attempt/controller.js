@@ -6,27 +6,35 @@ const { inject: { service }, Component } = Ember;
 export default Ember.Controller.extend({
   session:     service('session'),
   currentUser: service('current-user'),
+
   checkAttempts() {
     return new Promise((resolve, reject) => {
 
     });
   },
+
   init() {
     console.log("controller init()");
   },
+
   actions: {
     attemptContest (contestId) {
       const userId = this.get('session').get('data').authenticated.user_id;
-      Ember.$.post(
-        `${ENV.apiEndpoint}/api/contest_attempts/${contestId}`,
-          { userId: userId }, (result) => {
-          if (result.data != null) {
+
+      this
+        .get('store')
+        .createRecord('ContestAttempt', { contestId: contestId })
+        .save()
+        .then((result) => {
+          if (result.data.startTime !== 0) {
             this.transitionToRoute('contests.contest', contestId);
           } else {
             this.set('error', 'You can\'t attempt this contest. You may have reached your max possible attempts on this contest.');
           }
-        }
-      ).fail(() => console.log ("You done goofed!"));
+        })
+        .catch((error) => {
+            this.set('error', 'You can\'t attempt this contest. You may have reached your max possible attempts on this contest.');
+        })
     }
   }
 });
