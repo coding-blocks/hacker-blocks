@@ -15,7 +15,7 @@ export default Ember.Route.extend({
       contest: contest,
       currentAttempt: this.get('currentAttemptService').getCurrentAttempts(contest.id),
       leaderboard: this.get('store').query('submission',
-        {contest_id: contest.id, leaderboard: true, contest: true })
+        {contest_id: contest.id, leaderboard: true, contest: true }),
     });
   },
   setupController: function (controller, model) {
