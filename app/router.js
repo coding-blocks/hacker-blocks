@@ -41,6 +41,7 @@ Router.map(function() {
   this.route('application-loading');
   this.route('submission', {path: '/submission/:submission_id'});
   this.route('courses');
+  this.route('application-error');
 });
 
 export default Router;
