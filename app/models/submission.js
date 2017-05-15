@@ -15,5 +15,6 @@ export default DS.Model.extend({
   result: DS.attr(),
   problemId: DS.attr('string'),
   problemName:DS.attr('string'),
+  isTopSubmission:DS.attr('boolean'),
   tcRuns: DS.attr()
 });

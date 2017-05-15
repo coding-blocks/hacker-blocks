@@ -12,7 +12,7 @@ export default DS.Model.extend({
   image: DS.attr('string', {defaultValue: "https://s1.postimg.org/wyhyiimtb/image.png"}),
   tags: DS.attr(),
   submissions: DS.hasMany('submissions'),
-  topSubmission: DS.belongsTo('top-submission'),
+  top:DS.belongsTo('submission'),
   leaderboard: DS.hasMany('submissions', {async: true}),
   userCount: DS.attr()
 });
