@@ -6,6 +6,7 @@ const { inject: { service }, Route } = Ember;
 export default Ember.Route.extend({
   routing: service('-routing'),
   currentAttemptService: service('current-attempt'),
+  currentUser: service('current-user'),
   breadCrumb: {
     title: 'Contest'
   },
@@ -20,9 +21,24 @@ export default Ember.Route.extend({
   },
   setupController: function (controller, model) {
     this._super(controller, model);
+
     let contest = model.contest;
     let contestId = contest.get('id');
-    controller.set('submissionCount', 0);
+    let authHeaders = this.get('currentUser').getAuthHeaders();
+
+    $.ajax({
+      url: Env.apiEndpoint + '/api/submissions/submissionCount',
+      type: 'GET',
+      headers: authHeaders,
+      data: { contestId: contestId },
+      accepts: 'application/json',
+      success: function (data) {
+        controller.set('submissionCount', data[0].count);
+      },
+      error: function () {
+        controller.set('submissionCount', 0);
+      }
+    });
   },
   afterModel(model, transition) {
     const { currentAttempt, contest } = model;
