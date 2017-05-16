@@ -1,46 +1,53 @@
 <div class="tabheader">
   <h2>My Submissions</h2>
 </div>
-{{#if session.isAuthenticated}} {{#if (eq submissions.length 0)}}
-<strong>You haven't made a submission to this problem yet</strong> {{else}}
-<table class="table table-hover vc-table">
-  <thead>
-    <tr>
-      <th data-field="id">#</th>
-      <th data-field="time">Submit time</th>
-      <th data-field="score">Score</th>
-      <th data-field="language">Language</th>
-      <th data-field="result">Result</th>
-    </tr>
-  </thead>
-  <tbody>
-    {{#each submissions as |submission index|}} {{#link-to "submission" submission.id tagName="tr" class="pointer"}}
-    <td>{{sum index 1}}</td>
-    <td>{{ago-time submission.submitAt}}</td>
-    {{#if (eq submission.result -2)}}
-    <td>N/A</td>
-    {{else}}
-    <td>{{submission.score}}</td>
-    {{/if}}
-    <td>{{getlang submission.language}}</td>
-    {{#if (eq submission.result -1)}}
-    <td>
-      <div class="isa_warning"><i class="material-icons">warning</i>Compilation Error</div>
-    </td>
-    {{else if (eq submission.result -3)}}
-    <td>
-      <div class="isa_warning"><i class="material-icons">access_time</i>Time Limit Exceeded</div>
-    </td>
-    {{else if (eq submission.score 100)}}
-    <td>
-      <div class="isa_success"><i class="material-icons">done</i>Correct Answer</div>
-    </td>
-    {{else }}
-    <td>
-      <div class="isa_error"><i class="material-icons">error</i>Wrong Answer</div>
-    </td>
-    {{/if}} {{/link-to}} {{/each}}
-  </tbody>
-</table>
-{{/if}} {{else}}
-<strong>Please Log In to see your submissions.</strong> {{/if}}
+{{#if session.isAuthenticated}}
+  {{#if (eq submissions.length 0)}}
+    <strong>You haven't made a submission to this problem yet</strong>
+  {{else}}
+    <table class="table table-hover vc-table">
+      <thead>
+      <tr>
+        <th data-field="id">#</th>
+        <th data-field="time">Submit time</th>
+        <th data-field="score">Score</th>
+        <th data-field="language">Language</th>
+        <th data-field="result">Result</th>
+      </tr>
+      </thead>
+      <tbody>
+      {{#each submissions as |submission index|}}
+        {{#link-to "submission" submission.id tagName="tr" class="pointer"}}
+          <td>{{sum index 1}}</td>
+          <td>{{ago-time submission.submitAt}}</td>
+          {{#if (eq submission.result -2)}}
+            <td>N/A</td>
+          {{else}}
+            <td>{{submission.score}}</td>
+          {{/if}}
+          <td>{{getlang submission.language}}</td>
+          {{#if (eq submission.result -1)}}
+            <td>
+              <div class="isa_warning"><i class="material-icons">warning</i>Compilation Error</div>
+            </td>
+          {{else if (eq submission.result -3)}}
+            <td>
+              <div class="isa_warning"><i class="material-icons">access_time</i>Time Limit Exceeded</div>
+            </td> 
+          {{else if (eq submission.score 100)}}
+            <td>
+              <div class="isa_success"><i class="material-icons">done</i>Correct Answer</div>
+            </td>
+          {{else }}
+            <td>
+              <div class="isa_error"><i class="material-icons">error</i>Wrong Answer</div>
+            </td>
+          {{/if}}
+        {{/link-to}}
+      {{/each}}
+      </tbody>
+    </table>
+  {{/if}}
+{{else}}
+  <strong>Please Log In to see your submissions.</strong>
+{{/if}}
