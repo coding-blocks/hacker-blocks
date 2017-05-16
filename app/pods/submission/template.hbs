@@ -21,6 +21,8 @@
               <p>
                 {{#if (eq model.result -1)}}
                     <span class="isa_warning"><i class="material-icons">warning</i>Compilation Error</span>
+                {{else if  (eq model.result -3)}}
+                    <span class="isa_warning"><i class="material-icons">access_time</i>Time Limit Exceeded</span> 
                 {{else if (eq model.score 100)}}
                     <span class="isa_success"><i class="material-icons">done</i>Correct Answer</span>
                 {{else }}
