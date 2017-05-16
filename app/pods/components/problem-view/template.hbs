@@ -1,5 +1,16 @@
 <div class="col-xs-12 col-sm-6 col-md-3">
   <div class="thumbnail card problemCard">
+    <div class = "problem-result">
+    {{#if (eq submissionResult 1)}}
+    <img src="/images/correct-icon.png" width="100%" />
+    {{/if}}
+    {{#if (eq submissionResult 0)}}
+     <img src="/images/partially-correct.jpg" width="100%" />
+     {{/if}}
+    {{#if (eq submissionResult -1)}}
+    <img src="/images/wrong-icon.png" width="100%" />
+      {{/if}}
+    </div>
     <div class="problem-image-wrapper">
       <img src={{problem.image}} width="100%" />
     </div>
