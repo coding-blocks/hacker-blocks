@@ -140,6 +140,59 @@ export default function () {
       }],
       included: [
         {
+          type: "submission",
+          id: "4084",
+          attributes: {
+            "user-id": 1,
+            source: "I2luY2x1ZGUgPGlvc3RyZWFtPgp1c2luZyBuYW1lc3BhY2Ugc3RkOwppbnQgbWFpbigpIHsKICAgIAp9Cg==",
+            "submit-at": 1495004870,
+            language: "cpp",
+            score: 100,
+            "result": 1,
+            "problem-id": -1,
+            "tc-runs": {
+              testcases: [
+                {
+                  "output": "",
+                  "result": "no-output",
+                  "runtime": 0
+                }
+              ]
+            },
+            "is-top-submission": true,
+            "created-at": "2017-05-17T07:07:50.481Z",
+            "updated-at": "2017-05-17T07:07:52.558Z",
+            "p-id": 54,
+            "c-id": 6
+          }
+        }, {
+          "type": "submission",
+          "id": "4085",
+          "attributes": {
+            "user-id": 542,
+            "source": "aW1wb3J0IHN5cw==",
+            "submit-at": 1495005931,
+            "language": "py2",
+            "score": 0,
+            "result": 1,
+            "problem-id": -1,
+            "tc-runs": {
+              "testcases": [
+                {
+                  "output": "",
+                  "result": "no-output",
+                  "runtime": 0.02
+                }
+              ]
+            },
+            "is-top-submission": true,
+            "created-at": "2017-05-17T07:25:31.423Z",
+            "updated-at": "2017-05-17T07:25:33.453Z",
+            "p-id": 45,
+            "c-id": 6
+          }
+        },
+        {
           type: "problem",
           id: "45",
           attributes: {
@@ -172,6 +225,12 @@ export default function () {
             }
           },
           relationships: {
+            top: {
+              data: {
+                type: "submission",
+                id: "4085"
+              }
+            },
             submissions: {
 
             },
@@ -211,6 +270,12 @@ export default function () {
             }
           },
           relationships: {
+            top: {
+              data: {
+                type: "submission",
+                id: "4084"
+              }
+            },
             submissions: {
 
             },
@@ -257,6 +322,12 @@ export default function () {
             "user-count": "6"
           },
           relationships: {
+            top: {
+              data: {
+                type: "submission",
+                id: "4084"
+              }
+            },
             submissions: {
               data: [
               ]
@@ -265,7 +336,35 @@ export default function () {
 
             }
           }
-        }
+        },
+        included: [
+          {
+            type: "submission",
+            id: "4084",
+            attributes: {
+              "user-id": 1,
+              source: "I2luY2x1ZGUgPGlvc3RyZWFtPgp1c2luZyBuYW1lc3BhY2Ugc3RkOwppbnQgbWFpbigpIHsKICAgIAp9Cg==",
+              "submit-at": 1495004870,
+              language: "cpp",
+              score: 100,
+              "result": 1,
+              "problem-id": -1,
+              "tc-runs": {
+                testcases: [
+                  {
+                    "output": "",
+                    "result": "no-output",
+                    "runtime": 0
+                  }
+                ]
+              },
+              "is-top-submission": true,
+              "created-at": "2017-05-17T07:07:50.481Z",
+              "updated-at": "2017-05-17T07:07:52.558Z",
+              "p-id": 54,
+              "c-id": 6
+            }
+          }]
       };
     }
     else {
@@ -512,12 +611,211 @@ export default function () {
               {
                 type: "problem",
                 id: 54
+              },
+              {
+                type: "problem",
+                id: 45
+              },
+               {
+                type: "problem",
+                id: 57
               }
             ]
           }
         }
       },
       included: [
+        {
+          type: "submission",
+          id: "4084",
+          attributes: {
+            "user-id": 1,
+            source: "I2luY2x1ZGUgPGlvc3RyZWFtPgp1c2luZyBuYW1lc3BhY2Ugc3RkOwppbnQgbWFpbigpIHsKICAgIAp9Cg==",
+            "submit-at": 1495004870,
+            language: "cpp",
+            score: 100,
+            "result": 1,
+            "problem-id": -1,
+            "tc-runs": {
+              testcases: [
+                {
+                  "output": "",
+                  "result": "no-output",
+                  "runtime": 0
+                }
+              ]
+            },
+            "is-top-submission": true,
+            "created-at": "2017-05-17T07:07:50.481Z",
+            "updated-at": "2017-05-17T07:07:52.558Z",
+            "p-id": 54,
+            "c-id": 6
+          }
+        }, {
+          "type": "submission",
+          "id": "4085",
+          "attributes": {
+            "user-id": 542,
+            "source": "aW1wb3J0IHN5cw==",
+            "submit-at": 1495005931,
+            "language": "py2",
+            "score": 0,
+            "result": 1,
+            "problem-id": -1,
+            "tc-runs": {
+              "testcases": [
+                {
+                  "output": "",
+                  "result": "no-output",
+                  "runtime": 0.02
+                }
+              ]
+            },
+            "is-top-submission": true,
+            "created-at": "2017-05-17T07:25:31.423Z",
+            "updated-at": "2017-05-17T07:25:33.453Z",
+            "p-id": 45,
+            "c-id": 6
+          }
+        },
+        {  
+         "type":"submission",
+         "id":"4087",
+         "attributes":{  
+            "user-id":542,
+            "source":"cHVibGljIGNsYXNzIE1haW4gewogICAgcHVibGljIHN0YXRpYyB2b2lkIG1haW4oU3RyaW5nIGFyZ3NbXSkgewogICAgICAgIAogICAgfQp9",
+            "submit-at":1495012405,
+            "language":"java",
+            "score":50,
+            "result":1,
+            "problem-id":-1,
+            "tc-runs":{  
+               "testcases":[  
+                  {  
+                     "output":"",
+                     "result":"no-output",
+                     "runtime":0.05
+                  },
+                  {  
+                     "output":"",
+                     "result":"no-output",
+                     "runtime":0.06
+                  },
+                  {  
+                     "output":"",
+                     "result":"no-output",
+                     "runtime":0.06
+                  },
+                  {  
+                     "output":"",
+                     "result":"no-output",
+                     "runtime":0.09
+                  }
+               ]
+            },
+            "is-top-submission":true,
+            "created-at":"2017-05-17T09:13:25.696Z",
+            "updated-at":"2017-05-17T09:13:29.915Z",
+            "p-id":57,
+            "c-id":6
+         }
+      },
+        {
+          type: "problem",
+          id: "45",
+          attributes: {
+            name: "Hello Coding Blocks",
+            content: {
+              name: "Hello Coding Blocks",
+              constraints: "",
+              description: "Write a program to print \"Hello Coding Blocks !\" on the screen.\t\t",
+              "input-format": "",
+              "sample-input": "",
+              "output-format": "Hello Coding Blocks !",
+              "sample-output": "Hello Coding Blocks !"
+            },
+            difficulty: 1,
+            "mem-limit": 512,
+            "time-limit": 2,
+            "created-by": 2,
+            image: "https://i.imgur.com/XYy1jZi.png",
+            tags: [
+              "Implementation"
+            ],
+            status: null,
+            "created-at": "2017-03-28T07:56:24.513Z",
+            "updated-at": null,
+            cproblems: {
+              "created-at": "2017-04-09T05:53:05.220Z",
+              "updated-at": "2017-04-09T05:53:05.220Z",
+              "p-id": 45,
+              "c-id": 6
+            }
+          },
+          relationships: {
+            "top": {
+              "data": {
+                "type": "submission",
+                "id": "4085"
+              }
+            },
+            submissions: {
+
+            },
+            testcases: {
+
+            }
+          }
+        },
+        {  
+         "type":"problem",
+         "id":"57",
+         "attributes":{  
+            "name":"Simple HCF",
+            "content":{  
+               "name":"Simple HCF",
+               "constraints":"N <= 10 and all the numbers lie between 1 and 100.",
+               "description":"Given N positive numbers, your task is to calculate their HCF.",
+               "input-format":"First line of input contains a single integer N, second line contains N space separated positive integers whose HCF is to be computed.",
+               "sample-input":"3\n2 4 6",
+               "output-format":"Print HCF of N numbers.",
+               "sample-output":"2"
+            },
+            "difficulty":1,
+            "mem-limit":15,
+            "time-limit":15,
+            "created-by":3,
+            "image":"https://i.imgur.com/r7TrqS3.png",
+            "tags":[  
+               "Implementation",
+               "Math"
+            ],
+            "status":null,
+            "source":null,
+            "created-at":"2017-03-28T07:56:24.513Z",
+            "updated-at":null,
+            "cproblems":{  
+               "created-at":"2017-04-09T05:53:05.220Z",
+               "updated-at":"2017-04-09T05:53:05.220Z",
+               "p-id":57,
+               "c-id":6
+            }
+         },
+         "relationships":{  
+            "top":{  
+               "data":{  
+                  "type":"submission",
+                  "id":"4087"
+               }
+            },
+            "submissions":{  
+
+            },
+            "testcases":{  
+
+            }
+         }
+      },
         {
           type: "problem",
           id: 54,
@@ -550,6 +848,12 @@ export default function () {
             }
           },
           relationships: {
+            top: {
+              data: {
+                type: "submission",
+                id: "4084"
+              }
+            },
             submissions: {
 
             },
@@ -653,7 +957,7 @@ export default function () {
         ]
       };
     }
-    else if(request.queryParams.count && request.queryParams.day){
+    else if (request.queryParams.count && request.queryParams.day) {
       return {
         data: [{
           type: "dailycb",
@@ -759,24 +1063,8 @@ export default function () {
       };
     }
   });
-
-
-  this.post('/contest_attempts/:contest_id', function () {
-    return {
-      data: {
-        type: "contest_attempt",
-        id: "1",
-        attributes: {
-          "user-id": 542,
-          "contest-id": 24,
-          "start-time": new Date().getTime() / 1000
-        }
-      }
-    };
-  });
-
-  this.get('/contest_attempts/:contest_id', function (db, request) {
-    if (request.queryParams.userId) {
+  this.get('/contest-attempts', function (db, request) {
+    if (request.queryParams.contestId) {
       return {
         data: {
           type: "contest_attempt",
@@ -789,6 +1077,21 @@ export default function () {
         }
       };
     }
+  });
+
+
+  this.post('/contest-attempts', function () {
+    return {
+      data: {
+        type: "contest_attempt",
+        id: "1",
+        attributes: {
+          "user-id": 542,
+          "contest-id": 24,
+          "start-time": new Date().getTime() / 1000
+        }
+      }
+    };
   });
 
 }
