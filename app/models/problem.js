@@ -13,5 +13,6 @@ export default DS.Model.extend({
   tags: DS.attr(),
   submissions: DS.hasMany('submissions'),
   leaderboard: DS.hasMany('submissions', {async: true}),
-  userCount: DS.attr()
+  userCount: DS.attr(),
+  solutionStubs: DS.hasMany('solutionStub')
 });

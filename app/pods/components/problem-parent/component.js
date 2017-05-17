@@ -76,9 +76,24 @@ export default Ember.Component.extend({
       mode: "ace/mode/java"
     }
   },
+  stub: Ember.computed('langId', 'problem.solutionStubs.[]', function () {
+    let langId = this.get('langId')
+
+    let stub = this.get('problem.solutionStubs')
+      .filter(
+        (stub, index) => stub.get('language') === langId
+      )
+      .mapBy('body')
+      .get('firstObject')
+
+    return (stub || getSnippet(langId))
+  }),
+
   didRender() {
     let editor = ace.edit("editor");
     let self = this;
+
+    editor.setValue(this.get('stub'));
     editor.textInput.getElement().onkeyup = function (event) {
       self.set("onceEdit", true);
     };
@@ -86,11 +101,14 @@ export default Ember.Component.extend({
   actions: {
     langChange() {
       let langId = $('#langSelect :selected').val();
+
+      this.set('langId', langId)
+
       $("#editor-lang").text(this.lang_codes[langId]["name"]);
       let editor = ace.edit("editor");
       editor.getSession().setMode(this.lang_codes[langId]["mode"]);
       if (this.get("onceEdit") == false) {
-        editor.setValue(getSnippet(langId));
+        editor.setValue(this.get('stub'));
       }
       this.langId = langId;
     },
@@ -105,7 +123,7 @@ export default Ember.Component.extend({
     reset() {
       let langId = $('#langSelect :selected').val();
       let editor = ace.edit("editor");
-      editor.setValue(getSnippet(langId));
+      editor.setValue(this.get('stub'));
       this.set("onceEdit", false);
       $('#custom-input').val("");
       this.set('customInput', false);
