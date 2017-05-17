@@ -8,7 +8,7 @@ export default Ember.Component.extend({
   didRenderDone: false,
   PN: service('pn'),
   messages: Ember.A([]),
-  onlineUsers:  Ember.A([]),
+  onlineUsers: Ember.A([]),
   session: service('session'),
   store: Ember.inject.service(),
   intervalId: null,
@@ -85,13 +85,20 @@ export default Ember.Component.extend({
         });
       });
 
+      /*scroll down to latest message in inbox*/
+      $('#chat-icon').click(() => {
+        $("#chatbox").animate({ scrollTop: $('#chatbox').prop("scrollHeight") }, 1000);
+      });
+
     }
   },
   didRender() {
     this._super(...arguments);
+
     if (this.get('didRenderDone') === false) {
       $.AdminBSB.rightSideBar.activate();
       this.set('didRenderDone', true);
+
     }
     if (this.get('session.isAuthenticated')) {
       $('#chat-icon').click(() => {
@@ -99,7 +106,9 @@ export default Ember.Component.extend({
           window.clearInterval(self.get('intervalId'));
         }
       });
-  }
+
+
+    }
   },
   actions: {
     sendMessage() {
