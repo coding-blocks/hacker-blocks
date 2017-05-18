@@ -103,7 +103,7 @@ export default Ember.Component.extend({
     if (this.get('session.isAuthenticated')) {
       $('#chat-icon').click(() => {
         if (this.get('intervalId') !== null) {
-          window.clearInterval(self.get('intervalId'));
+          window.clearInterval(this.get('intervalId'));
         }
       });
 
