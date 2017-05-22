@@ -25,8 +25,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       }).catch((reason) => {
         // console.log("not logged in", reason);
       });
-    } else {
-      console.log("before model session already authenticated");
     }
   },
   /*
