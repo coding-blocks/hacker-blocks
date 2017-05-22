@@ -58,6 +58,7 @@ export default Ember.Component.extend({
   langId: "c",
   onceEdit: false,
   customInput: false,
+  initRenderDone: false,
   lang_codes: {
     "c": {
       name: "C",
@@ -96,7 +97,11 @@ export default Ember.Component.extend({
     let editor = ace.edit("editor");
     let self = this;
 
-    editor.setValue(this.get('stub'));
+    if (this.get('initRenderDone') == false) {
+      editor.setValue(this.get('stub'));
+      this.set('initRenderDone', true);
+    }
+
     editor.textInput.getElement().onkeyup = function (event) {
       self.set("onceEdit", true);
     };
@@ -124,6 +129,7 @@ export default Ember.Component.extend({
       judge(this);
     },
     reset() {
+      console.log("RESET");
       let langId = $('#langSelect :selected').val();
       let editor = ace.edit("editor");
       editor.setValue(this.get('stub'));
