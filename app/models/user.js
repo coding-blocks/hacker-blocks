@@ -3,7 +3,7 @@
  */
 
 import DS from 'ember-data';
-import descriptionProvider from '../utils/get-course-description';
+import courseDescriptionProvider from '../utils/get-course-description';
 
 export default DS.Model.extend({
   userId: DS.attr('string'),
@@ -15,7 +15,7 @@ export default DS.Model.extend({
   }),
   course: DS.attr('string'),
   courseDescription: Ember.computed('course', function () {
-      return descriptionProvider(this.get('course'));
+      return courseDescriptionProvider(this.get('course'));
     }),
   is_active: DS.attr()
 });
