@@ -2,7 +2,7 @@
 
 var getCourseDescription = function(code) {
   let desc = {
-   LP:'Launch Pad',
+   LP:'Launchpad',
    CRX:'Crux',
    ELX:'Elixir',
    ML:'Machine Learning'

@@ -36,7 +36,9 @@
             <h3 class="text-center">Problems Solved</h3>
             <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 col-md-offset-4">
                 <div>
-                    <table class="table text-center submission-table">
+                        {{#each contests as |contest|}}
+                        <center>{{contest.name}}</center>
+                        <table class="table text-center table-bordered">
                         <thead>
                             <tr>
                                 <th class="text-center">
@@ -48,23 +50,28 @@
                                 <th class="text-center">
                                     Language
                                 </th>
-
                             </tr>
                         </thead>
-                        {{#each submission as |attempt|}}
-                        <tr>
-                            <td class="text-center">
-                                {{attempt.problemName}}
-                            </td>
-                            <td class="text-center">
-                                {{attempt.score}}
-                            </td>
-                            <td class="text-center">
-                                {{attempt.language}}
-                            </td>
-                        </tr>
+                            {{#each submission as |attempt|}}
+                              {{#if (eq contest.id attempt.contest.id) }}
+                                 <tr>
+                                    <td class="text-center">
+                                       {{attempt.problem.name}}
+                                    </td>
+                                    <td class="text-center">
+                                       {{attempt.score}}
+                                    </td>
+                                    <td class="text-center">
+                                       {{attempt.language}}
+                                    </td>
+                                </tr>
+                             {{/if}}
+                           {{/each}}
+                        
+                        </table>
+                        <br/>
                         {{/each}}
-                    </table>
+                    
                 </div>
             </div>
         </div>

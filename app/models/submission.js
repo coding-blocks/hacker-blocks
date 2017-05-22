@@ -16,5 +16,7 @@ export default DS.Model.extend({
   problemId: DS.attr('string'),
   problemName:DS.attr('string'),
   isTopSubmission:DS.attr('boolean'),
-  tcRuns: DS.attr()
+  tcRuns: DS.attr(),
+  problem:DS.belongsTo('problem',{inverse:'top'}),
+  contest:DS.belongsTo('contest'),
 });
