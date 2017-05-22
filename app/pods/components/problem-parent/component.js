@@ -38,7 +38,7 @@ function judge(component, problemId, contestId, noScore, headers) {
     } else {
       if (problemId === undefined) {
         data.result = 'output';
-        component.set('output', data.data.testcases[0].output);
+        component.set('output', data.data.output);
       } else {
         component.set('output', data.data.testcases);
       }
@@ -79,12 +79,15 @@ export default Ember.Component.extend({
   stub: Ember.computed('langId', 'problem.solutionStubs.[]', function () {
     let langId = this.get('langId')
 
-    let stub = this.get('problem.solutionStubs')
-      .filter(
-        (stub, index) => stub.get('language') === langId
-      )
-      .mapBy('body')
-      .get('firstObject')
+    let stub;
+    if (this.get('problem.solutionStubs') != undefined) {
+      stub = this.get('problem.solutionStubs')
+        .filter(
+          (stub, index) => stub.get('language') === langId
+        )
+        .mapBy('body')
+        .get('firstObject');
+    }
 
     return (stub || getSnippet(langId))
   }),
