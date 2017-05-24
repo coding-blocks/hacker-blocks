@@ -1,2 +1,8 @@
-<h1>This page doesn't exist or you are not authorized to view this page.</h1>
-{{outlet}}
+<div class="container center-align valign-wrapper">
+	<h1>Oh Snap!</h1>
+	{{#each model.errors as |error|}}
+		{{error.message}}
+	{{/each}}
+	<hr>
+	{{outlet}}
+</div>
