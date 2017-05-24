@@ -27,7 +27,12 @@ export default Ember.Component.extend({
               if (user.get('photo') === null || user.get('photo') === '') {
                 user.set('photo', '/images/student/random-avatar2.jpg');
               }
-              this.get('onlineUsers').pushObject(user);
+              let onlineUser = this.get('onlineUsers').find(onlineUser => {
+                return onlineUser.id === user.get('id');
+              });
+              if (!onlineUser) {
+                this.get('onlineUsers').pushObject(user);
+              }
             }
           });
         });
@@ -63,11 +68,22 @@ export default Ember.Component.extend({
                 if (user.get('photo') === null || user.get('photo') === '') {
                   user.set('photo', '/images/student/random-avatar2.jpg');
                 }
-                this.get('onlineUsers').pushObject(user);
+                let onlineUser = this.get('onlineUsers').find(onlineUser => {
+                  return onlineUser.id === user.get('id');
+                });
+                if (!onlineUser) {
+                  this.get('onlineUsers').pushObject(user);
+                }
               }
             });
           } else if (presenceObject.action === 'leave') {
-            $('#' + presenceObject.uuid).remove();
+            let index = this.get('onlineUsers').findIndex(onlineUser => {
+              return onlineUser.id === presenceObject.uuid;
+            });
+            if (index >= 0) {
+              this.get('onlineUsers').splice(index, 1);
+              $('#' + presenceObject.uuid).remove();
+            }
           }
         }
       );
