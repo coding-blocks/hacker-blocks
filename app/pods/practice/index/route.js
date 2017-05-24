@@ -22,7 +22,9 @@ export default Ember.Route.extend({
 
     return Ember.RSVP.hash({
         mainProblem: mainProblem,
-        otherProblems: otherProblems
+        otherProblems: otherProblems,
+        leaderboard: this.get('store').query('submission',
+        {contest_id: 0, leaderboard: true, contest: true })
     });
   },
 
@@ -30,5 +32,6 @@ export default Ember.Route.extend({
       this._super(...arguments);
       Ember.set(controller, 'mainProblem', model.mainProblem);
       Ember.set(controller, 'otherProblems', model.otherProblems);
+      Ember.set(controller, 'leaderboard', model.leaderboard);
   }
 });
