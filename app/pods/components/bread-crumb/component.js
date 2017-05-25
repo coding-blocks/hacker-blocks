@@ -29,7 +29,10 @@ const indexPath = {
   'contests.contest.problem.main': false,
   'contests.contest.problem.leaderboard': false,
   'contests.contest.problem.submissions': false,
-  'practice': true
+  'practice': true,
+  'practice-section': true,
+  'practice-section.problems': true,
+  'practice-section.problems.problem': true
 };
 
 export default Ember.Component.extend({
