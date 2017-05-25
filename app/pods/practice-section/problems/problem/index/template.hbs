@@ -1,6 +1,7 @@
 {{#problem-parent problem=model.problem leaderboard=model.leaderboard contestId=model.contest.id
                   userCount=model.meta.userCount onComplete=(action 'redirectToContest' model) contest=model.contest
                   currentAttempt=model.currentAttempt
-                  parentRoute='practice-section.problems.problem'}}
+                  parentRoute='practice-section.problems.problem'
+                  refreshModel = (action 'refreshModel')}}
   {{outlet}}
 {{/problem-parent}}
