@@ -21,6 +21,13 @@
 #tags {
   margin-bottom: 5px;
   height: 25px;
+  border-radius: 10px;
+}
+
+.chip {
+  border-radius: 10px;
+  background-color: #d9534f;
+  margin-right: 2px;
 }
 
 .generate-scroll-y{
@@ -519,7 +526,7 @@ ul#clock li{
   .block-header {
     margin-top: 46px;
   }
- 
+
   .header-right-section {
     width:100%
   }
