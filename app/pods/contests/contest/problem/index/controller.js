@@ -4,8 +4,14 @@ export default Ember.Controller.extend({
   actions: {
     redirectToContest(model) {
       //this.get('target.router').refresh()
-   this.transitionToRoute('contests.contest.contest-result', model.contest.id);  
-  }
-
+      this.transitionToRoute('contests.contest.contest-result', model.contest.id);
+    },
+    refreshModel(model) {
+      var problem_id = model.problem.id;
+      var contest_id = model.contest.id;
+      this.get('store').queryRecord('problem', { problem_id, contest_id }).then(fetchedProblem => {
+        this.set('model.problem', fetchedProblem);
+      });
+    }
   }
 });
