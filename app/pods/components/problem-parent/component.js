@@ -33,7 +33,7 @@ function judge(component, problemId, contestId, noScore, headers) {
   }).done(function(data) {
     component.sendAction('refreshModel');
     stopLoading();
-    if (data.result == "compile_error") {
+    if (data.result === "compile_error") {
       component.set('output', window.atob(data.error));
     } else {
       if (problemId === undefined) {

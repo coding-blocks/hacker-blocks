@@ -50,7 +50,7 @@ export default Ember.Component.extend({
       if (routeTitle === 'index') { break; }
       let modifiedRouteName = (lastRouteName === ''? '' : lastRouteName + '.') + routeTitle;
       let route;
-      if (indexPath[modifiedRouteName] == true) {
+      if (indexPath[modifiedRouteName] === true) {
         modifiedRouteName = modifiedRouteName + '.index';
       }
       route = getOwner(this).lookup(`route:${modifiedRouteName}`);
