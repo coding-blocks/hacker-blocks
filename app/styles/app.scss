@@ -574,3 +574,8 @@ ul#clock li{
     right: 0;
     margin: auto;
 }
+
+.leaderboard-generate-scroll-y{
+  max-height:450px;
+  overflow-y:scroll;
+}
