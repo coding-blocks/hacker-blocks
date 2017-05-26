@@ -1,10 +1,11 @@
 <div class="wrapper">
 	<div class="mid-page-align">
-		<h2>Oh Snap!</h2>	
+		<h2>Oh Snap!</h2>
 		<div class = "error-message">
-		{{#each model.errors as |error|}} 
-	     <img src = "{{error.image}}" width="50"/>
-		 <span>{{error.message}}</span> 
+		{{#each model.errors as |error|}}
+	      <img src = "{{error.image}}" width="50"/>
+        <span>Something went wrong. Please report on Live Chat Support.</span>
+		    <span>{{error.message}}</span>
 		{{/each}}
 		</div>
 	</div>
