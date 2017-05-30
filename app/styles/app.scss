@@ -284,9 +284,12 @@ ul#clock li{
 }
 
 .daily-problem-div{
-  height: 220px;
+  height: 240px;
 }
-
+.daily-problem-div p{
+  overflow: hidden;
+  height:220px;
+}
 .custom-card{
   padding:30px;
 }
@@ -579,4 +582,8 @@ ul#clock li{
 .leaderboard-generate-scroll-y{
   max-height:450px;
   overflow-y:scroll;
+}
+.overflow-description{
+  display: none;
+  margin: 0px 20px 0px 20px;
 }
