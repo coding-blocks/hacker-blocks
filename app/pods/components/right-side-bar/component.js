@@ -18,23 +18,26 @@ export default Ember.Component.extend({
       var self = this;
       self.set('messages', Ember.A([]));
       self.get('PN').subscribe([config.GLOBAL_CHAT_NAME]);
-
+      let idString = "";
       self.get('PN').presence([config.GLOBAL_CHAT_NAME], res => {
         res.channels[config.GLOBAL_CHAT_NAME].occupants.forEach(user => {
-          self.get('store').queryRecord('user', { user_id: user.uuid, chat: true }).then(user => {
-            let myUserId = self.get('session.data.authenticated.user_id');
-            if (user.get('id') !== String(myUserId)) {
-              if (user.get('photo') === null || user.get('photo') === '') {
-                user.set('photo', '/images/student/random-avatar2.jpg');
+          idString +=user.uuid + ',';
+        });
+        self.get('store').query('user', { filter:{user_id: idString}, chat: true }).then(users => {
+            users.forEach(user => {
+              let myUserId = self.get('session.data.authenticated.user_id');
+              if (user.get('id') !== String(myUserId)) {
+                if (user.get('photo') === null || user.get('photo') === '') {
+                  user.set('photo', '/images/student/random-avatar2.jpg');
+                }
+                let onlineUser = this.get('onlineUsers').find(onlineUser => {
+                  return onlineUser.id === user.get('id');
+                });
+                if (!onlineUser) {
+                  this.get('onlineUsers').pushObject(user);
+                }
               }
-              let onlineUser = this.get('onlineUsers').find(onlineUser => {
-                return onlineUser.id === user.get('id');
-              });
-              if (!onlineUser) {
-                this.get('onlineUsers').pushObject(user);
-              }
-            }
-          });
+            })
         });
       });
 
