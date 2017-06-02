@@ -25,8 +25,9 @@
       </div>
       <div id="tags">
         {{#each problem.tags as |tag|}}
-          <img src="/images/tag.png" alt="" />
-          <font size="1">{{tag}}</font>{{/each}}
+          <span class="label label-danger chip">
+          <font size="1">{{tag}}</font>
+          </span>{{/each}}
       </div>
       <hr />
       {{#if dailycb}}
