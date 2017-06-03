@@ -18,6 +18,8 @@ var getSnippet = function(lang) {
     '}\n';
 
   snippets['java'] =
+    'import java.util.*;\n' +
+    '\n' +
     'public class Main {\n' +
     '    public static void main(String args[]) {\n' +
     '        \n' +

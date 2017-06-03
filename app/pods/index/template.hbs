@@ -45,9 +45,13 @@
           </div>
           <div class="body">
             <div class="row clearfix">
-              {{#each model.contests as |contest|}}
-                {{#contest-view link='contests.contest' contest=contest}}{{/contest-view}}
-              {{/each}}
+              {{#if model.contests}}
+                 {{#each model.contests as |contest|}}
+                       {{#contest-view link='contests.contest' contest=contest}}{{/contest-view}}
+                 {{/each}}
+              {{else}}
+                 <p class = "description-overlay">No Active Contests at the moment</p>
+              {{/if}}
             </div>
           </div>
         </div>
