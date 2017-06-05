@@ -38,7 +38,7 @@ Router.map(function() {
    this.route('index', { path: '/all' });
    this.route('user',{path: '/:user_id'});
  });
-  this.route('application-loading');
+  //this.route('application-loading-old-old');
   this.route('submission', {path: '/submission/:submission_id'});
   this.route('courses');
   this.route('application-error');
