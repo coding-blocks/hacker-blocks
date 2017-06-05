@@ -30,7 +30,7 @@ export default function () {
 
   if (!ENV.mirageEnabled) {
     this.passthrough();
-    this.passthrough('http://localhost:3000/oneauth/login');
+    this.passthrough('http://dev-api.cb.lk/oneauth/login');
     return;
   }
 
@@ -678,10 +678,10 @@ export default function () {
             "c-id": 6
           }
         },
-        {  
+        {
          "type":"submission",
          "id":"4087",
-         "attributes":{  
+         "attributes":{
             "user-id":542,
             "source":"cHVibGljIGNsYXNzIE1haW4gewogICAgcHVibGljIHN0YXRpYyB2b2lkIG1haW4oU3RyaW5nIGFyZ3NbXSkgewogICAgICAgIAogICAgfQp9",
             "submit-at":1495012405,
@@ -689,24 +689,24 @@ export default function () {
             "score":50,
             "result":1,
             "problem-id":-1,
-            "tc-runs":{  
-               "testcases":[  
-                  {  
+            "tc-runs":{
+               "testcases":[
+                  {
                      "output":"",
                      "result":"no-output",
                      "runtime":0.05
                   },
-                  {  
+                  {
                      "output":"",
                      "result":"no-output",
                      "runtime":0.06
                   },
-                  {  
+                  {
                      "output":"",
                      "result":"no-output",
                      "runtime":0.06
                   },
-                  {  
+                  {
                      "output":"",
                      "result":"no-output",
                      "runtime":0.09
@@ -767,12 +767,12 @@ export default function () {
             }
           }
         },
-        {  
+        {
          "type":"problem",
          "id":"57",
-         "attributes":{  
+         "attributes":{
             "name":"Simple HCF",
-            "content":{  
+            "content":{
                "name":"Simple HCF",
                "constraints":"N <= 10 and all the numbers lie between 1 and 100.",
                "description":"Given N positive numbers, your task is to calculate their HCF.",
@@ -786,7 +786,7 @@ export default function () {
             "time-limit":15,
             "created-by":3,
             "image":"https://i.imgur.com/r7TrqS3.png",
-            "tags":[  
+            "tags":[
                "Implementation",
                "Math"
             ],
@@ -794,24 +794,24 @@ export default function () {
             "source":null,
             "created-at":"2017-03-28T07:56:24.513Z",
             "updated-at":null,
-            "cproblems":{  
+            "cproblems":{
                "created-at":"2017-04-09T05:53:05.220Z",
                "updated-at":"2017-04-09T05:53:05.220Z",
                "p-id":57,
                "c-id":6
             }
          },
-         "relationships":{  
-            "top":{  
-               "data":{  
+         "relationships":{
+            "top":{
+               "data":{
                   "type":"submission",
                   "id":"4087"
                }
             },
-            "submissions":{  
+            "submissions":{
 
             },
-            "testcases":{  
+            "testcases":{
 
             }
          }
