@@ -4,6 +4,7 @@ import Env from '../../../../config/environment';
 const { inject: { service }, Route } = Ember;
 
 export default Ember.Route.extend({
+  ajax : service(),
   routing: service('-routing'),
   currentAttemptService: service('current-attempt'),
   currentUser: service('current-user'),
@@ -17,28 +18,27 @@ export default Ember.Route.extend({
       currentAttempt: this.get('currentAttemptService').getCurrentAttempts(contest.id),
       leaderboard: this.get('store').query('submission',
         {contest_id: contest.id, leaderboard: true, contest: true }),
-    });
+    })
+      .then(hash=>{
+        let contest = hash.contest;
+        let contestId = contest.get('id');
+        let authHeaders = this.get('currentUser').getAuthHeaders();
+
+        hash.submissionCount = this.get('ajax').request(Env.apiEndpoint + '/api/submissions/submissionCount',{
+          headers: authHeaders,
+          data: { contestId: contestId },
+          accepts: 'application/json'
+        }).catch(err=>{
+          console.error(err);
+          return 0; // set submission count to zero
+        });
+
+        return Ember.RSVP.hash(hash);
+      });
   },
   setupController: function (controller, model) {
     this._super(controller, model);
-
-    let contest = model.contest;
-    let contestId = contest.get('id');
-    let authHeaders = this.get('currentUser').getAuthHeaders();
-
-    $.ajax({
-      url: Env.apiEndpoint + '/api/submissions/submissionCount',
-      type: 'GET',
-      headers: authHeaders,
-      data: { contestId: contestId },
-      accepts: 'application/json',
-      success: function (data) {
-        controller.set('submissionCount', data[0].count);
-      },
-      error: function () {
-        controller.set('submissionCount', 0);
-      }
-    });
+    controller.set('submissionCount', model.submissionCount ? model.submissionCount[0].count : 0 );
   },
   afterModel(model, transition) {
     const { currentAttempt, contest } = model;
