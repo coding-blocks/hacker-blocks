@@ -20309,7 +20309,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after, input[type=checkbox]:
 
 .ls-closed .sidebar {
   margin-left: -300px;
-  background: #3d4c5a
+  background: #2e3d49
 }
 
 .ls-closed .sidebar .info-container .name {
@@ -21091,7 +21091,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after, input[type=checkbox]:
 
 .ls-closed .sidebar {
   margin-left: -300px;
-  background: #3d4c5a
+  background: #2e3d49
 }
 
 .ls-closed .sidebar .info-container .name {
@@ -21992,7 +21992,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after, input[type=checkbox]:
   position: relative;
   overflow-y: auto;
   height: 90vh;
-  background: #3d4c5a
+  background: #2e3d49
 }
 
 .sidebar .menu .list {
@@ -23683,7 +23683,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after, input[type=checkbox]:
 
 .block-header h2 {
   margin: 0 !important;
-  color: #3d4c5a !important;
+  color: #2e3d49 !important;
   font-weight: 600;
   font-size: 20px
 }
@@ -24271,7 +24271,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after, input[type=checkbox]:
 }
 
 .right-sidebar #chat ul > li .media .media-body .name {
-  color: #3d4c5a;
+  color: #2e3d49;
   margin: 0px;
   display: block;
   font-size: 15px
@@ -24316,7 +24316,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after, input[type=checkbox]:
 
 .right-sidebar #chat ul.settings > li .form-group .control-label {
   margin-bottom: 15px;
-  color: #3d4c5a;
+  color: #2e3d49;
   line-height: 22px
 }
 
@@ -24523,7 +24523,7 @@ input[type=checkbox]:not(:disabled) ~ .lever:active:after, input[type=checkbox]:
 }
 
 body {
-  background-color: #3d4c5a;
+  background-color: #2e3d49;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   -webkit-transition: all 0.5s;
@@ -30734,13 +30734,13 @@ section.content {
   padding: 10px;
   background: #f2f2f2;
   margin: 2px 0;
-  color: #3d4c5a;
+  color: #2e3d49;
   font-size: 13px;
   border-left: 3px solid
 }
 
 .page-calendar .event-name:hover {
-  background: #3d4c5a;
+  background: #2e3d49;
   color: #fff
 }
 
@@ -31224,7 +31224,7 @@ section.content {
 
 .cbp_tmtimeline > li .cbp_tmtime span:first-child {
   font-size: 16px;
-  color: #3d4c5a;
+  color: #2e3d49;
   font-weight: 700
 }
 
@@ -31398,7 +31398,7 @@ section.content {
 .people-list {
   width: 260px;
   float: left;
-  background: #3d4c5a;
+  background: #2e3d49;
   border-radius: 3px 0 0 3px;
   height: 92vh !important
 }
