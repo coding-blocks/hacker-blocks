@@ -1,30 +1,28 @@
-<div class="col-xs-12 col-sm-6 col-md-4">
-    {{#link-to (if active link 'contests.upcoming') contest.id}}
-      <div class="thumbnail card contestCard hover-card">
-          <img class=" img-over"src={{contest.image}} alt={{contest.name}}>
-        <div class="caption">
-          <h3>{{contest.name}}</h3>
-          <hr/>
-          <p>{{contest.description}}</p>
-          <div class="clearfix timeLeft">
-            <div class="timetxt">{{#if archived}}Ended:{{else}}Ends:{{/if}}</div>
-            <div class=" text-center">
-            <span class="pull-left marginR10"><span
-              class="hours">{{contest.endTimeObj.day}}</span> {{contest.endTimeObj.month}}</span>
-              <span class="pull-left marginR10"><span
-                class="hours">{{contest.endTimeObj.hour}}</span> {{contest.endTimeObj.meri1}}</span>
-              <span class="pull-left marginR10 hours">:</span>
-              <span class="pull-left marginR10"><span
-                class="minutes">{{contest.endTimeObj.min}}</span> {{contest.endTimeObj.meri2}}</span>
-            </div>
-          </div>
-          <div class="pull-right">
-            <p class="smallcircle"><span class="circlepoint">{{contest.problems.length}}</span><span class="lblcircle">Problems</span>
-            </p>
-            <p class="smallcircle"><span class="circlepoint">{{multiply contest.problems.length 100}}</span><span
-              class="lblcircle">Points</span></p>
-          </div>
+<div class="col-xs-12 col-sm-6 col-md-4 ">
+  {{#link-to (if active link 'contests.upcoming') contest.id}}
+    <div class="thumbnail card contestCard hover-card">
+      <div class="img-overlay"></div>
+      <img src={{contest.image}} alt={{contest.name}}>
+      <div class="caption">
+        <h3>{{contest.name}}</h3>
+        <hr/>
+        <div class="timetxt">{{#if archived}}Ended:{{else}}Ends:{{/if}}</div>
+        <div class="clearfix timeLeft text-center">
+          <span
+            class="hours big-digit">{{contest.endTimeObj.day}}</span>
+          <span
+            class="big-alpha">{{contest.endTimeObj.month}}</span>
+          <span
+            class="hours">{{contest.endTimeObj.hour}}:{{contest.endTimeObj.min}} {{contest.endTimeObj.meri1}}{{contest.endTimeObj.meri2}}</span>
         </div>
+        <div class="pull-right">
+          <p class="smallcircle">{{contest.problems.length}}<span class="lblcircle">Problems</span>
+          </p>
+          <p class="smallcircle">{{multiply contest.problems.length 100}}<span
+            class="lblcircle">Points</span></p>
+        </div>
+        <p>{{contest.description}}</p>
       </div>
-    {{/link-to}}
+    </div>
+  {{/link-to}}
 </div>
