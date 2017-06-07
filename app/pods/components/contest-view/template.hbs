@@ -1,26 +1,30 @@
-<div class="col-xs-12 col-sm-6 col-md-3">
-  <div class="thumbnail card contestCard">
-    <img src={{contest.image}} alt={{contest.name}}>
-    <div class="clearfix timeLeft">
-      <span class="timetxt">{{#if archived}}Ended:{{else}}Ends:{{/if}}</span>
-      <span class="pull-right text-center">
-        <span class="pull-left marginR10"><span class="hours">{{contest.endTimeObj.day}}</span> {{contest.endTimeObj.month}}</span>
-        <span class="pull-left marginR10"><span class="hours">{{contest.endTimeObj.hour}}</span> {{contest.endTimeObj.meri1}}</span>
-        <span class="pull-left marginR10 hours">:</span>
-        <span class="pull-left marginR10"><span class="minutes">{{contest.endTimeObj.min}}</span> {{contest.endTimeObj.meri2}}</span>
-      </span>
-    </div>
-    <div class="caption">
-      <h3>{{contest.name}}</h3>
-      <hr />
-      <p>{{contest.description}}</p>
-      <p class="smallcircle"><span class="circlepoint">{{contest.problems.length}}</span><span class="lblcircle">Problems</span></p>
-      <p class="smallcircle"><span class="circlepoint">{{multiply contest.problems.length 100}}</span><span class="lblcircle">Points</span></p>
-      {{#if active}}
-        {{#link-to link contest.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}
-      {{else}}
-        {{#link-to 'contests.upcoming' contest.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}Attempt{{/link-to}}
-      {{/if}}
-    </div>
-  </div>
+<div class="col-xs-12 col-sm-6 col-md-4">
+    {{#link-to (if active link 'contests.upcoming') contest.id}}
+      <div class="thumbnail card contestCard hover-card">
+          <img class=" img-over"src={{contest.image}} alt={{contest.name}}>
+        <div class="caption">
+          <h3>{{contest.name}}</h3>
+          <hr/>
+          <p>{{contest.description}}</p>
+          <div class="clearfix timeLeft">
+            <div class="timetxt">{{#if archived}}Ended:{{else}}Ends:{{/if}}</div>
+            <div class=" text-center">
+            <span class="pull-left marginR10"><span
+              class="hours">{{contest.endTimeObj.day}}</span> {{contest.endTimeObj.month}}</span>
+              <span class="pull-left marginR10"><span
+                class="hours">{{contest.endTimeObj.hour}}</span> {{contest.endTimeObj.meri1}}</span>
+              <span class="pull-left marginR10 hours">:</span>
+              <span class="pull-left marginR10"><span
+                class="minutes">{{contest.endTimeObj.min}}</span> {{contest.endTimeObj.meri2}}</span>
+            </div>
+          </div>
+          <div class="pull-right">
+            <p class="smallcircle"><span class="circlepoint">{{contest.problems.length}}</span><span class="lblcircle">Problems</span>
+            </p>
+            <p class="smallcircle"><span class="circlepoint">{{multiply contest.problems.length 100}}</span><span
+              class="lblcircle">Points</span></p>
+          </div>
+        </div>
+      </div>
+    {{/link-to}}
 </div>

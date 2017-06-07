@@ -170,6 +170,7 @@ span.badge.new {
 
 .contestCard {
   margin-top: 10px;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: column;
     height: 500px;
@@ -301,8 +302,8 @@ ul#clock li{
   padding:30px;
 }
 .contestCard img{
-  margin-bottom: auto;
-
+  margin-bottom: 0;
+  min-height: 160px;
 }
 
 .submit-login-message {
@@ -594,3 +595,62 @@ ul#clock li{
   display: none;
   margin: 0px 20px 0px 20px;
 }
+.color-bg{
+  background: linear-gradient(160deg,#02ccba 0,#aa7ecd 100%)!important;
+}
+.n-top{
+  background: linear-gradient(160deg,#02ccba 0,#aa7ecd 120%)!important;
+}
+.bars{
+  background: none!important;
+  .bar1{
+    background: #fff!important;
+  }
+}
+.row{
+  margin-bottom: 20px;
+}
+.card{
+  border-radius: 7px;
+  box-shadow: none;
+  .header{
+    background: none!important;
+  }
+}
+.section-card{
+  border: none;
+}
+.hover-card{
+  box-shadow: 12px 15px 20px 0 rgba(46,61,73,.15);
+  transition: all .3s ease;
+}
+
+.hover-card:hover{
+  box-shadow:0 4px 8px 0 rgba(46,61,73,.12);
+}
+.img-over{
+}
+a:hover,a:focus{
+  text-decoration: none!important;
+}
+.sidebar .menu{
+  background: #f2f9fb ;
+}
+
+.n-top.blur-bg{
+  z-index: 1000;
+  background: rgba(0,0,0,1)!important;
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(20px);
+  -o-filter: blur(20px);
+  -ms-filter: blur(20px);
+  filter: blur(20px);
+  transition: all .3s ease;
+}
+.timeLeft{ background: rgba(233, 30, 99, 0.9);font-size:10px; color:#fff; padding:2px 15px;box-sizing:border-box;}
+.timeLeft .hours{
+  font-size: 16px !important;
+}
+.timeLeft .minutes,
+.timeLeft .seconds{ display:block;font-size:14px;}
+.timeLeft .timetxt{ margin-top:12px; display:inline-block; margin-right:25px;}
