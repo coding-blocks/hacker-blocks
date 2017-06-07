@@ -6,21 +6,27 @@
       <div class="caption">
         <h3>{{contest.name}}</h3>
         <hr/>
-        <div class="timetxt">{{#if archived}}Ended:{{else}}Ends:{{/if}}</div>
-        <div class="clearfix timeLeft text-center">
+        <div class="timeLeft text-center">
+          <span class="timetxt text-center">{{#if archived}}Ended:{{else}}Ends:{{/if}}</span>
           <span
-            class="hours big-digit">{{contest.endTimeObj.day}}</span>
+            class="hours big-digit" style="color:#FF5483;">{{contest.endTimeObj.day}}</span>
           <span
             class="big-alpha">{{contest.endTimeObj.month}}</span>
           <span
-            class="hours">{{contest.endTimeObj.hour}}:{{contest.endTimeObj.min}} {{contest.endTimeObj.meri1}}{{contest.endTimeObj.meri2}}</span>
+            class="hours mintxt">{{contest.endTimeObj.hour}}
+            : {{contest.endTimeObj.min}}</span>
         </div>
-        <div class="pull-right">
-          <p class="smallcircle">{{contest.problems.length}}<span class="lblcircle">Problems</span>
-          </p>
-          <p class="smallcircle">{{multiply contest.problems.length 100}}<span
-            class="lblcircle">Points</span></p>
+        <div class="text-col-two text-center">
+          <span class="big-digit" style="color: #02B3E4;">{{contest.problems.length}}</span>
+          <span
+            class="big-alpha">Problems</span>
         </div>
+        <div class="text-col-two text-center">
+          <span class="big-digit" style="color: #02CCBA;">{{multiply contest.problems.length 100}}</span>
+          <span
+            class="big-alpha">Points</span>
+        </div>
+        <hr>
         <p>{{contest.description}}</p>
       </div>
     </div>

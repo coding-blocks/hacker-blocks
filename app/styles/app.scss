@@ -664,7 +664,7 @@ ul#clock li {
 .bars {
   background: none !important;
   .bar1 {
-      background: #fff !important;
+    background: #fff !important;
   }
 }
 
@@ -673,7 +673,7 @@ ul#clock li {
 }
 
 .card {
-  border-radius: 7px;
+  border-radius: 3px;
   box-shadow: none;
   .header {
     background: none !important;
@@ -702,8 +702,8 @@ ul#clock li {
   width: 100%;
   transition: .5s ease;
   height: 150px;
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
 }
 
 .contestCardWrapper:nth-of-type(6n+1) .contestCard .img-overlay {
@@ -759,15 +759,54 @@ a:hover, a:focus {
 
 .timeLeft {
   display: inline-block;
-  width: 33.33%;
-  font-size: 16px!important;
-  color: #333!important;
-  background: none!important;
+  width: 33%;
+  font-size: 14px !important;
+  color: #333 !important;
+  background: none !important;
 }
 
-.big-digit{
-  font-size: 36px!important;
+.text-col-two {
+  display: inline-block;
+  width: 30%;
+  font-size: 14px !important;
+  color: #333 !important;
+  background: none !important;
+  top: 30%;
+  transform: translateY(-30%);
 }
-.big-alpha{
-  font-size: 18px!important;
+
+.caption p {
+  font-size: 14px !important;
+  color: #333 !important;
+  word-wrap: break-word;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.big-digit {
+  font-size: 32px !important;
+}
+
+.big-alpha {
+  font-size: 15px !important;
+  text-transform: uppercase;
+}
+
+.contestCard {
+  height: 425px !important;
+  margin-bottom: 30px !important;
+}
+
+hr {
+  margin-bottom: 10px !important;
+  margin-top: 10px !important;
+}
+
+@media (max-width: 355px) {
+  .big-alpha {
+    font-size: 13px !important;
+  }
+  .mintxt {
+    font-size: 12px !important;
+  }
 }
