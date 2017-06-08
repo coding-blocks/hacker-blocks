@@ -14,7 +14,7 @@
                 </div>
 
                   {{#each dailycb.problem.tags as |tag|}}
-                    <span class="marginR10 chip label label-danger" style="color: #fff;"><font size="3">{{tag}}</font></span>
+                    <span class="marginR10 chip label label-danger" style="color: #fff;">{{tag}}</span>
                   {{/each}}
                 <div class="row">
                   <hr>
@@ -27,30 +27,38 @@
                     <ul class="pt-category">
                       <li>
                         <a href="#">
-                          <span>Points</span>
-                          <i class="material-icons">grade</i>
-                          <span>100</span>
+                          <span class="center-block big-alpha">Points</span>
+                          <span style="color:#FF5483;">
+                            <i class="material-icons">grade</i>
+                            <span class="center-block">100</span>
+                          </span>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <span>Time</span>
-                          <i class="material-icons">access_time</i>
-                          <span>24 Hours</span>
+                          <span class="center-block big-alpha">Time</span>
+                          <span style="color: #02B3E4;">
+                            <i class="material-icons">access_time</i>
+                            <span class="center-block">24 Hours</span>
+                          </span>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <span>Max</span>
-                          <i class="material-icons">trending_up</i>
-                          <span>{{dailycb.maxscore}}</span>
+                          <span class="center-block big-alpha">Max</span>
+                          <span style="color: #02CCBA;">
+                            <i class="material-icons">trending_up</i>
+                            <span class="center-block">{{dailycb.maxscore}}</span>
+                          </span>
                         </a>
                       </li>
                       <li>
                         <a href="#">
-                          <span>Total</span>
-                          <i class="material-icons">group</i>
-                          <span>{{dailycb.count}}</span>
+                          <span class="center-block big-alpha">Total</span>
+                          <span style="color: #A951ED;">
+                            <i class="material-icons">group</i>
+                            <span class="center-block">{{dailycb.count}}</span>
+                          </span>
                         </a>
                       </li>
                     </ul>
