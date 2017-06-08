@@ -8,11 +8,11 @@
     </div>
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
+        <div class="card section-card">
           <div class="body">
             <div class="row clearfix">
                {{#each model.contest.problems as |problem|}}
-                  {{#problem-view link='practice-section.problems.problem.index' problem=problem }}{{/problem-view}}
+                  {{#problem-view link='practice-section.problems.problem.index' problem=problem class="problemCardWrapper"}}{{/problem-view}}
                {{/each}}
             </div>
           </div>

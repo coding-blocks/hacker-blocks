@@ -1,74 +1,82 @@
 <div class="col-xs-12 col-sm-6 col-md-3">
-  <div class="thumbnail card problemCard">
-    <div class = "problem-result">
-    {{#if (eq submissionResult 1)}}
-    <img src="/images/correct-icon.png" width="100%" />
-    {{/if}}
-    {{#if (eq submissionResult 0)}}
-     <img src="/images/partially-correct.jpg" width="100%" />
-     {{/if}}
-    {{#if (eq submissionResult -1)}}
-    <img src="/images/wrong-icon.png" width="100%" />
+  {{#link-to link problem.id}}
+    <div class="thumbnail card problemCard hover-card">
+      <div class="problem-result">
+        {{#if (eq submissionResult 1)}}
+          <img src="/images/correct-icon.png" width="100%"/>
+        {{/if}}
+        {{#if (eq submissionResult 0)}}
+          <img src="/images/partially-correct.jpg" width="100%"/>
+        {{/if}}
+        {{#if (eq submissionResult -1)}}
+          <img src="/images/wrong-icon.png" width="100%"/>
+        {{/if}}
+      </div>
+      <div class="problem-image-wrapper">
+        <div class="problem-img-overlay"></div>
+        <img src={{problem.image}} width="100%"/>
+      </div>
+      {{#if dailycb}}
+        <div class="posrel">
+          <span class="card-date">{{dailycb.UTCDay}} {{dailycb.UTCMonth}}</span>
+        </div>
       {{/if}}
-    </div>
-    <div class="problem-image-wrapper">
-      <img src={{problem.image}} width="100%" />
-    </div>
-    {{#if dailycb}}
-      <div class="posrel">
-        <span class="card-date">{{dailycb.UTCDay}} {{dailycb.UTCMonth}}</span>
-      </div>
-    {{/if}}
-    <div class="caption">
-      <div class="problem-name-wrapper">
-        <h3>{{problem.name}}</h3>
-      </div>
-      <div id="tags">
-        {{#each problem.tags as |tag|}}
-          <span class="label label-danger chip">
+      <div class="caption">
+        <div class="problem-name-wrapper">
+          <h3>{{problem.name}}</h3>
+        </div>
+        <div id="tags">
+          {{#each problem.tags as |tag|}}
+            <span class="label label-danger chip">
           <font size="1">{{tag}}</font>
           </span>{{/each}}
+        </div>
+        <hr/>
+        {{#if dailycb}}
+          <div class="pt-detail row">
+            <div class="pt-category pt-txt col-md-6 col-sm-6 col-xs-6">
+              <a class="icon-dailycb" href="#" >
+                <span class="center-block big-alpha">Points</span>
+                <span style="color:#FF5483;">
+                <i class="material-icons">grade</i>
+                <span class="center-block">100</span>
+                </span>
+              </a>
+            </div>
+            <div class="pt-category  pt-txt col-md-6 col-sm-6 col-xs-6">
+              <a class="icon-dailycb" href="#">
+                <span class="center-block big-alpha">Time</span>
+                <span style="color: #02B3E4;">
+                <i class="material-icons">access_time</i>
+                <span class="center-block">24 Hours</span>
+                </span>
+              </a>
+            </div>
+          </div>
+          <div class="pt-detail row m-t-20">
+            <div class="pt-category pt-txt col-md-6 col-sm-6 col-xs-6">
+              <a class="icon-dailycb" href="#">
+                <span class="center-block big-alpha">Max</span>
+                <span style="color: #02CCBA;">
+                <i class="material-icons">trending_up</i>
+                <span class="center-block">{{dailycb.maxscore}}</span>
+                </span>
+              </a>
+            </div>
+            <div class="pt-category  pt-txt col-md-6 col-sm-6 col-xs-6">
+              <a class="icon-dailycb" href="#">
+                <span class="center-block big-alpha">Total</span>
+                <span style="color: #A951ED;">
+                <i class="material-icons">group</i>
+                <span class="center-block">{{dailycb.count}}</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        {{else}}
+          <p class="text-center"><span class="big-digit" style="color:#FF5483;">100</span> <span class="big-alpha" style="vertical-align: baseline">Points</span></p>
+        {{/if}}
       </div>
-      <hr />
-      {{#if dailycb}}
-        <div class="pt-detail row">
-          <div class="pt-category pt-txt col-md-6 col-sm-6 col-xs-6">
-            <a class="icon-dailycb" href="#">
-              <span class="center-block">Points</span>
-              <i class="material-icons">grade</i>
-              <span class="center-block">100</span>
-            </a>
-          </div>
-          <div class="pt-category  pt-txt col-md-6 col-sm-6 col-xs-6">
-            <a class="icon-dailycb" href="#">
-              <span class="center-block">Time</span>
-              <i class="material-icons">access_time</i>
-              <span class="center-block">24 Hours</span>
-            </a>
-          </div>
-        </div>
-        <div class="pt-detail row m-t-20">
-          <div class="pt-category pt-txt col-md-6 col-sm-6 col-xs-6">
-            <a class="icon-dailycb" href="#">
-              <span class="center-block">Max</span>
-              <i class="material-icons">trending_up</i>
-              <span class="center-block">{{dailycb.maxscore}}</span>
-            </a>
-          </div>
-          <div class="pt-category  pt-txt col-md-6 col-sm-6 col-xs-6">
-            <a  class="icon-dailycb" href="#">
-              <span class="center-block">Total</span>
-              <i class="material-icons">group</i>
-              <span class="center-block">{{dailycb.count}}</span>
-            </a>
-          </div>
-        </div>
-      {{else}}
-        <p class="smallcircle"><span class="circlepoint">100</span><span class="lblcircle">Points</span></p>
-      {{/if}}
-      {{#link-to link problem.id class="btn btn-raised g-bg-blush2 waves-effect btn-sm" role="button"}}
-        {{#if dailycb.isArchived}}Leaderboard{{else}}Attempt{{/if}}
-      {{/link-to}}
     </div>
-  </div>
+  {{/link-to}}
 </div>

@@ -4,17 +4,20 @@
       <h2>Home</h2>
     </div>
     <div class="row clearfix top-report">
-       {{#home-statistics model=model}}{{/home-statistics}}
+      {{#home-statistics model=model}}{{/home-statistics}}
     </div>
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
+        <div class="card section-card">
           <div class="header">
             <h2>Daily Code Bytes</h2>
             <ul class="header-dropdown m-r--5">
-              <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="zmdi zmdi-more-vert"></i></a>
+              <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
+                                      role="button" aria-haspopup="true" aria-expanded="false"><i
+                class="zmdi zmdi-more-vert"></i></a>
                 <ul class="dropdown-menu pull-right">
-                  {{#link-to 'practice' tagName="li"}}<a href="javascript:void(0);">Go to Daily code Bytes</a>{{/link-to}}
+                  {{#link-to 'practice' tagName="li"}}
+                    <a href="javascript:void(0);">Go to Daily code Bytes</a>{{/link-to}}
                 </ul>
               </li>
             </ul>
@@ -22,7 +25,8 @@
           <div class="body">
             <div class="row clearfix">
               {{#each model.dailyCBs as |dailyCB index|}}
-                {{#problem-view dailycb=dailyCB link='practice.weekly-problem' problem=dailyCB.problem.content i=index}}{{/problem-view}}
+                {{#problem-view dailycb=dailyCB link='practice.weekly-problem' problem=dailyCB.problem.content
+                                i=index class="problemCardWrapper"}}{{/problem-view}}
               {{/each}}
             </div>
           </div>
@@ -32,11 +36,13 @@
 
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
+        <div class="card section-card">
           <div class="header">
             <h2>Contests</h2>
             <ul class="header-dropdown m-r--5">
-              <li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="zmdi zmdi-more-vert"></i></a>
+              <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
+                                      role="button" aria-haspopup="true" aria-expanded="false"><i
+                class="zmdi zmdi-more-vert"></i></a>
                 <ul class="dropdown-menu pull-right">
                   {{#link-to 'contests' tagName="li"}}<a href="javascript:void(0);">Go to Contests</a>{{/link-to}}
                 </ul>
@@ -44,13 +50,13 @@
             </ul>
           </div>
           <div class="body">
-            <div class="row clearfix">
+            <div class="row clearfix contestCardContainer">
               {{#if model.contests}}
-                 {{#each model.contests as |contest|}}
-                       {{#contest-view link='contests.contest' contest=contest}}{{/contest-view}}
-                 {{/each}}
+                {{#each model.contests as |contest|}}
+                    {{#contest-view link='contests.contest' contest=contest class="contestCardWrapper"}}{{/contest-view}}
+                {{/each}}
               {{else}}
-                 <p class = "description-overlay">No Active Contests at the moment</p>
+                <p class="description-overlay">No Active Contests at the moment</p>
               {{/if}}
             </div>
           </div>
