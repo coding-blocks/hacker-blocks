@@ -1,9 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-
+    breadCrumb: {
+      title: "Profile"
+    },
     model(params) {
-
         let contests = Ember.A([]);
         let fetchedSubmissions = Ember.A([]);
         let submissionQuery = this.store.query('submission', { filter: { user_id: params.user_id, profile: true } });

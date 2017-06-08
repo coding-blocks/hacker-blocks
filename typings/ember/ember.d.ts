@@ -57,7 +57,7 @@ declare module 'ember' {
      */
     var VERSION: string;
     /**
-     * The hash of environment variables used to control various configuration settings. To specify your own or override default settings, add the desired properties to a global hash named `EmberENV` (or `ENV` for backwards compatibility with earlier versions of Ember). The `EmberENV` hash must be created before loading Ember.
+     * The hash of environment variables used to control various configuration settings. To specify your own or override default settings, add the desired properties to a global hash named `EmberENV` (or `ENV` for backwards compatibility with earlier versions of Ember). The `EmberENV` hash must be created before loading-old Ember.
      */
     var ENV: {};
     /**
@@ -1371,7 +1371,7 @@ declare module 'ember' {
        */
       attributeBindings: Ember.Array;
       /**
-       * By default the `{{link-to}}` component will bind to the `active`, `loading`, and `disabled` classes. It is discouraged to override these directly.
+       * By default the `{{link-to}}` component will bind to the `active`, `loading-old`, and `disabled` classes. It is discouraged to override these directly.
        */
       classNameBindings: Ember.Array;
     }

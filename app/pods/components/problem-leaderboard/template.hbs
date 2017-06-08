@@ -41,9 +41,8 @@
            {{/if}}
         {{/if}}
 
-
-      {{#link-to "users.user" submission.userId}}
-        {{submission.userName}}
+      {{#link-to "users.user" submission.user.id}}
+        {{submission.user.name}}
       {{/link-to}}
       </td>
       <td>{{decimal-to-whole submission.score}}</td>
