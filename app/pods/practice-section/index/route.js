@@ -8,14 +8,16 @@ export default Ember.Route.extend({
   model: function () {
     var practiceContests = [];
 
-    this.get('store').findAll('practice_category').then(function (practice) {
+    const practiceTypes = this.get('store').findAll('practice_category').then(function (practice) {
       practice.forEach(function (element) {
           practiceContests.pushObject(element);
-      })
+      });
     });
-    return Ember.RSVP.hash({
-      practiceContests: practiceContests
-    });
+    return practiceTypes.then( ()=>{
+            return Ember.RSVP.hash({
+              practiceContests: practiceContests
+            });
+        });
   },
 
   setupController(controller, model) {

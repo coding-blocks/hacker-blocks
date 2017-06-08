@@ -10,7 +10,7 @@ export default Ember.Route.extend({
     var upcomingContests = [];
     var previousContests = [];
 
-    this.get('store').query('contest', {public: true}).then(function (contest) {
+    const contestTypes = this.get('store').query('contest', {public: true}).then(function (contest) {
       var presentDate = Math.floor(new Date().valueOf() / 1000);
       contest.forEach(function (element) {
         if (element.get('startTime') <= presentDate && element.get('endTime') >= presentDate) {
@@ -22,11 +22,15 @@ export default Ember.Route.extend({
         }
       })
     });
-    return Ember.RSVP.hash({
-      activeContests: activeContests,
-      upcomingContests: upcomingContests,
-      previousContests: previousContests
-    });
+
+    return contestTypes.then( ()=> {
+          return Ember.RSVP.hash({
+            activeContests  : activeContests,
+            upcomingContests: upcomingContests,
+            previousContests: previousContests
+          });
+      });
+
   },
 
   setupController(controller, model) {
