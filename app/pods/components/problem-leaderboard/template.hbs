@@ -10,6 +10,25 @@
     </tr>
   </thead>
   <tbody>
+  {{log yourRank}}
+  {{#if yourRank}}
+    <tr>
+      <td>{{yourRank.user_rank}}</td>
+      <td>
+        {{#if avatar}}
+          {{#if yourRank.user_photo}}
+            <img src={{yourRank.user_photo}} width="25" class="img-circle marginR10">
+          {{else}}
+            <img src="/images/student/random-avatar{{get-rand 5}}.jpg" width="25" class="img-circle marginR10">
+          {{/if}}
+        {{/if}}
+        {{#link-to "users.user" yourRank.user_id}}
+          {{yourRank.user_name}}
+        {{/link-to}}
+      </td>
+      <td>{{decimal-to-whole yourRank.score}}</td>
+    </tr>
+  {{/if}}
     {{#each leaderboard as |submission index|}}
     <tr>
       <td>{{sum index 1}}</td>
@@ -21,7 +40,7 @@
             <img src="/images/student/random-avatar{{get-rand 5}}.jpg" width="25" class="img-circle marginR10">
            {{/if}}
         {{/if}}
-        
+
 
       {{#link-to "users.user" submission.userId}}
         {{submission.userName}}
