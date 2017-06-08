@@ -21,10 +21,8 @@
             <img src="/images/student/random-avatar{{get-rand 5}}.jpg" width="25" class="img-circle marginR10">
            {{/if}}
         {{/if}}
-        
-
-      {{#link-to "users.user" submission.userId}}
-        {{submission.userName}}
+      {{#link-to "users.user" submission.user.id}}
+        {{submission.user.name}}
       {{/link-to}}
       </td>
       <td>{{decimal-to-whole submission.score}}</td>
