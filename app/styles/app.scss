@@ -345,7 +345,7 @@ ul#clock li {
 
 .submit-login-message {
   margin-top: 15px;
-  color: deeppink;
+  color: #02b3e4;
 }
 
 .wrapper-overlay {
@@ -657,6 +657,7 @@ ul#clock li {
   margin: 0px 20px 0px 20px;
 }
 
+/* THEME UPDATE */
 .color-bg, .n-top {
   background: #455a64 !important;
 }
@@ -687,6 +688,7 @@ ul#clock li {
 .hover-card {
   box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, .15);
   transition: all .3s ease;
+  margin-bottom: 30px!important;
 }
 
 .hover-card:hover {
@@ -706,28 +708,78 @@ ul#clock li {
   border-top-right-radius: 3px;
 }
 
+.problem-img-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  transition: .5s ease;
+  height: 105px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.problem-image-wrapper img {
+  height: 100px !important;
+  min-height: 100px !important;
+}
+
+.problem-name-wrapper {
+  height: 46px !important;
+}
+
+.problemCardWrapper:nth-of-type(6n+1) .problem-img-overlay {
+  background-color: rgba(169, 81, 237, .7);
+}
+
+.problemCardWrapper:nth-of-type(6n+4) .problem-img-overlay {
+  background-color: rgba(255, 162, 52, .7);
+}
+
+.problemCardWrapper:nth-of-type(6n+2) .problem-img-overlay {
+  background-color: rgba(255, 84, 131, .7);
+}
+
+.problemCardWrapper:nth-of-type(6n+3) .problem-img-overlay {
+  background-color: rgba(2, 179, 228, .7);
+}
+
+.problemCardWrapper:nth-of-type(6n+5) .problem-img-overlay {
+  background-color: rgba(169, 81, 237, .7);
+}
+
+.problemCardWrapper:nth-of-type(6n+1) .problem-img-overlay {
+  background-color: rgba(2, 204, 186, .7);
+}
+
+.problemCardWrapper:nth-of-type(6n+6) .problem-img-overlay {
+  background-color: rgba(125, 151, 173, .7);
+}
+
 .contestCardWrapper:nth-of-type(6n+1) .contestCard .img-overlay {
-  background-color: rgba(255, 162, 52, .8);
+  background-color: rgba(255, 162, 52, .7);
 }
 
 .contestCardWrapper:nth-of-type(6n+2) .contestCard .img-overlay {
-  background-color: rgba(255, 84, 131, .8);
+  background-color: rgba(255, 84, 131, .7);
 }
 
 .contestCardWrapper:nth-of-type(6n+3) .contestCard .img-overlay {
-  background-color: rgba(2, 179, 228, .8);
+  background-color: rgba(2, 179, 228, .7);
 }
 
 .contestCardWrapper:nth-of-type(6n+4) .contestCard .img-overlay {
-  background-color: rgba(169, 81, 237, .8);
+  background-color: rgba(169, 81, 237, .7);
 }
 
 .contestCardWrapper:nth-of-type(6n+5) .contestCard .img-overlay {
-  background-color: rgba(2, 204, 186, .8);
+  background-color: rgba(2, 204, 186, .7);
 }
 
 .contestCardWrapper:nth-of-type(6n+6) .contestCard .img-overlay {
-  background-color: rgba(125, 151, 173, .8);
+  background-color: rgba(125, 151, 173, .7);
 }
 
 a:hover, a:focus {
@@ -790,11 +842,11 @@ a:hover, a:focus {
 .big-alpha {
   font-size: 15px !important;
   text-transform: uppercase;
+  color: #333 !important;
 }
 
 .contestCard {
   height: 425px !important;
-  margin-bottom: 30px !important;
 }
 
 hr {
@@ -809,4 +861,42 @@ hr {
   .mintxt {
     font-size: 12px !important;
   }
+}
+
+.thumbnail h3 {
+  margin: 10px 0px !important;
+}
+
+.btn {
+  box-shadow: 8px 10px 20px 0 rgba(46, 61, 73, .15) !important;
+  border-radius: 3px;
+  &:hover {
+    box-shadow: 2px 4px 8px 0 rgba(46, 61, 73, .2) !important;
+  }
+}
+
+.g-bg-blush2 {
+  background: #02b3e4 !important;
+}
+
+.btn-filled-aqua {
+  background: #02b3e4 !important;
+  color: #fff !important;
+}
+
+.btn-filled-cyan {
+  background: #02ccba !important;
+  color: #fff !important;
+}
+
+.label-danger {
+  background-color: #fc4f4f !important;
+  color: #ffffff !important;
+}
+
+.chip {
+  border-radius: 3px !important;
+}
+.card.greenhead .header h2{
+  color: #333333 !important;
 }

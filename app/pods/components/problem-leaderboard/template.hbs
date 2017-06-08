@@ -14,12 +14,12 @@
     <tr>
       <td>{{sum index 1}}</td>
       <td>
-        {{#if avatar}} 
+        {{#if avatar}}
            {{#if submission.userPhoto}}
-            <img src={{submission.userPhoto}} width="25" class="img-circle marginR10"> 
+            <img src={{submission.userPhoto}} width="25" class="img-circle marginR10">
            {{else}}
-            <img src="/images/student/random-avatar{{get-rand 5}}.jpg" width="25" class="img-circle marginR10"> 
-           {{/if}} 
+            <img src="/images/student/random-avatar{{get-rand 5}}.jpg" width="25" class="img-circle marginR10">
+           {{/if}}
         {{/if}}
         {{submission.userName}}
       </td>

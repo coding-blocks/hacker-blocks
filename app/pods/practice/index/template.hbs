@@ -9,14 +9,14 @@
     {{/each}}
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
+        <div class="card section-card">
           <div class="header">
             <h2>PREVIOUS CODE BYTES</h2>
           </div>
           <div class="body">
             <div class="row clearfix">
               {{#each otherProblems as |dailycb|}}
-                {{#problem-view dailycb=dailycb archived=true link='practice.weekly-problem.index' problem=dailycb.problem.content}}{{/problem-view}}
+                {{#problem-view dailycb=dailycb archived=true link='practice.weekly-problem.index' problem=dailycb.problem.content class="problemCardWrapper"}}{{/problem-view}}
               {{/each}}
             </div>
           </div>
