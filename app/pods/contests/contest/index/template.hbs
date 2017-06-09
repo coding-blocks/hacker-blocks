@@ -19,7 +19,7 @@
     </div>
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card custom-card">
+        <div class="card custom-card hover-card">
           <div class="row">
             <div class="col-sm-4 col-md-4 col-lg-4">
               <h4 class="text-center"><strong>Statistics</strong></h4>
@@ -48,11 +48,11 @@
             </div>
           </div>
         </div>
-        <div class="card">
+        <div class="card section-card">
           <div class="body">
             <div class="row clearfix">
                {{#each model.contest.problems as |problem|}}
-                  {{#problem-view link='contests.contest.problem.index' problem=problem}}{{/problem-view}}
+                  {{#problem-view link='contests.contest.problem.index' problem=problem class="problemCardWrapper"}}{{/problem-view}}
                {{/each}}
             </div>
           </div>

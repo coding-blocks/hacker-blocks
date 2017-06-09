@@ -6,7 +6,7 @@
     </div>
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card">
+        <div class="card section-card">
 
           {{#if (not-eq activeContests.length 0)}}
           <div class="header">
@@ -15,7 +15,7 @@
           <div class="body">
             <div class="row clearfix">
               {{#each practiceContests as |contest|}}
-                {{#contest-view link='practice-section.problems' contest=contest.contests isPractice=true}} {{/contest-view}}
+                {{#contest-view link='practice-section.problems' contest=contest.contests class="contestCardWrapper"}} {{/contest-view}}
               {{/each}}
             </div>
           </div>
