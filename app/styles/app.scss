@@ -688,7 +688,7 @@ ul#clock li {
 .hover-card {
   box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, .15);
   transition: all .3s ease;
-  margin-bottom: 30px!important;
+  margin-bottom: 30px !important;
 }
 
 .hover-card:hover {
@@ -897,10 +897,50 @@ hr {
 .chip {
   border-radius: 3px !important;
 }
-.card.greenhead .header h2{
+
+.card.greenhead .header h2 {
   color: #333333 !important;
 }
-.loading-container{
+
+.loading-container {
   position: relative;
-  height: 650px;
+  height: 100vh;
+}
+
+/*Loader Update*/
+.pl-blue {
+  stroke: #02b3e4;
+}
+.loader {
+  margin:  calc(50vh - 25px) calc(50vw - 125px);
+}
+.loader--glisteningWindow {
+  width: 0.5em;
+  height: 0.5em;
+  box-shadow: 0.70711em 0.70711em 0 0em #455a64, -0.70711em 0.70711em 0 0.17678em #9b59b6, -0.70711em -0.70711em 0 0.25em #455a64, 0.70711em -0.70711em 0 0.17678em #f1c40f;
+  animation: gw 1s ease-in-out infinite, rot 2.8s linear infinite;
+}
+
+@keyframes rot {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes gw {
+  0% {
+    box-shadow: 0.70711em 0.70711em 0 0.125em #455a64, -0.70711em 0.70711em 0 0.39017em #fc4f4f, -0.70711em -0.70711em 0 0.5em #455a64, 0.70711em -0.70711em 0 0.39017em #fc4f4f;
+  }
+  25% {
+    box-shadow: 0.70711em 0.70711em 0 0.39017em #455a64, -0.70711em 0.70711em 0 0.5em #fc4f4f, -0.70711em -0.70711em 0 0.39017em #455a64, 0.70711em -0.70711em 0 0.125em #fc4f4f;
+  }
+  50% {
+    box-shadow: 0.70711em 0.70711em 0 0.5em #455a64, -0.70711em 0.70711em 0 0.39017em #fc4f4f, -0.70711em -0.70711em 0 0.125em #455a64, 0.70711em -0.70711em 0 0.39017em #fc4f4f;
+  }
+  75% {
+    box-shadow: 0.70711em 0.70711em 0 0.39017em #455a64, -0.70711em 0.70711em 0 0.125em #fc4f4f, -0.70711em -0.70711em 0 0.39017em #455a64, 0.70711em -0.70711em 0 0.5em #fc4f4f;
+  }
+  100% {
+    box-shadow: 0.70711em 0.70711em 0 0.125em #455a64, -0.70711em 0.70711em 0 0.39017em #fc4f4f, -0.70711em -0.70711em 0 0.5em #455a64, 0.70711em -0.70711em 0 0.39017em #fc4f4f;
+  }
 }
