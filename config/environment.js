@@ -6,7 +6,8 @@ module.exports = function(environment) {
     podModulePrefix: 'hack/pods',
     environment: environment,
     rootURL: '/',
-    locationType: 'auto',
+    locationType: 'router-scroll',
+    historySupportMiddleware: true,
     publicUrl: 'http://hack.codingblocks.com',
     EmberENV: {
       FEATURES: {
