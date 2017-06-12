@@ -26,17 +26,11 @@ export default Ember.Component.extend({
   // The update logic. You can update this in child timers to achieve different
   // steps (say, increment the clock by five each second, etc).
   tick() {
-    let now = this.get('now'),
-      endTime = this.get('endTime');
-
     this.set('now', (new Date().getTime()));
   },
 
   init(timestamp) {
     this._super(...arguments);
-
-    let startTime = this.get('startTime'),
-      duration = this.get('duration');
 
     this.tick()
   },
