@@ -41,9 +41,16 @@
            {{/if}}
         {{/if}}
 
-      {{#link-to "users.user" submission.user.id}}
-        {{submission.user.name}}
-      {{/link-to}}
+        <!-- This is a very dirty hack. omerjerk. -->
+        {{#if submission.user.id}}
+          {{#link-to "users.user" submission.user.id}}
+            {{submission.user.name}}
+          {{/link-to}}
+        {{else}}
+          {{#link-to "users.user" submission.userId}}
+            {{submission.userName}}
+          {{/link-to}}
+        {{/if}}
       </td>
       <td>{{decimal-to-whole submission.score}}</td>
       {{#if submission.language}}

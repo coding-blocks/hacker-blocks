@@ -17,7 +17,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     }
   },
   beforeModel(transition) {
-    if (!this.get('session.isAuthenticated') && transition.queryParams.code != undefined) {
+    if (!this.get('session.isAuthenticated') && transition.queryParams.code !== undefined) {
       this.get('session').authenticate('authenticator:custom', transition.queryParams.code).then(()=>{
         var retrievedPath = localStorage.getItem('redirection-path');
         localStorage.removeItem('redirection-path');

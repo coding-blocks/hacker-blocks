@@ -7,7 +7,7 @@ const Router = Ember.Router.extend(RouterScroll ,{
   location: config.locationType,
   rootURL: config.rootURL,
   notifyGoogleAnalytics: function() {
-    if (config.environment == "production") {
+    if (config.environment === "production") {
       return ga('send', 'pageview', {
         'page': this.get('url'),
         'title': this.get('url')
