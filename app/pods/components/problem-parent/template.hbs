@@ -73,9 +73,15 @@
                   </div>
                 {{/if}}
                 {{#if problem.content.explanation}}
-                  <div id="sampleOutput">
+                  <div id="explanation">
                     <span><b>Explanation:</b></span>
                     <span>{{problem.content.explanation}}</span>
+                  </div>
+                {{/if}}
+                {{#if problem.timeLimit}}
+                  <div id="timeLimit">
+                    <span><b>Time Limit:</b></span>
+                    <span>{{problem.timeLimit}} sec</span>
                   </div>
                 {{/if}}
                 <hr/>
