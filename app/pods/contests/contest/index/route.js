@@ -39,7 +39,8 @@ export default Ember.Route.extend({
   setupController: function (controller, model) {
     this._super(controller, model);
     controller.set('submissionCount', model.submissionCount ? model.submissionCount[0].count : 0 );
-    controller.set('yourRank', model.leaderboard.get('meta') );
+    let yourRank = model.leaderboard.get('meta').yourRank;
+    controller.set('youRank', yourRank);
   },
   afterModel(model, transition) {
     const { currentAttempt, contest } = model;

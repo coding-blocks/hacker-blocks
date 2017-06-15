@@ -30,7 +30,7 @@ function judge(component, problemId) {
   }).done(function(data) {
     stopLoading();
     console.log("data returned = " + JSON.stringify(data));
-    if (data.result == "compile_error") {
+    if (data.result === "compile_error") {
       component.set('output', window.atob(data.error));
     } else {
       if (problemId === undefined) {
@@ -83,7 +83,7 @@ export default Ember.Component.extend({
       $("#editor-lang").text(this.lang_codes[langId]["name"]);
       let editor = ace.edit("editor");
       editor.getSession().setMode(this.lang_codes[langId]["mode"]);
-      if (this.get("onceEdit") == false) {
+      if (this.get("onceEdit") === false) {
         editor.setValue(getSnippet(langId));
       }
       this.langId = langId;

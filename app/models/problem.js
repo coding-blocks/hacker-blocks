@@ -16,5 +16,6 @@ export default DS.Model.extend({
   leaderboard: DS.hasMany('submissions', {async: true}),
   userCount: DS.attr(),
   solutionStubs: DS.hasMany('solutionStub'),
-  
+  timeLimit: DS.attr({defaultValue: 2}),
+
 });
