@@ -29,7 +29,7 @@ function judge(component, problemId, contestId, noScore, headers) {
     type: "POST",
     headers: authHeaders,
     contentType: "application/json",
-    timeout: 100000
+    timeout: 200000
   }).done(function(data) {
     component.sendAction('refreshModel');
     stopLoading();

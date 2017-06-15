@@ -92,15 +92,17 @@ export default Ember.Component.extend({
       );
       self.get('PN').history(config.GLOBAL_CHAT_NAME, res => {
         res.messages.forEach(message => {
-          var photo = (message.entry.sender.photo === '') || (message.entry.sender.photo === null) ? '/images/student/random-avatar2.jpg' : message.entry.sender.photo;
-          var sentTime = new Date(message.timetoken / 1e4);
-          var obj = {
-            text: message.entry.text,
-            senderName: message.entry.sender.name,
-            senderPhoto: photo,
-            sentTime: moment(sentTime).format('MMM Do YYYY, h:mm a')
-          };
-          self.get('messages').pushObject(obj);
+          if(message.entry.sender !== null) {
+            var photo = (message.entry.sender.photo === '') || (message.entry.sender.photo === null) ? '/images/student/random-avatar2.jpg' : message.entry.sender.photo;
+            var sentTime = new Date(message.timetoken / 1e4);
+            var obj = {
+              text: message.entry.text,
+              senderName: message.entry.sender.name,
+              senderPhoto: photo,
+              sentTime: moment(sentTime).format('MMM Do YYYY, h:mm a')
+            };
+            self.get('messages').pushObject(obj);
+          }
         });
       });
 
