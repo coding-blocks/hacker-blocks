@@ -6,14 +6,32 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   namespace: 'api',
   host: env.apiEndpoint,
   urlForQueryRecord(query) {
-    if (query.me) {
-      delete query.me;
-      return `${this._super(...arguments)}/me`;
-    } else if (query.weekly) {
-      delete query.weekly;
-      return `${this._super(...arguments)}/weekly/${query.problem_id}`;
+
+    if(query.custom){
+      switch (query.custom.ext){
+        case 'url' :
+              let url =  query.custom.url;
+              delete query.custom;
+              return `${this._super(...arguments)}/${url}`;
+        case 'weekly':
+               return `${this._super(...arguments)}/weekly/${query.problem_id}`;
+      }
+    } else  {
+      return this._super(...arguments);
     }
-    return this._super(...arguments);
+
+  },
+  urlForQuery(query){
+    if(query.custom){
+      switch (query.custom.ext){
+        case 'url' :
+          let url =  query.custom.url;
+          delete query.custom;
+          return `${this._super(...arguments)}/${url}`;
+      }
+    } else  {
+      return this._super(...arguments);
+    }
   },
   authorizer: 'authorizer:custom'
 });
