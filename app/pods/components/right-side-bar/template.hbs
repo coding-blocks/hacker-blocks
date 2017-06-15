@@ -5,7 +5,7 @@
     <li role="presentation"><a href="#chat" data-toggle="tab">Chat</a></li>
   </ul>
   <div class="tab-content" style="height: 100%;">
-    <div role="tabpanel" class="tab-pane fade in active in active" id="online-users-wrapper" style="height: 100%;">
+    <div role="tabpanel" class="tab-pane fade in active in active" id="online-users-wrapper" style="height: 100%; overflow-y:scroll;">
       <ul class="list-group" id="online-users">
         {{#each onlineUsers as |user|}}
           <li id="{{user.id}}" class="list-group-item"><img src ={{user.photo}} width="25" class="img-circle marginR10">{{user.name}}</li>
