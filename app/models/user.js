@@ -17,5 +17,6 @@ export default DS.Model.extend({
   courseDescription: Ember.computed('course', function () {
       return courseDescriptionProvider(this.get('course'));
     }),
-  is_active: DS.attr()
+  is_active: DS.attr(),
+  bCode:DS.attr()
 });
