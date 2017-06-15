@@ -47,6 +47,7 @@ Router.map(function() {
       this.route('problem', {path: '/:problem_id'},function() {});
     });
   });
+  this.route('online');
 });
 
 export default Router;

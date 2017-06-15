@@ -946,6 +946,46 @@ hr {
   }
 }
 
+blue-bar{
+  height: 45px;
+  width: 100%;
+  color: white;
+  background: darkcyan;
+  position: absolute;
+  bottom: 1px;
+  left: 0px;
+}
+.course-fee{
+  margin: 10px 45%;
+  position: absolute;
+}
+.banner{
+  display: flex;
+}
+.course-details{
+  padding: 25px;
+  width: 100%;
+  background: #F4F4F4;
+}
+.course-insights{
+  display: flex;
+}
+.course-insight{
+  margin: 20px;
+}
+.white-circle{
+  height: 80px;
+  width: 80px;
+  background: white;
+  border-radius: 50px;
+  padding: 20px 0px 0px 25px;
+  font-size:30px;
+}
+.circle-text{
+  padding: 5px 15%;
+}
+
+
 .loader--circularSquare {
   width: 0;
   height: 0;
