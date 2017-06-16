@@ -8,7 +8,7 @@ export default Ember.Route.extend({
     title: 'Problems'
   },
   model() {
-    let {contest} = this.modelFor('practice-section.problems');
+    let {contest} = this.modelFor('practice.problems');
     return Ember.RSVP.hash({
       contest: contest,
     });

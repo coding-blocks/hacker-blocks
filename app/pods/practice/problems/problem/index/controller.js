@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   actions: {
     redirectToContest(model) {
       //this.get('target.router').refresh()
-   this.transitionToRoute('contests.contest.contest-result', model.contest.id);  
+   this.transitionToRoute('contests.contest.contest-result', model.contest.id);
   },
   refreshModel(){
       var model = this.get('model');
