@@ -29,8 +29,6 @@ export default Ember.Route.extend({
                 contests
             });
         });
-
-
     },
     setupController(controller, model) {
         this._super(...arguments);

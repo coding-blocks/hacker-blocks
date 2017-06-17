@@ -27,19 +27,21 @@
                         {{/link-to}}
                         {{/if}}
                     </div>
-                  <table style="margin-left:auto;margin-right:auto;">
-                  <tr>
-                    <td>
-                      <strong>Batch Code:</strong>
-                    </td>
-                    <td>
-                      {{ input size="50" placeholder="Batch Code" value=user.bCode }}
-                    </td>
-                    <td>
-                      <button type="button" class="btn btn-default"{{action "submitBatchCode" user}}>Submit Batch Code</button>
-                    </td>
-                  </tr>
-                  </table>
+                    {{#if (eq-prim session.data.authenticated.user_id model.user.id)}}
+                        <table style="margin-left:auto;margin-right:auto;">
+                            <tr>
+                                <td>
+                                    <strong>Batch Code:</strong>
+                                </td>
+                                <td>
+                                    {{ input size="50" placeholder="Batch Code" value=user.bCode }}
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-default"{{action "submitBatchCode" user}}>Submit Batch Code</button>
+                                </td>
+                            </tr>
+                        </table>
+                    {{/if}}
                 </section>
             </div>
         </div>
