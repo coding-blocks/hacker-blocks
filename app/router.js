@@ -1,7 +1,9 @@
 import Ember from 'ember';
 import config from './config/environment';
+import RouterScroll from 'ember-router-scroll';
 
-const Router = Ember.Router.extend({
+
+const Router = Ember.Router.extend(RouterScroll ,{
   location: config.locationType,
   rootURL: config.rootURL,
   notifyGoogleAnalytics: function() {
@@ -47,6 +49,7 @@ Router.map(function() {
       this.route('problem', {path: '/:problem_id'},function() {});
     });
   });
+  this.route('online');
 });
 
 export default Router;

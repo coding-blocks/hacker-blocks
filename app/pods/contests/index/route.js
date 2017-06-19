@@ -10,7 +10,7 @@ export default Ember.Route.extend({
     var upcomingContests = [];
     var previousContests = [];
 
-    const contestTypes = this.get('store').query('contest', {public: true}).then(function (contest) {
+    const contestTypes = this.get('store').query('contest', {custom: {ext: 'url', url: 'public'}}).then(function (contest) {
       var presentDate = Math.floor(new Date().valueOf() / 1000);
       contest.forEach(function (element) {
         if (element.get('startTime') <= presentDate && element.get('endTime') >= presentDate) {
