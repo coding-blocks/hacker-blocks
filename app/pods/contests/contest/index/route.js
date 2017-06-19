@@ -13,8 +13,18 @@ export default Ember.Route.extend({
   },
   model() {
     let {contest} = this.modelFor('contests.contest');
+    let tags = [];
+    contest.get("problems").forEach(function (prob) {
+      prob.get("tags").forEach(function (tag) {
+        if(tags.indexOf(tag)===-1)
+        {
+          tags.pushObject(tag);
+        }
+      })
+    });
     return Ember.RSVP.hash({
       contest: contest,
+      tags:tags,
       currentAttempt: this.get('currentAttemptService').getCurrentAttempts(contest.id),
       leaderboard: this.get('store').query('submission',
         {contest_id: contest.id, leaderboard: true, contest: true }),
