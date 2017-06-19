@@ -1,0 +1,27 @@
+<section class="content">
+  <div class="container-fluid">
+    <div class="block-header">
+      <h2>This Week's Code Bytes</h2>
+      <small class="text-muted">One question each day, to see what you are made of</small>
+    </div>
+    {{#each mainProblem as |dailycb|}}
+      {{#current-cb-card dailycb = dailycb leaderboard=leaderboard}}{{/current-cb-card}}
+    {{/each}}
+    <div class="row clearfix">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card section-card">
+          <div class="header">
+            <h2>PREVIOUS CODE BYTES</h2>
+          </div>
+          <div class="body">
+            <div class="row clearfix">
+              {{#each otherProblems as |dailycb|}}
+                {{#problem-view dailycb=dailycb archived=true link='practice.weekly-problem.index' problem=dailycb.problem.content class="problemCardWrapper"}}{{/problem-view}}
+              {{/each}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
