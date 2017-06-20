@@ -13,7 +13,7 @@ export default Ember.Route.extend({
     title: 'Description'
   },
   model() {
-    let p_id = this.modelFor('practice/weekly-problem').p_id;
+    let p_id = this.modelFor('dcb/weekly-problem').p_id;
     return Ember.RSVP.hash({
       lang_codes: lang_codes,
       dailycb: this.get('store').queryRecord('dailycb', {p_id}),
