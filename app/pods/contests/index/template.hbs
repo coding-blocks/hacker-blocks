@@ -15,7 +15,7 @@
           <div class="body">
             <div class="row clearfix">
               {{#each activeContests as |contest|}}
-                {{#contest-view link='contests.contest' contest=contest class="contestCardWrapper"}} {{/contest-view}}
+                {{#contest-view showPoints=true link='contests.contest' contest=contest class="contestCardWrapper"}} {{/contest-view}}
               {{/each}}
             </div>
           </div>
@@ -28,7 +28,7 @@
             <div class="body">
               <div class="row clearfix">
                 {{#each upcomingContests as |contest|}}
-                  {{#contest-view link='contests.contest' contest=contest class="contestCardWrapper"}} {{/contest-view}}
+                  {{#contest-view showPoints=true link='contests.contest' contest=contest class="contestCardWrapper"}} {{/contest-view}}
                 {{/each}}
               </div>
             </div>
@@ -41,7 +41,7 @@
           <div class="body">
             <div class="row clearfix">
               {{#each previousContests as |contest|}}
-                {{#contest-view link='contests.contest' contest=contest archived=true class="contestCardWrapper"}}{{/contest-view}}
+                {{#contest-view link='contests.contest' showPoints=true contest=contest archived=true class="contestCardWrapper"}}{{/contest-view}}
               {{/each}}
             </div>
           </div>
