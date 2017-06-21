@@ -6,6 +6,9 @@ export function isTagSelected(params) {
     if(selectedTag === "All") {
       return true;
     } else {
+      if (tags == null) {
+        return false;
+      }
       return tags.indexOf(selectedTag) !== -1;
     }
   });

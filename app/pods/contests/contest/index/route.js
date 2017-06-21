@@ -15,12 +15,13 @@ export default Ember.Route.extend({
     let {contest} = this.modelFor('contests.contest');
     let tags = [];
     contest.get("problems").forEach(function (prob) {
-      prob.get("tags").forEach(function (tag) {
-        if(tags.indexOf(tag)===-1)
-        {
-          tags.pushObject(tag);
-        }
-      })
+      if (prob.get("tags") != null) {
+        prob.get("tags").forEach(function (tag) {
+          if(tags.indexOf(tag) ===-1) {
+            tags.pushObject(tag);
+          }
+        })
+      }
     });
     return Ember.RSVP.hash({
       contest: contest,
