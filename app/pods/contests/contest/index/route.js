@@ -16,15 +16,13 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash({
       contest: contest,
       currentAttempt: this.get('currentAttemptService').getCurrentAttempts(contest.id),
-      leaderboard: this.get('store').query('submission',
-        {contest_id: contest.id, leaderboard: true, contest: true }),
-    })
-      .then(hash=>{
+      leaderboard: this.get('store').query('submission', {contest_id: contest.id, custom: {ext: 'url', url: 'leaderboard'}}),
+    }).then(hash=>{
         let contest = hash.contest;
         let contestId = contest.get('id');
         let authHeaders = this.get('currentUser').getAuthHeaders();
 
-        hash.submissionCount = this.get('ajax').request(Env.apiEndpoint + '/api/submissions/submissionCount',{
+        hash.submissionCount = this.get('ajax').request(Env.apiEndpoint + '/api/submissions/submissionCount', {
           headers: authHeaders,
           data: { contestId: contestId },
           accepts: 'application/json'
