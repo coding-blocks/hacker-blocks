@@ -53,7 +53,7 @@
             <div class="row clearfix contestCardContainer">
               {{#if model.contests}}
                 {{#each model.contests as |contest|}}
-                    {{#contest-view link='contests.contest' contest=contest class="contestCardWrapper"}}{{/contest-view}}
+                    {{#contest-view link='contests.contest' showPoints=true contest=contest class="contestCardWrapper"}}{{/contest-view}}
                 {{/each}}
               {{else}}
                 <p class="description-overlay">No Active Contests at the moment</p>

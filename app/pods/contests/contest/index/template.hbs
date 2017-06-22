@@ -4,6 +4,7 @@
       <div class="col-md-6 block-header">
         <h2>All Problems</h2>
         <small class="text-muted">Solve these problem and prove yourself </small>
+        <h3>{{model.contest.name}}</h3>
       </div>
       {{#if model.contest.duration}}
         <div class="countdown-timer-container col-md-offset-3 col-md-3">
@@ -48,12 +49,22 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-sm-12 text-center" id="filter">
+            <button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" "All" selectedTag}}  value="All">All</button>
+            {{#each model.tags as |tag|}}
+              <button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag}}</button>
+            {{/each}}
+          </div>
+        </div>
         <div class="card section-card">
           <div class="body">
             <div class="row clearfix">
                {{#each model.contest.problems as |problem|}}
+                 {{#if (is-tag-selected problem.tags selectedTag)}}
                   {{#problem-view link='contests.contest.problem.index' problem=problem class="problemCardWrapper"}}{{/problem-view}}
-               {{/each}}
+                 {{/if}}
+                 {{/each}}
             </div>
           </div>
         </div>

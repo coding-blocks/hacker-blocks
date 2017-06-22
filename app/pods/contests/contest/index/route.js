@@ -13,18 +13,27 @@ export default Ember.Route.extend({
   },
   model() {
     let {contest} = this.modelFor('contests.contest');
+    let tags = [];
+    contest.get("problems").forEach(function (prob) {
+      if (prob.get("tags") != null) {
+        prob.get("tags").forEach(function (tag) {
+          if(tags.indexOf(tag) ===-1) {
+            tags.pushObject(tag);
+          }
+        })
+      }
+    });
     return Ember.RSVP.hash({
       contest: contest,
+      tags:tags,
       currentAttempt: this.get('currentAttemptService').getCurrentAttempts(contest.id),
-      leaderboard: this.get('store').query('submission',
-        {contest_id: contest.id, leaderboard: true, contest: true }),
-    })
-      .then(hash=>{
+      leaderboard: this.get('store').query('submission', {contest_id: contest.id, custom: {ext: 'url', url: 'leaderboard'}}),
+    }).then(hash=>{
         let contest = hash.contest;
         let contestId = contest.get('id');
         let authHeaders = this.get('currentUser').getAuthHeaders();
 
-        hash.submissionCount = this.get('ajax').request(Env.apiEndpoint + '/api/submissions/submissionCount',{
+        hash.submissionCount = this.get('ajax').request(Env.apiEndpoint + '/api/submissions/submissionCount', {
           headers: authHeaders,
           data: { contestId: contestId },
           accepts: 'application/json'

@@ -21,9 +21,9 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     }
 
   },
-  urlForQuery(query){
-    if(query.custom){
-      switch (query.custom.ext){
+  urlForQuery(query) {
+    if(query.custom) {
+      switch (query.custom.ext) {
         case 'url' :
           let url =  query.custom.url;
           delete query.custom;
