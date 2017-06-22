@@ -33,9 +33,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     ENV.apiEndpoint = 'http://localhost:3000',
+    ENV.chatEndpoint = 'http://localhost:3001',
     ENV.mirageEnabled = process.env.HACK_FRONTEND_MIRAGE_ENABLED
     ENV.publicUrl = 'http://localhost:4200'
-    ENV.GLOBAL_CHAT_NAME = 'global-chat-dev'
+    ENV.GLOBAL_CHAT_NAME = 'chat-dev'
   }
 
   if (environment === 'test') {
@@ -51,7 +52,8 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.apiEndpoint = 'https://api.cb.lk';
-    ENV.GLOBAL_CHAT_NAME = 'global-chat-prod';
+    ENV.GLOBAL_CHAT_NAME = 'chat-prod';
+    ENV.chatEndpoint = 'https://chat.cb.lk';
   }
 
   return ENV;
