@@ -3800,6 +3800,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
   border-radius: 3px
 }
 
+.btn-xs, .btn-group-xs > .btn {
   padding: 1px 5px;
   font-size: 12px;
   line-height: 1.5;
