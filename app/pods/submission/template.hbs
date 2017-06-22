@@ -22,7 +22,7 @@
                 {{#if (eq model.result -1)}}
                     <span class="isa_warning"><i class="material-icons">warning</i>Compilation Error</span>
                 {{else if  (eq model.result -3)}}
-                    <span class="isa_warning"><i class="material-icons">access_time</i>Time Limit Exceeded</span> 
+                    <span class="isa_warning"><i class="material-icons">access_time</i>Time Limit Exceeded</span>
                 {{else if (eq model.score 100)}}
                     <span class="isa_success"><i class="material-icons">done</i>Correct Answer</span>
                 {{else }}
@@ -66,38 +66,3 @@
     </div>
   </div>
 </section>
-<!-- main content -->
-
-<!--
-<div id="main-content">
-  <div class="innerbannerimg clearfix" style="height:350px; overflow:hidden"><img src="/images/mainimage.jpg" style="width:100%;" alt=""/></div>
-  <div class="container site-content">
-    <div class="row">
-      <main id="main" class="site-main col-sm-12 full-width">
-        <h4>Submission #{{model.id}}</h4>
-        {{#ace-editor readOnly=true showDefaultSnippet=false}}{{base64-decode model.source}}{{/ace-editor}}
-        <div class="card ">
-          <div class="card-content">
-            <span class="card-title">Result</span>
-          <p>
-            {{#if (eq model.result -1)}}
-              <td>
-                <div class="isa_warning"><i class="material-icons">warning</i>Compilation Error</div>
-              </td>
-            {{else if (eq model.score 100)}}
-              <td>
-                <div class="isa_success"><i class="material-icons">done</i>Correct Answer</div>
-              </td>
-            {{else }}
-              <td>
-                <div class="isa_error"><i class="material-icons">error</i>Wrong Answer</div>
-              </td>
-            {{/if}}
-            </p>
-          </div>
-        </div>
-      </main>
-    </div>
-  </div>
-</div>
--->
