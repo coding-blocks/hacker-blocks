@@ -6,8 +6,8 @@ export default Ember.Route.extend({
     title: 'Problem'
   },
   model() {
-    let contest = this.modelFor('practice-section.problems').contest;
-    let problem_id = this.modelFor('practice-section.problems.problem').problem_id;
+    let contest = this.modelFor('practice.problems').contest;
+    let problem_id = this.modelFor('practice.problems.problem').problem_id;
     return Ember.RSVP.hash({
       problem: this.get('store').queryRecord('problem', {problem_id, contest_id: contest.id}),
       contest: contest,

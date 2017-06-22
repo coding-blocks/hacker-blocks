@@ -25,7 +25,7 @@
           <div class="body">
             <div class="row clearfix">
               {{#each model.dailyCBs as |dailyCB index|}}
-                {{#problem-view dailycb=dailyCB link='practice.weekly-problem' problem=dailyCB.problem.content
+                {{#problem-view dailycb=dailyCB link='dcb.weekly-problem' problem=dailyCB.problem.content
                                 i=index class="problemCardWrapper"}}{{/problem-view}}
               {{/each}}
             </div>

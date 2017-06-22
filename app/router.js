@@ -29,7 +29,7 @@ Router.map(function() {
     });
     this.route('upcoming',{ path: '/upcoming/c/:contest_id' });
   });
-  this.route('practice', function() {
+  this.route('dcb', function() {
     this.route('weekly-problem', {path: '/p/:problem_id'}, function () {
       this.route('main');
       this.route('submissions');
@@ -44,7 +44,7 @@ Router.map(function() {
   this.route('submission', {path: '/submission/:submission_id'});
   this.route('courses');
   this.route('application-error');
-  this.route('practice-section', function() {
+  this.route('practice', function() {
     this.route('problems',{ path: '/p/:contest_id' } ,function() {
       this.route('problem', {path: '/:problem_id'},function() {});
     });
