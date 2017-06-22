@@ -2604,9 +2604,9 @@ ember-cookies@^0.0.10:
     ember-cli-babel "^5.1.6"
     ember-getowner-polyfill "~1.0.1"
 
-ember-data@^2.10.0:
-  version "2.13.1"
-  resolved "https://registry.yarnpkg.com/ember-data/-/ember-data-2.13.1.tgz#fd85daf3c4c7bfe6a0c2e42cedf72048979f94ae"
+ember-data@2.13.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/ember-data/-/ember-data-2.13.0.tgz#6d61487129de0e72225cc98bbc0d995e2042a933"
   dependencies:
     amd-name-resolver "0.0.5"
     babel-plugin-feature-flags "^0.3.1"
