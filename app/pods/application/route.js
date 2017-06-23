@@ -1,11 +1,12 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
+import config from '../../config/environment';
 
 const { inject: { service }, Route } = Ember;
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
   routing: Ember.inject.service('-routing'),
-  PN: service('pn'),
+  chat: service('chat'),
   session: service('session'),
   currentUserSer: service('current-user'),
   url: Ember.observer('router.url', function () {
@@ -45,7 +46,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   afterModel() {
     if (this.get('session.isAuthenticated')) {
       let user_id = this.get('session.data.authenticated.user_id');
-      this.get('PN').init(user_id);
+      this.get('chat').init(user_id, config.GLOBAL_CHAT_NAME);
     }
   }
 });
