@@ -127,8 +127,6 @@ export default Ember.Component.extend({
           window.clearInterval(this.get('intervalId'));
         }
       });
-
-
     }
   },
   actions: {
