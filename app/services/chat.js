@@ -4,18 +4,25 @@
 
 
 import Ember from 'ember';
+// import config from '../../config/environment';
 
 export default Ember.Service.extend({
   socket: null,
-  init(userId, channelName) {
+  init(userId) {
     this.socket = io('http://localhost:3001');
     this.socket.on('connect', () => {
       this.socket.emit('join', {user_id: userId});
     })
   },
+  publishMessage(data) {
+    console.log(data);
+    this.socket.emit('new message', {data:data});
+  },
   addChatListener(listener) {
+    console.log("Called");
     this.socket.on('message', (data) => {
-      listener.onData(data);
+      console.log(data);
+      listener(data);
     });
   },
   addPresenceListener(listener) {
