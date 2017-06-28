@@ -8,7 +8,7 @@ import Ember from 'ember';
 export default Ember.Service.extend({
   socket: null,
   init(userId, channelName) {
-    this.socket = io('http://localhost:3001');
+    this.socket = io('https://chat.cb.lk');
     this.socket.on('connect', () => {
       this.socket.emit('join', {user_id: userId});
     })
