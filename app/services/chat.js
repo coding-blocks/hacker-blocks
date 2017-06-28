@@ -15,13 +15,10 @@ export default Ember.Service.extend({
     })
   },
   publishMessage(data) {
-    console.log(data);
     this.socket.emit('new message', {data:data});
   },
   addChatListener(listener) {
-    console.log("Called");
     this.socket.on('message', (data) => {
-      console.log(data);
       listener(data);
     });
   },
