@@ -6,7 +6,6 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   namespace: 'api',
   host: env.apiEndpoint,
   urlForQueryRecord(query) {
-
     if(query.custom) {
       switch (query.custom.ext){
         case 'url' :
