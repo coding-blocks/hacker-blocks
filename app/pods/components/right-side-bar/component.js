@@ -4,10 +4,15 @@ import config from '../../../config/environment';
 
 const { inject: { service } } = Ember;
 
+const chatApi = function(url){
+  return config.chatEndpoint + '/'+ url;
+};
+
 export default Ember.Component.extend({
   didRenderDone: false,
   chat: service('chat'),
   messages: Ember.A([]),
+  toast: Ember.inject.service(),
   onlineUsers: Ember.A([]),
   session: service('session'),
   store: Ember.inject.service(),
@@ -20,10 +25,12 @@ export default Ember.Component.extend({
       var self = this;
       self.set('messages', Ember.A([]));
       let ids = [];
-      /*
-      self.get('PN').presence([config.GLOBAL_CHAT_NAME], res => {
-        res.channels[config.GLOBAL_CHAT_NAME].occupants.forEach(user => {
-          ids.push(user.uuid);
+      Ember.$.ajax({
+        method: "GET",
+        url:chatApi('online')
+      }).done(res => {
+        res.data.forEach(user => {
+          ids.push(user.user_id);
         });
         self.get('store').query('user', { user_id: ids, chat: true }).then(users => {
             users.forEach(user => {
@@ -41,19 +48,21 @@ export default Ember.Component.extend({
               }
             })
         });
-      });*/
+      });
 
-      this.get('chat').addChatListener((chat) => {
-          var photo = (chat.message.sender.photo === '') || (chat.message.sender.photo === null) ? '/images/student/random-avatar2.jpg' : chat.message.sender.photo;
-          var sentTime = new Date(chat.timetoken / 1e4);
-          var messageObj = {
-            text: chat.message.text,
-            senderName: chat.message.sender.name,
+      this.get('chat').addChatListener((message) => {
+        self.get('store').query('user', { user_id: message.data.user_id, chat: true, obj: true}).then(user => {
+          let sentTime = moment.unix(message.data.sentTime).format('MMM Do YYYY, h:mm a');
+          let photo = (user.photo === undefined)||(user.photo === '') || (user.photo === null) ? '/images/student/random-avatar2.jpg' : user.photo;
+          let messageObj = {
+            text: message.data.text,
+            senderName: user.name,
             senderPhoto: photo,
-            sentTime: moment(sentTime).format('MMM Do YYYY, h:mm a')
+            sentTime: sentTime
           };
           this.get('messages').pushObject(messageObj);
           $("#chatbox").animate({ scrollTop: $('#chatbox').prop("scrollHeight") }, 1000);
+        });
       });
       this.get('chat').addPresenceListener({
         join: (presence) => {
@@ -82,22 +91,27 @@ export default Ember.Component.extend({
           }
         }
       });
-      /*
-      self.get('PN').history(config.GLOBAL_CHAT_NAME, res => {
-        res.messages.forEach(message => {
-          if(message.entry.sender !== null) {
-            var photo = (message.entry.sender.photo === '') || (message.entry.sender.photo === null) ? '/images/student/random-avatar2.jpg' : message.entry.sender.photo;
-            var sentTime = new Date(message.timetoken / 1e4);
-            var obj = {
-              text: message.entry.text,
-              senderName: message.entry.sender.name,
+    Ember.$.ajax({
+      method: "GET",
+      data:{
+        limit: 100,
+      },
+      url:chatApi('messages')
+    }).done(res => {
+        res.data.forEach(message => {
+          self.get('store').query('user', { user_id: message.user_id, chat: true, obj: true}).then(user => {
+            let sentTime = moment.unix(message.sent_time).format('MMM Do YYYY, h:mm a');
+            let photo = (user.photo === undefined) || (user.photo === '') || (user.photo === null) ? '/images/student/random-avatar2.jpg' : user.photo;
+            let messageObj = {
+              text: message.text,
+              senderName: user.name,
               senderPhoto: photo,
-              sentTime: moment(sentTime).format('MMM Do YYYY, h:mm a')
+              sentTime: sentTime
             };
-            self.get('messages').pushObject(obj);
-          }
+            this.get('messages').pushObject(messageObj);
+          });
+          });
         });
-      });*/
 
       /*scroll down to latest message in inbox*/
       $('#chat-icon').click(() => {
@@ -121,8 +135,16 @@ export default Ember.Component.extend({
   },
   actions: {
     sendMessage() {
-      this.get('PN').publishMessage(config.GLOBAL_CHAT_NAME, { text: this.get('message'), sender: this.get('model') });
-      this.set('message', '');
+      let myUserId = this.get('session.data.authenticated.user_id');
+      let  message = this.get('message');
+      let toast = this.get('toast');
+      let chat = this.get('chat');
+      if(message !== '' && message) {
+        chat.publishMessage({ text: message,user_id:myUserId,sentTime:moment().unix()});
+      } else {
+        toast.info('You cannot send Blank Messages','Error');
+      }
+        this.set('message', '');
     }
   },
   blinkChatIcon() {

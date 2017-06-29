@@ -4,18 +4,22 @@
 
 
 import Ember from 'ember';
+// import config from '../../config/environment';
 
 export default Ember.Service.extend({
   socket: null,
-  init(userId, channelName) {
+  init(userId) {
     this.socket = io('https://chat.cb.lk');
     this.socket.on('connect', () => {
       this.socket.emit('join', {user_id: userId});
     })
   },
+  publishMessage(data) {
+    this.socket.emit('new message', {data:data});
+  },
   addChatListener(listener) {
     this.socket.on('message', (data) => {
-      listener.onData(data);
+      listener(data);
     });
   },
   addPresenceListener(listener) {
