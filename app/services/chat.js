@@ -24,10 +24,10 @@ export default Ember.Service.extend({
   },
   addPresenceListener(listener) {
     this.socket.on('join', (data) => {
-      listener.join(data.user_id);
+      listener.join(data);
     });
     this.socket.on('leave', (data) => {
-      listener.leave(data.user_id);
+      listener.leave(data);
     });
   }
 });

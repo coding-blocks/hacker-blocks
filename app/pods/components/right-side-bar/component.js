@@ -33,7 +33,7 @@ export default Ember.Component.extend({
           ids.push(user.user_id);
         });
         self.get('store').query('user', { user_id: ids, chat: true }).then(users => {
-            users.forEach(user => {
+          users.forEach(user=>{
               let myUserId = self.get('session.data.authenticated.user_id');
               if (user.get('id') !== String(myUserId)) {
                 if (user.get('photo') === null || user.get('photo') === '') {
@@ -46,27 +46,30 @@ export default Ember.Component.extend({
                   this.get('onlineUsers').pushObject(user);
                 }
               }
-            })
+          });
         });
       });
 
       this.get('chat').addChatListener((message) => {
-        self.get('store').query('user', { user_id: message.data.user_id, chat: true, obj: true}).then(user => {
-          let sentTime = moment.unix(message.data.sentTime).format('MMM Do YYYY, h:mm a');
-          let photo = (user.photo === undefined)||(user.photo === '') || (user.photo === null) ? '/images/student/random-avatar2.jpg' : user.photo;
-          let messageObj = {
-            text: message.data.text,
-            senderName: user.name,
-            senderPhoto: photo,
-            sentTime: sentTime
-          };
-          this.get('messages').pushObject(messageObj);
-          $("#chatbox").animate({ scrollTop: $('#chatbox').prop("scrollHeight") }, 1000);
+        self.get('store').query('user', { user_id: message.data.user_id, chat: true}).then(users => {
+          users.forEach(user =>{
+            let sentTime = moment.unix(message.data.sentTime).format('MMM Do YYYY, h:mm a');
+            let photo = (user.get('photo') === undefined)||(user.get('photo') === '') || (user.get('photo') === null) ? '/images/student/random-avatar2.jpg' : user.get('photo');
+            let messageObj = {
+              text: message.data.text,
+              senderName: user.get('name'),
+              senderPhoto: photo,
+              sentTime: sentTime
+            };
+            this.get('messages').pushObject(messageObj);
+           $("#chatbox").animate({ scrollTop: $('#chatbox').prop("scrollHeight") }, 1000);
+        });
         });
       });
       this.get('chat').addPresenceListener({
         join: (presence) => {
-          self.get('store').queryRecord('user', { user_id: presence.user_id, chat: true, obj: true}).then(user => {
+          self.get('store').query('user', { user_id: presence.user_id, chat: true}).then(users => {
+            users.forEach(user=>{
             let myUserId = self.get('session.data.authenticated.user_id');
             if (user.get('id') !== String(myUserId)) {
               if (user.get('photo') === null || user.get('photo') === '') {
@@ -76,15 +79,25 @@ export default Ember.Component.extend({
                 return onlineUser.id === user.get('id');
               });
               if (!onlineUser) {
-                this.get('onlineUsers').pushObject(user);
+                let userObj = {
+                  name: user.get('name'),
+                  id: user.get('id'),
+                  photo: user.get('photo')
+                };
+                this.get('onlineUsers').pushObject(userObj);
               }
             }
           });
+          });
         },
         leave: (presence) => {
-          let index = this.get('onlineUsers').findIndex(onlineUser => {
-            return onlineUser.id === presence.user_id;
-          });
+          let index = -1;
+          let onlineUsers = this.get('onlineUsers');
+          for(let i=0;i<onlineUsers.length;i++) {
+            if(onlineUsers[i].id == presence.user_id ) {
+              index = i;
+            }
+          }  
           if (index >= 0) {
             this.get('onlineUsers').splice(index, 1);
             $('#' + presence.user_id).remove();
@@ -98,18 +111,29 @@ export default Ember.Component.extend({
       },
       url:chatApi('messages')
     }).done(res => {
+        let ids = [];
         res.data.forEach(message => {
-          self.get('store').query('user', { user_id: message.user_id, chat: true, obj: true}).then(user => {
-            let sentTime = moment.unix(message.sent_time).format('MMM Do YYYY, h:mm a');
-            let photo = (user.photo === undefined) || (user.photo === '') || (user.photo === null) ? '/images/student/random-avatar2.jpg' : user.photo;
-            let messageObj = {
-              text: message.text,
-              senderName: user.name,
-              senderPhoto: photo,
-              sentTime: sentTime
-            };
-            this.get('messages').pushObject(messageObj);
-          });
+          if(ids.indexOf(message.user_id)<=-1)
+            ids.push(message.user_id);
+        });
+        self.get('store').query('user', {user_id:ids, chat:true}).then(users => {
+        res.data.forEach(message => {  
+          users.forEach(user =>{
+              if(user.id == message.user_id) {
+                let sentTime = moment.unix(message.sent_time).format('MMM Do YYYY, h:mm a');
+                let photo = (user.get('photo') === undefined) || (user.get('photo') === '') || (user.get('photo') === null) ? '/images/student/random-avatar2.jpg' : user.get('photo');
+                let messageObj = {
+                  text: message.text,
+                  senderName: user.get('name'),
+                  senderPhoto: photo,
+                  sentTime: sentTime
+              };
+              this.get('messages').pushObject(messageObj);
+            }
+            })
+          })
+          }).catch(err =>{
+            console.log(err);
           });
         });
 
