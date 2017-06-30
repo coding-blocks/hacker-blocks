@@ -4,12 +4,12 @@
 
 
 import Ember from 'ember';
-// import config from '../../config/environment';
+import config from '../config/environment';
 
 export default Ember.Service.extend({
   socket: null,
   init(userId) {
-    this.socket = io('https://chat.cb.lk');
+    this.socket = io(config.chatEndpoint);
     this.socket.on('connect', () => {
       this.socket.emit('join', {user_id: userId});
     })
