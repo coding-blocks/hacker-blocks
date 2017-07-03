@@ -1,17 +1,6 @@
 <div class="col-xs-12 col-sm-6 col-md-3">
   {{#link-to link problem.id}}
     <div class="thumbnail card problemCard hover-card">
-      <div class="problem-result">
-        {{#if (eq submissionResult 1)}}
-            <i class = "material-icons solved" title="Successfully Solved">done</i>
-        {{/if}}
-        {{#if (eq submissionResult 0)}}
-            <i class = "material-icons partially-solved" title="Partially Correct">done</i>
-        {{/if}}
-        {{#if (eq submissionResult -1)}}
-            <i class = "material-icons wrong" title="Wrong">clear</i>
-        {{/if}}
-      </div>
       <div class="problem-image-wrapper">
         <div class="problem-img-overlay"></div>
         <img src={{problem.image}} width="100%"/>
@@ -35,7 +24,7 @@
         {{#if dailycb}}
           <div class="pt-detail row">
             <div class="pt-category pt-txt col-md-6 col-sm-6 col-xs-6">
-              <a class="icon-dailycb" href="#" >
+              <a class="icon-dailycb" href="#">
                 <span class="center-block big-alpha">Points</span>
                 <span style="color:#FF5483;">
                 <i class="material-icons">grade</i>
@@ -74,7 +63,20 @@
             </div>
           </div>
         {{else}}
-          <p class="text-center"><span class="big-digit" style="color:#FF5483;">100</span> <span class="big-alpha" style="vertical-align: baseline">Points</span></p>
+          <p class="text-center"><span class="big-digit" style="color:#FF5483;">100</span> <span class="big-alpha"
+                                                                                                 style="vertical-align: baseline">Points</span>
+          <div class="problem-result">
+            {{#if (eq submissionResult 1)}}
+              <i class="material-icons solved" title="Successfully Solved">done</i>
+            {{/if}}
+            {{#if (eq submissionResult 0)}}
+              <i class="material-icons partially-solved" title="Partially Correct">done</i>
+            {{/if}}
+            {{#if (eq submissionResult -1)}}
+              <i class="material-icons wrong" title="Wrong">clear</i>
+            {{/if}}
+          </div>
+          </p>
         {{/if}}
       </div>
     </div>
