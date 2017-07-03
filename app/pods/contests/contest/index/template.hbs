@@ -51,7 +51,12 @@
         </div>
         <div class="row">
           <div class="col-sm-12 text-center" id="filter">
-            <button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" "All" selectedTag}}  value="All">All</button>
+            <button class="btn-blue btn fil-cat btn-sm btn-filled" {{action "updateSelection" "All" selectedTag}}  value="All">All</button>
+            <button class="btn fil-cat btn-sm btn-filled btn-green" {{action "updateSelection" "Solved" selectedTag}}  value="Solved">Solved</button>
+            <button class="btn fil-cat btn-sm btn-filled btn-orange" {{action "updateSelection" "Unsolved" selectedTag}}  value="Unsolved">Unsolved</button>
+            <button class="btn fil-cat btn-sm btn-filled btn-yellow" {{action "updateSelection" "Psolved" selectedTag}}  value="Psolved">Partially Solved</button>
+            <button class="btn fil-cat btn-sm btn-filled btn-red" {{action "updateSelection" "Wrong" selectedTag}}  value="Wrong">Wrong</button>
+            <br>
             {{#each model.tags as |tag|}}
               <button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag}}</button>
             {{/each}}
@@ -61,7 +66,7 @@
           <div class="body">
             <div class="row clearfix">
                {{#each model.contest.problems as |problem|}}
-                 {{#if (is-tag-selected problem.tags selectedTag)}}
+                 {{#if (is-tag-selected problem selectedTag)}}
                   {{#problem-view link='contests.contest.problem.index' problem=problem class="problemCardWrapper"}}{{/problem-view}}
                  {{/if}}
                  {{/each}}

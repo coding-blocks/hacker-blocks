@@ -5,7 +5,11 @@ export default Ember.Component.extend({
     didRender() {
         this._super(...arguments);
         let submission = this.get('problem.top');
-
+/*
+     submissionResult -1 WA
+     submissionResult  0 Partially Solved
+     submissionResult  1 Correct Answer
+*/
         if (submission.get('isTopSubmission')) {
            if (submission.get('result') === -1) {
                 this.set('submissionResult', -1);
