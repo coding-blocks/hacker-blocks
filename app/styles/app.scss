@@ -621,15 +621,13 @@ ul#clock li {
 .problem-result {
   height: 20px;
   width: 20px;
-  position: absolute;
-  top: 1px;
-  right: 10px;
+  display: inline;
   z-index: 5;
 }
-.problem-result .material-icons{
-  font-size: 28px!important;
-  font-weight: 700!important;
-  text-shadow:2px 2px 4px #455a64;
+
+.problem-result .material-icons {
+  font-weight: 700 !important;
+  vertical-align: sub !important;
 }
 
 .bars {
@@ -1073,7 +1071,7 @@ blue-bar {
   color: #FDD835;
 }
 
-.material-icons.wrong{
-  color:#D32F2F;
+.material-icons.wrong {
+  color: #D32F2F;
 }
 
