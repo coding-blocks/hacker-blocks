@@ -622,9 +622,14 @@ ul#clock li {
   height: 20px;
   width: 20px;
   position: absolute;
-  top: 2px;
-  right: 2px;
+  top: 1px;
+  right: 10px;
   z-index: 5;
+}
+.problem-result .material-icons{
+  font-size: 28px!important;
+  font-weight: 700!important;
+  text-shadow:2px 2px 4px #455a64;
 }
 
 .bars {
@@ -913,9 +918,11 @@ hr {
 .pl-blue {
   stroke: #02b3e4;
 }
+
 .loader {
-  margin:  calc(50vh - 25px) calc(50vw - 125px);
+  margin: calc(50vh - 25px) calc(50vw - 125px);
 }
+
 .loader--glisteningWindow {
   width: 0.5em;
   height: 0.5em;
@@ -947,7 +954,7 @@ hr {
   }
 }
 
-blue-bar{
+blue-bar {
   height: 45px;
   width: 100%;
   color: white;
@@ -956,36 +963,42 @@ blue-bar{
   bottom: 1px;
   left: 0px;
 }
-.course-fee{
+
+.course-fee {
   margin: 10px 45%;
   position: absolute;
 }
-.banner{
+
+.banner {
   display: flex;
 }
-.course-details{
+
+.course-details {
   padding: 25px;
   width: 100%;
   background: #F4F4F4;
 }
-.course-insights{
+
+.course-insights {
   display: flex;
 }
-.course-insight{
+
+.course-insight {
   margin: 20px;
 }
-.white-circle{
+
+.white-circle {
   height: 80px;
   width: 80px;
   background: white;
   border-radius: 50px;
   padding: 20px 0px 0px 25px;
-  font-size:30px;
-}
-.circle-text{
-  padding: 5px 15%;
+  font-size: 30px;
 }
 
+.circle-text {
+  padding: 5px 15%;
+}
 
 .loader--circularSquare {
   width: 0;
@@ -993,6 +1006,7 @@ blue-bar{
   box-shadow: -0.625em -0.625em 0 0.625em #455a64, 0.625em -0.625em 0 0.625em #fc4f4f, -0.625em 0.625em 0 0.625em #fc4f4f, 0.625em 0.625em 0 0.625em #455a64;
   animation: circSquare 1.5s ease-in-out infinite;
 }
+
 @keyframes circSquare {
   50% {
     width: 1.25em;
@@ -1008,23 +1022,23 @@ blue-bar{
 
 /* -------------- Loader1 -------------- */
 
-.loader1{
+.loader1 {
   position: relative;
   height: 50px;
   width: 50px;
   border-radius: 50px;
-  border: 3px solid  #455a64;
+  border: 3px solid #455a64;
   -webkit-transform-origin: 50% 50%;
   transform-origin: 50% 50%;
   -webkit-animation: loader1 500ms linear infinite;
   animation: loader1 500ms linear infinite;
-  box-shadow: 0px 0px 5px rgba(0,0,0,0.6);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.6);
 }
 
-.loader1:after{
+.loader1:after {
   content: "";
   position: absolute;
-  top:-5px;
+  top: -5px;
   left: 20px;
   width: 11px;
   height: 11px;
@@ -1032,15 +1046,34 @@ blue-bar{
   background-color: #fc4f4f;
 }
 
-@-webkit-keyframes loader1{
-  0%{-webkit-transform:rotate(0deg);}
-  100%{-webkit-transform:rotate(360deg);}
+@-webkit-keyframes loader1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
-@keyframes loader1{
-  0%{transform:rotate(0deg);}
-  100%{transform:rotate(360deg);}
+@keyframes loader1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
+/* problem result icons */
+.material-icons.solved {
+  color: #3fa044;
+}
 
+.material-icons.partially-solved {
+  color: #FDD835;
+}
+
+.material-icons.wrong{
+  color:#D32F2F;
+}
 

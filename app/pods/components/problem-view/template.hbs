@@ -3,13 +3,13 @@
     <div class="thumbnail card problemCard hover-card">
       <div class="problem-result">
         {{#if (eq submissionResult 1)}}
-            <i class = "material-icons" title="Successfully Solved" style="color: green; background-color: white;">thumb_up</i>
+            <i class = "material-icons solved" title="Successfully Solved">done</i>
         {{/if}}
         {{#if (eq submissionResult 0)}}
-            <i class = "material-icons" title="Partially Correct" style="color: yellow; background-color: white;">thumbs_up_down</i>
+            <i class = "material-icons partially-solved" title="Partially Correct">done</i>
         {{/if}}
         {{#if (eq submissionResult -1)}}
-            <i class = "material-icons" title="Wrong" style="color: red; background-color: white;">thumb_down</i>
+            <i class = "material-icons wrong" title="Wrong">clear</i>
         {{/if}}
       </div>
       <div class="problem-image-wrapper">
