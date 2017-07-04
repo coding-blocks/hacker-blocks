@@ -2,14 +2,18 @@
     <li class="header">NOTIFICATIONS</li>
     <li class="body" id="notification-dabba">
         <ul class="menu" style="list-style: none;">
-            <li> <a class="no-hover" href="javascript:void(0);">
-                <div class="icon-circle bg-light-green"><i class="zmdi zmdi-account-add"></i></div>
+        {{#each notifications as |notification|}}
+            <li class="p-a-3"> <a class="no-hover" href={{notification.link}} target="_blank">
+                <div class={{notification.bgColor}}>
+                    <i class={{notification.notiIcon}}></i>
+                </div>
                 <div class="menu-info">
-                    <h4>12 new members joined</h4>
-                    <p> <i class="material-icons">access_time</i> 14 mins ago </p>
+                    <h4>{{notification.message}}</h4>
+                    <!-- <p> <i class="material-icons">access_time</i> 14 mins ago </p> -->
                 </div>
                 </a> </li>
+        {{/each}}
         </ul>
     </li>
-    <li class="footer"> <a class="no-hover" href="javascript:void(0);">View All Notifications</a> </li>
+    <!-- <li class="footer"> <a class="no-hover m-l-5" href="javascript:void(0);">View All Notifications</a> </li> -->
 </ul>
