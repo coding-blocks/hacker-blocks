@@ -1094,3 +1094,20 @@ blue-bar {
 .btn-orange {
   background: #f4511e;
 }
+=======
+.footer a.no-hover, #notification-dabba a.no-hover {
+  transition: none;
+  transition-duration: 0s;
+}
+
+.footer a.no-hover:hover, #notification-dabba>ul>li>a.no-hover:hover, #notification-dabba a.no-hover:focus {
+  background: transparent !important;
+}
+
+.m-l-5 {
+  margin-left:5%;
+}
+.p-a-3 {
+  padding: 3%;
+}
+
