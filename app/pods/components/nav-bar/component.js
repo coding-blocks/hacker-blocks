@@ -5,6 +5,7 @@ const { inject: { service } } = Ember;
 export default Ember.Component.extend({
     session: Ember.inject.service('session'),
     store: service('store'),
+    notiCount:0,
     notifications: Ember.A(),
     navBarInitDone: false,
     init () {
@@ -14,7 +15,13 @@ export default Ember.Component.extend({
             if (readNoti===null || readNoti === undefined) {
                 readNoti = 0;
             }
-            this.set('notiCount',result.get('meta').notiCount - readNoti) // - loc storage
+            let notiCount = result.get('meta').notiCount - readNoti;
+            if (!notiCount)
+            {
+              notiCount = 0;
+            } else { 
+              this.set('notiCount',result.get('meta').notiCount - readNoti) // - loc storage
+            }
         })
         // console.log(this.get('notifications.meta').notiCount);
        // this.set('notiCount',this.get('notifications').get('meta').notiCount);
