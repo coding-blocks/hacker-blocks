@@ -69,12 +69,16 @@ export default Ember.Component.extend({
       mode: "ace/mode/c_cpp"
     },
     "py2": {
-      name: "Python",
+      name: "Python 2.7",
       mode: "ace/mode/python"
     },
     "java": {
-      name: "Java",
+      name: "Java 8",
       mode: "ace/mode/java"
+    },
+    "js": {
+      name: "Node 6",
+      mode: "ace/mode/javascript"
     }
   },
   stub: Ember.computed('langId', 'problem.solutionStubs.[]', function () {
