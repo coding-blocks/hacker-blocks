@@ -3,12 +3,12 @@
     <li class="body" id="notification-dabba">
         <ul class="menu" style="list-style: none;">
         {{#each notifications as |notification|}}
-            <li class="p-a-3"> <a class="no-hover" href={{notification.link}} target="_blank">
+            <li class="p-a-3 container-fluid"> <a class="no-hover" href={{notification.link}} target="_blank">
                 <div class="{{notification.bgColor}} col-sm-3">
                     <i style = "margin-left: -42%;" class={{notification.notiIcon}}></i>
                 </div>
                 <div class="col-sm-9 menu-info">
-                    <h4>{{notification.message}}</h4>
+                    <h4 style="font-size: 10px;">{{notification.message}}</h4>
                     <!-- <p> <i class="material-icons">access_time</i> 14 mins ago </p> -->
                 </div>
                 </a> </li>
