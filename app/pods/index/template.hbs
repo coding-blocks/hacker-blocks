@@ -10,6 +10,35 @@
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card section-card">
           <div class="header">
+            <h2>Blocks of Code</h2>
+            <ul class="header-dropdown m-r--5">
+              <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
+                                      role="button" aria-haspopup="true" aria-expanded="false"><i
+                class="zmdi zmdi-more-vert"></i></a>
+                <ul class="dropdown-menu pull-right">
+                  {{#link-to 'contests' tagName="li"}}
+                    <a href="javascript:void(0);">Go to Blocks of Code</a>{{/link-to}}
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="body">
+            <div class="row clearfix" style="width: 100%;">
+                {{#if blocksOfCode}}
+                        {{#contest-banner-view link='contests.contest' showPoints=true contest=blocksOfCode class="contestCardWrapper"}}{{/contest-banner-view}}
+                {{else}}
+                    <p class="description-overlay"> New Edition of Blocks of Code will be starting soon.</p>
+                {{/if}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row clearfix" style="margin-bottom: 0;">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card section-card">
+          <div class="header">
             <h2>Daily Code Bytes</h2>
             <ul class="header-dropdown m-r--5">
               <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
@@ -23,7 +52,7 @@
             </ul>
           </div>
           <div class="body">
-            <div class="row clearfix">
+            <div class="row clearfix" style="margin-bottom: 0;">
               {{#each model.dailyCBs as |dailyCB index|}}
                 {{#problem-view dailycb=dailyCB link='dcb.weekly-problem' problem=dailyCB.problem.content
                                 i=index class="problemCardWrapper"}}{{/problem-view}}
@@ -34,7 +63,7 @@
       </div>
     </div>
 
-    <div class="row clearfix">
+    <div class="row clearfix" style="margin-bottom: 0;">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card section-card">
           <div class="header">

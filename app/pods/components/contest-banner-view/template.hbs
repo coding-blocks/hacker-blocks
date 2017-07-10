@@ -1,0 +1,39 @@
+{{log contest}}
+<div class="col-xs-12 col-sm-12 col-md-12 " style="margin-bottom: -7%;">
+    <div class="thumbnail card contestCard hover-card" style="height: 100% !important;">
+    <div class="row" style="margin-left: 0;">
+        <div class = "col-sm-3">
+            <div class="img-overlay" style="margin: 0;" ></div>
+            <img src={{contest.image}} alt={{contest.name}} style="margin-left: -15px;">
+        </div>
+            <div class="caption col-sm-4">
+                <h3>{{contest.name}}</h3>
+                {{contest.description}}
+            </div>
+        <div class="col-sm-4">
+        <div class="timeLeft text-center">
+  <span class="timetxt text-center">{{#if archived}}Ended:{{else}}Ends:{{/if}}</span>
+  <span
+  class="hours big-digit" style="color:#FF5483;">{{contest.endTimeObj.day}}</span>
+  <span
+  class="big-alpha">{{contest.endTimeObj.month}}</span>
+  <span
+  class="hours mintxt">{{contest.endTimeObj.hour}}
+  : {{contest.endTimeObj.min}}</span>
+</div>
+<div class="text-col-two text-center">
+  <span class="big-digit" style="color: #02B3E4;">{{contest.problems.length}}</span>
+  <span
+  class="big-alpha">Problems</span>
+</div>
+{{#if showPoints}}
+<div class="text-col-two text-center">
+  <span class="big-digit" style="color: #02CCBA;">{{multiply contest.problems.length 100}}</span>
+  <span
+  class="big-alpha">Points</span>
+</div>
+{{/if}}
+        </div>
+      </div>
+    </div>
+</div>
