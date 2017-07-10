@@ -22,7 +22,6 @@ export default Ember.Route.extend({
       lang_codes: lang_codes,
       problem: this.get('store').queryRecord('problem', {problem_id, contest_id: contest.id}),
       contest: contest,
-      leaderboard: this.get('store').query('submission', {contest_id: contest.id, problem_id : problem_id, leaderboard: true}),
       currentAttempt: this.get('currentAttemptService').getCurrentAttempts(contest.id)
     });
   },

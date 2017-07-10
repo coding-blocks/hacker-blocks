@@ -26,8 +26,7 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash({
       contest: contest,
       tags:tags,
-      currentAttempt: this.get('currentAttemptService').getCurrentAttempts(contest.id),
-      leaderboard: this.get('store').query('submission', {contest_id: contest.id, custom: {ext: 'url', url: 'leaderboard'}}),
+      currentAttempt: this.get('currentAttemptService').getCurrentAttempts(contest.id)
     }).then(hash=>{
         let contest = hash.contest;
         let contestId = contest.get('id');
@@ -48,8 +47,6 @@ export default Ember.Route.extend({
   setupController: function (controller, model) {
     this._super(controller, model);
     controller.set('submissionCount', model.submissionCount ? model.submissionCount[0].count : 0 );
-    let yourRank = model.leaderboard.get('meta').yourRank;
-    controller.set('youRank', yourRank);
   },
   afterModel(model, transition) {
     const { currentAttempt, contest } = model;

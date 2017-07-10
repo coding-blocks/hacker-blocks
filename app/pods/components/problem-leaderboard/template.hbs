@@ -1,62 +1,66 @@
-<table class="table table-striped">
-  <thead>
+{{#if getLeaderBoard.isRunning}}
+  <div style="padding-left: 45%"><div class='loader1'></div></div>
+{{else}}
+  <table class="table table-striped">
+    <thead>
     <tr>
       <th data-field="rank">Rank</th>
       <th data-field="user">User</th>
       <th data-field="score">Score</th>
       {{#if language}}
-      <th data-field="language">Language</th>
+        <th data-field="language">Language</th>
       {{/if}}
     </tr>
-  </thead>
-  <tbody>
+    </thead>
+    <tbody>
 
-  {{#if yourRank.rank}}
-    <tr style="background: aquamarine;">
-      <td>{{yourRank.rank}}</td>
-      <td>
-        {{#if avatar}}
-          {{#if yourRank.user_photo}}
-            <img src={{yourRank.user_photo}} width="25" class="img-circle marginR10">
-          {{else}}
-            <img src="/images/student/random-avatar{{get-rand 5}}.jpg" width="25" class="img-circle marginR10">
+    {{#if yourRank.rank}}
+      <tr style="background: aquamarine;">
+        <td>{{yourRank.rank}}</td>
+        <td>
+          {{#if avatar}}
+            {{#if yourRank.user_photo}}
+              <img src={{yourRank.user_photo}} width="25" class="img-circle marginR10">
+            {{else}}
+              <img src="/images/student/random-avatar{{get-rand 5}}.jpg" width="25" class="img-circle marginR10">
+            {{/if}}
           {{/if}}
-        {{/if}}
-        {{#link-to "users.user" yourRank.user_id}}
-          {{yourRank.user_name}}
-        {{/link-to}}
-      </td>
-      <td>{{decimal-to-whole yourRank.score}}</td>
-    </tr>
-  {{/if}}
-    {{#each leaderboard as |submission index|}}
-    <tr>
-      <td>{{sum index 1}}</td>
-      <td>
-        {{#if avatar}}
-           {{#if submission.userPhoto}}
-            <img src={{submission.userPhoto}} width="25" class="img-circle marginR10">
-           {{else}}
-            <img src="/images/student/random-avatar{{get-rand 5}}.jpg" width="25" class="img-circle marginR10">
-           {{/if}}
-        {{/if}}
+          {{#link-to "users.user" yourRank.user_id}}
+            {{yourRank.user_name}}
+          {{/link-to}}
+        </td>
+        <td>{{decimal-to-whole yourRank.score}}</td>
+      </tr>
+    {{/if}}
+    {{#each leaderBoard as |submission index|}}
+      <tr>
+        <td>{{sum index 1}}</td>
+        <td>
+          {{#if avatar}}
+            {{#if submission.userPhoto}}
+              <img src={{submission.userPhoto}} width="25" class="img-circle marginR10">
+            {{else}}
+              <img src="/images/student/random-avatar{{get-rand 5}}.jpg" width="25" class="img-circle marginR10">
+            {{/if}}
+          {{/if}}
 
-        <!-- This is a very dirty hack. omerjerk. -->
-        {{#if submission.user.id}}
-          {{#link-to "users.user" submission.user.id}}
-            {{submission.user.name}}
-          {{/link-to}}
-        {{else}}
-          {{#link-to "users.user" submission.userId}}
-            {{submission.userName}}
-          {{/link-to}}
+          <!-- This is a very dirty hack. omerjerk. -->
+          {{#if submission.user.id}}
+            {{#link-to "users.user" submission.user.id}}
+              {{submission.user.name}}
+            {{/link-to}}
+          {{else}}
+            {{#link-to "users.user" submission.userId}}
+              {{submission.userName}}
+            {{/link-to}}
+          {{/if}}
+        </td>
+        <td>{{decimal-to-whole submission.score}}</td>
+        {{#if submission.language}}
+          <td>{{getlang submission.language}}</td>
         {{/if}}
-      </td>
-      <td>{{decimal-to-whole submission.score}}</td>
-      {{#if submission.language}}
-      <td>{{getlang submission.language}}</td>
-      {{/if}}
-    </tr>
+      </tr>
     {{/each}}
-  </tbody>
-</table>
+    </tbody>
+  </table>
+{{/if}}

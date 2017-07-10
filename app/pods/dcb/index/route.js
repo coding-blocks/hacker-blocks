@@ -20,12 +20,10 @@ export default Ember.Route.extend({
       });
     });
 
-    return dailycbTypes.then( ()=>{
+    return dailycbTypes.then( () => {
       return Ember.RSVP.hash({
         mainProblem: mainProblem,
-        otherProblems: otherProblems,
-        leaderboard: this.get('store').query('submission',
-          {contest_id: 0, leaderboard: true, contest: true })
+        otherProblems: otherProblems
       });
     });
 
