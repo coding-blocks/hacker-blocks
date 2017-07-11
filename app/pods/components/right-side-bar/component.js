@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import moment from 'moment';
 import config from '../../../config/environment';
+import httpValidator from '../../../utils/http-validator';
 
 const { inject: { service } } = Ember;
 
@@ -38,7 +39,9 @@ export default Ember.Component.extend({
               if (user.get('id') !== String(myUserId)) {
                 if (user.get('photo') === null || user.get('photo') === '') {
                   user.set('photo', '/images/student/random-avatar2.jpg');
-                }
+                } else if (httpValidator(user.get('photo'))){
+                user.set('photo',user.get('photo').replace('http','https'));
+              }
                 let onlineUser = this.get('onlineUsers').find(onlineUser => {
                   return onlineUser.id === user.get('id');
                 });
@@ -55,6 +58,9 @@ export default Ember.Component.extend({
           users.forEach(user =>{
             let sentTime = moment.unix(message.data.sentTime).format('MMM Do YYYY, h:mm a');
             let photo = (user.get('photo') === undefined)||(user.get('photo') === '') || (user.get('photo') === null) ? '/images/student/random-avatar2.jpg' : user.get('photo');
+            if (httpValidator(photo)){
+                photo = photo.replace('http','https');
+              }
             let messageObj = {
               text: message.data.text,
               senderName: user.get('name'),
@@ -74,6 +80,8 @@ export default Ember.Component.extend({
             if (user.get('id') !== String(myUserId)) {
               if (user.get('photo') === null || user.get('photo') === '') {
                 user.set('photo', '/images/student/random-avatar2.jpg');
+              } else if (httpValidator(user.get('photo'))){
+                user.set('photo',user.get('photo').replace('http','https'));
               }
               let onlineUser = this.get('onlineUsers').find(onlineUser => {
                 return onlineUser.id === user.get('id');
@@ -122,6 +130,9 @@ export default Ember.Component.extend({
               if(user.id == message.user_id) {
                 let sentTime = moment.unix(message.sent_time).format('MMM Do YYYY, h:mm a');
                 let photo = (user.get('photo') === undefined) || (user.get('photo') === '') || (user.get('photo') === null) ? '/images/student/random-avatar2.jpg' : user.get('photo');
+                if (httpValidator(photo)){
+                  photo = photo.replace('http','https');
+                }
                 let messageObj = {
                   text: message.text,
                   senderName: user.get('name'),
