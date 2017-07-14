@@ -11,11 +11,9 @@ export default Ember.Component.extend({
     if (problemId) {
       customParams.problem_id = problemId;
     }
-    let leaderBoard = yield this.get('store').query('submission', customParams)
+    let leaderBoard = yield this.get('store').query('submission', customParams);
     this.set('leaderBoard', leaderBoard);
-    let yourRank = leaderBoard.get('meta').yourRank;
-    console.log("yourRank", yourRank);
-    this.set('youRank', yourRank);
+    this.set('yourRank', leaderBoard.meta.yourRank);
   }),
   init() {
     this._super(...arguments);
