@@ -1,3 +1,5 @@
+{{log "dailycb day" dailycb.day}}
+
 <section class="content home">
   <div class="container-fluid">
     <div class="row clearfix" style="margin-left: 0">
@@ -226,7 +228,7 @@
             <h2>Best Submission</h2>
           </div>
           <div class="body">
-            {{#problem-leaderboard language=true contestId=contest.id problemId=problem.id}}{{/problem-leaderboard}}
+            {{#problem-leaderboard language=true contestId=(if contest contest.id contestId) problemId=problem.id}}{{/problem-leaderboard}}
           </div>
         </div>
       </div>
