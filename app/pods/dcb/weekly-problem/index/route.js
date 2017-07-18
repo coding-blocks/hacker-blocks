@@ -16,8 +16,7 @@ export default Ember.Route.extend({
     let p_id = this.modelFor('dcb/weekly-problem').p_id;
     return Ember.RSVP.hash({
       lang_codes: lang_codes,
-      dailycb: this.get('store').queryRecord('dailycb', {p_id}),
-      lb: this.get('store').query('submission', {contest_id: 0, problem_id : p_id, leaderboard: true}),
+      dailycb: this.get('store').queryRecord('dailycb', {custom: {ext: 'url', url: p_id}}),
       p_id : p_id
     });
   }
