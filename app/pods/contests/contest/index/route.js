@@ -55,7 +55,7 @@ export default Ember.Route.extend({
       return
     }
 
-    if (currentAttempt.id === "0")  {
+    if (!Ember.isNone(contest.duration))  {
       this.transitionTo('contests.contest.attempt', model.contest.id)
     }
   }
