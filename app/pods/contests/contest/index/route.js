@@ -48,6 +48,15 @@ export default Ember.Route.extend({
     this._super(controller, model);
     controller.set('submissionCount', model.submissionCount ? model.submissionCount[0].count : 0 );
   },
+  beforeModel() {
+     let {contest} = this.modelFor('contests.contest');
+     let presentDate = Math.floor(new Date().valueOf() / 1000);
+     if(contest.get('startTime') >= presentDate && contest.get('endTime') >= presentDate ) {
+        this.transitionTo('contests.upcoming',contest.id);
+     } else if(contest.get('endTime') <= presentDate) {
+        this.transitionTo('contests.contest.ended');
+     } 
+  },
   afterModel(model, transition) {
     const { currentAttempt, contest } = model;
 
