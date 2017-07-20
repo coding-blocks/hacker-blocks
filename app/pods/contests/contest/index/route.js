@@ -8,9 +8,9 @@ export default Ember.Route.extend({
   routing: service('-routing'),
   currentAttemptService: service('current-attempt'),
   currentUser: service('current-user'),
-  breadCrumb: {
+  breadCrumb: Ember.Object.create({
     title: 'Contest'
-  },
+  }),
   model() {
     let {contest} = this.modelFor('contests.contest');
     let tags = [];
@@ -59,7 +59,8 @@ export default Ember.Route.extend({
   },
   afterModel(model, transition) {
     const { currentAttempt, contest } = model;
-
+    this.set('breadCrumb.title',contest.get('name'));
+  
     if ( Ember.isNone(contest.get('duration')) ) {
       return
     } else if (!currentAttempt) {

@@ -2,9 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   session: Ember.inject.service('session'),
-  breadCrumb: {
+  breadCrumb: Ember.Object.create({
     title: 'Problem'
-  },
+  }),
   model() {
     let contest = this.modelFor('practice.problems').contest;
     let problem_id = this.modelFor('practice.problems.problem').problem_id;
@@ -13,5 +13,9 @@ export default Ember.Route.extend({
       contest: contest,
       leaderboard: this.get('store').query('submission', {contest_id: contest.id, problem_id : problem_id, leaderboard: true}),
     });
+  },
+  afterModel(model,transtion) {  
+    const { problem } = model;
+    this.set('breadCrumb.title',problem.get('name'));
   }
 });
