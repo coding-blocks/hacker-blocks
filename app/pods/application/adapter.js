@@ -18,7 +18,6 @@ export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
     } else  {
       return this._super(...arguments);
     }
-
   },
   urlForQuery(query) {
     if(query.custom) {
