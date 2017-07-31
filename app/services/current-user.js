@@ -13,7 +13,7 @@ export default Ember.Service.extend({
 
   load () {
     if (this.get('session.isAuthenticated')) {
-      let token = this.get('session.data.authenticated.access_token');
+      let token = this.get('session.data.authenticated.jwt');
       return this.get('store').queryRecord('user', { custom : {ext : 'url' , url : 'me' }  , token: token});
     }
   },
@@ -26,7 +26,7 @@ export default Ember.Service.extend({
 
       return {
         'oauth-id': sessionData.oauth_id,
-        'access-token': sessionData.auth_token,
+        'Authorization': `JWT ${sessionData.jwt}`,
         'user-id': sessionData.user_id
       }
     }
