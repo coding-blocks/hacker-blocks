@@ -1118,3 +1118,17 @@ blue-bar {
 .d-inline {
   display: inline !important;
 }
+
+.upcoming-background-blur {
+   filter: blur(13px);
+   background-size: cover;
+   overflow: hidden;
+   position: absolute;
+   height: 100%;
+   width: 100%;
+   background: url(/images/course-3.jpg);
+}
+
+.background-hover:hover {
+  background-color:whitesmoke;
+}
