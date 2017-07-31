@@ -12,9 +12,9 @@ var lang_codes = {
 export default Ember.Route.extend({
   session: Ember.inject.service('session'),
   currentAttemptService: service('current-attempt'),
-  breadCrumb: {
+  breadCrumb: Ember.Object.create({
     title: 'Problem'
-  },
+  }),
   model() {
     let contest = this.modelFor('contests.contest').contest;
     let problem_id = this.modelFor('contests/contest/problem').problem_id;
@@ -26,8 +26,9 @@ export default Ember.Route.extend({
     });
   },
   afterModel(model, transition) {
-    const { currentAttempt, contest } = model;
-
+    const { currentAttempt, contest,problem } = model;
+    this.set('breadCrumb.title',problem.get('name'));
+ 
     if ( Ember.isNone(contest.get('duration')) ) {
       return
     }

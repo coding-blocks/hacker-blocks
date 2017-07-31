@@ -5,6 +5,13 @@ export default Ember.Route.extend({
     title: 'Problem'
   },
   model(params) {
-    return {p_id: params.problem_id};
+    return Ember.RSVP.hash({
+      p_id: params.problem_id,
+      dailycb: this.get('store').queryRecord('dailycb', {custom: {ext: 'url', url: params.problem_id}})
+    });
+  },
+  afterModel(model, transition) {
+  const {dailycb} = model;
+  this.set('breadCrumb.title',dailycb.get('problem.name'));
   }
 });
