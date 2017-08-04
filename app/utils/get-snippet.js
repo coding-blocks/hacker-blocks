@@ -28,7 +28,14 @@ var getSnippet = function(lang) {
   snippets['js'] = "console.log('we use node 6 lts');";
   snippets['py2'] =
     'import sys';
-
+  snippets['csharp'] = `using System;
+  public class Test
+  {
+      public static void Main()
+      {
+							
+      }
+  }`;
   return snippets[lang];
 };
 

@@ -79,7 +79,11 @@ export default Ember.Component.extend({
     "js": {
       name: "Node 6",
       mode: "ace/mode/javascript"
-    }
+    },
+    "csharp": {
+      name: "C#",
+      mode: "ace/mode/csharp"
+    },
   },
   stub: Ember.computed('langId', 'problem.solutionStubs.[]', function () {
     let langId = this.get('langId')
