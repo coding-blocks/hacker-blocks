@@ -14,7 +14,7 @@ export default Ember.Route.extend({
   	// let blocksOfCode = null;
   	let contests = model.contests;
   	const blocksOfCode = model.contests.filter(contest => {
-  		return contest.get('name').match('Blocks of Code')
+  		return contest.get('name').toLowerCase().match('blocks of code')
   	}).pop();
   	// console.log(blocksOfCode);
 
