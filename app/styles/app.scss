@@ -795,6 +795,12 @@ a:hover, a:focus {
   background: #455a64;
 }
 
+#leftsidebar {
+  .menu li a span {
+    margin-top: 7.5px;
+  }
+}
+
 .n-top.blur-bg {
   z-index: 1000;
   background: rgba(0, 0, 0, 1) !important;
