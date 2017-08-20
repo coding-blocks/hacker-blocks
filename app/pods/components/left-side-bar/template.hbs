@@ -7,8 +7,8 @@
         <img src="{{if model.photo model.photo 'https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1'}}" class="img-resize img-circle" alt="" />
       {{/link-to}}
     </div>
-    <div class="admin-action-info"> <span><strong>Welcome</strong></span> {{#link-to "users.user" model.id}}
-      <h3><strong>{{model.name}}</strong></h3>{{/link-to}}
+    <div class="admin-action-info"> <span><strong>Hello,</strong></span> {{#link-to "users.user" model.id}}
+      <h3><strong>{{first-name model.name}}</strong></h3>{{/link-to}}
     </div>
     {{else}}
     <div class="admin-action-info">
