@@ -795,6 +795,16 @@ a:hover, a:focus {
   background: #455a64;
 }
 
+#leftsidebar {
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  text-rendering: optimizelegibility;
+  letter-spacing: 0.075rem;
+
+  .menu li a span {
+    margin-top: 7.5px;
+  }
+}
+
 .n-top.blur-bg {
   z-index: 1000;
   background: rgba(0, 0, 0, 1) !important;
