@@ -796,6 +796,9 @@ a:hover, a:focus {
 }
 
 #leftsidebar {
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  text-rendering: optimizelegibility;
+
   .menu li a span {
     margin-top: 7.5px;
   }
