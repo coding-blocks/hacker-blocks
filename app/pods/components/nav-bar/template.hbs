@@ -16,9 +16,9 @@
         {{#if session.isAuthenticated}}
           <li class="dropdown">
             <a href="javascript:void(0);" {{action "storeNotiCount"}} class="dropdown-toggle" data-toggle="dropdown" role="button">
-                <i class="zmdi zmdi-notifications"></i> 
+                <i class="zmdi zmdi-notifications"></i>
                 {{#if (not-eq notiCount 0) }}
-                   <span class="label-count">{{notiCount}}</span> 
+                   <span class="label-count">{{notiCount}}</span>
                 {{/if}}
             </a>
             {{#notification-button notifications=notifications class="dropdown-menu" }}{{/notification-button}}
@@ -29,8 +29,6 @@
           </a>
           </li>
         {{/if}}
-        <li id="chat-icon"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i
-          class="material-icons">chat</i></a></li>
       </ul>
     </div>
   </div>

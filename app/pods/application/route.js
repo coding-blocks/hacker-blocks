@@ -6,7 +6,7 @@ const { inject: { service }, Route } = Ember;
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
   routing: Ember.inject.service('-routing'),
-  chat: service('chat'),
+  // chat: service('chat'),
   session: service('session'),
   currentUserSer: service('current-user'),
   url: Ember.observer('router.url', function () {
@@ -44,9 +44,10 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     return this.get('currentUserSer').load();
   },
   afterModel() {
+    /*
     if (this.get('session.isAuthenticated')) {
       let user_id = this.get('session.data.authenticated.user_id');
       this.get('chat').init(user_id, config.GLOBAL_CHAT_NAME);
-    }
+    }*/
   }
 });
