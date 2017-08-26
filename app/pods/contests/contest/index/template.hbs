@@ -47,6 +47,11 @@
               </div>
             </div>
           </div>
+          {{#if model.contest.isFinished}}
+            <div class="row">
+              <div class="col-12 alert alert-warning">This contest is finished. You will not be awarded any points.</div>
+            </div>
+          {{/if}}
         </div>
         <div class="row">
           <div class="col-sm-12 text-center" id="filter">

@@ -27,5 +27,10 @@ export default DS.Model.extend({
       obj.meri2 = meri.substring(1).toUpperCase();
       return obj;
     }
+  }),
+  isFinished: Ember.computed('endTime', {
+    get() {
+      return moment().unix() > this.get('endTime');
+    }
   })
 });

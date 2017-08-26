@@ -53,14 +53,14 @@ export default Ember.Route.extend({
      let presentDate = Math.floor(new Date().valueOf() / 1000);
      if(contest.get('startTime') >= presentDate && contest.get('endTime') >= presentDate ) {
         this.transitionTo('contests.upcoming',contest.id);
-     } else if(contest.get('endTime') <= presentDate) {
-        this.transitionTo('contests.contest.ended');
-     } 
+     }// else if(contest.get('endTime') <= presentDate) {
+        // this.transitionTo('contests.contest.ended');
+     // }
   },
   afterModel(model, transition) {
     const { currentAttempt, contest } = model;
     this.set('breadCrumb.title',contest.get('name'));
-  
+
     if ( Ember.isNone(contest.get('duration')) ) {
       return
     } else if (!currentAttempt) {
