@@ -11,12 +11,13 @@ export default Ember.Route.extend({
   },
   setupController(controller, model) {
   	this._super(...arguments);
-  	// let blocksOfCode = null;
-  	let contests = model.contests;
   	const blocksOfCode = model.contests.filter(contest => {
-  		return contest.get('name').toLowerCase().match('blocks of code')
+  	  if (contest.get('name').toLowerCase().match('blocks of code')) {
+  	    if (!contest.get('isFinished')) {
+  	      return true;
+        }
+      }
   	}).pop();
-  	// console.log(blocksOfCode);
 
     controller.set('blocksOfCode', blocksOfCode);
    }
