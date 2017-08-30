@@ -16,6 +16,9 @@
               </li>
               <li role="presentation" class=""><a href="#tabSubmissions" data-toggle="tab" aria-expanded="true">Submissions</a>
               </li>
+              {{#if model.contest.isFinished}}
+                <li role="presentation" class=""><a href="#tabEditorial" data-toggle="tab" aria-expanded="true">Editorial</a></li>
+              {{/if}}
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
@@ -26,16 +29,21 @@
                   parentRoute='contests.contest.problem'}}
 {{/problem-parent}}
               </div>
-      <div role="tabpanel" class="tab-pane fade" id="tabSubmissions">
-        {{#problem-my-submissions submissions=model.problem.submissions}}{{/problem-my-submissions}}
+              <div role="tabpanel" class="tab-pane fade" id="tabSubmissions">
+                  {{#problem-my-submissions submissions=model.problem.submissions}}{{/problem-my-submissions}}
+              </div>
+              {{#if model.contest.isFinished}}
+                <div role="tabpanel" class="tab-pane fade" id="tabEditorial">
+                  {{#editorial-view model=model.editorial}}{{/editorial-view}}
+                </div>
+              {{/if}}
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix">
+          {{#code-editor contestId=model.contest.id problem=model.problem}}{{/code-editor}}
+        </div>
       </div>
-    </div>
-  </div>
-  </div>
-  <div class="row clearfix">
-    {{#code-editor contestId=model.contest.id problem=model.problem}}{{/code-editor}}
-  </div>
-  </div>
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="card hover-card">
           <div class="header">
