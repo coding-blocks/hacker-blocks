@@ -1,7 +1,51 @@
-{{log "meta" model.problem.meta}}
+<section class="content home">
+  <div class="container-fluid">
+    <div class="row clearfix" style="margin-left: 0">
+      <div class="col-md-6 block-header">
+        <h2>Problem</h2>
+        <small class="text-muted">Solve this problem and get ranked among your peers</small>
+      </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <div class="card hover-card">
+          <div class="body">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+              <li role="presentation" class="active"><a href="#tabProblem" data-toggle="tab" aria-expanded="false">Description</a>
+              </li>
+              <li role="presentation" class=""><a href="#tabSubmissions" data-toggle="tab" aria-expanded="true">Submissions</a>
+              </li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active" id="tabProblem">
 {{#problem-parent problem=model.problem contestId=model.contest.id
                   userCount=model.meta.userCount onComplete=(action 'redirectToContest' model) contest=model.contest
                   currentAttempt=model.currentAttempt refreshModel = (action 'refreshModel' model)
                   parentRoute='contests.contest.problem'}}
-  {{outlet}}
 {{/problem-parent}}
+              </div>
+      <div role="tabpanel" class="tab-pane fade" id="tabSubmissions">
+        {{#problem-my-submissions submissions=model.problem.submissions}}{{/problem-my-submissions}}
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="row clearfix">
+    {{#code-editor contestId=model.contest.id problem=model.problem}}{{/code-editor}}
+  </div>
+  </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="card hover-card">
+          <div class="header">
+            <h2>Best Submission</h2>
+          </div>
+          <div class="body">
+            {{#problem-leaderboard language=true contestId=model.contest.id problemId=model.problem.id}}{{/problem-leaderboard}}
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+</section>

@@ -23,6 +23,7 @@ Router.map(function() {
         this.route('main');
         this.route('submissions');
         this.route('leaderboard');
+        this.route('editorial');
       });
       this.route('attempt', { path: '/attempt' });
       this.route('contest-result');
