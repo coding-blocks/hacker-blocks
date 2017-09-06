@@ -6,7 +6,6 @@ import DS from 'ember-data';
 import courseDescriptionProvider from '../utils/get-course-description';
 
 export default DS.Model.extend({
-  userId: DS.attr('string'),
   name: DS.attr(),
   roll_number: DS.attr(),
   email: DS.attr(),
