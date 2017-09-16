@@ -6,17 +6,6 @@
     This Code Byte is finished. You'll be awarded partial score for this problem.
   </div>
 {{/if}}
-{{#if contest.duration}}
-  <div class="countdown-timer-container col-md-offset-3 col-md-3">
-    <div class="card hover-card">
-      {{#countdown-timer
-        startTime=currentAttempt.startTime
-        duration=contest.duration
-        onComplete=onComplete}}
-      {{/countdown-timer}}
-    </div>
-  </div>
-{{/if}}
 
 <p>{{markdown-to-html problem.content.description}}</p>
 <hr/>
