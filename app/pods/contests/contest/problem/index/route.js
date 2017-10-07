@@ -22,10 +22,17 @@ export default Ember.Route.extend({
     if(contest.get('isFinished') == "true") {
       editorial = this.store.queryRecord('editorial' , {p_id:problem_id});
     }
+    let problem = null;
+    let problems = contest.get('problems');
+    problems.forEach((p) => {
+	    if(problem_id == p.id) {
+		    problem = this.get('store').queryRecord('problem', {problem_id, contest_id: contest.id});
+	    }
+    });
     return Ember.RSVP.hash({
       editorial:editorial,
       lang_codes: lang_codes,
-      problem: this.get('store').queryRecord('problem', {problem_id, contest_id: contest.id}),
+      problem: problem,
       contest: contest,
       currentAttempt: this.get('currentAttemptService').getCurrentAttempts(contest.id)
     });
