@@ -54,17 +54,17 @@ export default Ember.Component.extend({
   currentUser: Ember.inject.service('current-user'),
   output: "",
   result: "",
-  langId: "c",
+  langId: "cpp",
   onceEdit: false,
   customInput: false,
   initRenderDone: false,
   lang_codes: {
-    "c": {
-      name: "C",
-      mode: "ace/mode/c_cpp"
-    },
     "cpp": {
       name: "C++",
+      mode: "ace/mode/c_cpp"
+    },
+    "c": {
+      name: "C",
       mode: "ace/mode/c_cpp"
     },
     "py2": {
