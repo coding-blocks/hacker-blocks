@@ -37,9 +37,9 @@
         <td>{{sum index 1}}</td>
         <td>
           {{#if avatar}}
-              <img src="/images/student/random-avatar{{get-rand 5}}.jpg" width="25" class="img-circle marginR10">
+              <img src="https://robohash.org/{{md5 submission.userId}}/?set=set4" width="25" class="img-circle marginR10">
           {{/if}}
-          
+
           <!-- This is a very dirty hack. omerjerk. -->
           {{#if submission.user.id}}
             {{#link-to "users.user" submission.user.id}}

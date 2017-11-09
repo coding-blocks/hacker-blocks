@@ -89,5 +89,8 @@
     "node": ">= 0.12.0"
   },
   "private": true,
-  "false": {}
+  "false": {},
+  "dependencies": {
+    "ember-md5": "^1.0.1"
+  }
 }
