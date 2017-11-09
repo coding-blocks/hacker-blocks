@@ -6,6 +6,10 @@ module.exports = function(environment) {
     podModulePrefix: 'hack/pods',
     environment: environment,
     rootURL: '/',
+    newRelic: {
+	    licenseKey: 'c6b8d05c7f1b1c346ab611229292bbbf0820acd7',
+	    spaMonitoring: true
+    },
     locationType: 'router-scroll',
     historySupportMiddleware: true,
     publicUrl: 'http://hack.codingblocks.com',
