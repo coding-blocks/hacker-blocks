@@ -59,6 +59,7 @@
           {{#code-editor contestId=model.contest.id problem=model.problem}}{{/code-editor}}
         </div>
       </div>
+ {{#if model.contest.showLeaderboard}}
       <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="card hover-card">
           <div class="header">
@@ -69,6 +70,7 @@
           </div>
         </div>
       </div>
+{{/if}}
   </div>
   </div>
 </section>
