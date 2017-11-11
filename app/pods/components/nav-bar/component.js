@@ -19,7 +19,7 @@ export default Ember.Component.extend({
             if (!notiCount)
             {
               notiCount = 0;
-            } else { 
+            } else {
               this.set('notiCount',result.get('meta').notiCount - readNoti) // - loc storage
             }
         })

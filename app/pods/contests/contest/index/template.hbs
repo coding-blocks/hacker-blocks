@@ -73,7 +73,7 @@
             <div class="row clearfix">
                {{#each model.contest.problems as |problem|}}
                  {{#if (is-tag-selected problem selectedTag)}}
-                  {{#problem-view link='contests.contest.problem.index' problem=problem class="problemCardWrapper"}}{{/problem-view}}
+                  {{#problem-view link='contests.contest.problem.index' showLeaderboard=model.contest.showLeaderboard problem=problem class="problemCardWrapper"}}{{/problem-view}}
                  {{/if}}
                  {{/each}}
             </div>
