@@ -105,7 +105,7 @@ export default Ember.Component.extend({
             if(onlineUsers[i].id == presence.user_id ) {
               index = i;
             }
-          }  
+          }
           if (index >= 0) {
             this.get('onlineUsers').splice(index, 1);
             $('#' + presence.user_id).remove();
@@ -125,7 +125,7 @@ export default Ember.Component.extend({
             ids.push(message.user_id);
         });
         self.get('store').query('user', {user_id:ids, chat:true}).then(users => {
-        res.data.forEach(message => {  
+        res.data.forEach(message => {
           users.forEach(user =>{
               if(user.id == message.user_id) {
                 let sentTime = moment.unix(message.sent_time).format('MMM Do YYYY, h:mm a');
@@ -144,6 +144,7 @@ export default Ember.Component.extend({
             })
           })
           }).catch(err =>{
+            Raven.captureException(err)
             console.log(err);
           });
         });
