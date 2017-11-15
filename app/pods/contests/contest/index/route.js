@@ -37,6 +37,7 @@ export default Ember.Route.extend({
           data: { contestId: contestId },
           accepts: 'application/json'
         }).catch(err=>{
+          Raven.captureException(err);
           console.error(err);
           return 0; // set submission count to zero
         });

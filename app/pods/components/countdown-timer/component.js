@@ -17,9 +17,9 @@ export default Ember.Component.extend({
       endTime = this.get('endTime'),
       secondsLeft = Math.floor(endTime - (now / 1000)),
       displaySeconds = secondsLeft % 60,
-      displayMinutes = Math.floor(secondsLeft / 60),
+      displayMinutes = Math.floor(secondsLeft / 60) % 60,
       displayHours = Math.floor(secondsLeft / 3600);
-
+    
     return `${displayHours}h, ${displayMinutes}m, and ${displaySeconds}s`;
   }),
 
