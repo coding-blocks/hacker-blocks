@@ -13,6 +13,7 @@ export default Ember.Component.extend({
       let username = $('#username').val();
       let password = window.btoa($('#password').val());
       this.get('session').authenticate('authenticator:custom', username, password).catch((reason) => {
+        Raven.captureException(reason);
         this.set('errorMessage', reason.error || reason);
       });
       this.get('session').on('authenticationSucceeded', function () {
