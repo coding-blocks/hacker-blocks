@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-    didRender() {
+    didInsertElement() {
         const $ = Ember.$;
         $(document).ready(function () {
             $('.count').each(function () {

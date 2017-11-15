@@ -33,6 +33,7 @@ export default Ember.Controller.extend({
           }
         })
         .catch((error) => {
+            Raven.captureException(error);
             this.set('error', 'You can\'t attempt this contest. You may have reached your max possible attempts on this contest.');
         })
     }

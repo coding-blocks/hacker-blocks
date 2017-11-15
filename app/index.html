@@ -31,11 +31,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
     <script src="/assets/ace/ace.js"></script>
     <script src="/assets/ace/ext-language_tools.js"></script>
+    <script src="https://cdn.ravenjs.com/3.19.1/ember/raven.min.js" crossorigin="anonymous"></script>
     <script src="/assets/ace/snippets/c_cpp.js"></script>
     <script src="/assets/ace/snippets/python.js"></script>
     <script src="/assets/ace/snippets/java.js"></script>
     <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.8.0.js"></script>
     <script src="{{rootURL}}assets/vendor.js"></script>
+    <script>
+        Raven.config('https://1c192f55af754967966db2e85d46d252@sentry.cb.lk/6').install();        
+    </script>
     <script src="{{rootURL}}assets/hack.js"></script>
 
     {{content-for "body-footer"}}

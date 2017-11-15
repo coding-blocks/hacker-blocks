@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
         toast.info('Batch Code Saved!','Message');
       })
         .catch(error => {
+          Raven.captureException(error);
           toast.info('Something Went Wrong!','Message');
         });
     }

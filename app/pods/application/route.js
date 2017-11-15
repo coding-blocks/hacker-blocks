@@ -23,6 +23,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
         localStorage.removeItem('redirection-path');
         window.location.href = retrievedPath;
       }).catch((reason) => {
+          Raven.captureException(reason);
         // console.log("not logged in", reason);
       });
     }
