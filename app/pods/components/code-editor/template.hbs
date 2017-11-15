@@ -22,7 +22,7 @@
            href="javascript:void(0);" class="btn btn-raised g-bg-blush2 btn-sm pull-right runner"
            role="button">Submit</a>
       {{else}}
-        <span class="pull-right submit-login-message">Login to attempt</span>
+        <a class="pull-right submit-login-message" href="" {{action 'popup'}}>Login | Sign Up</a>
       {{/if}}
 
       {{#if (eq result "error")}}
