@@ -29,7 +29,7 @@
         </div>
           {{/if}}
         <hr>
-        <p>{{contest.description}}</p>
+        <p>{{truncate-multiline text = contest.description lines=2 showButton=false}}</p>
       </div>
     </div>
   {{/link-to}}
