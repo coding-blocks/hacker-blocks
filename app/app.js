@@ -13,6 +13,7 @@ App = Ember.Application.extend({
   Resolver
 });
 
+Raven.config(config.RavenDsn).install();
 loadInitializers(App, config.modulePrefix);
 
 export default App;
