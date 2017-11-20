@@ -1,7 +1,7 @@
 <aside id="leftsidebar" class="sidebar">
   <!-- User Info -->
   <div class="user-info">
-    {{#if (and model  session.isAuthenticated)}}
+    {{#if (and model session.isAuthenticated)}}
     <div class="admin-image">
       {{#link-to "users.user" model.id}}
         <img src="{{if model.photo model.photo 'https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1'}}" class="img-resize img-circle" alt="" />
