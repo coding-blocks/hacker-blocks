@@ -982,17 +982,46 @@ blue-bar {
 }
 
 .course-details {
-  padding: 25px;
-  width: 100%;
+  padding: 21px;
   background: #F4F4F4;
 }
-
+.ml-5{
+  margin-left: 5px;
+}
+.mr-5{
+  margin-right: 5px;
+}
+.course-details-flex{
+  display: flex;
+  flex-direction: column;
+}
 .course-insights {
   display: flex;
+  justify-content: space-around;
 }
-
 .course-insight {
   margin: 20px;
+}
+.course-lower{
+  margin-top: 20px;
+}
+.course-insight-onlineRoute{
+  margin: 3px;
+  display: flex;
+  flex-direction: column;
+}
+.frame-wrapper-onlineRoute{
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  padding-bottom: 26.8rem;
+}
+.frame-wrapper-onlineRoute iframe{
+  position: absolute;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .white-circle {
