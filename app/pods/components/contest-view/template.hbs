@@ -6,18 +6,28 @@
       <div class="caption">
         <h3>{{contest.name}}</h3>
         <hr/>
-        <div class="timeLeft text-center">
-          <span class="timetxt text-center">{{#if archived}}Ended:{{else}}Ends:{{/if}}</span>
-          <span
-            class="hours big-digit" style="color:#FF5483;">{{contest.endTimeObj.day}}</span>
-          <span
-            class="big-alpha">{{contest.endTimeObj.month}}</span>
-          <span
-            class="hours mintxt">{{contest.endTimeObj.hour}}
-            : {{contest.endTimeObj.min}}</span>
-        </div>
+		{{#if noEndTime}}
+			<div class="timeLeft text-center" style="height: 100px; width: 80px;"></div>
+		{{else}}
+			<div class="timeLeft text-center">
+			  <span class="timetxt text-center">{{#if archived}}Ended:{{else}}Ends:{{/if}}</span>
+			  <span
+				class="hours big-digit" style="color:#FF5483;">{{contest.endTimeObj.day}}</span>
+			  <span
+				class="big-alpha">{{contest.endTimeObj.month}}</span>
+			  <span
+				class="hours mintxt">{{contest.endTimeObj.hour}}
+				: {{contest.endTimeObj.min}}</span>
+			</div>
+		{{/if}}
         <div class="text-col-two text-center">
-          <span class="big-digit" style="color: #02B3E4;">{{contest.problems.length}}</span>
+			<span class="big-digit" style="color: #02B3E4;">
+				{{#if problem-count}}
+					{{problem-count}}
+				{{else}}
+					{{contest.problems.length}}
+				{{/if}}
+			</span>
           <span
             class="big-alpha">Problems</span>
         </div>
