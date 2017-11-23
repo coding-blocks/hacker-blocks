@@ -55,7 +55,7 @@ module.exports = function(environment) {
     ENV.apiEndpoint = 'https://api.cb.lk';
     ENV.GLOBAL_CHAT_NAME = 'chat-prod';
     ENV.chatEndpoint = 'https://chat.cb.lk';
-    ENV.RavenDsn = 'https://1c192f55af754967966db2e85d46d252@sentry.cb.lk/6';
+    ENV.RavenDsn = 'http://1c192f55af754967966db2e85d46d252@sentry.cb.lk/6';
   }
 
   return ENV;
