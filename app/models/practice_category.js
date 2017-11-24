@@ -8,5 +8,6 @@ import moment from 'npm:moment';
 export default DS.Model.extend({
   name: DS.attr(),
   cId: DS.attr(),
+  problemCount: DS.attr (),
   contests: DS.belongsTo('contest')
 });
