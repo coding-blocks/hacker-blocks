@@ -31,11 +31,11 @@
                       <div class="col-md-2">
                       </div>
                     <div class="col-md-8">
-                      <form class="batch-code-form p-2">
+                      <form class="batch-code-form">
                         <div class="input-group batch-code-input-wrapper">
-                          <span class="input-group-addon">Batch Code:</span>
+                          <span class="custom-input-label input-group-addon">Batch Code:</span>
                           <div class="form-line">
-                            {{ input size="50" placeholder="Batch Code" value=user.bCode class="form-control"}}
+                            {{ input placeholder="Batch Code" value=user.bCode class="custom-input-label-input"}}
                           </div>
                         </div>
                         <button type="button" class="btn btn-filled-aqua batch-code-btn"{{action "submitBatchCode" user}}>Submit</button>

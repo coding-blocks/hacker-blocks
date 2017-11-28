@@ -1190,13 +1190,21 @@ blue-bar {
   padding:8px;
 }
 .batch-code-btn{
-  padding:10px;
+  padding:8px;
 }
 .batch-code-form{
   display: inline-flex;
 }
+.batch-code-form .custom-input-label{
+  padding:6px 12px;
+}
 .batch-code-input-wrapper{
+  margin-top: 2rem;
   width: 89%;
+  margin-bottom: 0rem;
+}
+.custom-input-label-input{
+  width:100%;
 }
 .table-font-weight{
   font-weight: 400;
