@@ -22,7 +22,7 @@ Router.map(function() {
       this.route('problem', {path: '/:problem_id'}, function() {
         this.route('main');
         this.route('submissions');
-        this.route('editorial');
+        this.route('leaderboard');
       });
       this.route('attempt', { path: '/attempt' });
       this.route('contest-result');
