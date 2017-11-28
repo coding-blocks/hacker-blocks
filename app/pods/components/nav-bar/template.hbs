@@ -23,7 +23,7 @@
             </a>
             {{#notification-button notifications=notifications class="dropdown-menu" }}{{/notification-button}}
           </li>
-          <li><a class="btn btn-raised btn-danger waves-effect" href="{{logoutURL}}">
+          <li><a class="btn btn-raised btn-danger waves-effect" {{action 'invalidateSession'}} href="#">
             <!--<i class="zmdi zmdi-sign-in"></i>-->
             <small>Logout</small>
           </a>
