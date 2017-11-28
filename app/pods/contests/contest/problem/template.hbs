@@ -1,1 +1,66 @@
-{{outlet}}
+<section class="content home">
+  <div class="container-fluid">
+    <div class="row clearfix" style="margin-left: 0">
+
+      <div class="col-md-6 block-header">
+        <h2>Problem</h2>
+        <small class="text-muted">Solve this problem and get ranked among your peers</small>
+      </div>
+     <div class="col-md-6">
+{{#if model.contest.duration}}
+  <div class="countdown-timer-container col-md-offset-3 col-md-3">
+    <div class="card hover-card">
+      {{#countdown-timer
+        startTime=model.currentAttempt.startTime
+        duration=model.contest.duration
+        onComplete=(action 'redirectToContest' model)}}
+      {{/countdown-timer}}
+    </div>
+  </div>
+{{/if}}
+
+     </div>
+    </div>
+    <div class="row clearfix">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <div class="card hover-card">
+          <div class="body">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs tab-nav-right" role="tablist">
+              {{#link-to 'contests.contest.problem.index' tagName='li' href=false}}
+                {{#link-to 'contests.contest.problem.index'}}Description{{/link-to}}
+              {{/link-to}}
+              {{#link-to 'contests.contest.problem.submissions' tagName='li' href=false}}
+                {{#link-to 'contests.contest.problem.submissions'}}Submissions{{/link-to}}
+              {{/link-to}}
+              {{#if model.contest.isFinished}}
+                {{#link-to 'contests.contest.problem.editorial' tagName='li' href=false}}
+                  {{#link-to 'contests.contest.problem.editorial'}}Editorial{{/link-to}}
+                {{/link-to}}
+              {{/if}}
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active">
+                {{outlet}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row clearfix">
+          {{#code-editor contestId=model.contest.id problem=model.problem}}{{/code-editor}}
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div class="card hover-card">
+          <div class="header">
+            <h2>Best Submission</h2>
+          </div>
+          <div class="body">
+            {{#problem-leaderboard language=true contestId=model.contest.id problemId=model.problem.id}}{{/problem-leaderboard}}
+          </div>
+        </div>
+      </div>
+  </div>
+  </div>
+</section>
