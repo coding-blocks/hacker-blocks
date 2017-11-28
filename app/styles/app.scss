@@ -1171,3 +1171,33 @@ blue-bar {
 .background-hover:hover {
   background-color:whitesmoke;
 }
+
+.contest-table-wrapper{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.mt-2{
+  margin-top: 2rem;
+}
+.p-2{
+  padding: 2rem;
+}
+.mb-2{
+  margin-bottom: 2rem;
+}
+.td-pad{
+  padding:8px;
+}
+.batch-code-btn{
+  padding:10px;
+}
+.batch-code-form{
+  display: inline-flex;
+}
+.batch-code-input-wrapper{
+  width: 89%;
+}
+.table-font-weight{
+  font-weight: 400;
+}
