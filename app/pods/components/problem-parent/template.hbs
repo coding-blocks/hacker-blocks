@@ -43,7 +43,7 @@
 {{#if problem.content.explanation}}
   <div id="explanation">
     <span><b>Explanation:</b></span>
-    <span>{{problem.content.explanation}}</span>
+    <span>{{markdown-to-html problem.content.explanation}}</span>
   </div>
 {{/if}}
 {{#if problem.timeLimit}}

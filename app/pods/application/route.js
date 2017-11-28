@@ -17,11 +17,22 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     }
   },
   beforeModel(transition) {
+
     if (!this.get('session.isAuthenticated') && transition.queryParams.code !== undefined) {
-      this.get('session').authenticate('authenticator:custom', transition.queryParams.code).then(()=>{
+
+      this.get('session')
+      .authenticate('authenticator:custom', transition.queryParams.code)
+      .then(()=>{
+
         var retrievedPath = localStorage.getItem('redirection-path');
-        localStorage.removeItem('redirection-path');
-        window.location.href = retrievedPath;
+
+        if(retrievedPath) {
+
+          localStorage.removeItem('redirection-path');
+          window.location.href = retrievedPath;
+
+        }
+
       }).catch((reason) => {
           Raven.captureException(reason);
         // console.log("not logged in", reason);
