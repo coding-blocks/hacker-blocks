@@ -7,13 +7,14 @@
                         <div class="profile_info profile-align">
                             <div class="profile-image profile-align">
                                 {{#if user.photo}}
-                                <img src="{{user.photo}}" width="100%" class="img-responsive" alt=""> {{!--
+                                <img src="{{user.photo}}" class="img-responsive custom-profile-img" alt=""> {{!--
                                 <img src="https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1" class="img-responsive"
                                     alt="">--}} {{else}}
-                                <img src="https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1" class="img-responsive"
+                                <img src="https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1" class="img-responsive custom-profile-img"
                                     alt=""> {{/if}}
                             </div>
                             <h4><strong>{{user.name}}</strong></h4>
+                            <h5>CodingBlocks Id: {{user.oauthId}}</h5>
                         </div>
                     </div>
                     <div class="profile-sub-header">

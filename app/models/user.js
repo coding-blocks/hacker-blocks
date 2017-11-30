@@ -9,6 +9,7 @@ export default DS.Model.extend({
   name: DS.attr(),
   roll_number: DS.attr(),
   email: DS.attr(),
+  oauthId: DS.attr(),
   photo: DS.attr('string', {
     defaultValue() { return "https://hack.codingblocks.com/images/placeholder-avatar.png" }
   }),
