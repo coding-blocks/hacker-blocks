@@ -1,11 +1,10 @@
-<!-- Top Bar -->
-<nav class="navbar clearHeader">
+<nav class="navbar-fixed-top navbar clearHeader">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a href="#" class="bars">
-        <span class="bar1"></span>
-        <span class="bar1"></span>
-        <span class="bar1"></span>
+      <a class="bars">
+        <a class="bar1"></a>
+        <a class="bar1"></a>
+        <a class="bar1"></a> 
       </a>
       {{#link-to 'index' class="navbar-brand"}}<img src="/images/logo.png" alt="">{{/link-to}}
     </div>
@@ -13,7 +12,7 @@
       {{#bread-crumb}}{{/bread-crumb}}
       <ul class="nav navbar-nav navbar-right logout">
         <!-- #END# Notifications -->
-        {{#if session.isAuthenticated}}
+        {{#if (and model session.isAuthenticated)}}
           <li class="dropdown">
             <a href="javascript:void(0);" {{action "storeNotiCount"}} class="dropdown-toggle" data-toggle="dropdown" role="button">
                 <i class="zmdi zmdi-notifications"></i>
@@ -33,4 +32,5 @@
     </div>
   </div>
 </nav>
+<div class="header-block"></div>
 <!-- #Top Bar -->
