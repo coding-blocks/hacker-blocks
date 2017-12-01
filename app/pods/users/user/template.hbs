@@ -14,7 +14,9 @@
                                     alt=""> {{/if}}
                             </div>
                             <h4><strong>{{user.name}}</strong></h4>
-                            <h5>CodingBlocks Id: {{user.oauthId}}</h5>
+                            {{#if user.oauthId}}
+                              <h5>CodingBlocks Id: {{user.oauthId}}</h5>
+                            {{/if}}
                         </div>
                     </div>
                     <div class="profile-sub-header">
