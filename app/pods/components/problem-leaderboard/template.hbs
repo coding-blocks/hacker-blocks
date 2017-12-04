@@ -1,7 +1,8 @@
 {{#if getLeaderBoard.isRunning}}
   <div style="padding-left: 45%"><div class='loader1'></div></div>
 {{else}}
-  <table class="table table-striped">
+<div id="mobleader">
+  <table class="table table-striped table-responsive">
     <thead>
     <tr>
       <th data-field="rank">Rank</th>
@@ -59,4 +60,5 @@
     {{/each}}
     </tbody>
   </table>
+ </div> 
 {{/if}}

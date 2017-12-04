@@ -314,6 +314,9 @@ ul#clock li {
   z-index: 1;
 }
 
+#mobleader{
+overflow-x: auto; }
+
 .ls-closed .bars:after, .ls-closed .bars:before {
   display: none;
 }
@@ -589,7 +592,8 @@ ul#clock li {
   }
 
   .header-right-section {
-    width: 100%
+    width: 100%;
+    margin-bottom:20px
   }
 
   .header-right-section .breadcrumbs {
