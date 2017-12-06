@@ -51,6 +51,7 @@ Router.map(function() {
     });
   });
   this.route('online');
+  this.route('logout');
 });
 
 export default Router;
