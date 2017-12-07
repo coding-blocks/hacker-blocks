@@ -882,6 +882,15 @@ hr {
   }
 }
 
+@media (max-width :560px){
+  .big-alpha{
+    overflow-x: hidden;
+    color:transparent;
+    visibility: hidden;
+  }
+
+}
+
 .thumbnail h3 {
   margin: 10px 0px !important;
 }
