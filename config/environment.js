@@ -40,6 +40,11 @@ module.exports = function(environment) {
     ENV.GLOBAL_CHAT_NAME = 'chat-dev'
   }
 
+  if (environment === 'staging') {
+    ENV.publicUrl = 'https://hack-frontend-staging.herokuapp.com';
+    ENV.apiEndpoint = 'https://hack-backend-unstable.herokuapp.com';
+  }
+
   if (environment === 'test') {
     // Testem prefers this...
     ENV.locationType = 'none';

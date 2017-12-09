@@ -1,5 +1,5 @@
 #!/bin/bash
 
 cd "/app" &&
-bower install &&
+yarn add global ember-cli &&
 ember s
