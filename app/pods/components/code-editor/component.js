@@ -136,7 +136,6 @@ export default Ember.Component.extend({
       judge(this);
     },
     reset() {
-      console.log("RESET");
       let langId = $('#langSelect :selected').val();
       let editor = ace.edit("editor");
       editor.setValue(this.get('stub'));
