@@ -13,7 +13,7 @@ export default Ember.Component.extend({
 		}).done(res => {
 			this.set("submissionCount",res[0].count);
 		}).fail (err => {
-            console.log(err);
+            Raven.captureException(err);
         });
 	}
 });

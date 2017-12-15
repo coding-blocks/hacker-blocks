@@ -13,9 +13,7 @@ export default Ember.Controller.extend({
     });
   },
 
-  init() {
-    console.log("controller init()");
-  },
+  init() {},
 
   actions: {
     attemptContest (contestId) {

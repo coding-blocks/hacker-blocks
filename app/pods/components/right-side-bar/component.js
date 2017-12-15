@@ -144,8 +144,7 @@ export default Ember.Component.extend({
             })
           })
           }).catch(err =>{
-            Raven.captureException(err)
-            console.log(err);
+            Raven.captureException(err);
           });
         });
 
