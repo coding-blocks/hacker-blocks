@@ -4,7 +4,11 @@
     {{#if (and model session.isAuthenticated)}}
     <div class="admin-image">
       {{#link-to "users.user" model.id}}
-        <img src="{{if model.photo model.photo 'https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1'}}" class="img-resize img-circle" alt="" />
+        {{#if model.photo}}
+        <img src="{{model.photo}}" class="img-resize img-circle" alt="">
+       {{else}}
+        <img src="https://robohash.org/{{md5 model.name}}/?set=set4" class="img-resize img-circle"
+            alt=""> {{/if}}
       {{/link-to}}
     </div>
     <div class="admin-action-info"> <span><strong>Hello,</strong></span> {{#link-to "users.user" model.id}}

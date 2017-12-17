@@ -7,7 +7,7 @@ import DS from 'ember-data';
 export default DS.Model.extend({
   userId: DS.attr(),
   userName: DS.attr(),
-  userPhoto:DS.attr(),
+  photo:DS.attr(),
   source: DS.attr(),
   submitAt: DS.attr(),
   language: DS.attr(),
