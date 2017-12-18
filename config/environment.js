@@ -45,6 +45,7 @@ module.exports = function(environment) {
   if (environment === 'staging') {
     ENV.publicUrl = 'https://hack-frontend-staging.herokuapp.com';
     ENV.apiEndpoint = 'https://hack-backend-unstable.herokuapp.com';
+    ENV.refreshTokenTimeout = 900000; // (15 minutes)
   }
 
   if (environment === 'test') {
