@@ -57,7 +57,9 @@ export default Base.extend({
         this.scheduleRefreshTokenRequest(env.refreshTokenTimeout)
         this.trigger('sessionDataUpdated', {
           jwt: data.jwt,
-          refresh_token: this.refreshToken
+          refresh_token: this.refreshToken,
+          user_id: data.user_id,
+          oauth_id: data.oauth_id
         })
       } else {
         this.trigger('sessionDataInvalidated')
