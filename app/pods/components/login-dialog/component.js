@@ -18,7 +18,8 @@ export default Ember.Component.extend({
       });
       this.get('session').on('authenticationSucceeded', function () {
         let user_id = self.get('session.data.authenticated.user_id');
-        console.log('user id'+ user_id);
+        console.log('user id');
+        console.log(user_id);
         self.get('PN').init(user_id);
         $('#loginModal').modal('hide');
       });

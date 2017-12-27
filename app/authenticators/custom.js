@@ -12,7 +12,7 @@ export default Base.extend({
       if (data.jwt) {
         resolve(data);
       } else {
-        Raven.captureException("Old logging system detected. Logging out.");
+        console.log("Old logging system detected. Logging out.");
         reject();
       }
     });
