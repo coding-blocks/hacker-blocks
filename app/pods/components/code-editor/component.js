@@ -35,7 +35,7 @@ function judge(component, problemId, contestId, noScore, headers) {
 
     // We ran the code, which means we're going to get the data back
     // immediately.
-    if (! problemId) {
+    if (! data.submissionId) {
       component.sendAction ('refreshModel');
       stopLoading ();
 
@@ -44,7 +44,7 @@ function judge(component, problemId, contestId, noScore, headers) {
       }
       else {
         data.result = 'output';
-        component.set ('output', data.output);
+        component.set ('output', data.data.output);
       }
 
       component.set ('result', data.result);
