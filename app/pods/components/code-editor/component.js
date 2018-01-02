@@ -13,6 +13,7 @@ function stopLoading() {
 
 function judge(component, problemId, contestId, noScore, headers) {
   startLoading();
+
   let authHeaders = component.get('currentUser').getAuthHeaders();
   let submission = {
     user_id: component.get('session.data.authenticated.user_id'),
@@ -23,27 +24,87 @@ function judge(component, problemId, contestId, noScore, headers) {
     custom_input: window.btoa($('#custom-input').val()),
     no_score: noScore
   };
+
   $.ajax({
     url: config.apiEndpoint + '/api/submissions',
     data: JSON.stringify(submission),
     type: "POST",
     headers: authHeaders,
-    contentType: "application/json",
-    timeout: 200000
+    contentType: "application/json"
   }).done(function(data) {
-    component.sendAction('refreshModel');
-    stopLoading();
-    if (data.result === "compile_error") {
-      component.set('output', window.atob(data.error));
-    } else {
-      if (problemId === undefined) {
-        data.result = 'output';
-        component.set('output', data.data.output);
-      } else {
-        component.set('output', data.data.testcases);
+
+    // We ran the code, which means we're going to get the data back
+    // immediately.
+    if (! problemId) {
+      component.sendAction ('refreshModel');
+      stopLoading ();
+
+      if (data.result === "compile_error") {
+        component.set('output', window.atob (data.error));
       }
+      else {
+        data.result = 'output';
+        component.set ('output', data.output);
+      }
+
+      component.set ('result', data.result);
+
+      return;
     }
-    component.set('result', data.result);
+
+    // We actually submitted the code for evaluation, which means we need to
+    // poll for the result.
+    let pollCount = 0,
+      maxPollCount = 12,
+      pollInterval = 5000,
+      submissionId = data.submissionId
+    ;
+
+    let pollForResult = setInterval (function () {
+      pollCount += 1
+
+      if (pollCount === maxPollCount) {
+        component.set('result', 'error');
+        stopLoading();
+        clearInterval (pollForResult);
+      }
+
+      $.ajax ({
+        url: config.apiEndpoint + '/api/submissions/result/' + data.submissionId,
+        type: "GET",
+        headers: authHeaders,
+        contentType: "application/json",
+        timeout: 200000
+      })
+        .done (function (submission) {
+          if (! submission) {
+            return
+          }
+
+          clearInterval (pollForResult);
+
+          component.sendAction('refreshModel');
+          stopLoading();
+
+          if (submission.result === "compile_error") {
+            component.set('output', window.atob(submission.error));
+          }
+          else {
+            if (problemId === undefined) {
+              submission.result = 'output';
+              component.set('output', submission.data.output);
+            } else {
+              component.set('output', submission.data.testcases);
+            }
+          }
+          component.set('result', submission.result);
+        })
+        .fail (function (error) {
+          console.error ("Poll Request failed for submission: ", submissionId)
+        })
+
+    }, pollInterval)
+
   }).fail(function(jqXHR, textStatus, errorThrown) {
     component.set('result', 'error');
     stopLoading();
