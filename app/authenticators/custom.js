@@ -39,7 +39,7 @@ export default Base.extend({
     });
   },
   refreshTokenRequest () {
-    Ember.$.get(env.apiEndpoint + '/oneauth/refrash?refresh_token=' + this.refreshToken , (data) => {
+    Ember.$.get(env.apiEndpoint + '/oneauth/rafrash?refresh_token=' + this.refreshToken , (data) => {
       if (!Ember.isNone(data.jwt)) {
         this.trigger('sessionDataUpdated', {
           jwt: data.jwt,
