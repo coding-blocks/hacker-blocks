@@ -7,18 +7,15 @@ import Base from 'ember-simple-auth/authenticators/base';
 import env from '../config/environment';
 
 export default Base.extend({
-  refreshTokenTimerId: null,
   refreshToken: null,
   restore(data) {
     return new Ember.RSVP.Promise( (resolve, reject) => {
       if (!Ember.isNone(data.jwt) && !Ember.isNone(data.refresh_token)) {
 
-        //Schedule a refreshToken request
-        this.scheduleRefreshTokenRequest(env.refreshTokenTimeout)
-        this.refreshToken = data.refresh_token
-
         // Make an immediate request
-        Ember.run.later(this, this.refreshTokenRequest, this.refreshToken, 0)
+        //debugger;
+        this.refreshToken = data.refresh_token
+        Ember.run.later(this, this.refreshTokenRequest, data.refresh_token, 0)
         resolve(data);
       } else {
         console.log("Old logging system detected. Logging out.");
@@ -33,7 +30,6 @@ export default Base.extend({
         if (!Ember.isNone(data.jwt) && !Ember.isNone(data.refresh_token)) {
 
           //Schedule a refreshToken request
-          this.scheduleRefreshTokenRequest(env.refreshTokenTimeout)
           this.refreshToken = data.refresh_token
           resolve(data);
         } else {
@@ -42,19 +38,9 @@ export default Base.extend({
       });
     });
   },
-  scheduleRefreshTokenRequest (wait) {
-
-    //cacel any scheduled request if already present
-    if (!Ember.isNone(this.refreshTokenTimerId))
-      Ember.run.cancel(this.refreshTokenTimerId)
-
-    const id = Ember.run.later(this, this.refreshTokenRequest, this.refreshToken, wait)
-    this.refreshTokenTimerId = id
-  },
   refreshTokenRequest () {
     Ember.$.get(env.apiEndpoint + '/oneauth/refrash?refresh_token=' + this.refreshToken , (data) => {
       if (!Ember.isNone(data.jwt)) {
-        this.scheduleRefreshTokenRequest(env.refreshTokenTimeout)
         this.trigger('sessionDataUpdated', {
           jwt: data.jwt,
           refresh_token: this.refreshToken,
