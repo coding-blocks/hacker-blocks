@@ -52,7 +52,7 @@ export default Base.extend({
     this.refreshTokenTimerId = id
   },
   refreshTokenRequest () {
-    Ember.$.get(env.apiEndpoint + '/oneauth/refrash?refresh_token=' + this.refreshToken , (data) => {
+    Ember.$.get(env.apiEndpoint + '/oneauth/rafrash?refresh_token=' + this.refreshToken , (data) => {
       if (!Ember.isNone(data.jwt)) {
         this.scheduleRefreshTokenRequest(env.refreshTokenTimeout)
         this.trigger('sessionDataUpdated', {
