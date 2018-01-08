@@ -38,14 +38,12 @@ module.exports = function(environment) {
     ENV.mirageEnabled = process.env.HACK_FRONTEND_MIRAGE_ENABLED
     ENV.publicUrl = 'http://localhost:4200'
     ENV.GLOBAL_CHAT_NAME = 'chat-dev'
-    ENV.refreshTokenTimeout = 20000 // 20sec
     ENV.oneauthURL = 'https://account.codingblocks.com/'
   }
 
   if (environment === 'staging') {
     ENV.publicUrl = 'https://hack-frontend-staging.herokuapp.com';
     ENV.apiEndpoint = 'https://hack-backend-unstable.herokuapp.com';
-    ENV.refreshTokenTimeout = 900000; // (15 minutes)
   }
 
   if (environment === 'test') {
@@ -64,7 +62,6 @@ module.exports = function(environment) {
     ENV.GLOBAL_CHAT_NAME = 'chat-prod';
     ENV.chatEndpoint = 'https://chat.cb.lk';
     ENV.RavenDsn = 'https://1c192f55af754967966db2e85d46d252@sentry.cb.lk/6';
-    ENV.refreshTokenTimeout = 900000 // 15min
     ENV.oneauthURL = 'https://account.codingblocks.com/'
   }
 
