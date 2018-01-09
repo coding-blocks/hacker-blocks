@@ -60,7 +60,6 @@ export default Base.extend({
         }
       })
     })
-
     yield sendRequestPromise.then( data => {
       this._scheduleRefreshTokenRequest(data.jwt)
       this.trigger('sessionDataUpdated', {
