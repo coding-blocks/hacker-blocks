@@ -10,7 +10,8 @@ module.exports = function(defaults) {
     crossorigin: 'anonymous'
   },
   fingerprint: {
-	enabled: true
+	enabled: true,
+	exclude: ['assets/ace/**/*.*']
   }
   });
 
