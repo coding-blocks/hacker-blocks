@@ -1,93 +1,98 @@
 <section class="content profile-page">
-    <div class="container-fluid">
-        <div class="row clearfix">
-            <div class="col-md-12 p-l-0 p-r-0">
-                <section class="boxs-simple">
-                    <div class="profile-header">
-                        <div class="profile_info profile-align">
-                            <div class="profile-image profile-align">
-                                {{#if user.photo}}
-                                <img src="{{user.photo}}" class="img-responsive custom-profile-img" alt=""> {{!--
+  <div class="container-fluid">
+    <div class="row clearfix">
+      <div class="col-md-12 p-l-0 p-r-0">
+        <section class="boxs-simple">
+          <div class="profile-header">
+            <div class="profile_info profile-align">
+              <div class="profile-image profile-align">
+                {{#if user.photo}}
+                  <img src="{{user.photo}}" class="img-responsive custom-profile-img" alt=""> {{!--
                                 <img src="https://i0.wp.com/forums.opera.com/themes/opera/design/images/avatars/default.png?ssl=1" class="img-responsive"
                                     alt="">--}} {{else}}
-                                <img src="https://robohash.org/{{md5 user.name}}/?set=set4" class="img-responsive custom-profile-img"
-                                    alt=""> {{/if}}
-                            </div>
-                            <h4><strong>{{user.name}}</strong></h4>
-                            {{#if user.oauthId}}
-                              <h5>CodingBlocks Id: {{user.oauthId}}</h5>
-                            {{/if}}
-                        </div>
-                    </div>
-                    <div class="profile-sub-header">
-                        <h3 class="text-center">Course Enrolled</h3>
-                        {{#if user.courseDescription}}
-                        <h5 class="text-center">{{user.courseDescription}}</h5>
-                        {{else}}
-                        {{#link-to "courses"}}
-                             <p class="text-center">Please enroll to a course</p>
-                        {{/link-to}}
-                        {{/if}}
-                    </div>
-                    {{#if (eq-prim session.data.authenticated.user_id model.user.id)}}
-                    <div class="row">
-                      <div class="col-md-2">
-                      </div>
-                    <div class="col-md-8">
-                      <form class="batch-code-form">
-                        <div class="input-group batch-code-input-wrapper">
-                          <span class="custom-input-label input-group-addon">Batch Code:</span>
-                          <div class="form-line">
-                            {{ input placeholder="Batch Code" value=user.bCode class="custom-input-label-input"}}
-                          </div>
-                        </div>
-                        <button type="button" class="btn btn-filled-aqua batch-code-btn"{{action "submitBatchCode" user}}>Submit</button>
-                      </form>
+                  <img src="https://robohash.org/{{md5 user.name}}/?set=set4" class="img-responsive custom-profile-img"
+                       alt=""> {{/if}}
+              </div>
+              <h4><strong>{{user.name}}</strong></h4>
+              {{#if user.oauthId}}
+                <h5>CodingBlocks Id: {{user.oauthId}}</h5>
+              {{/if}}
+            </div>
+          </div>
+          <div class="profile-sub-header">
+            <h3 class="text-center">Course Enrolled</h3>
+            {{#if user.courseDescription}}
+              <h5 class="text-center">{{user.courseDescription}}</h5>
+            {{else}}
+              {{#link-to "courses"}}
+                <p class="text-center">Please enroll to a course</p>
+              {{/link-to}}
+            {{/if}}
+          </div>
+          {{#if (eq-prim session.data.authenticated.user_id model.user.id)}}
+            <div class="row">
+              <div class="col-md-2">
+              </div>
+              <div class="col-md-8">
+                <form class="batch-code-form">
+                  <div class="input-group batch-code-input-wrapper">
+                    <span class="custom-input-label input-group-addon">Batch Code:</span>
+                    <div class="form-line">
+                      {{ input placeholder="Batch Code" value=user.bCode class="custom-input-label-input"}}
                     </div>
                   </div>
-                    {{/if}}
-                        <h2 class="text-center">Problems Solved</h2>
-                        <div class="col-md-10 col-md-offset-1 mt-2">
-                            <div class="contest-table-wrapper">
-                              {{#each contests as |contest|}}
-                              <div class="col-md-6">
-                                <h4 class="text-center text-success">{{contest.name}}</h4>
-                                <table class=" table text-center table-font-weight table-bordered hover-card">
-                                  <thead>
-                                    <tr>
-                                      <th class="text-center text-info">
-                                        Problem
-                                      </th>
-                                      <th class="text-center text-danger">
-                                        Score
-                                      </th>
-                                      <th class="text-center text-warning">
-                                          Language
-                                        </th>
-                                      </tr>
-                                    </thead>
-                                    {{#each submission as |attempt|}}
-                                    {{#if (eq contest.id attempt.contest.id) }}
-                                      <tr>
-                                        <td class="text-center  td-pad">
-                                          {{attempt.problem.name}}
-                                        </td>
-                                        <td class="text-center  td-pad">
-                                          {{attempt.score}}
-                                        </td>
-                                        <td class="text-center  td-pad">
-                                          {{attempt.language}}
-                                        </td>
-                                      </tr>
-                                      {{/if}}
-                                      {{/each}}
-                                    </table>
-                                  </div>
-                                  {{/each}}
-                                </div>
-                              </div>
-              </section>
+                  <button type="button" class="btn btn-filled-aqua batch-code-btn"{{action "submitBatchCode" user}}>
+                    Submit
+                  </button>
+                </form>
+              </div>
             </div>
-        </div>
+          {{/if}}
+          <h2 class="text-center">Problems Solved</h2>
+          <div class="col-md-10 col-md-offset-1 mt-2">
+            <div class="contest-table-wrapper">
+              {{#each contests as |contest|}}
+                <div class="col-md-6">
+                  {{#link-to "contests.contest" contest.id}}
+                    <h4 class="text-center text-success">{{contest.name}}</h4>{{/link-to}}
+                  <table class=" table text-center table-font-weight table-bordered hover-card">
+                    <thead>
+                    <tr>
+                      <th class="text-center text-info">
+                        Problem
+                      </th>
+                      <th class="text-center text-danger">
+                        Score
+                      </th>
+                      <th class="text-center text-warning">
+                        Language
+                      </th>
+                    </tr>
+                    </thead>
+                    {{#each submission as |attempt|}}
+                      {{#if (eq contest.id attempt.contest.id) }}
+                        <tr>
+                        {{#link-to "contests.contest.problem" contest.id attempt.problem.id}}
+                            <td class="text-center  td-pad">
+                            {{attempt.problem.name}}
+                          </td>
+                        {{/link-to}}
+                          <td class="text-center  td-pad">
+                            {{attempt.score}}
+                          </td>
+                          <td class="text-center  td-pad">
+                            {{attempt.language}}
+                          </td>
+                        </tr>
+                      {{/if}}
+                    {{/each}}
+                  </table>
+                </div>
+              {{/each}}
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
+  </div>
 </section>
