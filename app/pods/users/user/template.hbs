@@ -72,9 +72,11 @@
                     {{#each submission as |attempt|}}
                       {{#if (eq contest.id attempt.contest.id) }}
                         <tr>
-                          <td class="text-center  td-pad">
+                        {{#link-to "contests.contest.problem" contest.id attempt.problem.id}}
+                            <td class="text-center  td-pad">
                             {{attempt.problem.name}}
                           </td>
+                        {{/link-to}}
                           <td class="text-center  td-pad">
                             {{attempt.score}}
                           </td>
