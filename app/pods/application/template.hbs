@@ -1,10 +1,10 @@
 <!-- Overlay For Sidebars -->
 <div class="overlay"></div>
 <!-- #END# Overlay For Sidebars -->
-
-{{#nav-bar model=model}}{{/nav-bar}}
-
-{{#left-side-bar model=model}}{{/left-side-bar}}
+{{#unless embeded}}
+	{{#nav-bar model=model}}{{/nav-bar}}
+	{{#left-side-bar model=model}}{{/left-side-bar}}
+{{/unless}}
 
 {{outlet}}
 
