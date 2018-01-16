@@ -10,7 +10,7 @@
           <div class="card">
             {{#countdown-timer
               startTime=model.currentAttempt.startTime
-              duration=model.contest.duration
+              duration=model.contest.timeLeft
               onComplete=(action 'redirectToContest' model)}}
             {{/countdown-timer}}
           </div>
@@ -69,9 +69,11 @@
             <button class="btn fil-cat btn-sm btn-filled btn-yellow" {{action "updateSelection" "Psolved" selectedTag}}  value="Psolved">Partially Solved</button>
             <button class="btn fil-cat btn-sm btn-filled btn-red" {{action "updateSelection" "Wrong" selectedTag}}  value="Wrong">Wrong</button>
             <br>
+            {{#if model.contest.showTags}}
             {{#each model.tags as |tag|}}
               <button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag}}</button>
             {{/each}}
+            {{/if}}
           </div>
         </div>
         <div class="card section-card">
@@ -79,7 +81,7 @@
             <div class="row clearfix">
                {{#each model.contest.problems as |problem|}}
                  {{#if (is-tag-selected problem selectedTag)}}
-                  {{#problem-view link='contests.contest.problem.index' problem=problem class="problemCardWrapper"}}{{/problem-view}}
+                  {{#problem-view link='contests.contest.problem.index' showTags=model.contest.showTags problem=problem class="problemCardWrapper"}}{{/problem-view}}
                  {{/if}}
                  {{/each}}
             </div>
