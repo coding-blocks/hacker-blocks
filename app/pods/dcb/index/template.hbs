@@ -1,4 +1,5 @@
-<section class="content">
+
+<section  class="content">
   <div class="container-fluid">
     <div class="block-header">
       <h2>This Week's Code Bytes</h2>
@@ -15,11 +16,11 @@
           </div>
           <div class="body">
             <div class="row clearfix">
-             {{#unless embeded}}
+
               {{#each otherProblems as |dailycb|}}
                 {{#problem-view dailycb=dailycb archived=true link='dcb.weekly-problem.index' problem=dailycb.problem.content class="problemCardWrapper"}}{{/problem-view}}
               {{/each}}
-              {{/unless}}
+
             </div>
           </div>
         </div>
