@@ -20,10 +20,10 @@ export default Ember.Route.extend({
   	}).pop();
     let ans = false;
     ans = model.contests.filter(contest => {
-	     if (!contest.get('isFinished')) {
-  	         return true;
-             }
-	  });
+	    if (!contest.get('isFinished')) {
+		    return true;
+	    }
+    });
     controller.set('anyActiveContest',ans);
     controller.set('blocksOfCode', blocksOfCode);
    }
