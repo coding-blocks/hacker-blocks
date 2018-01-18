@@ -10,6 +10,8 @@ export function initialize( appInstance ) {
 		})
 	 	appInstance.inject('route', 'embeded', "flag:embeded")
 	 	appInstance.inject('controller', 'embeded', "flag:embeded");
+		//window.embedded = this.get('embeded');
+    window.embed = insideFrame;
 	}
 }
 

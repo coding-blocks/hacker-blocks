@@ -1,97 +1,102 @@
-<section class="content home">
-  <div class="container-fluid">
-    <div class="block-header">
-      <h2>Home</h2>
-    </div>
-    <div class="row clearfix top-report">
-      {{#home-statistics model=model}}{{/home-statistics}}
-    </div>
+  <section class="content home">
+    <div class="container-fluid">
+      <div class="block-header">
+        <h2>Home</h2>
+      </div>
+      <div class="row clearfix top-report">
+        {{#home-statistics model=model}}{{/home-statistics}}
+      </div>
 
-    {{#if blocksOfCode}}
-	    <div class="row clearfix">
-		    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			    <div class="card section-card">
-				    <div class="header">
-					    <h2 class="d-inline">Blocks of Code</h2> - Prizes worth ₹12000 to be won
-					    <ul class="header-dropdown m-r--5">
-						    <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
-										     role="button" aria-haspopup="true" aria-expanded="false"><i
-						  class="zmdi zmdi-more-vert"></i></a>
-							    <ul class="dropdown-menu pull-right">
-								    {{#link-to 'contests' tagName="li"}}
-									    <a href="javascript:void(0);">Go to Blocks of Code</a>{{/link-to}}
-							    </ul>
-						    </li>
-					    </ul>
-				    </div>
-				    <div class="body">
-					    <div class="row clearfix" style="width: 100%;">
-						    {{#contest-banner-view link='contests.contest' showPoints=true contest=blocksOfCode class="contestCardWrapper"}}
-						    {{/contest-banner-view}}
-					    </div>
-				    </div>
-			    </div>
-		    </div>
-	    </div>
-    {{/if}}
-    <div class="row clearfix" style="margin-bottom: 0;">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card section-card">
-          <div class="header">
-            <h2 class="d-inline">Daily Code Bytes</h2> - Get a new problem daily
-            <ul class="header-dropdown m-r--5">
-              <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
-                                      role="button" aria-haspopup="true" aria-expanded="false"><i
-                class="zmdi zmdi-more-vert"></i></a>
-                <ul class="dropdown-menu pull-right">
-                  {{#link-to 'practice' tagName="li"}}
-                    <a href="javascript:void(0);">Go to Daily code Bytes</a>{{/link-to}}
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="body">
-            <div class="row clearfix" style="margin-bottom: 0;">
-              {{#each model.dailyCBs as |dailyCB index|}}
-                {{#problem-view dailycb=dailyCB link='dcb.weekly-problem' problem=dailyCB.problem.content
-                                i=index class="problemCardWrapper"}}{{/problem-view}}
-              {{/each}}
+                {{#if blocksOfCode}}
+      <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="card section-card">
+            <div class="header">
+              <h2 class="d-inline">Blocks of Code</h2> - Prizes worth ₹12000 to be won
+              <ul class="header-dropdown m-r--5">
+                <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false"><i
+                  class="zmdi zmdi-more-vert"></i></a>
+                  <ul class="dropdown-menu pull-right">
+                    {{#link-to 'contests' tagName="li"}}
+                      <a href="javascript:void(0);">Go to Blocks of Code</a>{{/link-to}}
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="body">
+              <div class="row clearfix" style="width: 100%;">
+                  {{#contest-banner-view link='contests.contest' showPoints=true contest=blocksOfCode class="contestCardWrapper"}}{{/contest-banner-view}}
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="row clearfix" style="margin-bottom: 0;">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="card section-card">
-          <div class="header">
-            <h2 class="d-inline">Contests</h2> - Compete with your peers and show off your rank
-            <ul class="header-dropdown m-r--5">
-              <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
-                                      role="button" aria-haspopup="true" aria-expanded="false"><i
-                class="zmdi zmdi-more-vert"></i></a>
-                <ul class="dropdown-menu pull-right">
-                  {{#link-to 'contests' tagName="li"}}<a href="javascript:void(0);">Go to Contests</a>{{/link-to}}
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="body">
-            <div class="row clearfix contestCardContainer">
-              {{#if model.contests}}
-                {{#each model.contests as |contest|}}
-                  {{#if (eq contest.isFinished false)}}
-                    {{#contest-view link='contests.contest' showPoints=true contest=contest class="contestCardWrapper"}}{{/contest-view}}
-                  {{/if}}
+                {{/if}}
+      <div class="row clearfix" style="margin-bottom: 0;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="card section-card">
+            <div class="header">
+              <h2 class="d-inline">Daily Code Bytes</h2> - Get a new problem daily
+              <ul class="header-dropdown m-r--5">
+                <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false"><i
+                  class="zmdi zmdi-more-vert"></i></a>
+                  <ul class="dropdown-menu pull-right">
+                    {{#link-to 'practice' tagName="li"}}
+                      <a href="javascript:void(0);">Go to Daily code Bytes</a>{{/link-to}}
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="body">
+              <div class="row clearfix" style="margin-bottom: 0;">
+                {{#each model.dailyCBs as |dailyCB index|}}
+                  {{#problem-view dailycb=dailyCB link='dcb.weekly-problem' problem=dailyCB.problem.content
+                                  i=index class="problemCardWrapper"}}{{/problem-view}}
                 {{/each}}
-              {{else}}
-                <p class="description-overlay">No Active Contests at the moment</p>
-              {{/if}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row clearfix" style="margin-bottom: 0;">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="card section-card">
+            <div class="header">
+              <h2 class="d-inline">Contests</h2> - Compete with your peers and show off your rank
+              <ul class="header-dropdown m-r--5">
+                <li class="dropdown"><a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"
+                                        role="button" aria-haspopup="true" aria-expanded="false"><i
+                  class="zmdi zmdi-more-vert"></i></a>
+                  <ul class="dropdown-menu pull-right">
+                    {{#link-to 'contests' tagName="li"}}<a href="javascript:void(0);">Go to Contests</a>{{/link-to}}
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="body">
+              <div class="row clearfix contestCardContainer">
+                {{#if model.contests}}
+                  {{#each model.contests as |contest|}}
+                    {{#if (eq contest.isFinished false)}}
+                      {{#contest-view link='contests.contest' showPoints=true contest=contest class="contestCardWrapper"}}{{/contest-view}}
+                    {{/if}}
+                  {{/each}}
+                {{else}}
+                  <p class="description-overlay">No Active Contests at the moment</p>
+                {{/if}}
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+
+
+
+
