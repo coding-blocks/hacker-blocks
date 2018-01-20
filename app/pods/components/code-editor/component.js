@@ -65,6 +65,7 @@ function judge(component, problemId, contestId, noScore, headers) {
 
       if (pollCount === maxPollCount) {
         component.set('result', 'error');
+        Raven.captureException (new Error (`Polling cycle ended for submission ${data.submissionId}, got no response`))
         stopLoading();
         clearInterval (pollForResult);
       }
@@ -100,7 +101,7 @@ function judge(component, problemId, contestId, noScore, headers) {
           component.set('result', submission.result);
         })
         .fail (function (error) {
-          console.error ("Poll Request failed for submission: ", submissionId)
+          Raven.captureException (error)
         })
 
     }, pollInterval)
