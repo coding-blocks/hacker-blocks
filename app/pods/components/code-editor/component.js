@@ -72,7 +72,7 @@ function judge(component, problemId, contestId, noScore, headers) {
       $.ajax ({
         url: config.apiEndpoint + '/api/submissions/result/' + data.submissionId,
         type: "GET",
-        headers: authHeaders,
+        headers: component.get('currentUser').getAuthHeaders(),
         contentType: "application/json",
         timeout: 200000
       })
