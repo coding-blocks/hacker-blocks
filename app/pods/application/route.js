@@ -56,7 +56,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 	},
 	afterModel(user) {
 		Raven.setUserContext({username:user.get('name'),id:user.get('oauthId'),email:user.get('email')});
-		Raven.captureException("checkt");
+
 		/*
     if (this.get('session.isAuthenticated')) {
       let user_id = this.get('session.data.authenticated.user_id');
