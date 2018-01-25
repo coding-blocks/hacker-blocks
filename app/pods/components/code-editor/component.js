@@ -55,7 +55,7 @@ function judge(component, problemId, contestId, noScore, headers) {
     // We actually submitted the code for evaluation, which means we need to
     // poll for the result.
     let pollCount = 0,
-      maxPollCount = 12,
+      maxPollCount = 24,
       pollInterval = 5000,
       submissionId = data.submissionId
     ;
