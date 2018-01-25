@@ -64,14 +64,15 @@ function judge(component, problemId, contestId, noScore, headers) {
       pollCount += 1
 
       if (pollCount === maxPollCount) {
-        component.set('result', 'error');
-
         Raven.context (
           { extra: { submissionId: data.submissionId } },
           function () {
             Raven.captureException (new Error ('Submission polling cycle ended, got no response'));
           }
         );
+
+        component.set ('result', 'output');
+        component.set ('output', 'WW91ciBzdWJtaXNzaW9uIGlzIGJlaW5nIGp1ZGdlZC4gUGxlYXNlIGNoZWNrIHlvdXIgc3VibWlzc2lvbnMgaW4gYSBmZXcgbWludXRlcyBmb3IgdGhlIHJlc3VsdC4K');
 
         stopLoading();
         clearInterval (pollForResult);
