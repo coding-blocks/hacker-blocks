@@ -15,6 +15,7 @@
     "test": "ember test"
   },
   "devDependencies": {
+    "broccoli-asset-rev": "^2.6.0",
     "broccoli-funnel": "^1.1.0",
     "ember-ajax": "2.5.3",
     "ember-breadcrumbs": "0.1.9",
@@ -26,6 +27,7 @@
     "ember-cli-htmlbars": "^1.0.10",
     "ember-cli-htmlbars-inline-precompile": "^0.3.3",
     "ember-cli-jshint": "^2.0.1",
+    "ember-cli-jwt-decode": "^0.1.0",
     "ember-cli-loading-slider": "1.3.0",
     "ember-cli-materialize": "^0.22.0-beta.0",
     "ember-cli-moment-shim": "3.1.0",
@@ -33,6 +35,7 @@
     "ember-cli-release": "^0.2.9",
     "ember-cli-sass": "6.0.0",
     "ember-cli-showdown": "2.9.0",
+    "ember-cli-sri": "^2.1.1",
     "ember-cli-test-loader": "^1.1.0",
     "ember-cli-uglify": "^1.2.0",
     "ember-concurrency": "^0.8.7",

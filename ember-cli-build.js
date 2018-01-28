@@ -6,7 +6,13 @@ var Funnel = require('broccoli-funnel');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
-    // Add options here
+	SRI: {
+    crossorigin: 'anonymous'
+  },
+  fingerprint: {
+	enabled: true,
+	exclude: ['assets/ace/**/*.*']
+  }
   });
 
   app.import('vendor/css/all-themes.css');

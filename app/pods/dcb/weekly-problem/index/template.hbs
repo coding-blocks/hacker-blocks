@@ -1,4 +1,45 @@
-<section class="content home">
+{{#if embeded}}
+  <section style="margin:0" class="content home">
+    <div class="container-fluid">
+      <div class="row clearfix" style="margin-left: 0">
+        <div class="col-md-6 block-header">
+          <h2>Problem</h2>
+          <small class="text-muted">Solve this problem and get ranked among your peers</small>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="card hover-card">
+            <div class="body">
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs tab-nav-right" role="tablist">
+                <li role="presentation" class="active"><a href="#tabProblem" data-toggle="tab" aria-expanded="false">Description</a>
+                </li>
+                <li role="presentation" class=""><a href="#tabSubmissions" data-toggle="tab" aria-expanded="true">Submissions</a>
+                </li>
+              </ul>
+              <!-- Tab panes -->
+              <div class="tab-content">
+                <div role="tabpanel" class="tab-pane fade in active" id="tabProblem">
+                  {{#problem-parent dailycb=model.dailycb problem=model.dailycb.problem.content
+                                    leaderboard=model.lb contestId=0 parentRoute='practice.weekly-problem' refreshModel = (action 'refreshModel')}}
+                  {{/problem-parent}}
+                </div>
+                <div role="tabpanel" class="tab-pane fade" id="tabSubmissions">
+                  {{#problem-my-submissions submissions=model.dailycb.problem.content.submissions}}{{/problem-my-submissions}}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            {{#code-editor contestId=0 problem=model.dailycb.problem.content}}{{/code-editor}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{{else}}
+  <section class="content home">
   <div class="container-fluid">
     <div class="row clearfix" style="margin-left: 0">
       <div class="col-md-6 block-header">
@@ -21,7 +62,7 @@
             <div class="tab-content">
               <div role="tabpanel" class="tab-pane fade in active" id="tabProblem">
                 {{#problem-parent dailycb=model.dailycb problem=model.dailycb.problem.content
-                          leaderboard=model.lb contestId=0 parentRoute='practice.weekly-problem' refreshModel = (action 'refreshModel')}}
+                                  leaderboard=model.lb contestId=0 parentRoute='practice.weekly-problem' refreshModel = (action 'refreshModel')}}
                 {{/problem-parent}}
               </div>
               <div role="tabpanel" class="tab-pane fade" id="tabSubmissions">
@@ -46,4 +87,5 @@
       </div>
     </div>
   </div>
-</section>
+  </section>
+{{/if}}

@@ -14,12 +14,14 @@
         <div class="problem-name-wrapper">
           <h3>{{problem.name}}</h3>
         </div>
+        {{#if showTags}} 
         <div id="tags">
           {{#each problem.tags as |tag|}}
             <span class="label label-danger chip">
           <font size="1">{{tag}}</font>
           </span>{{/each}}
         </div>
+        {{/if}}
         <hr/>
         {{#if dailycb}}
           <div class="pt-detail row">

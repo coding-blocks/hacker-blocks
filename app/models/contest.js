@@ -14,7 +14,15 @@ export default DS.Model.extend({
   duration: DS.attr(),
   problems: DS.hasMany('problems'),
   description: DS.attr(),
+  timeLeft: Ember.computed('endTime','duration', {
+    get() {
+      let duration = this.get('duration');
+      let timeLeft = this.get('endTime') - moment().unix();
+      return duration > timeLeft && timeLeft > 0 ? timeLeft: duration;
+    }
+  }),
   showLeaderboard: DS.attr(),
+  showTags: DS.attr(),
   endTimeObj: Ember.computed('endTime', {
     get() {
       let obj = {};

@@ -50,7 +50,7 @@ Router.map(function() {
       this.route('problem', {path: '/:problem_id'},function() {});
     });
   });
-  this.route('online');
+  this.route('logout');
 });
 
 export default Router;
