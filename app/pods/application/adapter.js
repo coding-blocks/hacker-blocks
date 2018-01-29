@@ -5,6 +5,9 @@ import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, {
   namespace: 'api',
   host: env.apiEndpoint,
+  headers: {
+	  'client': 'hacker-blocks',
+  },
   urlForQueryRecord(query) {
     if(query.custom) {
       switch (query.custom.ext){
