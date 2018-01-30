@@ -1258,3 +1258,8 @@ blue-bar {
   width: 150px;
   margin: 0 auto;
 }
+
+.courses-frame {
+  width: 100%;
+  height: calc( 100vh - 150px );
+  border: none;}
