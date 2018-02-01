@@ -22,7 +22,8 @@
   margin-bottom: 5px;
   height: 25px;
   border-radius: 10px;
-  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .chip {
@@ -881,7 +882,7 @@ a:hover, a:focus {
 
 hr {
   margin-bottom: 10px !important;
-  margin-top: 10px !important;
+  margin-top: 15% !important;
 }
 
 @media (max-width: 355px) {
@@ -935,6 +936,7 @@ hr {
 
 .chip {
   border-radius: 3px !important;
+  margin-top: 2%;
 }
 
 .card.greenhead .header h2 {
