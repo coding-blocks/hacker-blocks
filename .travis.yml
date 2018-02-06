@@ -9,8 +9,8 @@ branches:
 cache:
   yarn: true
   directories:
-  - ~/.npm
-  - ~/.bower
+    - ~/.npm
+    - ~/.bower
 
 install:
   - yarn install
