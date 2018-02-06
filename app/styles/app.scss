@@ -19,10 +19,11 @@
 }
 
 #tags {
-  margin-bottom: 5px;
+  margin-bottom: 15%;
   height: 25px;
   border-radius: 10px;
-  overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .chip {
@@ -935,6 +936,7 @@ hr {
 
 .chip {
   border-radius: 3px !important;
+  margin-top: 2%;
 }
 
 .card.greenhead .header h2 {
@@ -1262,4 +1264,13 @@ blue-bar {
 .courses-frame {
   width: 100%;
   height: calc( 100vh - 150px );
-  border: none;}
+  border: none;
+}
+
+.contest-banner {
+  max-width: 80%;
+  max-height: 100%;
+  margin: 0 auto;
+  display: block;
+}
+
