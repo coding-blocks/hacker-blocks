@@ -17,12 +17,18 @@
         </div>
       {{/if}}
     </div>
+    {{#if model.contest.showBanner}}
+	    <div class="row">	    
+		    <img class="contest-banner" src={{model.contest.image}} alt={{model.contest.name}}>
+	    </div>
+    {{else}}
     <div class="card hover-card">
-      <div class="row">
-        <h1 class="text-center">{{model.contest.name}}</h1>
-        <p class="text-center">{{model.contest.description}}</p>
-      </div>
+	    <div class="row">
+		    <h1 class="text-center">{{model.contest.name}}</h1>
+		    <p class="text-center">{{model.contest.description}}</p>
+	    </div>
     </div>
+    {{/if}}
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card custom-card hover-card">
