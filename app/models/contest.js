@@ -10,6 +10,7 @@ export default DS.Model.extend({
   startTime: DS.attr(),
   endTime: DS.attr(),
   location: DS.attr(),
+  showBanner: DS.attr(),
   image: DS.attr(),
   duration: DS.attr(),
   problems: DS.hasMany('problems'),
