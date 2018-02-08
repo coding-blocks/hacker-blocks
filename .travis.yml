@@ -8,6 +8,9 @@ branches:
         - master
 cache:
   yarn: true
+  directories:
+    - ~/.npm
+    - ~/.bower
 
 install:
   - yarn install
