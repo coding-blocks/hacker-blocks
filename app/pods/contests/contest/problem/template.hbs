@@ -10,11 +10,15 @@
 {{#if model.contest.duration}}
   <div class="countdown-timer-container col-md-offset-3 col-md-3">
     <div class="card hover-card">
-      {{#countdown-timer
-        startTime=model.currentAttempt.startTime
-        duration=model.contest.duration
-        onComplete=(action 'redirectToContest' model)}}
-      {{/countdown-timer}}
+      {{#if model.contest.showBanner}}
+              End Time: 4:30PM IST (8th Feb, 2018)
+            {{else}}
+              {{#countdown-timer
+                startTime=model.currentAttempt.startTime
+                duration=model.contest.timeLeft
+                onComplete=(action 'redirectToContest' model)}}
+              {{/countdown-timer}}
+      {{/if}}
     </div>
   </div>
 {{/if}}
