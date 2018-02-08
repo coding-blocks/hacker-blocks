@@ -65,7 +65,11 @@ export default Ember.Route.extend({
     if ( Ember.isNone(contest.get('duration')) ) {
       return
     } else if (!currentAttempt) {
-	this.transitionTo('contests.contest.attempt', model.contest.id)
+	    this.transitionTo('contests.contest.attempt', model.contest.id)
+    }
+
+    if (contest.get('endTime') < (Date.now()/1000) ) {
+      this.transitionTo('contests.contest.contest-result', contest.id);
     }
   }
 });
