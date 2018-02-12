@@ -12,7 +12,7 @@
     <div class="card hover-card">
       {{#countdown-timer
         startTime=model.currentAttempt.startTime
-        duration=model.contest.duration
+        duration=model.contest.timeLeft
         onComplete=(action 'redirectToContest' model)}}
       {{/countdown-timer}}
     </div>
