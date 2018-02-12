@@ -1,5 +1,9 @@
 <div class='countdown-timer'>
 	<i class="material-icons">timer</i>
-	<b>Time Left:</b>
-	<p>{{displayString}}</p>
+	{{#if isCompleted}}
+		<b>Time Over!</b>
+	{{else}}
+		<b>Time Left:</b>
+		<p>{{displayString}}</p>
+	{{/if}}
 </div>

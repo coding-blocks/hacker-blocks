@@ -1,51 +1,78 @@
 import Ember from 'ember';
+import moment from 'npm:moment';
+
+/*
+  @params
+  startTime: Unix Timestamp(in seconds) When the user clicks attempt
+  duration: Unix Timestamp(in seconds) the duration for the contest
+  onComplete: an Action/method to call when the countdown ends
+*/
 
 export default Ember.Component.extend({
-  // UNIX Timestamps, in seconds
-  startTime: null,
-  duration: null,
-  now: null,
+  //pollId: Id of the current tick poll
+  //endTime: Unix Timestamp(in seconds) of the endTime (startTime+duration)
 
-  endTime: Ember.computed('startTime', 'duration', function () {
-    return this.get('startTime') + this.get('duration');
-  }),
+  poll: Ember.inject.service(),
+  
+  didReceiveAttrs () {
+    //setup an poll to call tick function with interval NO LESS than 1 sec
+    const pollId = this.get('poll').addPoll({
+      interval: 1000,
+      callback: () => this.send('tick')
+    })
+    this.set('pollId', pollId)
 
-  // The actual string to display in the coundown timer. You can override this
-  // in child timers to achieve different kinds of effects.
-  displayString: Ember.computed('now', function () {
-    let now = this.get('now'),
-      endTime = this.get('endTime'),
-      secondsLeft = Math.floor(endTime - (now / 1000)),
-      displaySeconds = secondsLeft % 60,
-      displayMinutes = Math.floor(secondsLeft / 60) % 60,
-      displayHours = Math.floor(secondsLeft / 3600);
+    // compute the endTime
+    const startTime = this.get('startTime')
+    const duration = this.get('duration')
+    this.set('endTime', startTime+duration)
+
+    this.send('tick')
+
+    return this._super(...arguments)
+  },
+
+  willDestroyElement () {
+    this.send('stopPoll')
+    return this._super(...arguments)
+  },
+  
+  // The actual string to display in the coundown timer. 
+  // The difference between now and endTime
+  displayString: Ember.computed('endTime', 'now', function () {
+    const now = this.get('now')
+    const endTime = this.get('endTime')
     
-    return `${displayHours}h, ${displayMinutes}m, and ${displaySeconds}s`;
+    let diff = Math.floor(endTime - now)
+    const hrs = Math.floor(diff/3600)
+    diff %= 3600
+    const min = Math.floor(diff/60)
+    diff %= 60
+    const sec = diff
+    return `${hrs} Hours ${min} Mins and ${sec} Seconds`
   }),
 
-  // The update logic. You can update this in child timers to achieve different
-  // steps (say, increment the clock by five each second, etc).
-  tick() {
-    this.set('now', Date.now ());
-  },
-
-  init(timestamp) {
-    this._super(...arguments);
-
-    this.tick()
-  },
-
-  didRender() {
-    let now = this.get('now'),
-      endTime = this.get('endTime');
-
-    if ((now / 1000) > endTime) {
-      this.get('onComplete')();
+  isCompleted: Ember.computed('endTime', 'now', function () {
+    const now = this.get('now')
+    const endTime = this.get('endTime')
+    if (now >= endTime) {
+      this.send('stopPoll')
+      this.get('onComplete')()
+      return true;
     } else {
-      Ember.run.later(
-        this.get('tick').bind(this),
-        1000
-      );
+      return false
     }
+  }),
+
+  actions: {
+    stopPoll () {
+      const pollId = this.get('pollId')
+      this.get('poll').stopPoll(pollId)
+    },
+
+    tick() {
+      // set now equal to unix timestamp in seconds
+      this.set('now', Math.floor(Date.now()/1000)) ;
+    },
   }
 });
