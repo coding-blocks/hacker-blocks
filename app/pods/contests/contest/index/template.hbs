@@ -77,7 +77,7 @@
             <br>
             {{#if model.contest.showTags}}
             {{#each model.tags as |tag|}}
-              <button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag}}</button>
+              <button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag.name}}</button>
             {{/each}}
             {{/if}}
           </div>
