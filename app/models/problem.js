@@ -10,12 +10,11 @@ export default DS.Model.extend({
   submitCount: DS.attr(),
   difficulty: DS.attr(),
   image: DS.attr('string', {defaultValue: "https://s1.postimg.org/wyhyiimtb/image.png"}),
-  tags: DS.attr(),
+  tags: DS.hasMany (),
   submissions: DS.hasMany('submissions',{inverse:'problem'}),
   top:DS.belongsTo('submission'),
   leaderboard: DS.hasMany('submissions', {async: true}),
   userCount: DS.attr(),
   solutionStubs: DS.hasMany('solutionStub'),
   timeLimit: DS.attr({defaultValue: 2}),
-
 });
