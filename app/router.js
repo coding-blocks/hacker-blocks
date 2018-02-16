@@ -51,6 +51,7 @@ Router.map(function() {
     });
   });
   this.route('logout');
+  this.route('info',{path: '/info/:id'});
 });
 
 export default Router;
