@@ -19,8 +19,8 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 	beforeModel(transition) {
 
 		if (!this.get('session.isAuthenticated') && transition.queryParams.code !== undefined) {
-
-			this.get('session')
+				//debugger;
+				return this.get('session')
 				.authenticate('authenticator:custom', transition.queryParams.code)
 				.then(()=>{
 
@@ -33,10 +33,12 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 
 					}
 
-				}).catch((reason) => {
-					Raven.captureException(reason);
+				})/*.catch((err) => {
+					Raven.captureException(err);
+					if (err.message === 'GRANT_INVALID')
+						
 					// console.log("not logged in", reason);
-				});
+				});*/
 		}
 	},
 	/*
@@ -55,6 +57,7 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 		return this.get('currentUserSer').load();
 	},
 	afterModel(user) {
+		//debugger;
 		if(user) {
 			Raven.setUserContext({username:user.get('name'),id:user.get('oauthId'),email:user.get('email')});
 		}
@@ -63,5 +66,14 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       let user_id = this.get('session.data.authenticated.user_id');
       this.get('chat').init(user_id, config.GLOBAL_CHAT_NAME);
     }*/
+	},
+	actions: {
+		error (err, transition) {
+			if (err.status == 405) {
+				this.transitionTo('info', 405, {queryParams: {code: undefined}});
+			} else {
+				this._super(...arguments)
+			} 
+		}
 	}
 });
