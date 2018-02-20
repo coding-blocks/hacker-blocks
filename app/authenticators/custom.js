@@ -37,9 +37,9 @@ export default Base.extend({
           this._scheduleRefreshTokenRequest(data.jwt)
           resolve(data);
         } else {
-          reject(data);
+          reject (new Error('GRANT_INVALID'))
         }
-      });
+      }).fail( reject );
     });
   },
   _scheduleRefreshTokenRequest (rawJwt) {
