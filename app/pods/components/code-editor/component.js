@@ -33,27 +33,6 @@ function judge(component, problemId, contestId, noScore, headers) {
     contentType: "application/json"
   }).done(function(data) {
 
-    // We ran the code, which means we're going to get the data back
-    // immediately.
-    if (! data.submissionId) {
-      component.sendAction ('refreshModel');
-      stopLoading ();
-
-      if (data.result === "compile_error") {
-        component.set('output', window.atob (data.error));
-      }
-      else {
-        data.result = 'output';
-        component.set ('output', data.data.output);
-      }
-
-      component.set ('result', data.result);
-
-      return;
-    }
-
-    // We actually submitted the code for evaluation, which means we need to
-    // poll for the result.
     let pollCount = 0,
       maxPollCount = 24,
       pollInterval = 5000,
