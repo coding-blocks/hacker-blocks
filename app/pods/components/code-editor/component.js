@@ -94,7 +94,15 @@ function judge(component, problemId, contestId, noScore, headers) {
     }, pollInterval)
 
   }).fail(function(jqXHR, textStatus, errorThrown) {
-    component.set('result', 'error');
+    const statusCode = jqXHR.status
+
+    if (statusCode === 401) {
+      component.set ('result', 'auth_error');
+    }
+    else {
+      component.set('result', 'error');
+    }
+
     stopLoading();
   });
 }
