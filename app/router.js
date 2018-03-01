@@ -27,6 +27,7 @@ Router.map(function() {
       this.route('attempt', { path: '/attempt' });
       this.route('contest-result');
       this.route('ended',{path: '/ended'});
+      this.route ('leaderboard', { path: '/leaderboard' });
     });
     this.route('upcoming',{ path: '/upcoming/c/:contest_id' });
   });
@@ -41,7 +42,6 @@ Router.map(function() {
    this.route('index', { path: '/all' });
    this.route('user',{path: '/:user_id'});
  });
-  //this.route('application-loading-old-old');
   this.route('submission', {path: '/submission/:submission_id'});
   this.route('courses');
   this.route('application-error');
