@@ -30,6 +30,11 @@
 		<div class="alert alert-danger">
 			Your solution could not be judged in time. If the problem persists, please report it to Hacker Blocks admins - info@hackerblocks.com.
         </div>
+      {{else if (eq result "auth_error")}}
+        <hr/>
+        <p class="alert alert-danger">
+        <pre>You must be logged in to run code!</pre>
+        </p>
       {{else if (eq result "compile_error")}}
         <hr/>
         <p>Compilation Error:</p>
