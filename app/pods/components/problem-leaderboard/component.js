@@ -17,16 +17,16 @@ export default Ember.Component.extend({
     this.set('yourRank', leaderBoard.meta.yourRank);
   }),
 
-  init() {
-    this._super(...arguments);
+  init () {
+    this._super (...arguments);
 
-    this.get ('getLeaderBoard'). perform ();
+    this.get ('getLeaderBoard').perform ();
 
     let refreshInterval = this.get ('refreshInterval')
 
     if (refreshInterval) {
       setInterval (
-        _ => this.get ('getLeaderBoard'). perform (),
+        _ => this.get ('getLeaderBoard').perform (),
         refreshInterval
       )
     }
