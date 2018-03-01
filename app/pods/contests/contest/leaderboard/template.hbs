@@ -1,0 +1,21 @@
+<section class="content">
+	<div class="container-fluid">
+		<div class="block-header">
+			<h2>Contest Leaderboard</h2>
+			<small class="text-muted">Refreshing every 10 seconds.</small>
+		</div>
+
+		<div class="card hover-card">
+			<div class="row">
+				<h1 class="text-center">{{model.name}}</h1>
+				<p class="text-center">{{model.description}}</p>
+			</div>
+		</div>
+
+		<div>
+			{{#problem-leaderboard avatar=true contestId=model.id refreshInterval = 10000}}{{/problem-leaderboard}}
+		</div>
+	</div>
+</section>
+
+{{outlet}}
