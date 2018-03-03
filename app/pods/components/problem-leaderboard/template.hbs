@@ -23,7 +23,7 @@
             {{#if yourRank.photo}}
               <img src={{yourRank.photo}} width="25" class="img-circle marginR10">
             {{else}}
-            <img src="https://minio.cb.lk/img/avatar-{{get-rand 36}}.svg" width="25" class="img-circle marginR10">
+            <img src="https://minio.cb.lk/img/avatar-{{avatarIndex yourRank.user_id}}.svg" width="25" class="img-circle marginR10">
             {{/if}}
           {{/if}}
           {{#link-to "users.user" yourRank.user_id}}
@@ -41,7 +41,7 @@
           {{#if submission.photo}}
           <img src={{submission.photo}} width="25" class="img-circle marginR10">
           {{else}}
-            <img src="https://minio.cb.lk/img/avatar-{{get-rand 36}}.svg" width="25" class="img-circle marginR10">
+            <img src="https://minio.cb.lk/img/avatar-{{avatarIndex submission.id}}.svg" width="25" class="img-circle marginR10">
           {{/if}}
        {{/if}}
 

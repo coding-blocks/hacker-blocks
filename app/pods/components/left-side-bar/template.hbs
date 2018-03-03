@@ -7,7 +7,7 @@
         {{#if model.photo}}
         <img src="{{model.photo}}" class="img-resize img-circle" alt="">
        {{else}}
-        <img src="https://minio.cb.lk/img/avatar-{{get-rand 36}}.svg" class="img-resize img-circle"
+        <img src="https://minio.cb.lk/img/avatar-{{avatarIndex model.id}}.svg" class="img-resize img-circle"
             alt=""> {{/if}}
       {{/link-to}}
     </div>
