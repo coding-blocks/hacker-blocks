@@ -6,6 +6,7 @@ node_js:
 branches:
     only:
         - master
+        - unstable
 cache:
   yarn: true
   directories:
@@ -21,4 +22,5 @@ before_script:
     - openssl aes-256-cbc -d -in key.pem.enc -out key.pem -k $ENC_KEY
 
 script:
-  - bash ./deployToProduction.sh
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then bash ./deployToProduction.sh; fi
+  - if [ "$TRAVIS_BRANCH" = "unstable" ]; then bash ./deployToStaging.sh; fi

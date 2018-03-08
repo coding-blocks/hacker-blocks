@@ -10,4 +10,3 @@ ssh -o StrictHostKeyChecking=no -i key.pem $USER@$SERVER "cp -r ~/hack-frontend/
 ssh -o StrictHostKeyChecking=no -i key.pem $USER@$SERVER "rm -rf ~/hack-frontend/*;"
 ssh -o StrictHostKeyChecking=no -i key.pem $USER@$SERVER "cp -r ~/hack-frontend-new/* ~/hack-frontend/;"
 ssh -o StrictHostKeyChecking=no -i key.pem $USER@$SERVER "rm -rf ~/hack-frontend-new/*;"
-
