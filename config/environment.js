@@ -42,8 +42,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'staging') {
-    ENV.publicUrl = 'https://hack-frontend-staging.herokuapp.com';
-    ENV.apiEndpoint = 'https://hack-backend-unstable.herokuapp.com';
+    ENV.publicUrl = 'http://hack.codingblocks.xyz';
+    ENV.apiEndpoint = 'https://api.codingblocks.xyz';
   }
 
   if (environment === 'test') {
