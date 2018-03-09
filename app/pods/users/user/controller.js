@@ -4,7 +4,7 @@ export default Ember.Controller.extend({
   session: Ember.inject.service('session'),
   toast: Ember.inject.service(),
   actions: {
-    addbuser(userId){
+    addBuser(userId){
         this.get('store').createRecord('buser',{
             batchCode:this.get('bcode'),
             userId:userId,
