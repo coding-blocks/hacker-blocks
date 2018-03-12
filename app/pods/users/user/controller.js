@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
   actions: {
     addBuser(userId){
         this.get('store').createRecord('buser',{
-            batchCode:this.get('bcode'),
+            batchCodeText:this.get('bcode'),
             userId:userId,
         }).save().then(result=> {
 	    const toast = this.get('toast');
