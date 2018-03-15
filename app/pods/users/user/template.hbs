@@ -49,13 +49,21 @@
             </div>
                 {{/if}}
             <div class="row">
-                <div class="col-md-3">
-                    <h4>Current Batch Codes:</h4>
-                </div>
+              <div class="col-md-2">
+              </div>
                 <div class="col-md-8">
+                    <table class=" table text-center table-font-weight table-bordered hover-card">
+                    <thead>
+                    <tr>
+                      <th class="text-center text-info">
+                        Batch Codes
+                      </th>
+                    </tr>
+                    </thead>
                     {{#each busers as |buser|}}
-                        <p> {{buser.batch-code.batchCode}}</p>
+                        <tr><td class="td-pad"> {{buser.batch-code.batchCode}}</td></tr> 
                     {{/each}}
+                    </table>
                 </div>
             </div>
           <h2 class="text-center">Problems Solved</h2>
