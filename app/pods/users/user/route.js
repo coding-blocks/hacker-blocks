@@ -7,6 +7,7 @@ export default Ember.Route.extend({
     model(params) {
         let contests = Ember.A([]);
         let fetchedSubmissions = Ember.A([]);
+        let busers = this.store.query('buser', {u_id:params.user_id});
         let submissionQuery = this.store.query('submission', { filter: { user_id: params.user_id, profile: true } });
         return submissionQuery.then(submissions => {
 
@@ -26,12 +27,14 @@ export default Ember.Route.extend({
             return Ember.RSVP.hash({
                 user: this.store.findRecord('user', params.user_id),
                 fetchedSubmissions,
+                busers,
                 contests
             });
         });
     },
     setupController(controller, model) {
         this._super(...arguments);
+        Ember.set(controller, 'busers', model.busers);
         Ember.set(controller, 'user', model.user);
         Ember.set(controller, 'submission', model.fetchedSubmissions);
         Ember.set(controller, 'contests', model.contests);
