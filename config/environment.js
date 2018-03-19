@@ -44,6 +44,7 @@ module.exports = function(environment) {
   if (environment === 'staging') {
     ENV.publicUrl = 'http://hack.codingblocks.xyz';
     ENV.apiEndpoint = 'https://api.codingblocks.xyz';
+    ENV.oneauthURL = 'https://account.codingblocks.com/'
   }
 
   if (environment === 'test') {

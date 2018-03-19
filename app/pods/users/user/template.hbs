@@ -38,16 +38,34 @@
                   <div class="input-group batch-code-input-wrapper">
                     <span class="custom-input-label input-group-addon">Batch Code:</span>
                     <div class="form-line">
-                      {{ input placeholder="Batch Code" value=user.bCode class="custom-input-label-input"}}
+                      {{ input placeholder="Batch Code" value=batchCode class="custom-input-label-input"}}
                     </div>
                   </div>
-                  <button type="button" class="btn btn-filled-aqua batch-code-btn"{{action "submitBatchCode" user}}>
+                  <button type="button" class="btn btn-filled-aqua batch-code-btn"{{action "addBuser" user.id}}>
                     Submit
                   </button>
                 </form>
               </div>
             </div>
-          {{/if}}
+                {{/if}}
+            <div class="row">
+              <div class="col-md-2">
+              </div>
+                <div class="col-md-8">
+                    <table class=" table text-center table-font-weight table-bordered hover-card">
+                    <thead>
+                    <tr>
+                      <th class="text-center text-info">
+                        Batch Codes
+                      </th>
+                    </tr>
+                    </thead>
+                    {{#each busers as |buser|}}
+                        <tr><td class="td-pad"> {{buser.batch-code.batchCode}}</td></tr> 
+                    {{/each}}
+                    </table>
+                </div>
+            </div>
           <h2 class="text-center">Problems Solved</h2>
           <div class="col-md-10 col-md-offset-1 mt-2">
             <div class="contest-table-wrapper">
