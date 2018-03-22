@@ -25,7 +25,7 @@
 				{{#if problem-count}}
 					{{problem-count}}
 				{{else}}
-					{{contest.problems.length}}
+					{{contest.problemCount}}
 				{{/if}}
 			</span>
           <span
@@ -33,7 +33,7 @@
         </div>
         {{#if showPoints}}
         <div class="text-col-two text-center">
-          <span class="big-digit" style="color: #02CCBA;">{{multiply contest.problems.length 100}}</span>
+			<span class="big-digit" style="color: #02CCBA;">{{contest.points}}</span>
           <span
             class="big-alpha">Points</span>
         </div>
