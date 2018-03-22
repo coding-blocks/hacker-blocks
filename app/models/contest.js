@@ -15,6 +15,16 @@ export default DS.Model.extend({
   duration: DS.attr(),
   problems: DS.hasMany('problems'),
   description: DS.attr(),
+  meta: DS.attr(),
+  problemCount: Ember.computed ('meta.problem-count', function () {
+    const metaProblemCount = this.get ('meta.problem-count')
+
+    if (! metaProblemCount) {
+      return this.get ('problems.length')
+    }
+
+    return metaProblemCount
+  }),
   timeLeft: Ember.computed('endTime','duration', {
     get() {
       let duration = this.get('duration');
@@ -37,6 +47,9 @@ export default DS.Model.extend({
       obj.meri2 = meri.substring(1).toUpperCase();
       return obj;
     }
+  }),
+  points: Ember.computed ('problemCount', function () {
+    return this.get ('problemCount') * 100
   }),
   isFinished: Ember.computed('endTime', {
     get() {

@@ -15,7 +15,8 @@
           <div class="body">
             <div class="row clearfix">
               {{#each activeContests as |contest|}}
-                {{#contest-view showPoints=true link='contests.contest' contest=contest class="contestCardWrapper"}} {{/contest-view}}
+                {{#contest-view showPoints=true link='contests.contest'
+					contest=contest class="contestCardWrapper"}} {{/contest-view}}
               {{/each}}
             </div>
           </div>
