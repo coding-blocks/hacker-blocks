@@ -33,26 +33,7 @@ export default DS.Model.extend({
     }
   }),
   showLeaderboard: DS.attr(),
-  allowedLanguages: DS.attr(),
   showTags: DS.attr(),
-  java: Ember.computed('allowedLanguages.[]', function(){
-      return this.get('allowedLanguages').includes('java');
-  }),
-  c: Ember.computed('allowedLanguages.[]', function(){
-      return this.get('allowedLanguages').includes('c');
-  }),
-  cpp: Ember.computed('allowedLanguages.[]', function(){
-      return this.get('allowedLanguages').includes('cpp');
-  }),
-  js: Ember.computed('allowedLanguages.[]', function(){
-      return this.get('allowedLanguages').includes('js');
-  }),
-  csharp: Ember.computed('allowedLanguages.[]', function(){
-      return this.get('allowedLanguages').includes('csharp');
-  }),
-  py2: Ember.computed('allowedLanguages.[]', function(){
-      return this.get('allowedLanguages').includes('py2');
-  }),
   endTimeObj: Ember.computed('endTime', {
     get() {
       let obj = {};
