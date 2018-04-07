@@ -17,7 +17,7 @@ function judge(component, problemId, contestId, noScore, headers) {
   let authHeaders = component.get('currentUser').getAuthHeaders();
   let submission = {
     user_id: component.get('session.data.authenticated.user_id'),
-    language: component.langId,
+    language: component.get('langId'),
     problemId: problemId,
     contestId: contestId,
     source: window.btoa(ace.edit("editor").getValue()),
@@ -112,7 +112,7 @@ export default Ember.Component.extend({
   output: "",
   result: "",
   langId: Ember.computed('allowedLanguages.[]',function(){
-      return this.get('allowedLanguages') ? this.get('allowedLanguages')[0] : "cpp";
+      return this.get('allowedLanguages') ? this.get('allowedLanguages').objectAt(0) : "cpp";
   }),
   onceEdit: false,
   customInput: false,
