@@ -10,7 +10,7 @@
           <div class="card">
             {{#countdown-timer
               startTime=model.currentAttempt.startTime
-              duration=model.contest.timeLeft
+              duration=attemptDuration
               onComplete=(action 'redirectToContest' model)}}
             {{/countdown-timer}}
           </div>
