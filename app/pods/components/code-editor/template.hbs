@@ -5,13 +5,17 @@
       <span class="pull-right">
              Language:
              <select id="langSelect" {{action "langChange" on="change"}} >
-                 {{#each-in lang_codes as |langId langName|}}
+                 {{#each-in lang_codes as |langid langName|}}
                      {{#if allowedLanguages}}
-                         {{#if (in langId allowedLanguages)}}
-                             <option value={{langId}}>{{langName.name}}</option>
+                         {{#if (in langid allowedLanguages)}}
+                             {{#if (eq langid langId)}}
+                                 <option value={{langid}} selected>{{langName.name}}</option>
+                             {{else}}
+                                 <option value={{langid}}>{{langName.name}}</option>
+                             {{/if}}
                          {{/if}}
                      {{else}}
-                         <option value={{langId}}>{{langName.name}}</option>
+                         <option value={{langid}}>{{langName.name}}</option>
                      {{/if}}
                  {{/each-in}}
              </select>

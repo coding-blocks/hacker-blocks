@@ -145,7 +145,6 @@ export default Ember.Component.extend({
   },
   stub: Ember.computed('langId', 'problem.solutionStubs.[]', function () {
     let langId = this.get('langId')
-
     let stub;
     if (this.get('problem.solutionStubs') != undefined) {
       stub = this.get('problem.solutionStubs')
