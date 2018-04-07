@@ -29,7 +29,10 @@ export default DS.Model.extend({
     get() {
       let duration = this.get('duration');
       let timeLeft = this.get('endTime') - moment().unix();
-      return duration > timeLeft && timeLeft > 0 ? timeLeft: duration;
+      if ( timeLeft <= 0 ) {
+        return 0;
+      } 
+      return timeLeft > duration ? duration : timeLeft ;
     }
   }),
   showLeaderboard: DS.attr(),

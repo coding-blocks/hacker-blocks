@@ -57,7 +57,9 @@ export default Ember.Component.extend({
     const endTime = this.get('endTime')
     if (now >= endTime) {
       this.send('stopPoll')
-      this.get('onComplete')()
+      Ember.run.scheduleOnce('render', () => {
+        this.get('onComplete')()
+      })
       return true;
     } else {
       return false
