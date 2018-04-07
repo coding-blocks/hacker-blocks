@@ -25,16 +25,6 @@ export default DS.Model.extend({
 
     return metaProblemCount
   }),
-  timeLeft: Ember.computed('endTime','duration', {
-    get() {
-      let duration = this.get('duration');
-      let timeLeft = this.get('endTime') - moment().unix();
-      if ( timeLeft <= 0 ) {
-        return 0;
-      } 
-      return timeLeft > duration ? duration : timeLeft ;
-    }
-  }),
   showLeaderboard: DS.attr(),
   allowedLanguages: DS.attr(),
   showTags: DS.attr(),
