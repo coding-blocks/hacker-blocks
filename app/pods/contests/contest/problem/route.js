@@ -50,5 +50,10 @@ export default Ember.Route.extend({
     if ( Ember.isNone(currentAttempt.data) ) {
       this.transitionTo('contests.contest.attempt', model.contest.id)
     }
+  },
+  setupController (controller, model) {
+    controller.set('contest', model.contest)
+    controller.set('currentAttempt', model.currentAttempt)
+    this._super(...arguments)
   }
 });

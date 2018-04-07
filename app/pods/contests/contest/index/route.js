@@ -47,6 +47,8 @@ export default Ember.Route.extend({
   },
   setupController: function (controller, model) {
     this._super(controller, model);
+    controller.set('currentAttempt', model.currentAttempt)
+    controller.set('contest', model.contest)
     controller.set('submissionCount', model.submissionCount ? model.submissionCount[0].count : 0 );
   },
   beforeModel() {
