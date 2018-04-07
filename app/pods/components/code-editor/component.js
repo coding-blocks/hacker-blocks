@@ -112,7 +112,7 @@ export default Ember.Component.extend({
   output: "",
   result: "",
   langId: Ember.computed('allowedLanguages.[]',function(){
-      return this.get('allowedLanguages')[0] || "cpp";
+      return this.get('allowedLanguages') ? this.get('allowedLanguages')[0] : "cpp";
   }),
   onceEdit: false,
   customInput: false,
