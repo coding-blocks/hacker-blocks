@@ -111,7 +111,9 @@ export default Ember.Component.extend({
   currentUser: Ember.inject.service('current-user'),
   output: "",
   result: "",
-  langId: "cpp",
+  langId: Ember.computed('allowedLanguages.[]',function(){
+      return this.get('allowedLanguages') ? this.get('allowedLanguages')[0] : "cpp";
+  }),
   onceEdit: false,
   customInput: false,
   initRenderDone: false,
@@ -143,7 +145,6 @@ export default Ember.Component.extend({
   },
   stub: Ember.computed('langId', 'problem.solutionStubs.[]', function () {
     let langId = this.get('langId')
-
     let stub;
     if (this.get('problem.solutionStubs') != undefined) {
       stub = this.get('problem.solutionStubs')

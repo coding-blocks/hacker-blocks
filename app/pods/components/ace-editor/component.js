@@ -8,7 +8,13 @@ export default Ember.Component.extend({
     this._super(...arguments);
     let editor = ace.edit("editor");
     editor.setTheme("ace/theme/monokai");
-    editor.getSession().setMode("ace/mode/c_cpp");
+    const code = this.get("lang_codes");
+    const allowedLanguages = this.get("allowedLanguages");
+    let mode = null;
+    if(allowedLanguages) {
+      mode = code[allowedLanguages[0]].mode;
+    }
+    editor.getSession().setMode(mode || "ace/mode/c_cpp");
     editor.setOptions({
         enableBasicAutocompletion: true,
         enableSnippets: true,

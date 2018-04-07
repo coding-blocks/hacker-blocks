@@ -5,20 +5,28 @@
       <span class="pull-right">
              Language:
              <select id="langSelect" {{action "langChange" on="change"}} >
-                 {{#each-in lang_codes as |langId langName|}}
+                 {{#each-in lang_codes as |key langName|}}
                      {{#if allowedLanguages}}
-                         {{#if (in langId allowedLanguages)}}
-                             <option value={{langId}}>{{langName.name}}</option>
+                         {{#if (in key allowedLanguages)}}
+                             {{#if (eq key langId)}}
+                                 <option value={{key}} selected>{{langName.name}}</option>
+                             {{else}}
+                                 <option value={{key}}>{{langName.name}}</option>
+                             {{/if}}
                          {{/if}}
                      {{else}}
-                         <option value={{langId}}>{{langName.name}}</option>
+                         <option value={{key}}>{{langName.name}}</option>
                      {{/if}}
                  {{/each-in}}
              </select>
            </span>
     </div>
     <div class="body">
-      {{#ace-editor}}{{/ace-editor}}
+        {{#if allowedLanguages}}
+            {{#ace-editor lang_codes=lang_codes allowedLanguages=allowedLanguages}}{{/ace-editor}}
+        {{else}}
+            {{#ace-editor}}{{/ace-editor}}
+        {{/if}}
       <a {{action "reset" problem}} href="javascript:void(0);" class="btn btn-raised label-danger btn-sm"
                                           role="button">Reset</a>
       <a id="run" {{action "run" problem}} data-loading-text="Running..." href="javascript:void(0);"
