@@ -111,7 +111,9 @@ export default Ember.Component.extend({
   currentUser: Ember.inject.service('current-user'),
   output: "",
   result: "",
-  langId: "cpp",
+  langId: Ember.computed('allowedLanguages.[]',function(){
+      return this.get('allowedLanguages')[0] || "cpp";
+  }),
   onceEdit: false,
   customInput: false,
   initRenderDone: false,
