@@ -8,6 +8,15 @@ export default Ember.Route.extend ({
     title: 'Leaderboard'
   },
 
+  beforeModel (transition) {
+    // QuickFix: Don't show leaderboards for certain contests.
+    let { contest } = this.modelFor ('contests.contest')
+
+    if (! contest.get ('showLeaderboard')) {
+      return transition.abort ()
+    }
+  },
+
   model () {
     let { contest } = this.modelFor ('contests.contest')
 
