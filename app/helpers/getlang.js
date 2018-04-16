@@ -9,7 +9,8 @@ export function getlang(param) {
     "c": "C",
     "cpp": "C++",
     "py2": "Python",
-    "java": "Java"
+    "java": "Java",
+    "js": "NodeJS"
   };
   return lang_codes[param];
 }
