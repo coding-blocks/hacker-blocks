@@ -33,18 +33,20 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
     // ENV.RavenDsn = 'https://1c192f55af754967966db2e85d46d252@sentry.cb.lk/6';
-    ENV.apiEndpoint = process.env.HACK_FRONTEND_API_ENDPOINT || 'http://localhost:3000'
+    ENV.apiEndpoint = process.env.HACK_FRONTEND_API_ENDPOINT || 'http://localhost:3001'
     ENV.chatEndpoint = 'https://chat.cb.lk'
     ENV.mirageEnabled = process.env.HACK_FRONTEND_MIRAGE_ENABLED
     ENV.publicUrl = 'http://localhost:4200'
     ENV.GLOBAL_CHAT_NAME = 'chat-dev'
     ENV.oneauthURL = 'https://account.codingblocks.com/'
+    ENV.apiDomain = 'localhost'
   }
 
   if (environment === 'staging') {
     ENV.publicUrl = 'http://hack.codingblocks.xyz';
     ENV.apiEndpoint = 'https://api.codingblocks.xyz';
     ENV.oneauthURL = 'https://account.codingblocks.com/'
+    ENV.apiDomain = 'codingblocks.xyz'
   }
 
   if (environment === 'test') {
@@ -64,6 +66,7 @@ module.exports = function(environment) {
     ENV.chatEndpoint = 'https://chat.cb.lk';
     ENV.RavenDsn = 'https://1c192f55af754967966db2e85d46d252@sentry.cb.lk/6';
     ENV.oneauthURL = 'https://account.codingblocks.com/'
+    ENV.apiDomain = 'codingblocks.com'
   }
 
   return ENV;
