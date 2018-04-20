@@ -9,6 +9,7 @@ import { task, timeout } from 'ember-concurrency';
 import env from '../config/environment';
 
 export default Base.extend({
+  cookies: Ember.inject.service(),
   refreshToken: null,
   jwt: null,
   restore(data) {
@@ -34,7 +35,12 @@ export default Base.extend({
 
           //Schedule a refreshToken request
           this.refreshToken = data.refresh_token
-          this._scheduleRefreshTokenRequest(data.jwt)
+          this._scheduleRefreshTokenRequest(data.jwt) 
+          this.get('cookies').write('hack_jwt', data.jwt, {
+            domain: env.apiDomain,
+            expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+            secure: !(env.environment === 'development')
+          })         
           resolve(data);
         } else {
           reject (new Error('GRANT_INVALID'))
@@ -54,6 +60,11 @@ export default Base.extend({
     const sendRequestPromise = new Promise( (resolve, reject ) => {
         Ember.$.get(env.apiEndpoint + '/oneauth/rafrash?refresh_token=' + this.refreshToken , (data) => {
         if (!Ember.isNone(data.jwt)) {
+          this.get('cookies').write('hack_jwt', data.jwt, {
+            domain: env.apiDomain,
+            expires: new Date(new Date().setFullYear(new Date().getFullYear() + 1)),
+            secure: !(env.environment === 'development')
+          })
           resolve(data)
         } else {
           reject()   
@@ -84,6 +95,7 @@ export default Base.extend({
     return new Ember.RSVP.Promise((resolve, reject) => {
       // keep on the event loop
       Ember.$.get(env.apiEndpoint+ '/oneauth/logout?refresh_token='+ this.refreshToken, data => {
+        this.get('cookies').clear('hack_jwt')
         window.location.href = "https://account.codingblocks.com/logout?redirect=" + env.publicUrl;
         resolve();
       })
