@@ -1,12 +1,10 @@
 import Ember from 'ember';
-import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin'
-import config from 'hack/config/environment'
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
 const { inject: { service }, Route } = Ember;
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
 	routing: Ember.inject.service('-routing'),
-	ajax: Ember.inject.service('ajax'),
 	// chat: service('chat'),
 	session: service('session'),
 	currentUserSer: service('current-user'),
@@ -41,18 +39,6 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 						
 					// console.log("not logged in", reason);
 				});*/
-		} else if (!this.get('session.isAuthenticated')) {
-			return this.get('ajax').request('https://account.codingblocks.com/api/users/me', {
-				xhrFields: {
-					withCredentials: true
-				}
-			}).then(response => {
-				if (response.id) {
-					return window.location = config.LOGINURL
-				}
-			}).catch(err => {
-				console.error(err)
-			})
 		}
 	},
 	/*
