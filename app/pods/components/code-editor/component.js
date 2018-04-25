@@ -117,6 +117,17 @@ export default Ember.Component.extend({
   onceEdit: false,
   customInput: false,
   initRenderDone: false,
+  theme: "ace/theme/monokai",
+  theme_codes: {
+    "dark": {
+      name: "Monokai",
+      mode: "ace/theme/monokai"
+    },
+    "light": {
+      name: "Solarized",
+      mode: "ace/theme/solarized_light"
+    }
+  },
   lang_codes: {
     "cpp": {
       name: "C++",
@@ -172,6 +183,12 @@ export default Ember.Component.extend({
     };
   },
   actions:{
+    themeChange() {
+      let theme = $('#themeSelect :selected').val();
+      this.set('theme', this.get('theme_codes')[theme]["mode"]);
+      let editor = ace.edit("editor");
+      editor.setTheme(this.get('theme'));
+    },
     langChange() {
       let langId = $('#langSelect :selected').val();
 
