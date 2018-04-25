@@ -30,7 +30,7 @@ module.exports = function(defaults) {
 
   var extraAssets = new Funnel('bower_components/ace-builds/src-min-noconflict', {
     srcDir: '/',
-    include: ['ace.js', 'ext-language_tools.js', 'snippets/c_cpp.js', 'snippets/java.js','snippets/csharp.js', 
+    include: ['ace.js', 'ext-language_tools.js', 'snippets/c_cpp.js', 'snippets/java.js','snippets/csharp.js', 'theme-solarized_light.js',
               'snippets/python.js', 'snippets/text.js','snippets/javascript.js', 'worker-javascript.js', 'theme-monokai.js', 
               'mode-c_cpp.js', 'mode-java.js', 'mode-python.js','mode-javascript.js','mode-csharp.js'],
     destDir: '/assets/ace'

@@ -2,6 +2,18 @@
   <div class="card hover-card">
     <div class="header clearfix">
       <h2 class="pull-left">Code Now</h2>
+      <span class="m-l-5 pull-right">
+          Theme:
+          <select id="themeSelect" {{action "themeChange" on="change"}} >
+              {{#each-in theme_codes as |key value|}}
+                  {{#if (eq value.mode theme)}}
+                      <option value={{key}} selected>{{value.name}}</option>
+                  {{else}}
+                      <option value={{key}}>{{value.name}}</option>
+                  {{/if}}
+              {{/each-in}}
+          </select>
+      </span>
       <span class="pull-right">
              Language:
              <select id="langSelect" {{action "langChange" on="change"}} >
@@ -23,9 +35,9 @@
     </div>
     <div class="body">
         {{#if allowedLanguages}}
-            {{#ace-editor lang_codes=lang_codes allowedLanguages=allowedLanguages}}{{/ace-editor}}
+            {{#ace-editor theme=theme lang_codes=lang_codes allowedLanguages=allowedLanguages}}{{/ace-editor}}
         {{else}}
-            {{#ace-editor}}{{/ace-editor}}
+            {{#ace-editor theme=theme}}{{/ace-editor}}
         {{/if}}
       <a {{action "reset" problem}} href="javascript:void(0);" class="btn btn-raised label-danger btn-sm"
                                           role="button">Reset</a>

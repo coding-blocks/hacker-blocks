@@ -7,7 +7,8 @@ export default Ember.Component.extend({
     ace.require("ace/src/snippets");
     this._super(...arguments);
     let editor = ace.edit("editor");
-    editor.setTheme("ace/theme/monokai");
+    let theme = this.get('theme') || "ace/theme/monokai";
+    editor.setTheme(theme);
     const code = this.get("lang_codes");
     const allowedLanguages = this.get("allowedLanguages");
     let mode = null;

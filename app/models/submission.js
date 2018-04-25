@@ -9,6 +9,7 @@ export default DS.Model.extend({
   userName: DS.attr(),
   photo:DS.attr(),
   source: DS.attr(),
+  judgeResult: DS.attr(),
   submitAt: DS.attr(),
   language: DS.attr(),
   score: DS.attr(),
