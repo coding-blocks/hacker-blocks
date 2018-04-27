@@ -25,7 +25,7 @@ var getSnippet = function(lang) {
     '        \n' +
     '    }\n' +
     '}';
-  snippets['js'] = "console.log('we use node 6 lts');";
+  snippets['js'] = "console.log('we use node 8 lts');";
   snippets['py2'] =
     'import sys';
   snippets['csharp'] = `using System;
