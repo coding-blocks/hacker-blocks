@@ -5,13 +5,15 @@ export default Ember.Route.extend({
     title: 'All Contests'
   },
 
+  serverTime: Ember.inject.service (),
+
   model: function () {
     var activeContests = [];
     var upcomingContests = [];
     var previousContests = [];
 
     const contestTypes = this.get('store').query('contest', {custom: {ext: 'url', url: 'public'}}).then(function (contest) {
-      var presentDate = Math.floor(new Date().valueOf() / 1000);
+      var presentDate = this.get ('serverTime').getUnixTime ();
       contest.forEach(function (element) {
         if (element.get('startTime') <= presentDate && element.get('endTime') >= presentDate) {
           activeContests.pushObject(element);

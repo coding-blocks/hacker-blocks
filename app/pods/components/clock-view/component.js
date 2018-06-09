@@ -8,6 +8,7 @@ export default Ember.Component.extend({
     day: null,
     month: null,
     year: null,
+    serverTime: Ember.inject.service (),
 
     didRender() {
 
@@ -19,7 +20,7 @@ export default Ember.Component.extend({
     let daysArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
         setInterval( function() {
-            var seconds = new Date().getSeconds();
+            var seconds = new Date (_this.get ('serverTime').getTime ()).getSeconds();
             var sdegree = seconds * 6;
             var srotate = "rotate(" + sdegree + "deg)";
             $("#sec").css({"-moz-transform" : srotate, "-webkit-transform" : srotate});
@@ -27,8 +28,8 @@ export default Ember.Component.extend({
         }, 1000 );
 
         setInterval( function() {
-            var hours = new Date().getHours();
-            var mins = new Date().getMinutes();
+            var hours = new Date (_this.get ('serverTime').getTime ()).getHours();
+            var mins = new Date (_this.get ('serverTime').getTime ()).getMinutes();
             var hdegree = hours * 30 + (mins / 2);
             var hrotate = "rotate(" + hdegree + "deg)";
 
@@ -37,7 +38,7 @@ export default Ember.Component.extend({
         }, 1000 );
 
         setInterval( function() {
-            var mins = new Date().getMinutes();
+            var mins = new Date (_this.get ('serverTime').getTime ()).getMinutes();
             var mdegree = mins * 6;
             var mrotate = "rotate(" + mdegree + "deg)";
 
@@ -46,7 +47,7 @@ export default Ember.Component.extend({
         }, 1000 );
 
         Ember.run.later( function() {
-            var date = new Date();
+            var date = new Date (_this.get ('serverTime').getTime ());
             var ampm = date.getHours() < 12 ? " AM" : " PM";
             _this.set('seconds', date.getSeconds()< 10 ? '0' + date.getSeconds() + ampm : date.getSeconds() + ampm);
             _this.set('minutes',date.getMinutes()< 10 ? '0' + date.getMinutes() + ':': date.getMinutes() + ':');

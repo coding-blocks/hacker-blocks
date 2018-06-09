@@ -8,6 +8,7 @@ export default Ember.Route.extend({
   routing: service('-routing'),
   currentAttemptService: service('current-attempt'),
   currentUser: service('current-user'),
+  serverTime: Ember.inject.service (),
   breadCrumb: Ember.Object.create({
     title: 'Contest'
   }),
@@ -53,7 +54,7 @@ export default Ember.Route.extend({
   },
   beforeModel() {
      let {contest} = this.modelFor('contests.contest');
-     let presentDate = Math.floor(new Date().valueOf() / 1000);
+     let presentDate = this.get ('serverTime').getUnixTime ();
      if(contest.get('startTime') >= presentDate && contest.get('endTime') >= presentDate ) {
         this.transitionTo('contests.upcoming',contest.id);
      }// else if(contest.get('endTime') <= presentDate) {
