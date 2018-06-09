@@ -13,6 +13,7 @@ export default Ember.Component.extend({
   //endTime: Unix Timestamp(in seconds) of the endTime (startTime+duration)
 
   poll: Ember.inject.service(),
+  serverTime: Ember.inject.service (),
   
   didReceiveAttrs () {
     //setup an poll to call tick function with interval NO LESS than 1 sec
@@ -20,6 +21,7 @@ export default Ember.Component.extend({
       interval: 1000,
       callback: () => this.send('tick')
     })
+
     this.set('pollId', pollId)
 
     // compute the endTime
@@ -74,7 +76,7 @@ export default Ember.Component.extend({
 
     tick() {
       // set now equal to unix timestamp in seconds
-      this.set('now', Math.floor(Date.now()/1000)) ;
+      this.set ('now', this.get ('serverTime').getUnixTime ()) ;
     },
   }
 });
