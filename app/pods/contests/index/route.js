@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     title: 'All Contests'
   },
 
-  serverTime: Ember.service.inject (),
+  serverTime: Ember.inject.service (),
 
   model: function () {
     var activeContests = [];
