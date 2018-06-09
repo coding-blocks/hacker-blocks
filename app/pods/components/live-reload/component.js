@@ -14,7 +14,7 @@ export default Ember.Component.extend({
         const currentContest = _this.get('contest');
         let unixTime = currentContest.get('startTime');
         const timer = setInterval(function () {
-            var current = this.get ('serverTime').getTime ();
+            var current = _this.get ('serverTime').getTime ();
             var future = unixTime * 1000;
             var diff = future - current;
             var tempTime = moment.duration(diff);
