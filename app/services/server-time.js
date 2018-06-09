@@ -8,7 +8,7 @@ export default Ember.Service.extend ({
   init () {
     this._super (...arguments)
 
-    this.set ('now', Math.floor (Date.now () / 1000))
+    this.set ('now', Date.now ())
 
     this.get ('refreshCurrentTime').perform ()
 
