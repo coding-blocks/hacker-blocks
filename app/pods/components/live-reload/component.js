@@ -7,14 +7,14 @@ export default Ember.Component.extend({
     days: null,
     hours: null,
     routing: Ember.inject.service('-routing'),
+    serverTime: Ember.inject.service (),
     didRender() {
         this._super(...arguments);
         var _this = this;
         const currentContest = _this.get('contest');
         let unixTime = currentContest.get('startTime');
-
         const timer = setInterval(function () {
-            var current = new Date();
+            var current = this.get ('serverTime').getTime ();
             var future = unixTime * 1000;
             var diff = future - current;
             var tempTime = moment.duration(diff);

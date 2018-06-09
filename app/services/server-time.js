@@ -33,5 +33,9 @@ export default Ember.Service.extend ({
 
   getUnixTime () {
     return Math.floor (this.get ('now') / 1000)
+  },
+
+  getTime () {
+    return this.get ('now')
   }
 })
