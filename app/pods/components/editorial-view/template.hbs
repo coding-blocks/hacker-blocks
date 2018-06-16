@@ -1,5 +1,8 @@
 {{#if model}}
   {{markdown-to-html  model.content}}
+  <iframe width="420" height="315"
+          src="{{model.video}}">
+  </iframe>
 {{else}}
   <h4>No Editorial Exists for the given problem.</h4>
 {{/if}}
