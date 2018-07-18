@@ -52,6 +52,9 @@ Router.map(function() {
   });
   this.route('logout');
   this.route('info',{path: '/info/:id'});
+  this.route('competitions', function() {
+    this.route ('view', { path: '/view/:id' });
+  });
 });
 
 export default Router;
