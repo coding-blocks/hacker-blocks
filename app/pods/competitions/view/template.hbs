@@ -1,2 +1,77 @@
-<h1>Competition #{{competition.id}}</h1>
-{{outlet}}
+<div class="header">
+    <div class="left">
+        <div class="heading">
+            {{competition.name}}
+        </div>
+    </div>
+    <div class="right">
+        <div class="start-end">
+            <div>Starts:</div>
+            <div class="red">{{moment-format competition.startDate 'DD MMMM YYYY'}}</div>
+        </div>
+        <div class="start-end">
+            <div>Ends:</div>
+            <div class="red">{{moment-format competition.endDate 'DD MMMM YYYY'}}</div>
+        </div>
+        <button class="btn-solid">Start Competition</button>
+    </div>
+</div>
+
+<div class="boxer">
+    {{!-- <div class="img-banner bg-grey" style="background-image: url('{{competition.photo}}')"></div> --}}
+    <div class="img-banner bg-grey" style="background-image: url('https://d2rormqr1qwzpz.cloudfront.net/photos/2012/03/16/55-10580-backlight_keyboard_600.jpg')"></div>
+
+    {{tab-nav tabs=tabs activeTab=activeTab}}
+
+    {{#if (eq activeTab 0)}}
+        <div id="tab1" class="">
+            <p class="semi-bold">
+                {{markdown-to-html competition.overview}}
+            </p>
+        </div>
+    {{/if}}
+
+    {{#if (eq activeTab 1)}}
+        <div id="tab2" class="semi-bold">
+            {{markdown-to-html competition.description}}
+        </div>
+    {{/if}}
+
+    {{#if (eq activeTab 2)}}
+        <div id="tab3">
+            <ul class="list-none bold">
+                <li class="prizes">
+                    <div>First Prize</div>
+                    <div class="grey">INR 50000, CB TShirts, CB Bags</div>
+                </li>
+                <li class="prizes">
+                    <div>Second Prize</div>
+                    <div class="grey">INR 50000, CB TShirts, CB Bags</div>
+                </li>
+                <li class="prizes">
+                    <div>Third Prize</div>
+                    <div class="grey">INR 50000, CB TShirts, CB Bags</div>
+                </li>
+            </ul>
+        </div>
+    {{/if}}
+
+    {{#if (eq activeTab 3)}}
+        <div id="tab4">
+            <ul class="list-decimal bold">
+                <li class="faqs">
+                    <div>Do I need to pay any money to register for the Hackathon?</div>  
+                    <div class="semi-bold grey">No. You do not have to pay anything to anyone to register yourself for any Hackathon on HackerEarth.</div>   
+                </li>
+                <li class="faqs">
+                    <div>Do I need to have any specific qualifications to be a participant for the Hackathon?</div>  
+                    <div class="semi-bold grey">If you love to code, you are more than welcome to participate in the Hackathon.</div>   
+                </li>
+                <li class="faqs">
+                    <div>How do I submit what I have made for the Hackathon? </div>  
+                    <div class="semi-bold grey">You have to develop the application on your local system and submit it on HackerEarth.</div>   
+                </li>
+            </ul>
+        </div>
+    {{/if}}
+</div>

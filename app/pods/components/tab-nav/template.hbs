@@ -1,0 +1,7 @@
+<div class="tab-nav">
+    {{#each tabs as |tab index|}}
+        <div class="tab {{if (eq index activeTab) "active" ""}}" {{action "setActiveTab" index}}>
+            {{tab}}
+        </div>
+    {{/each}}
+</div>
