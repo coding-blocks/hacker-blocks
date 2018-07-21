@@ -1,19 +1,25 @@
 <div class="header">
-    <div class="left">
+    <div class="header-left">
         <div class="heading">
             {{competition.name}}
         </div>
     </div>
-    <div class="right">
-        <div class="start-end">
-            <div>Starts:</div>
-            <div class="red">{{moment-format competition.startDate 'DD MMMM YYYY'}}</div>
+    <div class="divider-h"></div>
+    <div class="header-right">
+        <div>
+            <div class="start-end">
+                <div>Starts:</div>
+                <div class="red">{{moment-format competition.startDate 'DD MMMM YYYY'}}</div>
+            </div>
+            <div class="start-end">
+                <div>Ends:</div>
+                <div class="red">{{moment-format competition.endDate 'DD MMMM YYYY'}}</div>
+            </div>
         </div>
-        <div class="start-end">
-            <div>Ends:</div>
-            <div class="red">{{moment-format competition.endDate 'DD MMMM YYYY'}}</div>
+        <div>
+            <button class="btn-solid">Start Competition</button>
         </div>
-        <button class="btn-solid">Start Competition</button>
+        
     </div>
 </div>
 
@@ -24,21 +30,21 @@
     {{tab-nav tabs=tabs activeTab=activeTab}}
 
     {{#if (eq activeTab 0)}}
-        <div id="tab1" class="">
-            <p class="semi-bold">
+        <div id="tab1" class="tab-content">
+            <p class="markdown semi-bold">
                 {{markdown-to-html competition.overview}}
             </p>
         </div>
     {{/if}}
 
     {{#if (eq activeTab 1)}}
-        <div id="tab2" class="semi-bold">
+        <div id="tab2" class="markdown semi-bold tab-content">
             {{markdown-to-html competition.description}}
         </div>
     {{/if}}
 
     {{#if (eq activeTab 2)}}
-        <div id="tab3">
+        <div id="tab3" class="tab-content">
             <ul class="list-none bold">
                 <li class="prizes">
                     <div>First Prize</div>
@@ -52,12 +58,52 @@
                     <div>Third Prize</div>
                     <div class="grey">INR 50000, CB TShirts, CB Bags</div>
                 </li>
+
+                <li class="prizes">
+                    <div>First Prize</div>
+                    <div class="grey">INR 50000, CB TShirts, CB Bags</div>
+                </li>
+                <li class="prizes">
+                    <div>Second Prize</div>
+                    <div class="grey">INR 50000, CB TShirts, CB Bags</div>
+                </li>
+                <li class="prizes">
+                    <div>Third Prize</div>
+                    <div class="grey">INR 50000, CB TShirts, CB Bags</div>
+                </li>
+
+                <li class="prizes">
+                    <div>First Prize</div>
+                    <div class="grey">INR 50000, CB TShirts, CB Bags</div>
+                </li>
+                <li class="prizes">
+                    <div>Second Prize</div>
+                    <div class="grey">INR 50000, CB TShirts, CB Bags</div>
+                </li>
+                <li class="prizes">
+                    <div>Third Prize</div>
+                    <div class="grey">INR 50000, CB TShirts, CB Bags</div>
+                </li>
+
+                <li class="prizes">
+                    <div>First Prize</div>
+                    <div class="grey">INR 50000, CB TShirts, CB Bags</div>
+                </li>
+                <li class="prizes">
+                    <div>Second Prize</div>
+                    <div class="grey">INR 50000, CB TShirts, CB Bags</div>
+                </li>
+                <li class="prizes">
+                    <div>Third Prize</div>
+                    <div class="grey">INR 50000, CB TShirts, CB Bags</div>
+                </li>
+
             </ul>
         </div>
     {{/if}}
 
     {{#if (eq activeTab 3)}}
-        <div id="tab4">
+        <div id="tab4" class="tab-content">
             <ul class="list-decimal bold">
                 <li class="faqs">
                     <div>Do I need to pay any money to register for the Hackathon?</div>  
