@@ -1,3 +1,34 @@
+//-----------------Variables-----------------------
+$red: #ff6666;
+$white: #ffffff;
+$black: #333333;
+$grey: #ebebeb;
+$light-grey: #eeeeee;
+//-----------------Variables-----------------------
+
+//-------------------------------------------------------------Helpers--------------------------------------------------------------------------------
+.red{
+  color: $red;
+}
+
+.grey{
+  color: #666666;
+}
+
+.bg-grey{
+  background-color: $grey;
+}
+
+.bold{
+  font-weight: 600;
+}
+
+.semi-bold{
+  font-weight: 500;
+}
+//-------------------------------------------------------------Helpers--------------------------------------------------------------------------------
+
+
 .login-btn {
   border-radius: 20px !important;
   color: #fff !important;
@@ -1287,3 +1318,254 @@ blue-bar {
 .m-0 {
     margin: 0 !important;
 }
+
+//-------------------------------------------------------------Competitions---------------------------------------------------------------------------
+.divider-h{
+  width: 100%;
+  height: 2px;
+  background-color: $grey;  
+}
+
+ul{
+  &.list-decimal{
+    list-style: decimal;
+  }
+
+  &.list-none{
+    list-style: none;
+  }
+}
+
+.heading{
+  font-size : 20px;
+  font-weight: 600;
+  color: $black;
+}
+
+.btn-solid{
+  height: 50px;
+  width: 20%;
+  border: none;
+  border-radius: 31px;
+  background-color: $red;
+  color: $white;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.content{
+  .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100px;
+    box-shadow: 0 0 60px 0 rgba(51, 51, 51, 0.1);
+    position: sticky;
+    z-index: 5;
+    top: 0;
+    padding: 0 40px;
+    background-color: $white;
+  
+    .btn-solid{
+      width: 180px;
+      margin-left: 30px;
+    }
+  }
+}
+
+
+.competition{
+  padding: 0;
+  overflow: scroll;
+  height: 90vh;
+
+  .tab-nav{
+    margin-bottom: 30px;
+  }
+
+  .prizes{
+    margin-bottom: 30px;
+  }
+
+  .faqs{
+    margin-bottom: 15px
+  }
+
+  .about-heading{
+    margin-bottom: 20px;
+  }
+
+  .divider-h{
+    display: none;
+    margin: 15px 0;
+  }
+}
+
+.markdown{
+  ul{
+    list-style-position: inside;
+  }
+}
+
+.start-end{
+  font-size: 15px;
+  font-weight: 500;
+  text-align: right;
+  margin-left: 20px;
+}
+
+.header-right, .header-left{
+  display: flex;
+  align-items: center;
+}
+
+.boxer{
+  padding: 15px 50px;
+}
+
+.img-banner{
+  height: 150px;
+  width: 100%;
+  margin: 20px auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media screen and (max-width: 767px){
+  .competition{
+    .header{
+      display: block;
+      height: auto;
+      padding: 10px 20px;
+
+      .btn-solid{
+        align-self: flex-end;
+      }
+    }
+
+    .boxer{
+      padding: 10px 0;
+    }
+
+    .tab-content{
+      padding: 0 20px;
+    }
+
+    .start-end{
+      margin-left: 0;
+      margin-right: 10px;
+      text-align: left;
+      display: inline-block;
+    }
+
+    .img-banner{
+      margin: 0;
+    }
+
+    .header-left, .header-right{
+      width: 100%;
+    }
+
+    .divider-h{
+      display: block;
+    }
+
+    .header-right{
+      justify-content: space-between;
+    }
+  }
+}
+
+@media screen and (max-width: 575px){
+  .boxer{
+    padding: 10px 20px;
+  }
+
+  .heading{
+    font-size: 14px;
+  }
+  .competition{
+    .header{
+      .btn-solid{
+        height: 30px;
+        width: 100px;
+      }
+    }
+
+    .boxer{
+      font-size: 10px;
+    }
+
+    .prizes{
+      margin-bottom: 20px;
+    }
+
+    .divider-h{
+      margin: 10px 0;
+    }
+  }
+
+  .markdown{
+    font-size: 10px;
+  }
+  
+
+  .start-end, .btn-solid{
+    font-size: 10px;
+  }
+}
+
+
+//----------------------------tab-nav----------------------------------
+.tab-nav{
+  display: flex;
+  align-items: center;
+  border-bottom: solid 2px $light-grey;
+}
+
+.tab{
+  padding: 15px 5%;
+  font-size: 15px;
+  font-weight: 600;
+  color: $black;
+  position: relative;
+  bottom: -2px;
+  cursor: pointer;
+
+  &.active{
+    border-bottom: solid 2px $black;
+  }
+
+  &:hover{
+    border-bottom: solid 2px #cbcbcb;
+  }
+}
+
+.tab-icon{
+  display: none;
+  text-align: center;
+
+  img{
+    width: 30%;
+    min-width: 17px;
+  }
+}
+
+@media screen and (max-width: 767px){
+  .tab-nav{
+    justify-content: space-between;
+  }
+
+  &.tab-label{
+    display: none;
+  }
+
+  .tab-icon{
+    display: block;
+  }
+}
+
+//----------------------------tab-nav----------------------------------
+
+
+
