@@ -376,9 +376,11 @@ ul.pt-category li a.active {
 .navbar>.container-fluid .navbar-brand{margin-left:0px;}
 .clearHeader .navbar-header{margin-top:0px;}
 .theme-blush .navbar-header{ width:auto;}
-.theme-blush .bars{ right:-30px;}
 }
 @media (max-width:480px){
 .navbar>.container .navbar-brand,
 .navbar>.container-fluid .navbar-brand{width:160px; padding-top:15px;}
+}
+@media (max-width: 1170px){
+.theme-blush .bars{ right:-30px;}
 }
