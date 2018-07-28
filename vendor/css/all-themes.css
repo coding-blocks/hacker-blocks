@@ -370,6 +370,7 @@ ul.pt-category li a.active {
 .theme-blush.ls-closed .sidebar{margin-left:-300px;}
 .theme-blush.ls-closed.overlay-open section.content{margin-left:255px;}
 .theme-blush.ls-closed.overlay-open .sidebar{margin-left:0;}
+.theme-blush .bars{ right:-30px;}
 }
 @media (max-width: 767px){
 .navbar>.container .navbar-brand,
@@ -380,7 +381,4 @@ ul.pt-category li a.active {
 @media (max-width:480px){
 .navbar>.container .navbar-brand,
 .navbar>.container-fluid .navbar-brand{width:160px; padding-top:15px;}
-}
-@media (max-width: 1170px){
-.theme-blush .bars{ right:-30px;}
 }
