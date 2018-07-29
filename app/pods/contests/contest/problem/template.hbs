@@ -1,5 +1,32 @@
 <section class="content home">
+  {{#if model.contest.competitionId}}
+  <div class="header">
+    <div class="header-left">
+      <div class="heading">
+        {{model.contest.competitionName}}
+      </div>
+    </div>
+    <div class="header-left">
+      {{#if model.contest.duration}}
+        <div class="countdown-timer-container">
+          {{#countdown-timer
+            startTime=model.currentAttempt.startTime
+            duration=attemptDuration
+            noIcon=true
+            onComplete=(action 'redirectToContest' model)}}
+          {{/countdown-timer}}
+        </div>
+      {{/if}}
+      <div>
+        {{#link-to 'competitions.view' model.contest.competitionId class="btn-solid" tagName="button"}}
+          Back to Competition
+        {{/link-to}}
+      </div>
+    </div>
+  </div>
+  {{/if}}
   <div class="container-fluid">
+    {{#unless model.contest.competitionId}}
     <div class="row clearfix" style="margin-left: 0">
 
       <div class="col-md-6 block-header">
@@ -21,6 +48,11 @@
 
      </div>
     </div>
+    {{/unless}}
+    <div class="row clearfix"> </div>
+    <div class="row clearfix"> </div>
+    <div class="row clearfix"> </div>
+    <div class="row clearfix"> </div>
     <div class="row clearfix">
       <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
         <div class="card hover-card">

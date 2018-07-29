@@ -1,4 +1,5 @@
 import DS from 'ember-data';
+import moment from 'npm:moment';
 
 export default DS.Model.extend ({
   name           : DS.attr (),
@@ -13,5 +14,13 @@ export default DS.Model.extend ({
   createdAt      : DS.attr (),
   updatedAt      : DS.attr (),
   deletedAt      : DS.attr (),
-  contests       : DS.hasMany ()
+  contests       : DS.hasMany (),
+
+  startDateString: Ember.computed ('startDate', function () {
+    return moment.unix (this.get ('startDate')).format ('DD MMMM YYYY')
+  }),
+
+  endDateString: Ember.computed ('endDate', function () {
+    return moment.unix (this.get ('endDate')).format ('DD MMMM YYYY')
+  })
 });

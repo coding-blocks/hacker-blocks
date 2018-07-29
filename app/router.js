@@ -53,6 +53,7 @@ Router.map(function() {
   this.route('logout');
   this.route('info',{path: '/info/:id'});
   this.route('competitions', function() {
+    this.route ('overview', { path: '/overview/:id' });
     this.route ('view', { path: '/:id' });
   });
 });

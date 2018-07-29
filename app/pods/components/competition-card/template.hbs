@@ -1,0 +1,19 @@
+<div class="card hover-card competition-card">
+  <div>
+    <img src="https://cdn.dribbble.com/users/437767/screenshots/2655974/girl-01_1x.png" alt="alt text">
+  </div>
+
+  <h3>
+    {{competition.name}}
+  </h3>
+
+  <p class="overview ellipsis">
+    {{competition.overview}}
+  </p>
+
+  <div class="text-center">
+    {{#link-to 'competitions.view' competition.id class="btn btn-red"}}
+    Participate!
+    {{/link-to}}
+  </div>
+</div>

@@ -1319,7 +1319,52 @@ blue-bar {
     margin: 0 !important;
 }
 
+// ---------- [ Helpers] ---------
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+
+.btn {
+  color: #fefefe !important;
+  background-color: #fc4f4f;
+  opacity: 0.95;
+
+  &:hover, &:focus {
+    background-color: #fc4f4f !important;
+    opacity: 1;
+  }
+}
+
+// ---------- [/Helpers] ---------
+
 //-------------------------------------------------------------Competitions---------------------------------------------------------------------------
+
+// ------ [ Index] ------
+.competition-card {
+  padding: 1rem 2rem;
+
+  & > * {
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    text-align: center;
+    font-weight: normal;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  p.overview {
+    height: 4rem;
+  }
+
+}
+// ------ [/Index] ------
+
 .divider-h{
   width: 100%;
   height: 2px;
@@ -1407,16 +1452,30 @@ ul{
   }
 }
 
+.btn-solid {
+  font-size: 1.3rem;
+  border-radius: 2%;
+  text-transform: uppercase;
+}
+
 .start-end{
   font-size: 15px;
   font-weight: 500;
   text-align: right;
   margin-left: 20px;
+  float: left;
+  margin-right: 1rem;
 }
 
 .header-right, .header-left{
   display: flex;
   align-items: center;
+}
+
+.header .countdown-timer-container {
+  i.material-icons {
+    display: block;
+  }
 }
 
 .boxer{
@@ -1566,6 +1625,5 @@ ul{
 }
 
 //----------------------------tab-nav----------------------------------
-
 
 

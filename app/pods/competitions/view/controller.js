@@ -7,11 +7,11 @@ export default Ember.Controller.extend({
             icon: '/images/about.svg'
         },
         {
-            name: 'Description',
-            icon: '/images/desc.svg'
+            name: 'Contests',
+            icon: '/images/question.svg'
         },
         {
-            name: 'Prizes',
+            name: 'Leaderboard',
             icon: '/images/prize.svg'
         },
         {
@@ -20,5 +20,5 @@ export default Ember.Controller.extend({
         }
     ],
 
-    activeTab: 0
+    activeTab: 2
 });
