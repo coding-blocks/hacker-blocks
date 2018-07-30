@@ -19,13 +19,12 @@
         <div>
           <button class="btn-solid" {{action 'participate' competition.id}}>Participate!</button>
         </div>
-        
     </div>
 </div>
 
 <div class="boxer">
     {{!-- <div class="img-banner bg-grey" style="background-image: url('{{competition.photo}}')"></div> --}}
-    <div class="img-banner bg-grey" style="background-image: url('https://d2rormqr1qwzpz.cloudfront.net/photos/2012/03/16/55-10580-backlight_keyboard_600.jpg')"></div>
+	<div class="img-banner bg-grey" style="background-image: url('{{competition.banner}}')"></div>
 
     {{tab-nav tabs=tabs activeTab=activeTab}}
 

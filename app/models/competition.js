@@ -4,9 +4,12 @@ import moment from 'npm:moment';
 export default DS.Model.extend ({
   name           : DS.attr (),
   organization   : DS.belongsTo ('organization'),
+  thumbnail      : DS.attr(),
+  banner         : DS.attr(),
   overview       : DS.attr(),
   description    : DS.attr(),
   prizes         : DS.attr(),
+  faqs           : DS.attr (),
   startDate      : DS.attr(),
   endDate        : DS.attr(),
   createdBy      : DS.attr (),
