@@ -25,7 +25,9 @@
     <div class="card hover-card">
 	    <div class="row">
 		    <h1 class="text-center">{{model.contest.name}}</h1>
-		    <p class="text-center">{{model.contest.description}}</p>
+        <div class="text-center">
+            {{markdown-to-html model.contest.description}}
+        </div>
 	    </div>
     </div>
     {{/if}}
