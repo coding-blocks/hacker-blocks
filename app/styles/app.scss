@@ -1274,6 +1274,19 @@ blue-bar {
   display: block;
 }
 
+.contest-description-container {
+  padding: 3rem 7rem;
+
+  h1, h2, h3 {
+    font-weight: normal;
+  }
+}
+@media (max-width: 600px) {
+  .contest-description-container {
+    padding: 5rem;
+  }
+}
+
 .m-t-10 {
   margin-top: 10%;
 }
