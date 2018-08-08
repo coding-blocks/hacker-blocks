@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="row clearfix">
-      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+      <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
         <div class="card hover-card">
           <div class="body">
             <!-- Nav tabs -->
@@ -34,10 +34,10 @@
           </div>
         </div>
         <div class="row clearfix">
-          {{#code-editor contestId=model.contest.id problem=model.problem}}{{/code-editor}}
+          {{#code-editor fromPractice=true contestId=model.contest.id problem=model.problem}}{{/code-editor}}
         </div>
       </div>
-      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      {{!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
         <div class="card hover-card">
           <div class="header">
             <h2>Best Submission</h2>
@@ -46,7 +46,7 @@
             {{#problem-leaderboard language=true contestId=model.contest.id problemId=model.problem.id}}{{/problem-leaderboard}}
           </div>
         </div>
-      </div>
+      </div> --}}
     </div>
   </div>
 </section>

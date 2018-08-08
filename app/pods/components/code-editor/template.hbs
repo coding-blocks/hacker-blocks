@@ -75,6 +75,11 @@
         </p>
       {{else if output}}
         <hr/>
+        {{#if fromPractice}}
+          <div class="alert alert-warning">
+            This is Practice Section. You'll not be awarded any score for this problem.
+          </div>
+        {{/if}}
         <table class="table table-striped">
           <thead>
           <tr>
