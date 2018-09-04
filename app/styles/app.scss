@@ -1431,7 +1431,6 @@ ul{
     justify-content: space-between;
     height: 100px;
     box-shadow: 0 0 60px 0 rgba(51, 51, 51, 0.1);
-    position: sticky;
     z-index: 5;
     top: 0;
     padding: 0 40px;
@@ -1441,6 +1440,10 @@ ul{
       width: 180px;
       margin-left: 30px;
     }
+  }
+
+  .sticky-header {
+    position: sticky;
   }
 }
 
