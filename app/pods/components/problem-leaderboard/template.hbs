@@ -7,6 +7,7 @@
     <tr>
       <th data-field="rank">Rank</th>
       <th data-field="user">User</th>
+      <th data-field="college">College</th>
       <th data-field="score">Score</th>
       {{#if language}}
         <th data-field="language">Language</th>
@@ -30,6 +31,9 @@
             {{yourRank.user_name}}
           {{/link-to}}
         </td>
+		<td>
+			{{yourRank.college_name}}
+		</td>
         <td>{{decimal-to-whole yourRank.score}}</td>
       </tr>
     {{/if}}
@@ -56,6 +60,9 @@
             {{/link-to}}
           {{/if}}
         </td>
+		<td>
+			{{submission.collegeName}}
+		</td>
         <td>{{decimal-to-whole submission.score}}</td>
         {{#if submission.language}}
           <td>{{getlang submission.language}}</td>

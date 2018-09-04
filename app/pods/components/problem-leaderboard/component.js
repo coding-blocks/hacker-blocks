@@ -6,9 +6,10 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   getLeaderBoard: task(function * () {
     let competitionId = this.get ('competitionId');
+    let store = this.get ('store')
 
     if (competitionId) {
-      let leaderBoard = yield this.get ('store').query ('competition', {
+      let leaderBoard = yield store.query ('competition', {
         custom: {
           ext: 'url',
           url: `${competitionId}/leaderboard`
@@ -29,6 +30,13 @@ export default Ember.Component.extend({
     }
 
     let leaderBoard = yield this.get('store').query('submission', customParams);
+
+    leaderBoard.map (shizz => {
+      if (shizz.get ('collegeId')) {
+        console.log (store.findRecord ('college', shizz.get ('collegeId')).get ('name'))
+        console.log (shizz.get ('user.name'))
+      }
+    })
 
     this.set('leaderBoard', leaderBoard);
     this.set('yourRank', leaderBoard.meta.yourRank);

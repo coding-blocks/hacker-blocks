@@ -15,6 +15,7 @@ export default DS.Model.extend({
   score: DS.attr(),
   result: DS.attr(),
   problemId: DS.attr('string'),
+  collegeName: DS.attr ('string'),
   problemName:DS.attr('string'),
   isTopSubmission:DS.attr('boolean'),
   tcRuns: DS.attr(),
