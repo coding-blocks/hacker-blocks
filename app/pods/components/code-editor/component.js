@@ -173,6 +173,16 @@ export default Ember.Component.extend({
     return (stub || getSnippet(langId))
   }),
 
+  init () {
+    this._super (...arguments)
+
+    const allowedLanguages = this.get ('allowedLanguages')
+
+    if (allowedLanguages.includes ('py2')) {
+      allowedLanguages.push ('py3')
+    }
+  },
+
   didRender() {
     let editor = ace.edit("editor");
     let self = this;
