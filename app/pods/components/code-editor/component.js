@@ -178,7 +178,7 @@ export default Ember.Component.extend({
 
     const allowedLanguages = this.get ('allowedLanguages')
 
-    if (allowedLanguages.includes ('py2')) {
+    if (allowedLanguages && allowedLanguages.includes ('py2')) {
       allowedLanguages.push ('py3')
     }
   },
@@ -196,14 +196,16 @@ export default Ember.Component.extend({
       self.set("onceEdit", true);
     };
   },
-  actions:{
+
+  actions: {
     themeChange() {
       let theme = $('#themeSelect :selected').val();
       this.set('theme', this.get('theme_codes')[theme]["mode"]);
       let editor = ace.edit("editor");
       editor.setTheme(this.get('theme'));
     },
-    langChange() {
+
+    langChange () {
       let langId = $('#langSelect :selected').val();
 
       this.set('langId', langId)
@@ -211,11 +213,12 @@ export default Ember.Component.extend({
       $("#editor-lang").text(this.lang_codes[langId]["name"]);
       let editor = ace.edit("editor");
       editor.getSession().setMode(this.lang_codes[langId]["mode"]);
-      if (this.get("onceEdit") == false) {
+
+      if (! this.get("onceEdit")) {
         editor.setValue(this.get('stub'));
       }
-      this.langId = langId;
     },
+
     submit(problem, noScore) {
       $('#submit').button('loading');
       judge(this, problem.id, this.get('contestId'), noScore);
