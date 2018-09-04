@@ -1,0 +1,56 @@
+<div class="header">
+    <div class="header-left">
+        <div class="heading">
+            {{competition.name}}
+        </div>
+    </div>
+    <div class="divider-h"></div>
+    <div class="header-right">
+        <div>
+            <div class="start-end">
+                <div class="text-uppercase text-left">Starts</div>
+                <div class="red">{{competition.startDateString}}</div>
+            </div>
+            <div class="start-end">
+                <div class="text-uppercase text-left">Ends</div>
+                <div class="red">{{competition.endDateString}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="boxer">
+	<div class="img-banner bg-grey" style="background-image: url('{{competition.banner}}')"></div>
+
+    {{tab-nav tabs=tabs activeTab=activeTab}}
+
+    {{#if (eq activeTab 0)}}
+        <div id="tab1" class="tab-content">
+            <p class="markdown semi-bold">
+                {{markdown-to-html competition.description}}
+            </p>
+        </div>
+    {{/if}}
+
+    {{#if (eq activeTab 1)}}
+      <div id="tab2" class="tab-content">
+        {{#each competition.contests as |contest|}}
+          {{#contest-view link='contests.contest' showPoints=true contest=contest archived=true class="contestCardWrapper"}}{{/contest-view}}
+        {{/each}}
+      </div>
+    {{/if}}
+
+    {{#if (eq activeTab 2)}}
+        <div id="tab3" class="tab-content">
+          {{#problem-leaderboard avatar=true contestId=484 competitionId=competition.id refreshInterval=10000}}{{/problem-leaderboard}}
+        </div>
+    {{/if}}
+
+    {{#if (eq activeTab 3)}}
+        <div id="tab4" class="tab-content">
+            <p class="markdown semi-bold">
+                {{markdown-to-html competition.faq}}
+            </p>
+        </div>
+    {{/if}}
+</div>

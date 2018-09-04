@@ -1,26 +1,54 @@
 <section class="content">
-  <div class="container-fluid">
-    <div class="row clearfix" style="margin-left: 0">
-      <div class="col-md-6 block-header">
-        <h2>All Problems</h2>
-        <small class="text-muted">Solve these problem and prove yourself </small>
+  {{#if model.contest.competitionId}}
+  <div class="header">
+    <div class="header-left">
+      <div class="heading">
+        {{model.contest.competitionName}}
       </div>
+    </div>
+    <div class="header-left">
       {{#if model.contest.duration}}
-        <div class="countdown-timer-container col-md-offset-3 col-md-3">
-          <div class="card">
-            {{#countdown-timer
-              startTime=model.currentAttempt.startTime
-              duration=attemptDuration
-              onComplete=(action 'redirectToContest' model)}}
-            {{/countdown-timer}}
-          </div>
+        <div class="countdown-timer-container">
+          {{#countdown-timer
+            startTime=model.currentAttempt.startTime
+            duration=attemptDuration
+            noIcon=true
+            onComplete=(action 'redirectToContest' model)}}
+          {{/countdown-timer}}
         </div>
       {{/if}}
+      <div>
+        {{#link-to 'competitions.view' model.contest.competitionId class="btn-solid" tagName="button"}}
+          Back to Competition
+        {{/link-to}}
+      </div>
     </div>
+  </div>
+  {{/if}}
+  <div class="container-fluid">
+    {{#unless model.contest.competitionId}}
+      <div class="row clearfix" style="margin-left: 0">
+        <div class="col-md-6 block-header">
+          <h2>All Problems</h2>
+          <small class="text-muted">Solve these problem and prove yourself </small>
+        </div>
+        {{#if model.contest.duration}}
+          <div class="countdown-timer-container col-md-offset-3 col-md-3">
+            <div class="card">
+              {{#countdown-timer
+                startTime=model.currentAttempt.startTime
+                duration=attemptDuration
+                onComplete=(action 'redirectToContest' model)}}
+              {{/countdown-timer}}
+            </div>
+          </div>
+        {{/if}}
+      </div>
+    {{/unless}}
     {{#if model.contest.showBanner}}
-	    <div class="row">	    
-		    <img class="contest-banner" src={{model.contest.image}} alt={{model.contest.name}}>
-	    </div>
+      <div class="row">	    
+        <img class="contest-banner" src={{model.contest.image}} alt={{model.contest.name}}>
+      </div>
     {{else}}
     <div class="card hover-card">
 	    <div class="row">
@@ -40,30 +68,30 @@
               <div class="card">
                 <table class="align-center table table-striped">
                   <thead>
-                  <tr><th>Problems</th><th>Submissions</th></tr>
+                    <tr><th>Problems</th><th>Submissions</th></tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td><i class="material-icons">format_list_numbered</i></td>
-                    <td><i class="material-icons">done</i></td>
-                  </tr>
-                  <tr>
-                    <td>{{model.contest.problems.length}}</td>
-                    <td>{{submissionCount}}</td>
-                  </tr>
+                    <tr>
+                      <td><i class="material-icons">format_list_numbered</i></td>
+                      <td><i class="material-icons">done</i></td>
+                    </tr>
+                    <tr>
+                      <td>{{model.contest.problems.length}}</td>
+                      <td>{{submissionCount}}</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
             </div>
             {{#if model.contest.showLeaderboard}}
-            <div class="col-sm-8 col-md-8 col-lg-8">
-				<a href="{{model.contest.id}}/leaderboard">
-			      <h4 class="text-center strong"><strong>Leaderboard</strong></h4>
-			    </a>
-				<div class="card generate-scroll-y">
-				  {{#problem-leaderboard avatar=true contestId=model.contest.id}}{{/problem-leaderboard}}
-				</div>
-            </div>
+              <div class="col-sm-8 col-md-8 col-lg-8">
+                <a href="{{model.contest.id}}/leaderboard">
+                  <h4 class="text-center strong"><strong>Leaderboard</strong></h4>
+                </a>
+                <div class="card generate-scroll-y">
+                  {{#problem-leaderboard avatar=true contestId=model.contest.id}}{{/problem-leaderboard}}
+                  </div>
+              </div>
             {{/if}}
           </div>
           {{#if model.contest.isFinished}}
@@ -81,20 +109,20 @@
             <button class="btn fil-cat btn-sm btn-filled btn-red" {{action "updateSelection" "Wrong" selectedTag}}  value="Wrong">Wrong</button>
             <br>
             {{#if model.contest.showTags}}
-            {{#each model.tags as |tag|}}
-              <button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag.name}}</button>
-            {{/each}}
+              {{#each model.tags as |tag|}}
+                <button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag.name}}</button>
+              {{/each}}
             {{/if}}
           </div>
         </div>
         <div class="card section-card">
           <div class="body">
             <div class="row clearfix">
-               {{#each model.contest.problems as |problem|}}
-                 {{#if (is-tag-selected problem selectedTag)}}
+              {{#each model.contest.problems as |problem|}}
+                {{#if (is-tag-selected problem selectedTag)}}
                   {{#problem-view link='contests.contest.problem.index' showTags=model.contest.showTags problem=problem class="problemCardWrapper"}}{{/problem-view}}
-                 {{/if}}
-                 {{/each}}
+                  {{/if}}
+                {{/each}}
             </div>
           </div>
         </div>

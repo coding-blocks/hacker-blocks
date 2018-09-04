@@ -1,0 +1,19 @@
+<div class="card hover-card competition-card">
+  <div>
+    {{#if competition.thumbnail}}
+		<img src="{{competition.thumbnail}}" alt="alt text">
+	{{else}}
+	  <img src="https://cdn.dribbble.com/users/437767/screenshots/2655974/girl-01_1x.png" alt="alt text">
+	{{/if}}
+  </div>
+
+  <h3>
+    {{competition.name}}
+  </h3>
+
+  <div class="text-center">
+    {{#link-to 'competitions.view' competition.id class="btn btn-red"}}
+    Participate!
+    {{/link-to}}
+  </div>
+</div>

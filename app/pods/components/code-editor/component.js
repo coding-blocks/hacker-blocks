@@ -141,8 +141,12 @@ export default Ember.Component.extend({
       name: "Python 2.7",
       mode: "ace/mode/python"
     },
+    "py3": {
+      name: "Python 3",
+      mode: "ace/mode/python"
+    },
     "java": {
-      name: "Java 8",
+      name: "Java 10",
       mode: "ace/mode/java"
     },
     "js": {

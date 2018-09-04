@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-labelledby="title"
+aria-describedby="desc" role="img" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <title>Diploma</title>
+  <desc>A line styled icon from Orion Icon Library.</desc>
+  <path data-name="layer2"
+  fill="none" stroke="#202020" stroke-miterlimit="10" stroke-width="2" d="M17.6 37.7L10 56.4l8.8-1.1 5.5 6.8 6.4-18.6m15.7-5.8L54 56.4l-8.8-1.1-5.4 6.8-6.5-18.6"
+  stroke-linejoin="round" stroke-linecap="round"></path>
+  <circle data-name="layer1" cx="32" cy="22.9" r="12" fill="none"
+  stroke="#202020" stroke-miterlimit="10" stroke-width="2" stroke-linejoin="round"
+  stroke-linecap="round"></circle>
+  <path data-name="layer1" fill="none" stroke="#202020" stroke-miterlimit="10"
+  stroke-width="2" d="M32 4.5l4.5-2.6 3.1 4.2 5.1-.5 1.1 5 4.9 1.7-1 5 3.8 3.5-3 4.2 2.1 4.8-4.5 2.6v5.1l-5.2.6-2.1 4.7-4.9-1.5-3.9 3.4-3.9-3.4-4.9 1.5-2.1-4.7-5.2-.6v-5.1l-4.5-2.6 2.1-4.8-3-4.2 3.8-3.5-1-5 4.9-1.7 1.1-5 5.1.5 3.1-4.2L32 4.5z"
+  stroke-linejoin="round" stroke-linecap="round"></path>
+</svg>

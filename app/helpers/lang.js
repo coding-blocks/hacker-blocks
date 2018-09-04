@@ -9,6 +9,7 @@ export function lang(param) {
     "c": "C",
     "cpp": "C++",
     "py2": "Python",
+    "py3": "Python3",
     "java": "Java"
   };
   return lang_codes;

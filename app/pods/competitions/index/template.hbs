@@ -1,0 +1,14 @@
+<div class="header">
+	<h2>Competitions</h2>
+</div>
+
+<div class="boxer">
+	<div class="row clearfix">
+		{{#each model as |competition|}}
+			<div class="col-md-4">
+				{{#competition-card competition=competition}}
+				{{/competition-card}}
+			</div>
+		{{/each}}
+	</div>
+</div>

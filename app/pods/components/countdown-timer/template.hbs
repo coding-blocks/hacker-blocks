@@ -1,5 +1,7 @@
 <div class='countdown-timer'>
+  {{#unless noIcon}}
 	<i class="material-icons">timer</i>
+  {{/unless}}
 	{{#if isCompleted}}
 		<b>Time Over!</b>
 	{{else}}

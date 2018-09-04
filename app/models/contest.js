@@ -15,6 +15,8 @@ export default DS.Model.extend({
   duration: DS.attr(),
   problems: DS.hasMany('problems'),
   description: DS.attr(),
+  competitionName: DS.attr (),
+  competitionId: DS.attr (),
   meta: DS.attr(),
   problemCount: Ember.computed ('meta.problem-count', function () {
     const metaProblemCount = this.get ('meta.problem-count')
