@@ -150,7 +150,7 @@ export default Ember.Component.extend({
       mode: "ace/mode/java"
     },
     "js": {
-      name: "Node 6",
+      name: "Node 10",
       mode: "ace/mode/javascript"
     },
     "csharp": {
