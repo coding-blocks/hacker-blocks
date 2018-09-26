@@ -14,6 +14,7 @@ export default DS.Model.extend({
   image: DS.attr(),
   duration: DS.attr(),
   problems: DS.hasMany('problems'),
+  quizzes: DS.hasMany('quizzes', { async: true }),
   description: DS.attr(),
   competitionName: DS.attr (),
   competitionId: DS.attr (),
@@ -27,6 +28,7 @@ export default DS.Model.extend({
 
     return metaProblemCount
   }),
+  quizCount: 0, // TODO
   showLeaderboard: DS.attr(),
   allowedLanguages: DS.attr(),
   showTags: DS.attr(),

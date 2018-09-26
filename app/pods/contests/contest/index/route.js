@@ -5,6 +5,7 @@ const { inject: { service }, Route } = Ember;
 
 export default Ember.Route.extend({
   ajax : service(),
+  store: service (),
   routing: service('-routing'),
   currentAttemptService: service('current-attempt'),
   currentUser: service('current-user'),
@@ -29,21 +30,30 @@ export default Ember.Route.extend({
       tags:tags,
       currentAttempt: this.get('currentAttemptService').getCurrentAttempts(contest.id)
     }).then(hash=>{
-        let contest = hash.contest;
-        let contestId = contest.get('id');
-        let authHeaders = this.get('currentUser').getAuthHeaders();
+      let contest = hash.contest;
+      let contestId = contest.get('id');
+      let authHeaders = this.get('currentUser').getAuthHeaders();
 
-        hash.submissionCount = this.get('ajax').request(Env.apiEndpoint + '/api/submissions/submissionCount', {
-          headers: authHeaders,
-          data: { contestId: contestId },
-          accepts: 'application/json'
-        }).catch(err=>{
-          Raven.captureException(err);
-          console.error(err);
-          return 0; // set submission count to zero
-        });
+      hash.submissionCount = this.get('ajax').request(Env.apiEndpoint + '/api/submissions/submissionCount', {
+        headers: authHeaders,
+        data: { contestId: contestId },
+        accepts: 'application/json'
+      }).catch(err=>{
+        Raven.captureException(err);
+        return 0; // set submission count to zero
+      });
 
-        return Ember.RSVP.hash(hash);
+      contest.get ('quizzes').map (quiz => {
+        quiz.set ('contest', contest)
+
+        let store = this.get ('store')
+        store.findRecord ('quiz', quiz.id)
+          .then (question => {
+              store.findRecord ('question', question.id)
+            })
+          })
+
+      return Ember.RSVP.hash(hash);
       });
   },
   setupController: function (controller, model) {
@@ -63,7 +73,6 @@ export default Ember.Route.extend({
   },
   afterModel(model, transition) {
     const { currentAttempt, contest } = model;
-    this.set('breadCrumb.title',contest.get('name'));
 
     if ( Ember.isNone(contest.get('duration')) ) {
       return

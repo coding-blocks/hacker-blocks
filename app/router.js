@@ -28,6 +28,12 @@ Router.map(function() {
       this.route('contest-result');
       this.route('ended',{path: '/ended'});
       this.route ('leaderboard', { path: '/leaderboard' });
+      this.route('quiz', { path: '/q/:quiz_id' }, function() {
+        this.route('attempts', function() {
+          this.route('show', { path: '/:attempt_id' });
+        });
+      });
+      this.route('quiz-attempts');
     });
     this.route('upcoming',{ path: '/upcoming/c/:contest_id' });
   });

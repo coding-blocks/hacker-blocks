@@ -1,0 +1,27 @@
+<section class="content">
+    <div class="header">
+        <div class="header-left">
+            <div class="heading">
+                Attempt History
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row clearfix" style="margin-left: 0">
+            <ul>
+                {{#each model.attempt as |attempt|}}
+                {{#link-to 'contests.contest.quiz.attempts.show' attempt.id}}
+                <li class="card quiz-result-container">
+                    <h4>Score</h4>
+                    <span class="score">{{attempt.result.score}}</span>
+                </li>
+                {{/link-to}}
+                {{/each}}
+            </ul>
+        </div>
+        <hr />
+        <div class="row clearfix" style="margin-left: 0">
+            {{outlet}}
+        </div>
+    </div>
+</section>

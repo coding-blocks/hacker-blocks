@@ -1,0 +1,36 @@
+<section class="content">
+    <div class="header">
+        <div class="header-left">
+            <div class="heading">
+                {{model.title}}
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row clearfix" style="margin-left: 0">
+            <div class="questions-container">
+                <ul>
+                    {{#each model.questions as |question|}}
+                        <li>
+                            <div class="title">
+                                <h4>{{question.title}}</h4>
+                            </div>
+                            {{#each question.choices as |choice|}}
+                                <div class="choices-container">
+                                    <div class="choice {{choice.selected}}" {{action "toggleChoice" choice.id question.id}}>
+                                        <span class="checkbox"></span>
+                                        {{choice.description}}
+                                    </div>
+                                </div>
+                            {{/each}}
+                        </li>
+                    {{/each}}
+                </ul>
+            </div>
+
+            <div class="text-center">
+                <button class="btn-blue btn fil-cat btn-lg btn-filled" {{action "submitQuiz" model.id}}>Submit</button>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1656,4 +1656,65 @@ ul{
 
 //----------------------------tab-nav----------------------------------
 
+.questions-container {
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
 
+.questions-container ul {
+  list-style: none;
+}
+
+.questions-container ul li {
+  padding: 1rem;
+  background: white;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  box-shadow: 3px 5px 6px 0 rgba(46, 61, 73, .15);
+}
+
+.questions-container h4 {
+  font-weight: normal;
+  margin-right: 3rem;
+  border-bottom: 1px solid #e3e3e3;
+  padding: 1rem;
+}
+
+.questions-container button {
+  margin-bottom: 3rem;
+}
+
+.choices-container {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.choices-container .checkbox {
+  height: 1rem;
+  width: 1rem;
+  float: left;
+  display: inline;
+  margin-right: 1rem;
+  margin-top: 0.5rem;
+  border-radius: 50%;
+  border: 1px solid gray;
+}
+
+.choices-container .selected .checkbox {
+  background: green;
+  height: 1.1rem;
+  width: 1.1rem;
+  border: green;
+}
+
+.card.quiz-result-container {
+  padding: 1rem;
+  width: 20%;
+  float: left;
+  margin-right: 1rem;
+  margin-top: 1rem;
+}
+
+.green {
+  color: green;
+}
