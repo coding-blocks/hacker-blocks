@@ -34,6 +34,11 @@
 
     {{#if (eq activeTab 1)}}
       <div id="tab2" class="tab-content">
+        {{#unless competition.contests.length}}
+          <p class="markdown semi-bold">
+            Oops, no contests are live right now. Stay tuned for more contests !
+          </p>
+        {{/unless}}
         {{#each competition.contests as |contest|}}
           {{#contest-view link='contests.contest' showPoints=true contest=contest archived=true class="contestCardWrapper"}}{{/contest-view}}
         {{/each}}
