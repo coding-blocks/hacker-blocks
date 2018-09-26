@@ -1512,11 +1512,12 @@ ul{
 }
 
 .img-banner{
-  min-height: 200px;
+  min-height: 400px;
   width: 100%;
   margin: 20px auto;
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
 }
 
 @media screen and (max-width: 767px){
