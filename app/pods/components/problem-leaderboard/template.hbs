@@ -32,7 +32,11 @@
           {{/link-to}}
         </td>
 		<td>
-			{{yourRank.college_name}}
+			{{#if yourRank.college_name}}
+				{{yourRank.college_name}}
+			{{else}}
+				N/A
+			{{/if}}
 		</td>
         <td>{{decimal-to-whole yourRank.score}}</td>
       </tr>
@@ -61,7 +65,11 @@
           {{/if}}
         </td>
 		<td>
-			{{submission.collegeName}}
+			{{#if submission.collegeName}}
+				{{submission.collegeName}}
+			{{else}}
+				N/A
+			{{/if}}
 		</td>
         <td>{{decimal-to-whole submission.score}}</td>
         {{#if submission.language}}
