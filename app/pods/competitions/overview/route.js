@@ -6,7 +6,6 @@ export default Ember.Route.extend({
 
     return store.findRecord ('competition', params.id, { reload:true })
   },
-
   setupController(controller, model){
     controller.set('competition', model);
   }

@@ -16,9 +16,11 @@
                 <div class="red">{{competition.endDateString}}</div>
             </div>
         </div>
-        <div>
-          <button class="btn-solid" {{action 'participate' competition.id}}>Participate!</button>
-        </div>
+        {{#if session.isAuthenticated}}
+            <button class="btn-solid" {{action 'participate' competition.id}}>Participate!</button>
+        {{else}}
+            <button class="btn-solid" {{action 'popup'}}>Login To Participate</button>
+        {{/if}}
     </div>
 </div>
 
