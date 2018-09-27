@@ -18,8 +18,8 @@
         </div>
       {{/if}}
       <div>
-        {{#link-to 'competitions.view' model.contest.competitionId class="btn-solid" tagName="button"}}
-          Back to Competition
+        {{#link-to 'contests.contest.index' model.contest.id class="btn-solid" tagName="button"}}
+          Back to Contest
         {{/link-to}}
       </div>
     </div>
@@ -48,6 +48,12 @@
 
      </div>
     </div>
+{{else}}
+	<div class="row clearfix" style="margin-left: 0">
+		<div class="col-md-6 block-header">
+			<h2>{{model.contest.name}}</h2>
+		</div>
+	</div>
     {{/unless}}
     <div class="row clearfix"> </div>
     <div class="row clearfix"> </div>

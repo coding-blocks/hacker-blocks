@@ -9,6 +9,7 @@ export default Ember.Route.extend({
       contests: this.get('store').query('contest', {custom :  { ext : 'url',url : 'public'} }),
     });
   },
+
   setupController(controller, model) {
   	this._super(...arguments);
   	const blocksOfCode = model.contests.filter(contest => {
