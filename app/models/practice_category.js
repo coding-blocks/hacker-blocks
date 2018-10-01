@@ -3,7 +3,6 @@
  */
 
 import DS from 'ember-data';
-import moment from 'npm:moment';
 
 export default DS.Model.extend({
   name: DS.attr(),

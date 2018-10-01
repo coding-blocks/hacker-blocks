@@ -3,9 +3,8 @@
  */
 
 import Ember from 'ember';
-import Env from '../config/environment';
 
-const { inject: { service }, Route } = Ember;
+const { inject: { service } } = Ember;
 
 export default Ember.Service.extend({
   session:     service('session'),
