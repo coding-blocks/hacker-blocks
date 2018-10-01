@@ -20,9 +20,6 @@ export default Ember.Route.extend({
     let contest = this.modelFor('contests.contest').contest;
     let editorial = null;
     let problem_id = params.problem_id;
-    if(contest.get('isFinished') == true) {
-      editorial = this.store.queryRecord('editorial' , {p_id:problem_id});
-    }
     let problem = null;
     let problems = contest.get('problems');
     problems.forEach((p) => {

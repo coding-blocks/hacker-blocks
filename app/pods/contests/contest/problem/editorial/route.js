@@ -1,20 +1,24 @@
-/**
- * Created by siddharth on 28/11/17.
- */
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model(){
+  model () {
     let contest = this.modelFor('contests.contest').contest;
     let editorial = null;
-    let problem_id = this.modelFor('contests/contest/problem').problem_id;
-    if(contest.get('isFinished') == true) {
-      editorial = this.store.queryRecord('editorial' , {p_id:problem_id});
-    }
-    return Ember.RSVP.hash({
-      editorial:editorial,
-      contest:contest
-    });
-  }
+    let problem = this.modelFor('contests/contest/problem').problem;
 
+    editorial = this.store.queryRecord ('editorial' , { p_id: problem.id, contest_id: contest.id })
+      .catch (() => (void 0))
+
+    return Ember.RSVP.hash({
+      editorial: editorial,
+      contest: contest,
+      problem: problem
+    });
+  },
+
+  actions: {
+    editorialUnlocked () {
+      this.refresh ()
+    }
+  }
 });

@@ -1,3 +1,14 @@
-{{#if model.contest.isFinished}}
+{{#if model.editorial}}
     {{#editorial-view model=model.editorial}}{{/editorial-view}}
+{{else}}
+	{{#if error}}
+		<p class="alert alert-danger">{{error}}</p>
+	{{else}}
+		<div class="alert alert-info">
+			<p><strong>Note:</strong> You will not be awarded any points for
+				solutions to this particular problem in the contest once you
+				unlock the editorial!</p>
+		</div>
+		<button class="btn btn-solid btn-lg btn-block" {{action "unlock"}}>Unlock</button>
+	{{/if}}
 {{/if}}

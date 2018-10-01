@@ -71,11 +71,9 @@
               {{#link-to 'contests.contest.problem.submissions' tagName='li' href=false}}
                 {{#link-to 'contests.contest.problem.submissions'}}Submissions{{/link-to}}
               {{/link-to}}
-              {{#if model.contest.isFinished}}
-                {{#link-to 'contests.contest.problem.editorial' tagName='li' href=false}}
-                  {{#link-to 'contests.contest.problem.editorial'}}Editorial{{/link-to}}
-                {{/link-to}}
-              {{/if}}
+			  {{#link-to 'contests.contest.problem.editorial' tagName='li' href=false}}
+			    {{#link-to 'contests.contest.problem.editorial'}}Editorial{{/link-to}}
+			  {{/link-to}}
             </ul>
             <!-- Tab panes -->
             <div class="tab-content">
