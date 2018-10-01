@@ -1,14 +1,9 @@
 import Ember from 'ember';
 
 const {
-  get,
   getOwner,
-  Component,
   computed,
   getWithDefault,
-  assert,
-  typeOf,
-  setProperties,
   A: emberArray,
   String: { classify }
 } = Ember;
