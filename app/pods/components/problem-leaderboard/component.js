@@ -31,10 +31,9 @@ export default Ember.Component.extend({
 
     let leaderBoard = yield this.get('store').query('submission', customParams);
 
-    leaderBoard.map (shizz => {
-      if (shizz.get ('collegeId')) {
-        console.log (store.findRecord ('college', shizz.get ('collegeId')).get ('name'))
-        console.log (shizz.get ('user.name'))
+    leaderBoard.map (e => {
+      if (e.get ('collegeId')) {
+        store.findRecord ('college', e.get ('collegeId')).get ('name')
       }
     })
 

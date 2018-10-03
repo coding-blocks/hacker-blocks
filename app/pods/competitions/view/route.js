@@ -28,6 +28,10 @@ export default Ember.Route.extend({
     return store.findRecord ('competition', params.id, { reload:true })
   },
 
+  afterModel (competition, transition) {
+    competition.get ('contests').map (contest => this.get ('store').findRecord ('contest', contest.id))
+  },
+
   setupController(controller, model){
     controller.set('competition', model);
   }

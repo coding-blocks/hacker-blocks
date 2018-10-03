@@ -1,3 +1,4 @@
+{{#if leaderBoard}}
 {{#if getLeaderBoard.isRunning}}
   <div style="padding-left: 45%"><div class='loader1'></div></div>
 {{else}}
@@ -80,4 +81,10 @@
     </tbody>
   </table>
  </div>
+{{/if}}
+{{else}}
+	<h4 style="margin: 1rem">
+		We can't show you a leaderboard until the submissions start rolling in,
+		stay tuned!
+	</h4>
 {{/if}}
