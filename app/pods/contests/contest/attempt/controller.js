@@ -13,8 +13,7 @@ export default Ember.Controller.extend({
     });
   },
 
-  init() {
-    console.log("controller init()");
+  init () {
   },
 
   actions: {
@@ -26,11 +25,11 @@ export default Ember.Controller.extend({
         .createRecord('ContestAttempt', { contestId: contestId })
         .save()
         .then((result) => {
-          if (result.data.startTime !== 0) {
-            this.transitionToRoute('contests.contest', contestId);
-          } else {
-            this.set('error', 'You can\'t attempt this contest. You may have reached your max possible attempts on this contest.');
+          if (result.data.startTime && result.data.startTime !== 0) {
+            return this.transitionToRoute('contests.contest', contestId);
           }
+
+          throw new Error ('MaxAttemptsExceeded')
         })
         .catch((error) => {
             Raven.captureException(error);
