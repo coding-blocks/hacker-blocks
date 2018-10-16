@@ -8,11 +8,7 @@
                 {{#each model.quiz.questions as |mquestion|}}
                     {{#if (eq mquestion.id question.id)}}
                         <div class="title">
-                            {{#if mquestion.title}}
-                                <h4>{{mquestion.title}}</h4>
-                            {{else}}
-                                <h4 class="red">~ nothing submitted ~</h4>
-                            {{/if}}
+							<h4>{{mquestion.title}}</h4>
                         </div>
                     {{/if}}
                 {{/each}}

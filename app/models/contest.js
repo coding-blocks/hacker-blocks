@@ -14,6 +14,7 @@ export default DS.Model.extend({
   image: DS.attr(),
   duration: DS.attr(),
   problems: DS.hasMany('problems'),
+  allowEditorialUnlocks: DS.attr (),
   quizzes: DS.hasMany('quizzes', { async: true }),
   description: DS.attr(),
   competitionName: DS.attr (),

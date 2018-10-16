@@ -15,6 +15,9 @@
                             <div class="title">
                                 <h4>{{question.title}}</h4>
                             </div>
+							<div class="description">
+								{{markdown-to-html question.description}}
+							</div>
                             {{#each question.choices as |choice|}}
                                 <div class="choices-container">
                                     <div class="choice {{choice.selected}}" {{action "toggleChoice" choice.id question.id}}>
