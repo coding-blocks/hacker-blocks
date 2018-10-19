@@ -20,6 +20,7 @@
 				: {{contest.endTimeObj.min}}</span>
 			</div>
 		{{/if}}
+		{{#if contest.showCounts}}
         <div class="text-col-two text-center">
 			<span class="big-digit" style="color: #02B3E4;">
 				{{#if problem-count}}
@@ -28,8 +29,7 @@
 					{{contest.problemCount}}
 				{{/if}}
 			</span>
-          <span
-            class="big-alpha">Problems</span>
+          <span class="big-alpha">Problems</span>
         </div>
         {{#if showPoints}}
         <div class="text-col-two text-center">
@@ -38,6 +38,7 @@
             class="big-alpha">Points</span>
         </div>
           {{/if}}
+	  {{/if}}
         <hr>
         <p>{{truncate-multiline text = contest.description lines=2 showButton=false}}</p>
       </div>

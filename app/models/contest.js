@@ -29,6 +29,9 @@ export default DS.Model.extend({
 
     return metaProblemCount
   }),
+  showCounts: Ember.computed ('problemCount', function () {
+    return (parseInt (this.get ('problemCount')) > 0)
+  }),
   quizCount: 0, // TODO
   showLeaderboard: DS.attr(),
   allowedLanguages: DS.attr(),
