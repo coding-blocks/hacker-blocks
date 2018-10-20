@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend ({
   store: Ember.inject.service (),
+  notifications: Ember.inject.service ('toast'),
 
   attemptDuration: Ember.computed('model.quiz.contest.endTime', 'model.quiz.contest.duration', 'model.currentAttempt', function () {
     const userStartedAt = this.get('model.currentAttempt.startTime')
@@ -84,6 +85,7 @@ export default Ember.Controller.extend ({
           }).save ()
         })
         .then (quizAttempt => {
+          this.get ('notifications').info ('Test Successfully Submitted!')
           return this.transitionToRoute ('contests.contest', contestId)
         })
     }
