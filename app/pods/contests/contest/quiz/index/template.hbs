@@ -39,7 +39,7 @@
                                 <div class="choices-container">
                                     <div class="choice {{choice.selected}}" {{action "toggleChoice" choice.id question.id}}>
                                         <span class="checkbox"></span>
-                                        {{choice.description}}
+                                        {{markdown-to-html choice.description}}
                                     </div>
                                 </div>
                             {{/each}}
