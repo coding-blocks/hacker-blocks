@@ -86,7 +86,7 @@ export default Ember.Controller.extend ({
         })
         .then (quizAttempt => {
           this.get ('notifications').info ('Test Successfully Submitted!')
-          return this.transitionToRoute ('contests.contest', contestId)
+          return this.transitionToRoute ('contests.index')
         })
     }
   }
