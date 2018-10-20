@@ -2,18 +2,35 @@
     <div class="header">
         <div class="header-left">
             <div class="heading">
-                {{model.title}}
+                {{model.quiz.title}}
+
+				{{model.currentAttempt.startTime}}
             </div>
         </div>
+		<div class="header-right">
+			{{#if model.quiz.contest.duration}}
+				<div class="countdown-timer-container">
+					{{#countdown-timer
+						startTime=model.currentAttempt.startTime
+						duration=attemptDuration
+						noIcon=true
+						onComplete=(action 'redirectToContest' model.quiz)}}
+					{{/countdown-timer}}
+				</div>
+			{{/if}}
+			{{#link-to 'contests.contest' model.quiz.contest.id class="btn btn-red"}}
+				Back to Contest
+			{{/link-to}}
+		</div>
     </div>
     <div class="container-fluid">
         <div class="row clearfix" style="margin-left: 0">
             <div class="questions-container">
                 <ul>
-                    {{#each model.questions as |question|}}
+                    {{#each model.quiz.questions as |question index|}}
                         <li>
                             <div class="title">
-                                <h4>{{question.title}}</h4>
+								<h4>{{sum index 1}}. {{question.title}}</h4>
                             </div>
 							<div class="description">
 								{{markdown-to-html question.description}}
@@ -32,7 +49,7 @@
             </div>
 
             <div class="text-center">
-                <button class="btn-blue btn fil-cat btn-lg btn-filled" {{action "submitQuiz" model.id}}>Submit</button>
+                <button class="btn-blue btn fil-cat btn-lg btn-filled" {{action "submitQuiz" model.quiz.id}}>Submit</button>
             </div>
         </div>
     </div>
