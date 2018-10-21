@@ -41,16 +41,18 @@ export default Ember.Controller.extend ({
         choice = store.peekRecord ('choice', choiceId)
       ;
 
+      let selection = 'selected'
+      ;
+
+      if (choice.get ('selected') === 'selected') {
+        selection = 'unselected'
+      }
+
       question.get ('choices').map (choice => {
         choice.set ('selected', 'unselected')
       })
 
-      if (choice.get ('selected') === 'selected') {
-        choice.set ('selected', 'unselected')
-      }
-      else {
-        choice.set ('selected', 'selected')
-      }
+      choice.set ('selected', selection)
     },
 
     // Fixme
