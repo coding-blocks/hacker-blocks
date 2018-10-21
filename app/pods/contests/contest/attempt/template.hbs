@@ -8,6 +8,9 @@
 		  timer will NOT stop.
 	  </small>
     </div>
+	<div class="contest-description text-left" style="padding-left: 3rem">
+	  {{markdown-to-html this.model.description}}
+	</div>
     {{#if error}}
       <div class="alert alert-danger">
         {{error}}
