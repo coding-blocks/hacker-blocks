@@ -74,6 +74,13 @@ export default Ember.Route.extend({
   afterModel(model, transition) {
     const { currentAttempt, contest } = model;
 
+    const quizzes = contest.get ('quizzes').toArray ()
+    const problemCount = contest.get ('problems.length')
+
+    if (quizzes.length === 1 && (! problemCount)) {
+      this.transitionTo ('contests.contest.quiz.index', contest.id, quizzes[0].id)
+    }
+
     if ( Ember.isNone(contest.get('duration')) ) {
       return
     } else if (!currentAttempt) {
