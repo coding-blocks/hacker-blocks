@@ -68,9 +68,6 @@
             </div>
           <h2 class="text-center">Problems Solved</h2>
           <div class="col-md-10 col-md-offset-1 mt-2">
-			<div>
-				<p class="alert alert-danger">Note: MCQ scores shown below are not actual scores. This will be fixed in a later update.</p>
-			</div>
             <div class="contest-table-wrapper">
               {{#each contests as |contest|}}
                 <div class="col-md-6">
@@ -83,7 +80,7 @@
                         Problem
                       </th>
                       <th class="text-center text-danger">
-                        Score / Quiz Judging UID
+                        Score
                       </th>
                       <th class="text-center text-warning">
                         Language
@@ -92,6 +89,7 @@
                     </thead>
                     {{#each submission as |attempt|}}
                       {{#if (eq contest.id attempt.contest.id) }}
+						{{#unless (eq attempt.language 'mcq')}}
                         <tr>
                         {{#link-to "contests.contest.problem" contest.id attempt.problem.id}}
                             <td class="text-center  td-pad">
@@ -99,15 +97,13 @@
                           </td>
                         {{/link-to}}
                           <td class="text-center  td-pad">
-							{{#if (eq attempt.language 'mcq') }}
-								JID - Node
-							{{/if}}
                             {{attempt.score}}
                           </td>
                           <td class="text-center  td-pad">
                             {{attempt.language}}
                           </td>
                         </tr>
+						{{/unless}}
                       {{/if}}
                     {{/each}}
                   </table>
