@@ -80,7 +80,7 @@
                         Problem
                       </th>
                       <th class="text-center text-danger">
-                        Score
+                        Score / Quiz Judging UID
                       </th>
                       <th class="text-center text-warning">
                         Language
@@ -96,6 +96,9 @@
                           </td>
                         {{/link-to}}
                           <td class="text-center  td-pad">
+							{{#if (eq attempt.language 'mcq') }}
+								JID - Node
+							{{/if}}
                             {{attempt.score}}
                           </td>
                           <td class="text-center  td-pad">
