@@ -1,96 +1,102 @@
 {{#if leaderBoard}}
-{{#if getLeaderBoard.isRunning}}
-  <div style="padding-left: 45%"><div class='loader1'></div></div>
-{{else}}
-<div id="mobleader">
-  <table class="table table-striped table-responsive">
-    <thead>
-    <tr>
-      <th data-field="rank">Rank</th>
-      <th data-field="user">User</th>
-	  {{#unless hideCollege}}
-		  <th data-field="college">College</th>
-	  {{/unless}}
-      <th data-field="score">Score</th>
-      {{#if language}}
-        <th data-field="language">Language</th>
-      {{/if}}
-    </tr>
-    </thead>
-    <tbody>
-
-    {{#if yourRank.user_name}}
-      <tr style="background: aquamarine;">
-        <td>{{yourRank.rank}}</td>
-        <td>
-          {{#if avatar}}
-            {{#if yourRank.photo}}
-              <img src={{yourRank.photo}} width="25" class="img-circle marginR10">
-            {{else}}
-            <img src="https://minio.cb.lk/img/avatar-{{avatarIndex leaderBoard.meta.yourRank.id}}.svg" width="25" class="img-circle marginR10">
+  {{#if getLeaderBoard.isRunning}}
+    <div style="padding-left: 45%"><div class='loader1'></div></div>
+  {{else}}
+    <div id="mobleader">
+      <table class="table table-striped table-responsive">
+        <thead>
+          <tr>
+            <th data-field="rank">Rank</th>
+            <th data-field="user">User</th>
+            {{#unless hideCollege}}
+              <th data-field="college">College</th>
+            {{/unless}}
+            {{#unless hideScore}}
+              <th data-field="score">Score</th>
+            {{/unless}}
+            {{#if language}}
+              <th data-field="language">Language</th>
             {{/if}}
-          {{/if}}
-          {{#link-to "users.user" yourRank.user_id}}
-            {{yourRank.user_name}}
-          {{/link-to}}
-        </td>
-		{{#unless hideCollege}}
-		<td>
-			{{#if yourRank.college_name}}
-				{{yourRank.college_name}}
-			{{else}}
-				N/A
-			{{/if}}
-		</td>
-		{{/unless}}
-        <td>{{decimal-to-whole yourRank.score}}</td>
-      </tr>
-    {{/if}}
-    {{#each leaderBoard as |submission index|}}
-      <tr>
-        <td>{{sum index 1}}</td>
-        <td>
-       {{#if avatar}}
-          {{#if submission.photo}}
-          <img src={{submission.photo}} width="25" class="img-circle marginR10">
-          {{else}}
-            <img src="https://minio.cb.lk/img/avatar-{{avatarIndex submission.id}}.svg" width="25" class="img-circle marginR10">
-          {{/if}}
-       {{/if}}
+          </tr>
+        </thead>
+        <tbody>
 
-          <!-- This is a very dirty hack. omerjerk. -->
-          {{#if submission.user.id}}
-            {{#link-to "users.user" submission.user.id}}
-              {{submission.user.name}}
-            {{/link-to}}
-          {{else}}
-            {{#link-to "users.user" submission.userId}}
-              {{submission.userName}}
-            {{/link-to}}
+          {{#if yourRank.user_name}}
+            <tr style="background: aquamarine;">
+              <td>{{yourRank.rank}}</td>
+              <td>
+                {{#if avatar}}
+                  {{#if yourRank.photo}}
+                    <img src={{yourRank.photo}} width="25" class="img-circle marginR10">
+                  {{else}}
+                    <img src="https://minio.cb.lk/img/avatar-{{avatarIndex leaderBoard.meta.yourRank.id}}.svg" width="25" class="img-circle marginR10">
+                  {{/if}}
+                {{/if}}
+                {{#link-to "users.user" yourRank.user_id}}
+                  {{yourRank.user_name}}
+                {{/link-to}}
+              </td>
+              {{#unless hideCollege}}
+                <td>
+                  {{#if yourRank.college_name}}
+                    {{yourRank.college_name}}
+                  {{else}}
+                    N/A
+                  {{/if}}
+                </td>
+              {{/unless}}
+              {{#unless hideScore}}
+                <td>{{decimal-to-whole yourRank.score}}</td>
+              {{/unless}}
+            </tr>
           {{/if}}
-        </td>
-		{{#unless hideCollege}}
-		<td>
-			{{#if submission.collegeName}}
-				{{submission.collegeName}}
-			{{else}}
-				N/A
-			{{/if}}
-		</td>
-		{{/unless}}
-        <td>{{decimal-to-whole submission.score}}</td>
-        {{#if submission.language}}
-          <td>{{getlang submission.language}}</td>
-        {{/if}}
-      </tr>
-    {{/each}}
-    </tbody>
-  </table>
- </div>
-{{/if}}
+          {{#each leaderBoard as |submission index|}}
+            <tr>
+              <td>{{sum index 1}}</td>
+              <td>
+                {{#if avatar}}
+                  {{#if submission.photo}}
+                    <img src={{submission.photo}} width="25" class="img-circle marginR10">
+                  {{else}}
+                    <img src="https://minio.cb.lk/img/avatar-{{avatarIndex submission.id}}.svg" width="25" class="img-circle marginR10">
+                  {{/if}}
+                {{/if}}
+
+                <!-- This is a very dirty hack. omerjerk. -->
+                {{#if submission.user.id}}
+                  {{#link-to "users.user" submission.user.id}}
+                    {{submission.user.name}}
+                  {{/link-to}}
+                {{else}}
+                  {{#link-to "users.user" submission.userId}}
+                    {{submission.userName}}
+                  {{/link-to}}
+                {{/if}}
+              </td>
+              {{#unless hideCollege}}
+                <td>
+                  {{#if submission.collegeName}}
+                    {{submission.collegeName}}
+                  {{else}}
+                    N/A
+                  {{/if}}
+                </td>
+              {{/unless}}
+              {{#unless hideScore}}
+                <td>{{decimal-to-whole submission.score}}</td>
+              {{/unless}}
+              {{#if submission.language}}
+                <td>{{getlang submission.language}}</td>
+              {{/if}}
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  {{/if}}
 {{else}}
-	<h4 style="margin: 1rem">
-		We can't show you a leaderboard until the submissions start rolling in,
-		stay tuned!
-	</h4>
+  <h4 style="margin: 1rem">
+    We can't show you a leaderboard until the submissions start rolling in,
+    stay tuned!
+  </h4>
 {{/if}}
