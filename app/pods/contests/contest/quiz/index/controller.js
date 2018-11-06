@@ -1,9 +1,10 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend ({
+  queryParams: ['q'],
   store: Ember.inject.service (),
+  q: 1,
   notifications: Ember.inject.service ('toast'),
-
   attemptDuration: Ember.computed('model.quiz.contest.endTime', 'model.quiz.contest.duration', 'model.currentAttempt', function () {
     const userStartedAt = this.get('model.currentAttempt.startTime')
     const duration = this.get('model.quiz.contest.duration');
@@ -26,7 +27,7 @@ export default Ember.Controller.extend ({
       return duration
     }
 
-    
+
     //return (duration > timeLeft && timeLeft > 0) ? timeLeft: duration;
     //return startTime + duration < endTime ? duration : timeLeft 
   }),
@@ -34,7 +35,19 @@ export default Ember.Controller.extend ({
     redirectToContest () {
       this.transitionToRoute('contests.contest', model.contest.id);
     },
-
+    goToQuestion (index) {
+      this.set('q', index)
+    },
+    changeQuestion (index) {
+      this.incrementProperty('q', index)
+    },
+    markForReview (question) {
+      if (question.get ('review') === 'markForReview') {
+        question.set ('review', 'unselected')
+      } else {
+        question.set ('review', 'markForReview')
+      }
+    },
     toggleChoice (choiceId, questionId) {
       const store = this.get ('store'),
         question = store.peekRecord ('question', questionId),
@@ -53,6 +66,7 @@ export default Ember.Controller.extend ({
       })
 
       choice.set ('selected', selection)
+      question.set ('state', selection)
     },
 
     // Fixme
