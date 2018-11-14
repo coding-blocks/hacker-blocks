@@ -52,7 +52,7 @@ export default Ember.Controller.extend({
 
     {
       name: 'Arrays & Strings',
-      completed: true,
+      completed: false,
       icon: '/images/competitive-2367c412fb1b248ff168c570ac90beec.png',
       background: '/images/generic-1-998303cce2491c1ffd838960d14d35f4.jpg',
       contests: Ember.A([
