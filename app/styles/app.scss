@@ -6,6 +6,22 @@ $grey: #ebebeb;
 $light-grey: #eeeeee;
 //-----------------Variables-----------------------
 
+//-----------------mixins---------------------------
+@mixin flexbox($direction, $justify-content: false, $align-items: false, $webkit: true, $ms:true){
+    @if($webkit)    {display: -webkit-box};
+    @if($webkit)    {display: -webkit-flex};
+    @if($ms)        {display: -ms-flexbox};
+    display: flex;
+
+    @if($webkit)    {-webkit-flex-direction: $direction};
+    flex-direction: $direction;
+
+    @if($justify-content)    {justify-content: $justify-content}
+    @if($align-items)    {align-items: $align-items}
+}
+//-----------------mixins---------------------------
+
+
 //-------------------------------------------------------------Helpers--------------------------------------------------------------------------------
 .red{
   color: $red;
@@ -19,12 +35,40 @@ $light-grey: #eeeeee;
   background-color: $grey;
 }
 
+.blue{
+  color: #336699;
+}
+
 .bold{
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 
 .semi-bold{
-  font-weight: 500;
+  font-weight: 500 !important;
+}
+
+.display-block{
+  display: block !important;
+}
+
+.flex-row{
+  @include flexbox(row);
+}
+
+.align-items-center{
+  align-items: center !important;
+}
+
+.justify-content-center{
+  justify-content: center !important;
+}
+
+.m-0{
+  margin: 0;
+}
+
+.t-align-c{
+  text-align: center !important;
 }
 //-------------------------------------------------------------Helpers--------------------------------------------------------------------------------
 
@@ -1266,8 +1310,28 @@ blue-bar {
   padding: 2rem;
 }
 
+.p-0{
+  padding: 0;
+}
+
 .mb-2 {
   margin-bottom: 2rem;
+}
+
+.mb-3{
+  margin-bottom: 3rem;
+}
+
+.mb-4{
+  margin-bottom: 4rem;
+}
+
+.mb-5{
+  margin-bottom: 5rem;
+}
+
+.w-100{
+  width: 100%;
 }
 
 .td-pad {
@@ -1435,6 +1499,7 @@ ul{
     top: 0;
     padding: 0 40px;
     background-color: $white;
+    overflow: hidden;
   
     .btn-solid{
       width: 180px;
@@ -1722,3 +1787,103 @@ ul{
 .green {
   color: green;
 }
+
+img{
+  max-width: 100% !important;
+}
+
+//---------------------------------------img-card----------------------------------------
+.card{
+  padding: 30px 30px;
+  height: auto;
+  box-shadow: -2.5px 4.3px 14px 0 rgba(51, 51, 51, 0.2);
+}
+
+.img-card{
+  padding: 0;
+}
+
+.img-card .img-container{
+  height: 88px;
+  width: 100%;
+}
+
+.img-card img{
+  height : 100%;
+  width: 100%;
+}
+
+.img-card .body{
+  padding: 30px 30px;
+  font-size: 12.5px;
+}
+
+.img-card .para, .card .para{
+  font-size: 11.5px;
+  margin: 0 0 23px 0;
+}
+//---------------------------------------img-card----------------------------------------
+
+//---------------------------------------timleline----------------------------------------
+.timeline .event:before{
+  content: " ";
+  width: 10px;
+  height: 10px;
+  background-color: #e1e1e1;
+  display: inline-block;
+  border-radius: 50%;
+  position: absolute;
+  top: -4px;
+}
+
+.timeline .event.completed::before{
+  background-color: rgba(51, 51, 51, 0.57);
+}
+
+.timeline .event:not(:last-child):after{
+  content: " ";
+  width: 100px;
+  height: 2px;
+  background-color: #e1e1e1;
+  display: inline-block;
+  position: absolute;
+  left: 10px
+}
+
+.timeline .event.completed:not(:last-child):after{
+  background-color: rgba(51, 51, 51, 0.57);
+}
+
+.timeline .event{
+  width: 110px;
+  display: inline-block;
+  position: relative;
+}
+
+.timeline .tooltip-top{
+  position: absolute;
+  bottom: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+//---------------------------------------timleline----------------------------------------
+
+.track{
+  height: 270px;
+  position: relative;
+}
+
+.track .badge-img{
+  padding: 0 38%;
+}
+
+.track .footer{
+  position: absolute;
+  bottom: 30px;
+}
+
+.track-container>.row{
+  margin-left: unset;
+  margin-right: unset;
+}
+

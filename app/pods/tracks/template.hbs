@@ -1,0 +1,152 @@
+<section class="content">
+  <div class="container-fluid competition track-container">
+    {{!-- {{outlet}} --}}
+
+    <div class="header sticky-header display-block mb-5">
+        <div class="heading">
+          Introduction
+        </div>
+        <div class = "grey">
+          loremipsumloremloremloremipsumloreml oremlor e mi p s um l o re m loremloremipsumloremloremloremipsumloremlorem loremipsumloremloremloremipsumlorem loremloremip sumloreml oremloremipsumloremloremloremipsumloremloremloremipsumloremloremloremipsumloremloremloremipsumloremloremloremipsumloremlorem
+        </div>
+    </div>
+
+    
+    <div class="timeline">
+      {{#each levels as |level index|}}
+      <div class="event {{if level.completed "completed" " "}}">
+        <div class="tooltip-top">
+          Level {{index}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+
+    {{#each levels as |level index|}}
+      <div class="row flex-row align-items-center mb-4">
+        <div class="col-lg-1 p-0">
+          <img src="{{level.icon}}" alt="">
+        </div>
+        <div class="col-lg-10">
+          <h4 class="bold m-0">
+            Level {{sum 1 index}}
+          </h4>
+          <h4 class="grey bold m-0">{{level.name}}</h4>
+        </div>
+      </div>
+
+      <div class="row">
+        {{log levels}}
+        {{!-- {{#each levels.contests as |contest|}} --}}
+        <div class="col-xs-12 col-lg-3">
+          <div class="img-card card track">
+            <div class="img-container">
+              <img src="{{level.background}}" alt="">
+            </div>
+            <div class="body bold">
+              <div>Practice contest for Arrays</div>
+              <div class="grey para">lore mlorem loremlo rem
+                lore mlore mloreml oremlore
+              </div>
+              <div class="row footer">
+                <div class="col-xs-5">
+                  <h4 class="blue m-0">50</h4>
+                  Problems
+                </div>
+
+                <div class="col-xs-5">
+                  <h4 class="blue m-0">450</h4>
+                  Points
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-lg-3">
+          <div class="img-card card track">
+            <div class="img-container">
+              <img src="{{level.background}}" alt="">{{!-- contest.background--}}
+            </div>
+            <div class="body bold">
+              <div>Practice contest for Arrays</div>
+              <div class="grey para">lore mlorem loremlo rem
+                lore mlore mloreml oremlore
+              </div>
+              <div class="row footer">
+                <div class="col-xs-5">
+                  <h4 class="blue m-0">50</h4>
+                  Problems
+                </div>
+        
+                <div class="col-xs-5">
+                  <h4 class="blue m-0">450</h4>
+                  Points
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-lg-3">
+          <div class="img-card card track">
+            <div class="img-container">
+              <img src="{{level.background}}" alt="">
+            </div>
+            <div class="body bold">
+              <div>Practice contest for Arrays</div>
+              <div class="grey para">lore mlorem loremlo rem
+                lore mlore mloreml oremlore
+              </div>
+              <div class="row footer">
+                <div class="col-xs-5">
+                  <h4 class="blue m-0">50</h4>
+                  Problems
+                </div>
+        
+                <div class="col-xs-5">
+                  <h4 class="blue m-0">450</h4>
+                  Points
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-lg-3">
+          <div class="card track">
+            <div class="badge-img mb-2">
+              <img src="/images/badge-c94328e5a75d30d04c0003a7caa9cd91.png" alt="">
+            </div>
+
+            <div class="body bold t-align-c p-0">
+              Get Certified
+
+              <div class="grey para">
+                Pass this to unlock Level 2
+              </div>
+
+              <div class="row footer">
+                <div class="col-xs-4">
+                  <h4 class="m-0">50</h4>
+                  Problems
+                </div>
+                <div class="col-xs-4">
+                  <h4 class="m-0">450</h4>
+                  Points
+                </div>
+                <div class="col-xs-4">
+                  <h4 class="m-0">02</h4>
+                  Hours
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{!-- {{/each}} --}}
+        
+      </div>
+    {{/each}}
+  </div>
+</section>
