@@ -1794,7 +1794,6 @@ img{
 
 //---------------------------------------img-card----------------------------------------
 .card{
-  padding: 30px 30px;
   height: auto;
   box-shadow: -2.5px 4.3px 14px 0 rgba(51, 51, 51, 0.2);
 }
@@ -1820,7 +1819,7 @@ img{
 
 .img-card .para, .card .para{
   font-size: 11.5px;
-  margin: 0 0 23px 0;
+  margin: unset;
 }
 //---------------------------------------img-card----------------------------------------
 
@@ -1893,25 +1892,34 @@ img{
 .track{
   height: 270px;
   position: relative;
-}
 
-.track .badge-img{
-  padding: 0 38%;
-  text-align: center;
-}
+  .badge-img{
+    padding: 0 38%;
+    text-align: center;
+  }
 
-.track .badge-img img{
-  max-width: 50px !important;
-}
+  .badge-img img{
+    max-width: 50px !important;
+  }
 
-.track .body{
-  font-size: 12.5px;
-}
+  .body{
+    font-size: 12.5px;
+  }
 
-.track .footer{
-  width: 100%;
-  position: absolute;
-  bottom: 30px;
+  .footer{
+    width: 100%;
+    position: absolute;
+    bottom: 30px;
+  }
+
+  &.certify{
+    padding: 30px;
+  }
+
+  .para{
+    height: 50px;
+    overflow: hidden;
+  }
 }
 
 .track-container>.row{
@@ -1926,4 +1934,3 @@ img{
     margin: 10rem 0 6rem 0;
   }
 }
-
