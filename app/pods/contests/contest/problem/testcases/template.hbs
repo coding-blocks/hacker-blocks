@@ -1,0 +1,25 @@
+{{#if model.contest.allowTestcaseUnlocks}}
+	{{#if model.unlockedTestcase}}
+		{{#each model.unlockedTestcase.urls as |testcase index|}}
+			<div style="margin-bottom: 2.5rem;">
+				<a class="btn-solid btn-lg" href="{{testcase.input}}"
+								download="input-{{sum index 1}}.txt">Download Input {{sum index 1}}</a>
+				<a class="btn-solid btn-lg" href="{{testcase.expected-output}}"
+								download="output-{{sum index 1}}.txt">Download Output {{sum index 1}}</a>
+			</div>
+		{{/each}}
+	{{else}}
+		{{#if error}}
+			<p class="alert alert-danger">{{error}}</p>
+		{{else}}
+			<div class="alert alert-info">
+				<p><strong>Note:</strong> You will not be awarded any points for
+					solutions to this particular problem in the contest once you
+					unlock the testcases!</p>
+			</div>
+			<button class="btn btn-solid btn-lg btn-block" {{action "unlock"}}>Unlock</button>
+		{{/if}}
+	{{/if}}
+{{else}}
+	<p class="alert alert-danger">Testcase downloads are locked for this contest!</p>
+{{/if}}
