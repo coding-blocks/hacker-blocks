@@ -63,6 +63,9 @@ Router.map(function() {
     this.route ('overview', { path: '/overview/:id' });
     this.route ('view', { path: '/:id' });
   });
+  this.route('tracks', function() {
+    this.route('show', { path: '/:id' });
+  });
 });
 
 export default Router;
