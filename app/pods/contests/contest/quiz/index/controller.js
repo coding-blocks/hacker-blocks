@@ -31,7 +31,32 @@ export default Ember.Controller.extend ({
     //return (duration > timeLeft && timeLeft > 0) ? timeLeft: duration;
     //return startTime + duration < endTime ? duration : timeLeft 
   }),
+
+  init () {
+    this._super (...arguments)
+    setTimeout (() => this.send ('restoreState'), 3000);
+  },
+
   actions: {
+    restoreState () {
+      const submission = [],
+        store = this.get ('store'),
+        quiz = this.get ('model.quiz'),
+        contestId = window.location.pathname.slice(12, 15),
+        questions = this.get ('model.quiz.questions')
+      ;
+
+      questions.map (question => {
+        question.set ('state', localStorage.getItem (`question-${question.id}`))
+        question.set ('review', localStorage.getItem (`review-${question.id}`))
+
+        question.get ('choices')
+          .map (choice => {
+            choice.set ('selected', localStorage.getItem (`choice-${choice.id}`))
+          })
+      })
+    },
+
     redirectToContest () {
       this.transitionToRoute('contests.contest', model.contest.id);
     },
@@ -47,6 +72,8 @@ export default Ember.Controller.extend ({
       } else {
         question.set ('review', 'markForReview')
       }
+
+      localStorage.setItem (`review-${question.id}`, question.get (`review`))
     },
     toggleChoice (choiceId, questionId) {
       const store = this.get ('store'),
@@ -61,12 +88,18 @@ export default Ember.Controller.extend ({
         selection = 'unselected'
       }
 
+      localStorage.removeItem (`question-${question.id}`)
+
       question.get ('choices').map (choice => {
         choice.set ('selected', 'unselected')
+        localStorage.removeItem (`choice-${choice.id}`)
       })
 
       choice.set ('selected', selection)
       question.set ('state', selection)
+
+      localStorage.setItem (`question-${question.id}`, selection)
+      localStorage.setItem (`choice-${choice.id}`, selection)
     },
 
     // Fixme
