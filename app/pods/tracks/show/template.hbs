@@ -3,17 +3,17 @@
     {{!-- {{outlet}} --}}
 
     {{!-- <div class="header sticky-header display-block mb-5"> --}}
-        <div class="heading">
-          Introduction
-        </div>
+		<div class="heading">
+			{{model.title}}
+		</div>
         <div class = "grey mb-5">
-          loremipsumloremloremlor emipsumloreml oremlor e mi p s um l o re m loremloremipsu mloremlorem loremipsumlo remlorem loremipsumloremloremloremipsumlorem loremloremip sumloreml oremloremipsum loremloremloremipsum loremloremlore mipsumloremlorem loremipsumloremlorem loremipsumlorem loremloremip sumloremlorem
+			{{markdown-to-html model.description}}
         </div>
     {{!-- </div> --}}
 
     
     <div class="timeline mb-5">
-      {{#each levels as |level index|}}
+      {{#each model.levels as |level index|}}
       <div class="event {{if level.completed "completed" " "}}">
         <div class="tooltip-top">
           Level {{index}}
@@ -26,10 +26,10 @@
     </div>
 
 
-    {{#each levels as |level index|}}
+    {{#each model.levels as |level index|}}
       <div class="row flex-row align-items-center mb-4">
         <div class="col-xs-3 col-sm-2 col-lg-1 p-0">
-          <img src="{{level.icon}}" alt="">
+          <img src="/images/competitive-2367c412fb1b248ff168c570ac90beec.png" alt="">
         </div>
         <div class="col-lg-10">
           <h4 class="bold m-0">
@@ -40,12 +40,11 @@
       </div>
 
       <div class="row mb-2">
-        {{log levels}}
         {{!-- {{#each levels.contests as |contest|}} --}}
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
           <div class="img-card card track pointer">
             <div class="img-container">
-              <img src="{{level.background}}" alt="">
+              <img src="/images/generic-1-998303cce2491c1ffd838960d14d35f4.jpg" alt="">
             </div>
             <div class="body bold">
               <div>Practice contest for Arrays</div>
