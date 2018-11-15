@@ -1,62 +1,96 @@
 <section class="content">
-    <div class="header">
-        <div class="header-left">
-            <div class="heading">
-                {{model.quiz.title}}
+  <div class="header">
+    <div class="header-left">
+      <div class="heading">
+        {{model.quiz.title}}
 
-				{{model.currentAttempt.startTime}}
-            </div>
-        </div>
-		<div class="header-right">
-			{{#if model.quiz.contest.duration}}
-				<div class="countdown-timer-container">
-					{{#countdown-timer
-						startTime=model.currentAttempt.startTime
-						duration=attemptDuration
-						noIcon=true
-						onComplete=(action 'submitQuiz')}}
-					{{/countdown-timer}}
-				</div>
-			{{/if}}
-			{{#link-to 'contests.contest' model.quiz.contest.id class="btn btn-red"}}
-				Back to Contest
-			{{/link-to}}
-		</div>
+        {{model.currentAttempt.startTime}}
+      </div>
     </div>
-	<div class="container-fluid">
-		<div class="row"></div>
-		<div class="clearfix" style="margin-left: 0; padding-left: 3rem;">
-			{{markdown-to-html model.quiz.contest.description}}
-		</div>
-	</div>
-    <div class="container-fluid">
-        <div class="row clearfix" style="margin-left: 0">
-            <div class="questions-container">
-                <ul>
-                    {{#each model.quiz.questions as |question index|}}
-                        <li>
-                            <div class="title">
-								<h4>{{sum index 1}}. {{question.title}}</h4>
-                            </div>
-							<div class="description">
-								{{markdown-to-html question.description}}
-							</div>
-                            {{#each question.choices as |choice|}}
-                                <div class="choices-container">
-                                    <div class="choice {{choice.selected}}" {{action "toggleChoice" choice.id question.id}}>
-                                        <span class="checkbox"></span>
-                                        {{markdown-to-html choice.description}}
-                                    </div>
-                                </div>
-                            {{/each}}
-                        </li>
-                    {{/each}}
-                </ul>
-            </div>
-
-            <div class="text-center">
-                <button class="btn-blue btn fil-cat btn-lg btn-filled" {{action "submitQuiz" model.quiz.id}}>Submit</button>
-            </div>
+    <div class="header-right">
+      {{#if model.quiz.contest.duration}}
+        <div class="countdown-timer-container">
+          {{#countdown-timer
+            startTime=model.currentAttempt.startTime
+            duration=attemptDuration
+            noIcon=true
+            onComplete=(action 'submitQuiz')}}
+          {{/countdown-timer}}
         </div>
+      {{/if}}
+      {{#link-to 'contests.contest' model.quiz.contest.id class="btn btn-red"}}
+        Back to Contest
+      {{/link-to}}
     </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row"></div>
+    <div class="clearfix" style="margin-left: 0; padding-left: 3rem;">
+      {{markdown-to-html model.quiz.contest.description}}
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row clearfix" style="margin-left: 0">
+      <div class="questions-container col-md-7">
+        <div class="title">
+          <h4>{{q}}. {{model.question.title}}</h4>
+        </div>
+        <div class="description">
+          {{markdown-to-html model.question.description}}
+        </div>
+        {{#each model.question.choices as |choice|}}
+          <div class="choices-container">
+            <div class="choice {{choice.selected}}" {{action "toggleChoice" choice.id model.question.id q}}>
+              <div class="checkbox"></div>
+              {{markdown-to-html choice.description}}
+            </div>
+          </div>
+        {{/each}}
+        <div class="navigation">
+          {{#if (gt q 1)}}
+            <a href="#" {{action 'changeQuestion' -1}}>Previous</a>
+          {{else}}
+            <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Previous</a>
+          {{/if}} | <a href="#" {{action 'markForReview' model.question}}>Review Later</a> | {{#if (lt q model.quiz.questions.length)}}
+            <a href="#" {{action 'changeQuestion' 1}}>Next</a>
+          {{else}}
+            <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Next</a>
+          {{/if}}
+        </div>
+      </div>
+      <div class="review col-md-4 col-md-offset-1">
+        {{c-review-pad questions=model.quiz.questions onReview=(action 'goToQuestion')}}
+        <div class="hints">
+          <div><div class="hint-box" style="background: green;"></div>Answered</div>
+          <div><div class="hint-box"style="background: yellow;"></div>Marked For Review</div>
+          <div><div class="hint-box"style="background: gray;"></div>Not Answered</div>
+        </div>
+        <div class="text-center">
+          <button class="btn-blue btn fil-cat btn-lg btn-filled" {{action "submitQuiz" model.quiz.id}}>Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<style>
+.navigation {
+ text-align: center; 
+}
+
+.hints {
+  margin: 20px;
+}
+
+.hint-box {
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.review {
+  width: 270px;
+  background-color: #f7f7f7;
+}
+</style>

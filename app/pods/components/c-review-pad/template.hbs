@@ -1,0 +1,29 @@
+<div class="c-review-pad">
+  <div class="title">
+    Review Questions
+  </div>
+  <div class="options">
+    {{#each questions as |question index|}}
+      {{review-circle question=question index=index onCircleClick=(action onReview)}} 
+    {{/each}}
+  </div>
+</div>
+
+<style>
+.options {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  align-items: center;
+  justify-items: center;
+}
+
+.c-review-pad .title {
+  text-align: center;
+  font-size: 20px;
+  margin: 25px 0;
+}
+
+.bg-green{
+  background-color: green;
+}
+</style>
