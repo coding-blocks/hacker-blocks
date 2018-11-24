@@ -10,8 +10,6 @@ export default Ember.Route.extend({
       store = this.get ('store')
     ;
 
-    console.log (transition.params['contests.contest.quiz'].quiz_id)
-
     if (! session.get ('isAuthenticated')) {
       transition.abort ()
       notifications.error ('You must be logged in to view that!')
@@ -26,7 +24,6 @@ export default Ember.Route.extend({
         if (attempts.toArray ().length) {
           transition.abort ()
           notifications.error ('You cannot attempt that quiz more than once!')
-          this.transitionTo ('contests.contest', transition.params['contests.contest'].contest_id)
         }
       })
   },
