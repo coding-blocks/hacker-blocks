@@ -38,6 +38,9 @@
         <div class="description">
           {{markdown-to-html model.question.description}}
         </div>
+		<div>
+			<p class="text-muted">[Hint: Double click the option to clear the selected answer.]</p>
+		</div>
         {{#each model.question.choices as |choice|}}
           <div class="choices-container">
             <div class="choice {{choice.selected}}" {{action "toggleChoice" choice.id model.question.id q}}>
@@ -46,17 +49,27 @@
             </div>
           </div>
         {{/each}}
-        <div class="navigation">
-          {{#if (gt q 1)}}
-            <a href="#" {{action 'changeQuestion' -1}}>Previous</a>
-          {{else}}
-            <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Previous</a>
-          {{/if}} | <a href="#" {{action 'markForReview' model.question}}>Review Later</a> | {{#if (lt q model.quiz.questions.length)}}
-            <a href="#" {{action 'changeQuestion' 1}}>Next</a>
-          {{else}}
-            <a style="color: grey; opacity: 0.7; cursor: default; font-weight: 100">Next</a>
-          {{/if}}
-        </div>
+		<div class="navigation">
+			<div>
+				{{#if (gt q 1)}}
+				<a href="#" class="btn btn-filled btn-sm" {{action 'changeQuestion' -1}}>Previous</a>
+				{{else}}
+				<a class="btn btn-filled btn-sm">Previous</a>
+				{{/if}}
+			</div>
+
+			<div>
+				<a href="#" class="btn btn-filled btn-sm" {{action 'markForReview' model.question}}>Review Later</a>
+			</div>
+
+			<div>
+				{{#if (lt q model.quiz.questions.length)}}
+				<a href="#" class="btn btn-filled btn-sm" {{action 'changeQuestion' 1}}>Next</a>
+				{{else}}
+				<a class="btn btn-filled btn-sm">Next</a>
+				{{/if}}
+			</div>
+		</div>
       </div>
       <div class="review col-md-4 col-md-offset-1">
         {{c-review-pad questions=model.quiz.questions onReview=(action 'goToQuestion')}}
@@ -75,7 +88,9 @@
 
 <style>
 .navigation {
- text-align: center; 
+	text-align: center;
+	display: flex;
+	justify-content: space-between;
 }
 
 .hints {
