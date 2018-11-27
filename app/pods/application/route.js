@@ -13,7 +13,11 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
 	}),
 	model() {
 		if (this.get('session.isAuthenticated')) {
-			return this._loadCurrentUser();
+			return this._loadCurrentUser()
+        .then (currentUser => (
+          ga ('set', 'userId', currentUser.get ('oauthId')),
+          currentUser
+        ))
 		}
 	},
 	beforeModel(transition) {
