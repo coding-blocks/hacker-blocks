@@ -65,6 +65,7 @@ export default Ember.Controller.extend ({
     },
     changeQuestion (index) {
       this.incrementProperty('q', index)
+
     },
     markForReview (question) {
       if (question.get ('review') === 'markForReview') {

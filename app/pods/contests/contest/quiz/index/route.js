@@ -25,5 +25,15 @@ export default Ember.Route.extend({
     if (! params.currentAttempt) {
       this.transitionTo ('contests.contest', params.quiz.get ('contest').id)
     }
+  },
+
+  renderTemplate () {
+    this._super (...arguments)
+
+    const questionContainer = document.querySelector ('.questions-container')
+
+    if (window.MathJax && questionContainer) {
+      Ember.run.later (_ => MathJax.Hub.Queue(["Typeset", MathJax.Hub, questionContainer]))
+    }
   }
 });
