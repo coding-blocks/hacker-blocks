@@ -34,7 +34,7 @@ export default Ember.Controller.extend ({
 
   init () {
     this._super (...arguments)
-    setTimeout (() => this.send ('restoreState'), 3000);
+    Ember.run.later (_ => this.send ('restoreState'))
   },
 
   actions: {
