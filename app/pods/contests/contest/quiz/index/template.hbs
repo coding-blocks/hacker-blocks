@@ -32,15 +32,12 @@
   <div class="container-fluid">
     <div class="row clearfix" style="margin-left: 0">
       <div class="questions-container col-md-6">
-        <div class="title">
+        <div class="title" id="qTitle">
           <h4>{{q}}. {{model.question.title}}</h4>
         </div>
         <div class="description">
           {{markdown-to-html model.question.description}}
         </div>
-		<div>
-			<p class="text-muted">[Hint: Double click the option to clear the selected answer.]</p>
-		</div>
         {{#each model.question.choices as |choice|}}
           <div class="choices-container">
             <div class="choice {{choice.selected}}" {{action "toggleChoice" choice.id model.question.id q}}>
@@ -93,6 +90,9 @@
 	text-align: center;
 	display: flex;
 	justify-content: space-between;
+}
+html {
+  scroll-behavior: smooth;
 }
 
 .hints {

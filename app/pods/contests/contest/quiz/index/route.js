@@ -35,5 +35,16 @@ export default Ember.Route.extend({
     if (window.MathJax && questionContainer) {
       Ember.run.later (_ => MathJax.Hub.Queue(["Typeset", MathJax.Hub, questionContainer]))
     }
+  },
+
+  actions: {
+    didTransition () {
+      Ember.run.later(() => {
+        let objDiv = document.getElementById("qTitle");
+        window.scrollTo ({top: Ember.$('#qTitle').offset().top - objDiv.scrollHeight});
+        console.log (objDiv)
+      },500)
+      return true;
+    }
   }
 });
