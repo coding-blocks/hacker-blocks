@@ -42,7 +42,6 @@ export default Ember.Route.extend({
       Ember.run.later(() => {
         let objDiv = document.getElementById("qTitle");
         window.scrollTo ({top: Ember.$('#qTitle').offset().top - objDiv.scrollHeight});
-        console.log (objDiv)
       },500)
       return true;
     }
