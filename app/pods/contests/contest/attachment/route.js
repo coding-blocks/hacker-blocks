@@ -6,8 +6,7 @@ export default Ember.Route.extend({
 
   beforeModel (transition) {
     let session = this.get ('session'),
-      notifications = this.get ('notifications'),
-      store = this.get ('store')
+      notifications = this.get ('notifications')
     ;
 
     if (! session.get ('isAuthenticated')) {
