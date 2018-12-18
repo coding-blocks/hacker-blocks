@@ -35,6 +35,7 @@ Router.map(function() {
         });
       });
       this.route('quiz-attempts');
+      this.route('attachment', { path: '/attach/:attachment_id' }, function() {});
     });
     this.route('upcoming',{ path: '/upcoming/c/:contest_id' });
   });

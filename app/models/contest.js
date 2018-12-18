@@ -17,6 +17,7 @@ export default DS.Model.extend({
   allowEditorialUnlocks: DS.attr (),
   allowTestcaseUnlocks: DS.attr (),
   quizzes: DS.hasMany('quizzes', { async: true }),
+  attachments: DS.hasMany('attachments', {async: true}),
   description: DS.attr(),
   competitionName: DS.attr (),
   competitionId: DS.attr (),
