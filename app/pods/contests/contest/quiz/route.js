@@ -17,15 +17,24 @@ export default Ember.Route.extend({
       this.transitionTo ('contests.index')
     }
 
-    return store.query ('quiz-attempt', {
-      quizId: transition.params['contests.contest.quiz'].quiz_id
+    return store.queryRecord ('quiz-attempt', {
+      quizId: transition.params['contests.contest.quiz'].quiz_id,
+      contestId: transition.params['contests.contest'].contest_id,
+      custom: {
+        ext: 'url',
+        url: 'currentAttempt'
+      }
     })
-      .then (attempts => {
-        if (attempts.toArray ().length) {
-          transition.abort ()
-          notifications.error ('You cannot attempt that quiz more than once!')
-        }
-      })
+  
+    //return store.query ('quiz-attempt', {
+    //  quizId: transition.params['contests.contest.quiz'].quiz_id
+    //})
+    //  .then (attempts => {
+    //    if (attempts.toArray ().length) {
+    //      transition.abort ()
+    //      notifications.error ('You cannot attempt that quiz more than once!')
+    //    }
+    //  })
   },
 
   model (params) {

@@ -11,13 +11,22 @@ export default Ember.Route.extend({
   },
   model (params) {
     const quiz = this.modelFor ('contests.contest.quiz'),
+      contest = this.modelFor ('contests.contest'),
       currentAttempt = this.get ('currentAttemptService').getCurrentAttempts(quiz.get ('contest').id)
     ;
 
     return Ember.RSVP.hash ({
       currentAttempt: currentAttempt,
       question: this.store.findRecord('question', quiz.get('questions').objectAt(params.q - 1).id),
-      quiz: quiz
+      quiz: quiz,
+      currentQuizAttempt: this.store.queryRecord ('quiz_attempt', {
+        quizId: quiz.id,
+        contestId: contest.id,
+        custom: {
+          ext: 'url',
+          url: 'currentAttempt'
+        }
+      })
     })
   },
 
