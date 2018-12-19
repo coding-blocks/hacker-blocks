@@ -1,0 +1,47 @@
+<section class="content">
+  <div class="header">
+    <div class="header-left">
+      <div class="heading">
+        {{model.title}}
+      </div>
+    </div>
+    <div class="header-right">
+      {{#link-to 'contests.contest' model.contest.id class="btn btn-red"}}
+      Back to Contest
+      {{/link-to}}
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row"></div>
+    <div class="clearfix" style="margin-left: 0; padding-left: 3rem;">
+      {{markdown-to-html model.description}}
+    </div>
+  </div>
+  {{#if (eq model.contentType 'pdf')}}
+  <div class="preview-container">
+    <iframe width="100%" height="100%" src="{{model.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  {{/if}}
+
+  {{#if (eq model.contentType 'youtube')}}
+  <div class="preview-container">
+    <iframe width="100%" height="100%" src="{{model.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+  {{/if}}
+
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+<style>
+
+.preview-container {
+  height: 75vh;
+  padding: 20px;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+</style>
