@@ -144,37 +144,14 @@ export default Ember.Controller.extend ({
 
     // Fixme
     submitQuiz (quizId) {
-      const submission = [],
-        store = this.get ('store'),
-        quiz = this.get ('model.quiz'),
-        contestId = window.location.pathname.slice(12, 15),
-        questions = this.get ('model.quiz.questions')
+      const currentQuizAttempt = this.get ('model.currentQuizAttempt'),
+        store = this.get ('store')
       ;
 
-      questions.map (question => {
-        let markedChoices = question
-          .get ('choices')
-          .filter (choice => choice.selected === 'selected')
-          .map (c => c.id)
-
-        if (markedChoices.length > 0) {
-          submission.push ({
-            id: question.id,
-            markedChoices
-          })
-        }
-      })
-
-      store.findRecord ('contest', contestId)
-        .then (contest => {
-          console.log (contest)
-          return store.createRecord ('quizAttempt', {
-            contest,
-            quiz,
-            submission
-          }).save ()
-        })
-        .then (quizAttempt => {
+      store.findRecord ('quiz-attempt', currentQuizAttempt.id)
+        .then (attempt => {
+          attempt.set ('result', {})
+          attempt.save ()
           this.get ('notifications').info ('Test Successfully Submitted!')
           return this.transitionToRoute ('contests.index')
         })
