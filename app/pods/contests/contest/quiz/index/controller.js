@@ -43,17 +43,27 @@ export default Ember.Controller.extend ({
         store = this.get ('store'),
         quiz = this.get ('model.quiz'),
         contestId = window.location.pathname.slice(12, 15),
-        questions = this.get ('model.quiz.questions')
+        questions = this.get ('model.quiz.questions').toArray (),
+        currentQuizAttempt = this.get ('model.currentQuizAttempt')
       ;
 
-      questions.map (question => {
-        question.set ('state', localStorage.getItem (`question-${question.id}`))
-        question.set ('review', localStorage.getItem (`review-${question.id}`))
+      store.query ('quiz-submission', {
+        currentAttemptId: currentQuizAttempt.id
+      }).then (submissions => {
+        submissions.map (submission => {
+          let question = questions.findBy ('id', submission.get ('questionId'))
+          question.get ('choices')
+            .map (choice => {
+              if (choice.get ('id') === submission.get ('answerId')) {
+                choice.set ('selected', 'selected')
+                question.set ('state', 'selected')
+              }
+            })
+        })
+      })
 
-        question.get ('choices')
-          .map (choice => {
-            choice.set ('selected', localStorage.getItem (`choice-${choice.id}`))
-          })
+      questions.map (question => {
+        question.set ('review', localStorage.getItem (`review-${question.id}`))
       })
     },
 
@@ -77,9 +87,11 @@ export default Ember.Controller.extend ({
       localStorage.setItem (`review-${question.id}`, question.get (`review`))
     },
     toggleChoice (choiceId, questionId) {
+
       const store = this.get ('store'),
         question = store.peekRecord ('question', questionId),
-        choice = store.peekRecord ('choice', choiceId)
+        choice = store.peekRecord ('choice', choiceId),
+        currentQuizAttempt = this.get ('model.currentQuizAttempt')
       ;
 
       let selection = 'selected'
@@ -88,6 +100,33 @@ export default Ember.Controller.extend ({
       if (choice.get ('selected') === 'selected') {
         selection = 'unselected'
       }
+
+      store.queryRecord ('quiz-submission', {
+        currentAttemptId: currentQuizAttempt.id,
+        questionId 
+      }).then (submission => {
+        if (! submission) {
+          store.createRecord ('quiz-submission', {
+            currentattemptId: currentQuizAttempt,
+            questionId,
+            answerId: choiceId
+          }).save ()
+        } else {
+          if (selection === 'selected') {
+            store.findRecord ('quiz-submission', submission.id)
+              .then (qSubmission => {
+                qSubmission.set ('answerId', choiceId)
+                qSubmission.save ()
+              })
+          } else {
+            store.findRecord ('quiz-submission', submission.id, { backgroundReload: false })
+              .then (qSubmission => {
+                qSubmission.deleteRecord ();
+                qSubmission.save ();
+              })
+          }
+        }
+      })
 
       localStorage.removeItem (`question-${question.id}`)
 
@@ -105,36 +144,14 @@ export default Ember.Controller.extend ({
 
     // Fixme
     submitQuiz (quizId) {
-      const submission = [],
-        store = this.get ('store'),
-        quiz = this.get ('model.quiz'),
-        contestId = window.location.pathname.slice(12, 15),
-        questions = this.get ('model.quiz.questions')
+      const currentQuizAttempt = this.get ('model.currentQuizAttempt'),
+        store = this.get ('store')
       ;
 
-      questions.map (question => {
-        let markedChoices = question
-          .get ('choices')
-          .filter (choice => choice.selected === 'selected')
-          .map (c => c.id)
-
-        if (markedChoices.length > 0) {
-          submission.push ({
-            id: question.id,
-            markedChoices
-          })
-        }
-      })
-
-      store.findRecord ('contest', contestId)
-        .then (contest => {
-          return store.createRecord ('quizAttempt', {
-            contest,
-            quiz,
-            submission
-          }).save ()
-        })
-        .then (quizAttempt => {
+      store.findRecord ('quiz-attempt', currentQuizAttempt.id)
+        .then (attempt => {
+          attempt.set ('result', {})
+          attempt.save ()
           this.get ('notifications').info ('Test Successfully Submitted!')
           return this.transitionToRoute ('contests.index')
         })
