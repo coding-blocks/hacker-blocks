@@ -112,19 +112,15 @@ export default Ember.Controller.extend ({
             answerId: choiceId
           }).save ()
         } else {
-          if (selection === 'selected') {
-            store.findRecord ('quiz-submission', submission.id)
-              .then (qSubmission => {
+          store.findRecord ('quiz-submission', submission.id)
+            .then (qSubmission => {
+              if (selection === 'selected') {
                 qSubmission.set ('answerId', choiceId)
-                qSubmission.save ()
-              })
-          } else {
-            store.findRecord ('quiz-submission', submission.id, { backgroundReload: false })
-              .then (qSubmission => {
-                qSubmission.deleteRecord ();
-                qSubmission.save ();
-              })
-          }
+              } else {
+                qSubmission.set ('answerId', null)
+              }
+              qSubmission.save ()
+            })
         }
       })
 
