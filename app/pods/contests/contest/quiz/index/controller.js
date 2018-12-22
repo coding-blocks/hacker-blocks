@@ -43,17 +43,27 @@ export default Ember.Controller.extend ({
         store = this.get ('store'),
         quiz = this.get ('model.quiz'),
         contestId = window.location.pathname.slice(12, 15),
-        questions = this.get ('model.quiz.questions')
+        questions = this.get ('model.quiz.questions').toArray (),
+        currentQuizAttempt = this.get ('model.currentQuizAttempt')
       ;
 
-      questions.map (question => {
-        question.set ('state', localStorage.getItem (`question-${question.id}`))
-        question.set ('review', localStorage.getItem (`review-${question.id}`))
+      store.query ('quiz-submission', {
+        currentAttemptId: currentQuizAttempt.id
+      }).then (submissions => {
+        submissions.map (submission => {
+          let question = questions.findBy ('id', submission.get ('questionId'))
+          question.get ('choices')
+            .map (choice => {
+              if (choice.get ('id') === submission.get ('answerId')) {
+                choice.set ('selected', 'selected')
+                question.set ('state', 'selected')
+              }
+            })
+        })
+      })
 
-        question.get ('choices')
-          .map (choice => {
-            choice.set ('selected', localStorage.getItem (`choice-${choice.id}`))
-          })
+      questions.map (question => {
+        question.set ('review', localStorage.getItem (`review-${question.id}`))
       })
     },
 
@@ -109,7 +119,6 @@ export default Ember.Controller.extend ({
                 qSubmission.save ()
               })
           } else {
-            console.log ('-----------')
             store.findRecord ('quiz-submission', submission.id, { backgroundReload: false })
               .then (qSubmission => {
                 qSubmission.deleteRecord ();
