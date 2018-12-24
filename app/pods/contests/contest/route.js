@@ -33,11 +33,7 @@ export default Ember.Route.extend({
           return
         }
 
-        this.transitionTo (history.state.path)
-
-        this
-          .get ('toast')
-          .error ('You do not have permission to access that contest!')
+        this.transitionTo ('contests.denied', transition.params['contests.contest'].contest_id)
       } 
     }
   }

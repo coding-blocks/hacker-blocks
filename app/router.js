@@ -38,6 +38,7 @@ Router.map(function() {
       this.route('attachment', { path: '/attach/:attachment_id' }, function() {});
     });
     this.route('upcoming',{ path: '/upcoming/c/:contest_id' });
+    this.route('denied', { path: '/denied/:contest_id' });
   });
   this.route('dcb', function() {
     this.route('weekly-problem', {path: '/p/:problem_id'}, function () {

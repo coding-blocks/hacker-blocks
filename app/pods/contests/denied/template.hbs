@@ -1,0 +1,26 @@
+<section class="content home">
+	<div class="header">
+		<div class="header-left">
+			<div class="heading text-danger">
+				Access Denied
+			</div>
+		</div>
+		<div class="header-left">
+		</div>
+	</div>
+
+	<div style="margin-top: 1rem; padding: 3rem;">
+		<p>
+			You do not have permission to access that contest! If you think this
+			is an error, please drop us an email at 
+			<a href="mailto:support@codingblocks.com">support@codingblocks.com</a>
+
+		</p>
+		<p>
+			If you have just been granted access, please click the button below to
+			try again.
+		</p>
+
+		<button class="btn btn-solid" {{action "goBack" model.contest_id}}>Try Again</button>
+	</div>
+</section>
