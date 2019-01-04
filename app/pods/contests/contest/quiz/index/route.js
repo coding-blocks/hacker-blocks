@@ -9,6 +9,7 @@ export default Ember.Route.extend({
       refreshModel: true
     }
   },
+
   model (params) {
     const quiz = this.modelFor ('contests.contest.quiz'),
       contest = this.modelFor ('contests.contest'),
@@ -31,8 +32,13 @@ export default Ember.Route.extend({
   },
 
   afterModel (params) {
-    if (! params.currentAttempt) {
-      this.transitionTo ('contests.contest', params.quiz.get ('contest').id)
+    let contest = params.quiz.get ('contest'),
+      duration = contest.get ('duration'),
+      { currentAttempt } = params
+    ;
+
+    if (duration && (! currentAttempt)) {
+      this.transitionTo ('contests.denied', contest.id)
     }
   },
 
