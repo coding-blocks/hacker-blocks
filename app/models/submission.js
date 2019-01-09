@@ -21,5 +21,6 @@ export default DS.Model.extend({
   tcRuns: DS.attr(),
   problem:DS.belongsTo('problem',{inverse:'top'}),
   contest:DS.belongsTo('contest'),
-  user: DS.belongsTo('user')
+  user: DS.belongsTo('user'),
+  certificateEarned: DS.attr ('boolean')
 });

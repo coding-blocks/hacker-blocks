@@ -19,7 +19,7 @@
           Level {{index}}
         </div>
         <div class="tooltip-bottom">
-          {{level.name}}
+          {{level.title}}
         </div>
       </div>
       {{/each}}
@@ -33,122 +33,80 @@
         </div>
         <div class="col-lg-10">
           <h4 class="bold m-0">
-            Level {{sum 1 index}}
+			{{level.title}}
           </h4>
-          <h4 class="grey bold m-0">{{level.name}}</h4>
+          <h4 class="grey bold m-0">{{level.description}}</h4>
         </div>
       </div>
 
-      <div class="row mb-2">
-        {{!-- {{#each levels.contests as |contest|}} --}}
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="img-card card track pointer">
-            <div class="img-container">
-              <img src="/images/generic-1-998303cce2491c1ffd838960d14d35f4.jpg" alt="">
-            </div>
-            <div class="body bold">
-              <div>Practice contest for Arrays</div>
-              <div class="grey para">lore mlorem loremlo rem
-                lore mlore mloreml oremlore
-              </div>
-              <div class="row footer">
-                <div class="col-xs-4">
-                  <h4 class="blue m-0">50</h4>
-                  Problems
-                </div>
+	  <div class="row mb-2">
+		  {{#each level.contests as |contest|}}
+			  {{#if contest.isCapstone}}
+				  {{#link-to 'contests.contest' contest.id}}
+					  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+						  <div class="img-card card track pointer">
+							  <div class="img-container">
+								  <img src="/images/generic-1-998303cce2491c1ffd838960d14d35f4.jpg" alt="">
+							  </div>
+							  <div class="body bold">
+								  <div>{{contest.name}}</div>
+								  <div class="grey para">{{contest.description}}</div>
+								  <div class="row footer" style="padding-top: 2rem; margin-top:
+								  2rem;">
+									  <div class="col-xs-4">
+										  <h4 class="blue m-0">50</h4>
+										  Problems
+									  </div>
 
-                <div class="col-xs-4">
-                  <h4 class="blue m-0">450</h4>
-                  Points
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+									  <div class="col-xs-4">
+										  <h4 class="blue m-0">450</h4>
+										  Points
+									  </div>
+								  </div>
+							  </div>
+						  </div>
+					  </div>
+				  {{/link-to}}
+			  {{/if}}
+		  {{/each}}
 
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="img-card card track pointer">
-            <div class="img-container">
-              <img src="{{level.background}}" alt="">{{!-- contest.background--}}
-            </div>
-            <div class="body bold">
-              <div>Practice contest for Arrays</div>
-              <div class="grey para">lore mlorem loremlo rem
-                lore mlore mloreml oremlore
-              </div>
-              <div class="row footer">
-                <div class="col-xs-4">
-                  <h4 class="blue m-0">50</h4>
-                  Problems
-                </div>
-        
-                <div class="col-xs-4">
-                  <h4 class="blue m-0">450</h4>
-                  Points
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+		  {{#each level.contests as |contest|}}
+			  {{#unless contest.isCapstone}}
+				  {{#link-to 'contests.contest' contest.id}}
+				  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+					  <div class="card track pointer">
+						  <div class="badge-img mb-2">
+							  <img src="/images/badge-c94328e5a75d30d04c0003a7caa9cd91.png" alt="">
+						  </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="img-card card track pointer">
-            <div class="img-container">
-              <img src="{{level.background}}" alt="">
-            </div>
-            <div class="body bold">
-              <div>Practice contest for Arrays</div>
-              <div class="grey para">lore mlorem loremlo rem
-                lore mlore mloreml oremlore
-              </div>
-              <div class="row footer">
-                <div class="col-xs-4">
-                  <h4 class="blue m-0">50</h4>
-                  Problems
-                </div>
-        
-                <div class="col-xs-4">
-                  <h4 class="blue m-0">450</h4>
-                  Points
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+						  <div class="body bold t-align-c p-0">
+							  Get Certified
 
-        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-          <div class="card track pointer">
-            <div class="badge-img mb-2">
-              <img src="/images/badge-c94328e5a75d30d04c0003a7caa9cd91.png" alt="">
-            </div>
+							  <div class="grey para">
+								  Pass this to unlock Level 2
+							  </div>
 
-            <div class="body bold t-align-c p-0">
-              Get Certified
-
-              <div class="grey para">
-                Pass this to unlock Level 2
-              </div>
-
-              <div class="row footer">
-                <div class="col-xs-4">
-                  <h4 class="m-0">50</h4>
-                  Problems
-                </div>
-                <div class="col-xs-3">
-                  <h4 class="m-0">450</h4>
-                  Points
-                </div>
-                <div class="col-xs-3">
-                  <h4 class="m-0">02</h4>
-                  Hours
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {{!-- {{/each}} --}}
-        
-      </div>
+							  <div class="row footer">
+								  <div class="col-xs-4">
+									  <h4 class="m-0">50</h4>
+									  Problems
+								  </div>
+								  <div class="col-xs-3">
+									  <h4 class="m-0">450</h4>
+									  Points
+								  </div>
+								  <div class="col-xs-3">
+									  <h4 class="m-0">02</h4>
+									  Hours
+								  </div>
+							  </div>
+						  </div>
+					  </div>
+				  </div>
+				  {{/link-to}}
+			  {{/unless}}
+		  {{/each}}
+	  </div>
     {{/each}}
   </div>
 </section>

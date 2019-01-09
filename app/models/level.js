@@ -7,5 +7,6 @@ export default DS.Model.extend ({
   createdAt   : DS.attr (),
   updatedAt   : DS.attr (),
   deletedAt   : DS.attr (),
-  track       : DS.belongsTo ('track')
+  track       : DS.belongsTo ('track'),
+  contests    : DS.hasMany ('contest'),
 });

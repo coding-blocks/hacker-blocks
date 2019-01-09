@@ -25,6 +25,33 @@
     </div>
   </div>
   {{/if}}
+  {{#if model.contest.level}}
+  <div class="header">
+    <div class="header-left">
+      <div class="heading">
+		{{model.contest.level.title}}
+      </div>
+    </div>
+    <div class="header-left">
+      {{#if model.contest.duration}}
+      <div class="countdown-timer-container">
+        {{#countdown-timer
+        startTime=model.currentAttempt.startTime
+        duration=attemptDuration
+        noIcon=true
+        onComplete=(action 'redirectToContest' model)}}
+        {{/countdown-timer}}
+      </div>
+      {{/if}}
+
+      <div>
+        {{#link-to 'tracks.show' model.contest.meta.track-id class="btn-solid" tagName="button"}}
+			Back to Track
+        {{/link-to}}
+      </div>
+    </div>
+  </div>
+  {{/if}}
   <div class="container-fluid">
     {{#unless model.contest.competitionId}}
     <div class="row clearfix" style="margin-left: 0">

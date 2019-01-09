@@ -8,6 +8,7 @@ import moment from 'npm:moment';
 export default DS.Model.extend({
   name: DS.attr(),
   startTime: DS.attr(),
+  level: DS.belongsTo (),
   endTime: DS.attr(),
   location: DS.attr(),
   showBanner: DS.attr(),
@@ -20,6 +21,7 @@ export default DS.Model.extend({
   attachments: DS.hasMany('attachments', {async: true}),
   description: DS.attr(),
   competitionName: DS.attr (),
+  passingScore: DS.attr (),
   competitionId: DS.attr (),
   meta: DS.attr(),
   problemCount: Ember.computed ('meta.problem-count', function () {
@@ -72,6 +74,9 @@ export default DS.Model.extend({
   }),
   points: Ember.computed ('problemCount', function () {
     return this.get ('problemCount') * 100
+  }),
+  isCapstone: Ember.computed ('passingScore', function () {
+    return (! this.get ('passingScore'))
   }),
   isFinished: Ember.computed('endTime', {
     get() {

@@ -13,8 +13,9 @@ export default Ember.Service.extend ({
     this.get ('refreshCurrentTime').perform ()
 
     setInterval (() => {
-      this.get ('tick').perform () }
-      , 1000)
+      this.get ('tick').perform ()
+    }, 1000)
+
     setInterval (() => {
       this.get ('refreshCurrentTime').perform ()
     }, 60000)
