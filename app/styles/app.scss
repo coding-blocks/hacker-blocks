@@ -1896,6 +1896,7 @@ img{
   .badge-img{
     padding: 0 38%;
     text-align: center;
+    margin-top: 20px;
   }
 
   .badge-img img{
@@ -1909,7 +1910,11 @@ img{
   .footer{
     width: 100%;
     position: absolute;
-    bottom: 30px;
+    bottom: 15px;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
   }
 
   &.certify{
@@ -1918,7 +1923,7 @@ img{
 
   .para{
     height: 50px;
-    overflow: hidden;
+    overflow: auto;  
   }
 }
 
