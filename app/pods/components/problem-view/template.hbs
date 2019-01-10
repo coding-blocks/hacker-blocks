@@ -1,8 +1,7 @@
-<div class="col-xs-12 col-sm-6 col-md-3">
+<div class="col-xs-12 col-sm-6 col-md-3" style="margin-bottom: 2rem">
   {{#link-to link problem.id}}
-    <div class="thumbnail card problemCard hover-card">
-      <div class="problem-image-wrapper">
-        <div class="problem-img-overlay"></div>
+    <div class="img-card card track pointer">
+      <div class="img-container">
         <img src={{problem.image}} width="100%"/>
       </div>
       {{#if dailycb}}
@@ -10,10 +9,20 @@
           <span class="card-date">{{dailycb.UTCDay}} {{dailycb.UTCMonth}}</span>
         </div>
       {{/if}}
-      <div class="caption">
-        <div class="problem-name-wrapper">
-          <h3>{{problem.name}}</h3>
-        </div>
+      <div class="body bold">
+		  <div>{{problem.name}}
+          <span class="problem-result">
+            {{#if (eq submissionResult 1)}}
+              <i class="material-icons solved" title="Successfully Solved">done</i>
+            {{/if}}
+            {{#if (eq submissionResult 0)}}
+              <i class="material-icons partially-solved" title="Partially Correct">done</i>
+            {{/if}}
+            {{#if (eq submissionResult -1)}}
+              <i class="material-icons wrong" title="Wrong">clear</i>
+            {{/if}}
+          </span>
+		  </div>
         {{#if showTags}} 
         <div id="tags">
           {{#each problem.tags as |tag|}}
@@ -44,41 +53,13 @@
               </a>
             </div>
           </div>
-          <div class="pt-detail row m-t-20">
-            <div class="pt-category pt-txt col-md-6 col-sm-6 col-xs-6">
-              <a class="icon-dailycb" href="#">
-                <span class="center-block big-alpha">Max</span>
-                <span style="color: #02CCBA;">
-                <i class="material-icons">trending_up</i>
-                <span class="center-block">{{dailycb.maxscore}}</span>
-                </span>
-              </a>
-            </div>
-            <div class="pt-category  pt-txt col-md-6 col-sm-6 col-xs-6">
-              <a class="icon-dailycb" href="#">
-                <span class="center-block big-alpha">Total</span>
-                <span style="color: #A951ED;">
-                <i class="material-icons">group</i>
-                <span class="center-block">{{dailycb.count}}</span>
-                </span>
-              </a>
-            </div>
-          </div>
         {{else}}
-          <p class="text-center"><span class="big-digit" style="color:#FF5483;">100</span> <span class="big-alpha"
-                                                                                                 style="vertical-align: baseline">Points</span>
-          <div class="problem-result">
-            {{#if (eq submissionResult 1)}}
-              <i class="material-icons solved" title="Successfully Solved">done</i>
-            {{/if}}
-            {{#if (eq submissionResult 0)}}
-              <i class="material-icons partially-solved" title="Partially Correct">done</i>
-            {{/if}}
-            {{#if (eq submissionResult -1)}}
-              <i class="material-icons wrong" title="Wrong">clear</i>
-            {{/if}}
-          </div>
-          </p>
+			<div class="row footer">
+				<div class="col-xs-4">
+					<h4 class="blue m-0">100</h4>
+					Points
+				</div>
+			</div>
         {{/if}}
       </div>
     </div>

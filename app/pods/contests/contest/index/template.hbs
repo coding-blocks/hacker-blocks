@@ -54,6 +54,7 @@
   {{/if}}
   <div class="container-fluid">
     {{#unless model.contest.competitionId}}
+	{{#unless model.contest.level}}
     <div class="row clearfix" style="margin-left: 0">
       <div class="col-md-6 block-header">
         <h2>All Problems</h2>
@@ -71,23 +72,32 @@
       </div>
       {{/if}}
     </div>
+	{{/unless}}
     {{/unless}}
     {{#if model.contest.showBanner}}
     <div class="row">	    
       <img class="contest-banner" src={{model.contest.image}} alt={{model.contest.name}}>
     </div>
     {{else}}
-    <div class="card hover-card">
+    <div class="">
       <div class="row">
-        <h1 class="text-center">{{model.contest.name}}</h1>
+        <h1 class="text-center contest-title">{{model.contest.name}}</h1>
         <div class="contest-description-container">
           {{markdown-to-html model.contest.description}}
         </div>
+		{{#unless model.contest.level}}
+		<div>
+		{{#each model.tags as |tag|}}
+		<button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag.name}}</button>
+		{{/each}}
+		</div>
+		{{/unless}}
       </div>
     </div>
     {{/if}}
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		{{#unless model.contest.level}}
         <div class="card custom-card hover-card">
           <div class="row">
             <div class="col-sm-4 col-md-4 col-lg-4">
@@ -142,8 +152,9 @@
             {{/if}}
           </div>
         </div>
+		{{/unless}}
         {{#if model.contest.attachments}}
-        <div class="card section-card">
+        <div class="">
           <div class="body">
             <div class="row clearfix">
               <h3>Reading & Watching</h3>
@@ -175,7 +186,7 @@
         </div>
         {{/if}}
         {{#if model.contest.quizzes}}
-        <div class="card section-card">
+        <div class="">
           <div class="body">
             <div class="row clearfix">
               <h3>Quizzes</h3>
@@ -210,7 +221,7 @@
           </div>
         </div>
         {{/if}}
-        <div class="card section-card">
+        <div class="">
           <div class="body">
             <div class="row clearfix">
               <h3>Programming Questions</h3>

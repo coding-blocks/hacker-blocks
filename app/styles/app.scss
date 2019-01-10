@@ -73,6 +73,10 @@ $light-grey: #eeeeee;
 //-------------------------------------------------------------Helpers--------------------------------------------------------------------------------
 
 
+.container-fluid {
+  padding-left: 3rem;
+}
+
 .login-btn {
   border-radius: 20px !important;
   color: #fff !important;
@@ -1383,7 +1387,12 @@ blue-bar {
 }
 
 .contest-description-container {
-  padding: 3rem 7rem;
+  padding: 0;
+  color: #666666;
+  font-weight: bold;
+  clear: both;
+  max-width: 60%;
+  margin-top: 0;
 
   h1, h2, h3 {
     font-weight: normal;
@@ -1938,4 +1947,14 @@ img{
   & .timeline{
     margin: 10rem 0 6rem 0;
   }
+}
+
+.contest-title {
+  font-size: 18px;
+  float: left;
+  max-width: 50%;
+}
+
+h3 {
+  font-size: 18px;
 }
