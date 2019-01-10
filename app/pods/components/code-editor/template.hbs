@@ -111,4 +111,39 @@
       {{/if}}
     </div>
   </div>
+
+<div id="certificateModal" class="modal fade" data-backdrop="false" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Congratulations!</h4>
+		<h5 class="text-muted">You Unlocked A New Level!</h5>
+		<hr />
+      </div>
+      <div class="modal-body text-center">
+		  <img src="{{level.image}}" height=150 width=150 />
+		  <h5 class="red">{{level.title}}</h5>
+		  <p class="text-muted">You can continue with this test to see how much you can score, or try your hand at something harder!</p>
+		  <button type="button" class="btn btn-raised label-danger btn-lg" data-dismiss="modal">Got It!</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<div id="finishedModal" class="modal fade" data-backdrop="false" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Congratulations!</h4>
+		<h5 class="text-muted">You've Finished This Track!</h5>
+		<hr />
+      </div>
+      <div class="modal-body text-center">
+		  <p class="text-muted">Congratulations on having made it so far! You'll hear from us soon.</p>
+		  <button type="button" class="btn btn-raised label-danger btn-lg" data-dismiss="modal">Got It!</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div>
 </div>

@@ -25,8 +25,36 @@
     </div>
   </div>
   {{/if}}
+  {{#if model.contest.level}}
+  <div class="header">
+    <div class="header-left">
+      <div class="heading">
+		{{model.contest.level.title}}
+      </div>
+    </div>
+    <div class="header-left">
+      {{#if model.contest.duration}}
+      <div class="countdown-timer-container">
+        {{#countdown-timer
+        startTime=model.currentAttempt.startTime
+        duration=attemptDuration
+        noIcon=true
+        onComplete=(action 'redirectToContest' model)}}
+        {{/countdown-timer}}
+      </div>
+      {{/if}}
+
+      <div>
+        {{#link-to 'tracks.show' model.contest.meta.track-id class="btn-solid" tagName="button"}}
+			Back to Track
+        {{/link-to}}
+      </div>
+    </div>
+  </div>
+  {{/if}}
   <div class="container-fluid">
     {{#unless model.contest.competitionId}}
+	{{#unless model.contest.level}}
     <div class="row clearfix" style="margin-left: 0">
       <div class="col-md-6 block-header">
         <h2>All Problems</h2>
@@ -44,23 +72,32 @@
       </div>
       {{/if}}
     </div>
+	{{/unless}}
     {{/unless}}
     {{#if model.contest.showBanner}}
     <div class="row">	    
       <img class="contest-banner" src={{model.contest.image}} alt={{model.contest.name}}>
     </div>
     {{else}}
-    <div class="card hover-card">
+    <div class="">
       <div class="row">
-        <h1 class="text-center">{{model.contest.name}}</h1>
+        <h1 class="text-center contest-title">{{model.contest.name}}</h1>
         <div class="contest-description-container">
           {{markdown-to-html model.contest.description}}
         </div>
+		{{#unless model.contest.level}}
+		<div>
+		{{#each model.tags as |tag|}}
+		<button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag.name}}</button>
+		{{/each}}
+		</div>
+		{{/unless}}
       </div>
     </div>
     {{/if}}
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		{{#unless model.contest.level}}
         <div class="card custom-card hover-card">
           <div class="row">
             <div class="col-sm-4 col-md-4 col-lg-4">
@@ -108,47 +145,17 @@
             <button class="btn fil-cat btn-sm btn-filled btn-yellow" {{action "updateSelection" "Psolved" selectedTag}}  value="Psolved">Partially Solved</button>
             <button class="btn fil-cat btn-sm btn-filled btn-red" {{action "updateSelection" "Wrong" selectedTag}}  value="Wrong">Wrong</button>
             <br>
-            {{#if model.contest.showTags}}
             {{#each model.tags as |tag|}}
-            <button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag.name}}</button>
+				<button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag.name}}</button>
             {{/each}}
-            {{/if}}
           </div>
         </div>
+		{{/unless}}
         {{#if model.contest.attachments}}
-        <div class="card section-card">
-          <div class="body">
-            <div class="row clearfix">
-              <h3>Reading & Watching</h3>
-            </div>
-            <div class="row clearfix">
-              {{#each model.contest.attachments as |attachment|}}
-              <div class="col-xs-12 col-sm-6 col-md-3 text-center">
-                {{#link-to 'contests.contest.attachment' attachment.id}}
-                <div class="thumbnail card problemCard hover-card">
-                  <div class="problem-image-wrapper" style="padding: 1rem">
-                    <div class="problem-img-overlay"></div>
-                    <img src="https://u.teknik.io/BnGDo.png" />
-                  </div>
-                  <div class="caption">
-                    <div class="problem-name-wrapper">
-                      <h3>{{attachment.title}}</h3>
-                    </div>
-                    <hr/>
-                    <p class="text-center"><span
-                       style="color:#FF5483;">{{attachment.description}}</span>
-                    </p>
-                  </div>
-                </div>
-                {{/link-to}}
-              </div>
-              {{/each}}
-            </div>
-          </div>
-        </div>
+		{{tutorials-container contest=model.contest attachments=model.contest.attachments}}
         {{/if}}
         {{#if model.contest.quizzes}}
-        <div class="card section-card">
+        <div class="">
           <div class="body">
             <div class="row clearfix">
               <h3>Quizzes</h3>
@@ -183,7 +190,7 @@
           </div>
         </div>
         {{/if}}
-        <div class="card section-card">
+        <div class="">
           <div class="body">
             <div class="row clearfix">
               <h3>Programming Questions</h3>

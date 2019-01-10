@@ -1,0 +1,117 @@
+<section class="content">
+  <div class="container-fluid competition track-container">
+    {{!-- {{outlet}} --}}
+
+    {{!-- <div class="header sticky-header display-block mb-5"> --}}
+		<div class="heading">
+			{{model.title}}
+		</div>
+        <div class = "grey mb-5">
+			{{markdown-to-html model.description}}
+        </div>
+    {{!-- </div> --}}
+
+    
+    <div class="timeline mb-5">
+      {{#each model.levels as |level index|}}
+      <div class="event {{if level.unlocked "completed" " "}}">
+        <div class="tooltip-top">
+          Level {{index}}
+        </div>
+        <div class="tooltip-bottom">
+          {{level.title}}
+        </div>
+      </div>
+      {{/each}}
+    </div>
+
+
+    {{#each model.levels as |level index|}}
+      <div class="row flex-row align-items-center mb-4">
+        <div class="col-xs-3 col-sm-2 col-lg-1 p-0">
+			<img src="{{level.image}}" alt="">
+        </div>
+        <div class="col-lg-10">
+          <h4 class="bold m-0">
+			{{level.title}}
+          </h4>
+          <h4 class="grey bold m-0">{{level.description}}</h4>
+        </div>
+      </div>
+
+	  <div class="row mb-2">
+		  {{#each level.contests as |contest|}}
+			  {{#if contest.isCapstone}}
+				  {{#link-to 'contests.contest' contest.id}}
+					  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+						  <div class="img-card card track pointer">
+							  <div class="img-container">
+								  <img src="/images/generic-1-998303cce2491c1ffd838960d14d35f4.jpg" alt="">
+							  </div>
+							  <div class="body bold">
+								  <div>{{contest.name}}</div>
+								  <div class="grey para">{{contest.description}}</div>
+								  <div class="row footer">
+									  <div class="col-xs-4">
+										  <h4 class="blue m-0">{{contest.problemCount}}</h4>
+										  Problems
+									  </div>
+
+									  <div class="col-xs-4">
+										  <h4 class="blue m-0">{{contest.points}}</h4>
+										  Points
+									  </div>
+								  </div>
+							  </div>
+						  </div>
+					  </div>
+				  {{/link-to}}
+			  {{/if}}
+		  {{/each}}
+
+		  {{#each level.contests as |contest|}}
+			  {{#unless contest.isCapstone}}
+				  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" {{action "openIfUnlocked" level contest}}>
+					  <div class="card track pointer">
+						  <div class="badge-img mb-2">
+							  <img src="/images/badge-c94328e5a75d30d04c0003a7caa9cd91.png" alt="">
+						  </div>
+
+						  <div class="body bold t-align-c p-0">
+							  {{#if level.unlocked}}
+								  Get Certified
+
+								  <div class="grey para">
+									  Unlocks The Next Level
+								  </div>
+							  {{else}}
+								  Locked!
+
+								  <div class="grey para">
+									  Clear Previous Level First!
+								  </div>
+
+							  {{/if}}
+							  <div class="row footer">
+								  <div class="col-xs-4">
+									  <h4 class="m-0">{{contest.problemCount}}</h4>
+									  Problems
+								  </div>
+								  <div class="col-xs-3">
+									  <h4 class="m-0">{{contest.points}}</h4>
+									  Points
+								  </div>
+								  <div class="col-xs-3">
+									  <h4 class="m-0">1.5</h4>
+									  Hours
+								  </div>
+							  </div>
+						  </div>
+					  </div>
+				  </div>
+			  {{/unless}}
+		  {{/each}}
+	  </div>
+    {{/each}}
+  </div>
+</section>
