@@ -19,13 +19,13 @@
   </div>
   {{#if (eq model.contentType 'pdf')}}
   <div class="preview-container">
-    <iframe width="100%" height="100%" src="{{model.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" height="450px" src="{{model.url}}" frameborder="0" allowfullscreen></iframe>
   </div>
   {{/if}}
 
   {{#if (eq model.contentType 'youtube')}}
   <div class="preview-container">
-    <iframe width="100%" height="100%" src="{{model.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe width="100%" src="{{model.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
   {{/if}}
 

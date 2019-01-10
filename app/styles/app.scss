@@ -1958,3 +1958,65 @@ img{
 h3 {
   font-size: 18px;
 }
+
+.tutorials-container {
+  max-width: 95%;
+  box-shadow: 0px 5px 14px 0 rgba(51, 51, 51, 0.2);
+  background-color: var(--white-two);
+}
+
+.tutorials-header {
+  max-width: 80%;
+  position: relative;
+  left: 3rem;
+  top: 0;
+}
+
+.tutorials-body {
+  border: 3px solid #e0e0e0;
+  max-width: 97%;
+  left: 1.5rem;
+  position:relative;
+}
+
+.tutorials-body .row {
+  padding: 0;
+  margin: 0;
+}
+
+.tutorials-left {
+  font-weight: bold;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  min-height: 450px;
+}
+
+.tutorials-left > div {
+  border: 3px solid #e0e0e0;
+  border-left: none;
+  border-bottom: none;
+  padding: 1rem;
+  color: #333333;
+  cursor: pointer;
+}
+
+.tutorials-left > .active {
+  background: white;
+  border-right: none;
+}
+
+.tutorials-left > div:first-child {
+  border-top: none;
+}
+
+.tutorials-left > div:last-child {
+  border-bottom: 3px solid #e0e0e0;
+}
+
+.tutorials-right {
+  min-height: 450px;
+  padding: 0;
+  margin: 0;
+}
