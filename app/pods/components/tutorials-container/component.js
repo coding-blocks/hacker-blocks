@@ -8,6 +8,7 @@ export default Ember.Component.extend({
     this._super (...arguments)
     let attachments = this.get ('contest.attachments').toArray ()
     this.set ('attachments', attachments)
+    attachments.map (attachment => attachment.set ('displayClass', ''))
     attachments[0].set ('displayClass', 'active')
   },
 
@@ -17,8 +18,9 @@ export default Ember.Component.extend({
       attachments.map (attachment => {
         attachment.set ('displayClass', '')
 
-        if (attachment.id === id)
+        if (attachment.id === id) {
           attachment.set ('displayClass', 'active')
+        }
       })
     }
   }
