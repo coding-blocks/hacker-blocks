@@ -85,13 +85,11 @@
         <div class="contest-description-container">
           {{markdown-to-html model.contest.description}}
         </div>
-		{{#unless model.contest.level}}
 		<div>
 		{{#each model.tags as |tag|}}
 		<button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag.name}}</button>
 		{{/each}}
 		</div>
-		{{/unless}}
       </div>
     </div>
     {{/if}}
@@ -145,9 +143,6 @@
             <button class="btn fil-cat btn-sm btn-filled btn-yellow" {{action "updateSelection" "Psolved" selectedTag}}  value="Psolved">Partially Solved</button>
             <button class="btn fil-cat btn-sm btn-filled btn-red" {{action "updateSelection" "Wrong" selectedTag}}  value="Wrong">Wrong</button>
             <br>
-            {{#each model.tags as |tag|}}
-				<button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag.name}}</button>
-            {{/each}}
           </div>
         </div>
 		{{/unless}}
