@@ -1393,11 +1393,13 @@ blue-bar {
   clear: both;
   max-width: 60%;
   margin-top: 0;
+  padding: 2rem;
 
   h1, h2, h3 {
     font-weight: normal;
   }
 }
+
 @media (max-width: 600px) {
   .contest-description-container {
     padding: 5rem;
