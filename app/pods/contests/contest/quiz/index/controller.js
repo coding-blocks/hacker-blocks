@@ -5,6 +5,20 @@ export default Ember.Controller.extend ({
   store: Ember.inject.service (),
   q: 1,
   notifications: Ember.inject.service ('toast'),
+
+  questionIds: Ember.computed ('model.quiz', function () {
+    return this.get ('model.quiz').hasMany ('questions').ids ()
+  }),
+
+  currentQuestion: Ember.computed ('q', function () {
+    const currentQuestionIndex = this.get ('q') - 1
+    return this.store.findRecord ('question', this.get ('questionIds')[currentQuestionIndex])
+  }),
+
+  lastQuestion: Ember.computed ('q', function () {
+    return (this.get ('q') === this.get ('questionIds').length)
+  }),
+
   attemptDuration: Ember.computed('model.quiz.contest.endTime', 'model.quiz.contest.duration', 'model.currentAttempt', function () {
     const userStartedAt = this.get('model.currentAttempt.startTime')
     const duration = this.get('model.quiz.contest.duration');
@@ -38,33 +52,41 @@ export default Ember.Controller.extend ({
   },
 
   actions: {
+    previousQuestion () {
+      this.set ('q', this.get ('q') - 1)
+    },
+
+    nextQuestion () {
+      this.set ('q', this.get ('q') + 1)
+    },
+
     restoreState () {
-      const submission = [],
-        store = this.get ('store'),
-        quiz = this.get ('model.quiz'),
-        contestId = window.location.pathname.slice(12, 15),
-        questions = this.get ('model.quiz.questions').toArray (),
-        currentQuizAttempt = this.get ('model.currentQuizAttempt')
-      ;
-
-      store.query ('quiz-submission', {
-        currentAttemptId: currentQuizAttempt.id
-      }).then (submissions => {
-        submissions.map (submission => {
-          let question = questions.findBy ('id', submission.get ('questionId'))
-          question.get ('choices')
-            .map (choice => {
-              if (choice.get ('id') === submission.get ('answerId')) {
-                choice.set ('selected', 'selected')
-                question.set ('state', 'selected')
-              }
-            })
-        })
-      })
-
-      questions.map (question => {
-        question.set ('review', localStorage.getItem (`review-${question.id}`))
-      })
+      // const submission = [],
+      //   store = this.get ('store'),
+      //   quiz = this.get ('model.quiz'),
+      //   contestId = window.location.pathname.slice(12, 15),
+      //   questions = this.get ('model.quiz.questions').toArray (),
+      //   currentQuizAttempt = this.get ('model.currentQuizAttempt')
+      // ;
+      //
+      // store.query ('quiz-submission', {
+      //   currentAttemptId: currentQuizAttempt.id
+      // }).then (submissions => {
+      //   submissions.map (submission => {
+      //     let question = questions.findBy ('id', submission.get ('questionId'))
+      //     question.get ('choices')
+      //       .map (choice => {
+      //         if (choice.get ('id') === submission.get ('answerId')) {
+      //           choice.set ('selected', 'selected')
+      //           question.set ('state', 'selected')
+      //         }
+      //       })
+      //   })
+      // })
+      //
+      // questions.map (question => {
+      //   question.set ('review', localStorage.getItem (`review-${question.id}`))
+      // })
     },
 
     redirectToContest () {
@@ -78,79 +100,79 @@ export default Ember.Controller.extend ({
 
     },
     markForReview (question) {
-      if (question.get ('review') === 'markForReview') {
-        question.set ('review', 'unselected')
-      } else {
-        question.set ('review', 'markForReview')
-      }
-
-      localStorage.setItem (`review-${question.id}`, question.get (`review`))
+      // if (question.get ('review') === 'markForReview') {
+      //   question.set ('review', 'unselected')
+      // } else {
+      //   question.set ('review', 'markForReview')
+      // }
+      //
+      // localStorage.setItem (`review-${question.id}`, question.get (`review`))
     },
     toggleChoice (choiceId, questionId) {
-
-      const store = this.get ('store'),
-        question = store.peekRecord ('question', questionId),
-        choice = store.peekRecord ('choice', choiceId),
-        currentQuizAttempt = this.get ('model.currentQuizAttempt')
-      ;
-
-      let selection = 'selected'
-      ;
-
-      if (choice.get ('selected') === 'selected') {
-        selection = 'unselected'
-      }
-
-      store.queryRecord ('quiz-submission', {
-        currentAttemptId: currentQuizAttempt.id,
-        questionId 
-      }).then (submission => {
-        if (! submission) {
-          store.createRecord ('quiz-submission', {
-            currentattemptId: currentQuizAttempt,
-            questionId,
-            answerId: choiceId
-          }).save ()
-        } else {
-          store.findRecord ('quiz-submission', submission.id)
-            .then (qSubmission => {
-              if (selection === 'selected') {
-                qSubmission.set ('answerId', choiceId)
-              } else {
-                qSubmission.set ('answerId', null)
-              }
-              qSubmission.save ()
-            })
-        }
-      })
-
-      localStorage.removeItem (`question-${question.id}`)
-
-      question.get ('choices').map (choice => {
-        choice.set ('selected', 'unselected')
-        localStorage.removeItem (`choice-${choice.id}`)
-      })
-
-      choice.set ('selected', selection)
-      question.set ('state', selection)
-
-      localStorage.setItem (`question-${question.id}`, selection)
-      localStorage.setItem (`choice-${choice.id}`, selection)
+      //
+      // const store = this.get ('store'),
+      //   question = store.peekRecord ('question', questionId),
+      //   choice = store.peekRecord ('choice', choiceId),
+      //   currentQuizAttempt = this.get ('model.currentQuizAttempt')
+      // ;
+      //
+      // let selection = 'selected'
+      // ;
+      //
+      // if (choice.get ('selected') === 'selected') {
+      //   selection = 'unselected'
+      // }
+      //
+      // store.queryRecord ('quiz-submission', {
+      //   currentAttemptId: currentQuizAttempt.id,
+      //   questionId 
+      // }).then (submission => {
+      //   if (! submission) {
+      //     store.createRecord ('quiz-submission', {
+      //       currentattemptId: currentQuizAttempt,
+      //       questionId,
+      //       answerId: choiceId
+      //     }).save ()
+      //   } else {
+      //     store.findRecord ('quiz-submission', submission.id)
+      //       .then (qSubmission => {
+      //         if (selection === 'selected') {
+      //           qSubmission.set ('answerId', choiceId)
+      //         } else {
+      //           qSubmission.set ('answerId', null)
+      //         }
+      //         qSubmission.save ()
+      //       })
+      //   }
+      // })
+      //
+      // localStorage.removeItem (`question-${question.id}`)
+      //
+      // question.get ('choices').map (choice => {
+      //   choice.set ('selected', 'unselected')
+      //   localStorage.removeItem (`choice-${choice.id}`)
+      // })
+      //
+      // choice.set ('selected', selection)
+      // question.set ('state', selection)
+      //
+      // localStorage.setItem (`question-${question.id}`, selection)
+      // localStorage.setItem (`choice-${choice.id}`, selection)
     },
 
     // Fixme
     submitQuiz (quizId) {
-      const currentQuizAttempt = this.get ('model.currentQuizAttempt'),
-        store = this.get ('store')
-      ;
-
-      store.findRecord ('quiz-attempt', currentQuizAttempt.id)
-        .then (attempt => {
-          attempt.set ('result', {})
-          attempt.save ()
-          this.get ('notifications').info ('Test Successfully Submitted!')
-          return this.transitionToRoute ('contests.index')
-        })
+      // const currentQuizAttempt = this.get ('model.currentQuizAttempt'),
+      //   store = this.get ('store')
+      // ;
+      //
+      // store.findRecord ('quiz-attempt', currentQuizAttempt.id)
+      //   .then (attempt => {
+      //     attempt.set ('result', {})
+      //     attempt.save ()
+      //     this.get ('notifications').info ('Test Successfully Submitted!')
+      //     return this.transitionToRoute ('contests.index')
+      //   })
     }
   }
 })

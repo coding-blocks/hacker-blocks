@@ -3,6 +3,7 @@
     <div class="header-left">
       <div class="heading">
         {{model.quiz.title}}
+		{{q}}
 
         {{model.currentAttempt.startTime}}
       </div>
@@ -29,58 +30,30 @@
       {{markdown-to-html model.quiz.contest.description}}
     </div>
   </div>
-  <div class="container-fluid">
-    <div class="row clearfix" style="margin-left: 0">
-      <div class="questions-container col-md-6">
-        <div class="title" id="qTitle">
-          <h4>{{q}}. {{model.question.title}}</h4>
-        </div>
-        <div class="description">
-          {{markdown-to-html model.question.description}}
-        </div>
-        {{#each model.question.choices as |choice|}}
-          <div class="choices-container">
-            <div class="choice {{choice.selected}}" {{action "toggleChoice" choice.id model.question.id q}}>
-              <div class="checkbox"></div>
-              {{markdown-to-html choice.description}}
-            </div>
-          </div>
-        {{/each}}
-		<div class="navigation">
-			<div>
-				{{#if (gt q 1)}}
-				<a href="#" class="btn btn-filled btn-sm" {{action 'changeQuestion' -1}}>Previous</a>
-				{{else}}
-				<a class="btn btn-filled btn-sm">Previous</a>
-				{{/if}}
-			</div>
 
-			<div>
-				<a href="#" class="btn btn-filled btn-sm" {{action 'markForReview' model.question}}>Review Later</a>
-			</div>
+  <section class="row clearfix">
+	  <div class="col-md-6">
+		  {{question-container question=currentQuestion}}
+		  <div class="navigation">
+			  {{#unless (eq q 1)}}
+			  <div>
+				  <a href="#" class="btn btn-filled btn-sm" {{action 'previousQuestion'}}>Previous</a>
+			  </div>
+			  {{/unless}}
 
-			<div>
-				{{#if (lt q model.quiz.questions.length)}}
-				<a href="#" class="btn btn-filled btn-sm" {{action 'changeQuestion' 1}}>Next</a>
-				{{else}}
-				<a class="btn btn-filled btn-sm">Next</a>
-				{{/if}}
-			</div>
-		</div>
-      </div>
-      <div class="review col-md-4 col-md-offset-1">
-        {{c-review-pad questions=model.quiz.questions onReview=(action 'goToQuestion')}}
-        <div class="hints">
-          <div><div class="hint-box" style="background: green;"></div>Answered</div>
-          <div><div class="hint-box"style="background: yellow;"></div>Marked For Review</div>
-          <div><div class="hint-box"style="background: gray;"></div>Not Answered</div>
-        </div>
-        <div class="text-center">
-          <button class="btn-blue btn fil-cat btn-lg btn-filled" {{action "submitQuiz" model.quiz.id}}>Submit</button>
-        </div>
-      </div>
-    </div>
-  </div>
+			  <div>
+				  <a href="#" class="btn btn-filled btn-sm" {{action
+					  'markForReview' model.question}}>Review Later</a>
+			  </div>
+
+			  {{#unless lastQuestion}}
+			  <div>
+				  <a href="#" class="btn btn-filled btn-sm" {{action 'nextQuestion'}}>Next</a>
+			  </div>
+		  {{/unless}}
+		  </div>
+	  </div>
+  </section>
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML-full"></script>

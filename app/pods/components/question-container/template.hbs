@@ -1,0 +1,18 @@
+<div class="questions-container">
+	<div class="title" id="qTitle">
+		<h4>{{question.title}}</h4>
+	</div>
+
+	<div class="description">
+		{{markdown-to-html question.description}}
+	</div>
+
+	{{#each question.choices as |choice|}}
+		<div class="choices-container">
+			<div class="choice {{choice.selected}}" {{action "toggleChoice" choice.id model.question.id q}}>
+				<div class="checkbox"></div>
+				{{markdown-to-html choice.description}}
+			</div>
+		</div>
+	{{/each}}
+</div>
