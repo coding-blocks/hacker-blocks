@@ -18,33 +18,27 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash ({
       quiz,
       contest,
-      currentAttempt
+      currentAttempt,
+      currentQuizAttempt: this.store.queryRecord ('quiz_attempt', {
+        quizId: quiz.id,
+        contestId: contest.id,
+        custom: {
+          ext: 'url',
+          url: 'currentAttempt'
+        }
+      })
     })
-    //
-    // return Ember.RSVP.hash ({
-    //   currentAttempt: currentAttempt,
-    //   question: this.store.findRecord('question', quiz.get('questions').objectAt(params.q - 1).id),
-    //   quiz: quiz,
-    //   currentQuizAttempt: this.store.queryRecord ('quiz_attempt', {
-    //     quizId: quiz.id,
-    //     contestId: contest.id,
-    //     custom: {
-    //       ext: 'url',
-    //       url: 'currentAttempt'
-    //     }
-    //   })
-    // })
   },
 
   afterModel (params) {
-    // let contest = params.quiz.get ('contest'),
-    //   duration = contest.get ('duration'),
-    //   { currentAttempt } = params
-    // ;
-    //
-    // if (duration && (! currentAttempt)) {
-    //   this.transitionTo ('contests.denied', contest.id)
-    // }
+    let contest = params.quiz.get ('contest'),
+      duration = contest.get ('duration'),
+      { currentAttempt } = params
+    ;
+
+    if (duration && (! currentAttempt)) {
+      this.transitionTo ('contests.denied', contest.id)
+    }
   },
 
   renderTemplate () {

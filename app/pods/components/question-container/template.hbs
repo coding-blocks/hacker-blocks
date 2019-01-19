@@ -9,7 +9,7 @@
 
 	{{#each question.choices as |choice|}}
 		<div class="choices-container">
-			<div class="choice {{choice.selected}}" {{action "toggleChoice" choice.id model.question.id q}}>
+			<div class="choice selected-{{choice.selected}}" {{action "toggleChoice" choice}}>
 				<div class="checkbox"></div>
 				{{markdown-to-html choice.description}}
 			</div>

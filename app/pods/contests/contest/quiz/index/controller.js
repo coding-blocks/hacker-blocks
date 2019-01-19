@@ -4,6 +4,9 @@ export default Ember.Controller.extend ({
   queryParams: ['q'],
   store: Ember.inject.service (),
   q: 1,
+  quizState: null,
+  answerTimestamp: Date.now (),
+  lastQuestionChange: Date.now (),
   notifications: Ember.inject.service ('toast'),
 
   questionIds: Ember.computed ('model.quiz', function () {
@@ -12,6 +15,7 @@ export default Ember.Controller.extend ({
 
   currentQuestion: Ember.computed ('q', function () {
     const currentQuestionIndex = this.get ('q') - 1
+    this.set ('lastQuestionChange', Date.now ())
     return this.store.findRecord ('question', this.get ('questionIds')[currentQuestionIndex])
   }),
 
@@ -61,118 +65,96 @@ export default Ember.Controller.extend ({
     },
 
     restoreState () {
-      // const submission = [],
-      //   store = this.get ('store'),
-      //   quiz = this.get ('model.quiz'),
-      //   contestId = window.location.pathname.slice(12, 15),
-      //   questions = this.get ('model.quiz.questions').toArray (),
-      //   currentQuizAttempt = this.get ('model.currentQuizAttempt')
-      // ;
-      //
-      // store.query ('quiz-submission', {
-      //   currentAttemptId: currentQuizAttempt.id
-      // }).then (submissions => {
-      //   submissions.map (submission => {
-      //     let question = questions.findBy ('id', submission.get ('questionId'))
-      //     question.get ('choices')
-      //       .map (choice => {
-      //         if (choice.get ('id') === submission.get ('answerId')) {
-      //           choice.set ('selected', 'selected')
-      //           question.set ('state', 'selected')
-      //         }
-      //       })
-      //   })
-      // })
-      //
-      // questions.map (question => {
-      //   question.set ('review', localStorage.getItem (`review-${question.id}`))
-      // })
+      const currentQuizAttempt = this.get ('model.currentQuizAttempt'),
+        store = this.get ('store')
+      ;
+
+      store.query ('quiz-submission', {
+        currentAttemptId: currentQuizAttempt.id
+      })
+        .then (submissions => {
+          this.set ('quizState', submissions.map (submission => ({
+            questionId: submission.get ('questionId'),
+            answerId: submission.get ('answerId')
+          })))
+        })
+    },
+
+    updateQuizState (choice) {
+      const currentQuestion = this.get ('currentQuestion'),
+        quizState = this.get ('quizState'),
+        answerId = (choice.get ('selected')) ? choice.get ('id') : null
+      ;
+
+      if (answerId) {
+        localStorage.setItem (`review-${currentQuestion.get ('id')}`, false)
+      }
+
+      let oldState = quizState.find (q => (q.questionId === currentQuestion.get ('id')))
+
+      if (! oldState) {
+        quizState.push ({
+          questionId: currentQuestion.get ('id'),
+          answerId: answerId,
+          review: false
+        })
+      }
+      else {
+        oldState.answerId = answerId
+        oldState.review = false
+      }
+
+      this.set ('answerTimestamp', Date.now ())
     },
 
     redirectToContest () {
-      this.transitionToRoute('contests.contest', model.contest.id);
+      // this.transitionToRoute('contests.contest', model.contest.id);
     },
+
     goToQuestion (index) {
       this.set('q', index)
     },
+
     changeQuestion (index) {
       this.incrementProperty('q', index)
-
-    },
-    markForReview (question) {
-      // if (question.get ('review') === 'markForReview') {
-      //   question.set ('review', 'unselected')
-      // } else {
-      //   question.set ('review', 'markForReview')
-      // }
-      //
-      // localStorage.setItem (`review-${question.id}`, question.get (`review`))
-    },
-    toggleChoice (choiceId, questionId) {
-      //
-      // const store = this.get ('store'),
-      //   question = store.peekRecord ('question', questionId),
-      //   choice = store.peekRecord ('choice', choiceId),
-      //   currentQuizAttempt = this.get ('model.currentQuizAttempt')
-      // ;
-      //
-      // let selection = 'selected'
-      // ;
-      //
-      // if (choice.get ('selected') === 'selected') {
-      //   selection = 'unselected'
-      // }
-      //
-      // store.queryRecord ('quiz-submission', {
-      //   currentAttemptId: currentQuizAttempt.id,
-      //   questionId 
-      // }).then (submission => {
-      //   if (! submission) {
-      //     store.createRecord ('quiz-submission', {
-      //       currentattemptId: currentQuizAttempt,
-      //       questionId,
-      //       answerId: choiceId
-      //     }).save ()
-      //   } else {
-      //     store.findRecord ('quiz-submission', submission.id)
-      //       .then (qSubmission => {
-      //         if (selection === 'selected') {
-      //           qSubmission.set ('answerId', choiceId)
-      //         } else {
-      //           qSubmission.set ('answerId', null)
-      //         }
-      //         qSubmission.save ()
-      //       })
-      //   }
-      // })
-      //
-      // localStorage.removeItem (`question-${question.id}`)
-      //
-      // question.get ('choices').map (choice => {
-      //   choice.set ('selected', 'unselected')
-      //   localStorage.removeItem (`choice-${choice.id}`)
-      // })
-      //
-      // choice.set ('selected', selection)
-      // question.set ('state', selection)
-      //
-      // localStorage.setItem (`question-${question.id}`, selection)
-      // localStorage.setItem (`choice-${choice.id}`, selection)
     },
 
-    // Fixme
-    submitQuiz (quizId) {
-      // const currentQuizAttempt = this.get ('model.currentQuizAttempt'),
-      //   store = this.get ('store')
-      // ;
-      //
-      // store.findRecord ('quiz-attempt', currentQuizAttempt.id)
-      //   .then (attempt => {
-      //     attempt.set ('result', {})
-      //     attempt.save ()
-      //     this.get ('notifications').info ('Test Successfully Submitted!')
-      //     return this.transitionToRoute ('contests.index')
-      //   })
+    markForReview () {
+      let question = this.get ('currentQuestion'),
+        id = question.get ('id')
+      ;
+
+      question.set ('review', (! question.get ('review')))
+
+      localStorage.setItem (`review-${id}`, question.get ('review'))
+
+      this.set ('answerTimestamp', Date.now ())
+    },
+
+    submitQuiz () {
+      const currentQuizAttempt = this.get ('model.currentQuizAttempt'),
+        store = this.get ('store'),
+        toast = this.get ('notifications'),
+        questionIds = this.get ('questionIds')
+      ;
+
+      store.findRecord ('quiz-attempt', currentQuizAttempt.id)
+        .then (attempt => {
+          attempt.set ('result', {})
+          return attempt.save ()
+        })
+        .then (() => {
+          questionIds.map (id => {
+            localStorage.removeItem (`review-${id}`)
+          })
+          this.set ('quizState', null)
+          this.get ('notifications').info ('Test Successfully Submitted!')
+          return this.transitionToRoute ('contests.index')
+        })
+        .catch (error => {
+          console.error (error)
+          toast.error ('Could not save test, please check your network connection!')
+        })
     }
   }
 })

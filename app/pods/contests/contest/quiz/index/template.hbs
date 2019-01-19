@@ -33,7 +33,7 @@
 
   <section class="row clearfix">
 	  <div class="col-md-6">
-		  {{question-container question=currentQuestion}}
+		  {{question-container question=currentQuestion quizState=quizState lastUpdated=lastQuestionChange updateQuizState=(action 'updateQuizState') attempt=model.currentQuizAttempt}}
 		  <div class="navigation">
 			  {{#unless (eq q 1)}}
 			  <div>
@@ -42,16 +42,21 @@
 			  {{/unless}}
 
 			  <div>
-				  <a href="#" class="btn btn-filled btn-sm" {{action
-					  'markForReview' model.question}}>Review Later</a>
+				  <a href="#" class="btn btn-filled btn-sm" {{action 'markForReview'}}>Review Later</a>
 			  </div>
 
 			  {{#unless lastQuestion}}
 			  <div>
 				  <a href="#" class="btn btn-filled btn-sm" {{action 'nextQuestion'}}>Next</a>
 			  </div>
-		  {{/unless}}
+			  {{/unless}}
 		  </div>
+		  <div>
+			  <button class="btn btn-filled" {{action 'submitQuiz'}}>Submit</button>
+		  </div>
+	  </div>
+	  <div class="col-md-6">
+		 {{c-review-pad questionIds=questionIds quizState=quizState lastUpdated=answerTimestamp onReview=(action 'goToQuestion')}}
 	  </div>
   </section>
 </section>
