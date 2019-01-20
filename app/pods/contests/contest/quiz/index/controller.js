@@ -23,6 +23,10 @@ export default Ember.Controller.extend ({
     return (this.get ('q') === this.get ('questionIds').length)
   }),
 
+  firstQuestion: Ember.computed ('q', function () {
+    return (this.get ('q') === 1)
+  }),
+
   attemptDuration: Ember.computed('model.quiz.contest.endTime', 'model.quiz.contest.duration', 'model.currentAttempt', function () {
     const userStartedAt = this.get('model.currentAttempt.startTime')
     const duration = this.get('model.quiz.contest.duration');
@@ -57,10 +61,18 @@ export default Ember.Controller.extend ({
 
   actions: {
     previousQuestion () {
+      if (this.get ('firstQuestion')) {
+        return
+      }
+
       this.set ('q', this.get ('q') - 1)
     },
 
     nextQuestion () {
+      if (this.get ('lastQuestion')) {
+        return
+      }
+
       this.set ('q', this.get ('q') + 1)
     },
 
