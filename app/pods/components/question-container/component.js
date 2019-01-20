@@ -9,6 +9,8 @@ export default Ember.Component.extend({
       choices = this.get ('question.choices')
     ;
 
+    console.log ('--> didRender')
+
     const questionContainer = document.querySelector ('.questions-container')
 
     if (window.MathJax && questionContainer) {
