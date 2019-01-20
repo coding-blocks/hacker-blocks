@@ -9,8 +9,6 @@ export default Ember.Component.extend({
       choices = this.get ('question.choices')
     ;
 
-    console.log ('--> didRender')
-
     const questionContainer = document.querySelector ('.questions-container')
 
     if (window.MathJax && questionContainer) {
@@ -29,7 +27,7 @@ export default Ember.Component.extend({
 
     let selected = choices.find (choice => choice.get ('id') === state.answerId)
 
-    selected.set ('selected', true)
+    selected && selected.set ('selected', true)
   },
 
   actions: {
@@ -72,6 +70,9 @@ export default Ember.Component.extend({
             })
         }
       })
+        .catch (error => {
+          console.log (error)
+        })
 
       this.get ('updateQuizState') (choice)
     }
