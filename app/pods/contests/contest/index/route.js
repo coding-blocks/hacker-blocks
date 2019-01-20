@@ -76,8 +76,9 @@ export default Ember.Route.extend({
 
     const quizzes = contest.get ('quizzes').toArray ()
     const problemCount = contest.get ('problems.length')
+    const attachments = contest.get('attachments').toArray()
 
-    if (quizzes.length === 1 && (! problemCount)) {
+    if (quizzes.length === 1 && (! problemCount) && attachments.length === 0) {
       this.transitionTo ('contests.contest.quiz.index', contest.id, quizzes[0].id)
     }
 
