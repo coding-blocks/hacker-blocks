@@ -9,6 +9,12 @@ export default Ember.Component.extend({
       choices = this.get ('question.choices')
     ;
 
+    const questionContainer = document.querySelector ('.questions-container')
+
+    if (window.MathJax && questionContainer) {
+      Ember.run.later (_ => MathJax.Hub.Queue(["Typeset", MathJax.Hub, questionContainer]))
+    }
+
     if (! quizState) {
       return
     }
