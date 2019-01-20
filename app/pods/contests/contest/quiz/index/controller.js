@@ -147,9 +147,11 @@ export default Ember.Controller.extend ({
       const currentQuizAttempt = this.get ('model.currentQuizAttempt'),
         store = this.get ('store'),
         toast = this.get ('notifications'),
-        questionIds = this.get ('questionIds')
+        questionIds = this.get ('questionIds'),
+        contest = this.get('model.quiz.contest'),
+        quizzes = contest.get('quizzes').toArray(),
+        problemCount = contest.get('problems.length')
       ;
-
       store.findRecord ('quiz-attempt', currentQuizAttempt.id)
         .then (attempt => {
           attempt.set ('result', {})
@@ -161,7 +163,11 @@ export default Ember.Controller.extend ({
           })
           this.set ('quizState', null)
           this.get ('notifications').info ('Test Successfully Submitted!')
-          return this.transitionToRoute ('contests.index')
+          if (quizzes.length === 1 && (! problemCount)) {
+            return this.transitionToRoute('contests.index')
+          } else {
+            return this.transitionToRoute('contests.contest', contest.id)
+          }
         })
         .catch (error => {
           console.error (error)
