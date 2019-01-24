@@ -31,13 +31,21 @@
 			</span>
           <span class="big-alpha">Problems</span>
         </div>
+
+		{{#if contest.quizCount}}
+        <div class="text-col-two text-center">
+			<span class="big-digit" style="color: #02CCBA;">{{contest.quizCount}}</span>
+			<span class="big-alpha">Quizzes</span>
+        </div>
+		{{else}}
         {{#if showPoints}}
         <div class="text-col-two text-center">
 			<span class="big-digit" style="color: #02CCBA;">{{contest.points}}</span>
           <span
             class="big-alpha">Points</span>
         </div>
-          {{/if}}
+	    {{/if}}
+		{{/if}}
 	  {{/if}}
         <hr>
         <p>{{truncate-multiline text = contest.description lines=2 showButton=false}}</p>

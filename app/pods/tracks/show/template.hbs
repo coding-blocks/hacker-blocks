@@ -58,8 +58,13 @@
 									  </div>
 
 									  <div class="col-xs-4">
-										  <h4 class="blue m-0">{{contest.points}}</h4>
-										  Points
+										  {{#if contest.quizCount}}
+											  <h4 class="blue m-0">{{contest.quizCount}}</h4>
+											  Quizzes
+										  {{else}}
+											  <h4 class="blue m-0">{{contest.points}}</h4>
+											  Points
+										  {{/if}}
 									  </div>
 								  </div>
 							  </div>

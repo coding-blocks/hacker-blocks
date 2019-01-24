@@ -29,7 +29,7 @@
   <div class="header">
     <div class="header-left">
       <div class="heading">
-		{{model.contest.level.title}}
+		<small class="text-muted">{{model.contest.level.description}}</small>
       </div>
     </div>
     <div class="header-left">
@@ -174,9 +174,7 @@
                     <p class="text-center"><span
                        style="color:#FF5483;"
                        class="big-digit">{{quiz.questionCount}}</span>
-                      <span style="vertical-align:
-                      baseline"
-                            class="big-alpha">Questions</span>
+                      <span style="vertical-align: baseline" class="big-alpha">Questions</span>
                     </p>
                   </div>
                 </div>
@@ -187,6 +185,7 @@
           </div>
         </div>
         {{/if}}
+		{{#if model.contest.problems}}
         <div class="">
           <div class="body">
             <div class="row clearfix">
@@ -201,6 +200,7 @@
             </div>
           </div>
         </div>
+		{{/if}}
       </div>
     </div>
   </div>

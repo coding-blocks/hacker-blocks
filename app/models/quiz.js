@@ -5,5 +5,5 @@ export default DS.Model.extend({
   description: DS.attr(),
   duration: DS.attr(),
   maxAttempts: DS.attr(),
-  questions: DS.hasMany('question')
+  questions: DS.hasMany('question', { async: true })
 })

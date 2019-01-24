@@ -18,7 +18,7 @@ export default DS.Model.extend({
   allowEditorialUnlocks: DS.attr (),
   allowTestcaseUnlocks: DS.attr (),
   quizzes: DS.hasMany('quizzes', { async: true }),
-  attachments: DS.hasMany('attachments', {async: true}),
+  attachments: DS.hasMany('attachments', { async: true }),
   description: DS.attr(),
   competitionName: DS.attr (),
   passingScore: DS.attr (),
@@ -33,10 +33,12 @@ export default DS.Model.extend({
 
     return metaProblemCount
   }),
-  showCounts: Ember.computed ('problemCount', function () {
-    return (parseInt (this.get ('problemCount')) > 0)
+  quizCount: Ember.computed ('quizzes', function () {
+    return this.hasMany ('quizzes').ids ().length
   }),
-  quizCount: 0, // TODO
+  showCounts: Ember.computed ('problemCount', function () {
+    return (parseInt (this.get ('problemCount')) > 0) || (this.get ('quizCount') > 0)
+  }),
   showLeaderboard: DS.attr(),
   allowedLanguages: DS.attr(),
   showTags: DS.attr(),
