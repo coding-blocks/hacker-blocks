@@ -2,8 +2,7 @@
   <div class="body">
 	<div class="row clearfix">
 		<div class="tutorials-header">
-			<h3>{{contest.name}}</h3>
-			<p>{{contest.description}}</p>
+			<h3>Learning & Resources</h3>
 		</div>
 	</div>
 	<div class="row clearfix">
@@ -18,7 +17,7 @@
 					{{#each attachments as |attachment|}}
 						{{#if (eq "active" attachment.displayClass)}}
 							{{#if (eq attachment.contentType 'pdf')}}
-								<iframe width="100%" style="min-height: 450px" src="{{attachment.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+								<iframe width="100%" style="min-height: 450px" src="{{attachment.url}}#toolbar=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 							{{/if}}
 
 							{{#if (eq attachment.contentType 'youtube')}}
