@@ -11,7 +11,7 @@ export default Ember.Route.extend({
 
   model (params) {
     const quiz = this.modelFor ('contests.contest.quiz'),
-      contest = this.modelFor ('contests.contest'),
+      { contest } = this.modelFor ('contests.contest'),
       currentAttempt = this.get ('currentAttemptService').getCurrentAttempts(quiz.get ('contest').id)
     ;
 
