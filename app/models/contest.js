@@ -24,6 +24,9 @@ export default DS.Model.extend({
   passingScore: DS.attr (),
   competitionId: DS.attr (),
   meta: DS.attr(),
+  durationInHours: Ember.computed ('duration', function () {
+    return (this.get ('duration') / 3600).toPrecision (2)
+  }),
   problemCount: Ember.computed ('meta.problem-count', function () {
     const metaProblemCount = this.get ('meta.problem-count')
 
