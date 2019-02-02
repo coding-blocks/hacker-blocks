@@ -54,6 +54,7 @@
 	  </div>
 	  <div class="col-md-3 col-md-offset-1">
 		 {{c-review-pad questionIds=questionIds quizState=quizState lastUpdated=answerTimestamp onReview=(action 'goToQuestion')}}
+		 {{#link-to 'contests.contest.quiz-attempts' model.quiz.contest.id model.quiz.id class="btn btn-red"}}Previous Attempts{{/link-to}}
 	  </div>
   </section>
 </section>

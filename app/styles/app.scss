@@ -2022,3 +2022,27 @@ h3 {
   padding: 0;
   margin: 0;
 }
+
+.qa-container {
+  margin-right: 1rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-shadow: none;
+
+  h3 {
+    font-weight: normal;
+  }
+
+  .choice-container {
+    margin-bottom: 1rem;
+  }
+
+  .correct {
+    color: green;
+  }
+
+  .incorrect {
+    color: red;
+  }
+}

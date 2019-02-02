@@ -1,0 +1,55 @@
+<section class="content">
+  <div class="header">
+    <div class="header-left">
+      <div class="heading">
+		  Attempt
+      </div>
+    </div>
+    <div class="header-right">
+      {{#link-to 'contests.contest' model.contest.id class="btn btn-red"}}
+        Back to Contest
+      {{/link-to}}
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row"></div>
+    <div class="clearfix" style="margin-left: 0; padding-left: 3rem;">
+    </div>
+  </div>
+
+  <section class="row clearfix">
+	  <div class="col-md-11">
+		  {{#each model.attempt.quizSubmissions as |submission|}}
+			  {{quiz-result submission=submission}}
+		  {{/each}}
+	  </div>
+  </section>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+<style>
+.question {
+	margin-left: 2.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hints {
+  margin: 20px;
+}
+
+.hint-box {
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.review {
+  width: 270px;
+  background-color: #f7f7f7;
+}
+</style>

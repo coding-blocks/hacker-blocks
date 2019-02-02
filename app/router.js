@@ -34,7 +34,9 @@ Router.map(function() {
           this.route('show', { path: '/:attempt_id' });
         });
       });
-      this.route('quiz-attempts');
+      this.route('quiz-attempts', { path: '/qa/:quiz_id' }, function() {
+        this.route ('show', { path: '/:attempt_id' })
+      });
       this.route('attachment', { path: '/attach/:attachment_id' }, function() {});
     });
     this.route('upcoming',{ path: '/upcoming/c/:contest_id' });
