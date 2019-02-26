@@ -22,5 +22,6 @@ export default DS.Model.extend({
   problem:DS.belongsTo('problem',{inverse:'top'}),
   contest:DS.belongsTo('contest'),
   user: DS.belongsTo('user'),
-  certificateEarned: DS.attr ('boolean')
+  certificateEarned: DS.attr ('boolean'),
+  plagiarismDetected: DS.attr('boolean')
 });

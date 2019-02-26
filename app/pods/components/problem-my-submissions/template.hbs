@@ -26,7 +26,11 @@
             <td>{{submission.score}}</td>
           {{/if}}
           <td>{{getlang submission.language}}</td>
-          {{#if (eq submission.result -1)}}
+          {{#if (and contest.plagiarismFiltering submission.plagiarismDetected)}}
+            <td>
+              <div class="isa_error"><i class="material-icons">warning</i>Plagiarism Detected</div>
+            </td>
+          {{else if (eq submission.result -1)}}
             <td>
               <div class="isa_warning"><i class="material-icons">warning</i>Compilation Error</div>
             </td>

@@ -7,10 +7,12 @@ const { inject: { service }, Route } = Ember;
 
 export default Ember.Route.extend({
   toast: Ember.inject.service (),
-	session: service('session'),
+  session: service('session'),
+  currentContest: service('current-contest'),
 
   model (params) {
     let contestId = params.contest_id;
+    this.get('currentContest').setContest(contestId)
     return Ember.RSVP.hash({
       contest: this.get('store').findRecord('contest', contestId, {reload: true})
     })
