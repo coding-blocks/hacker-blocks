@@ -83,7 +83,12 @@
                 </td>
               {{/unless}}
               {{#unless hideScore}}
-                <td>{{decimal-to-whole submission.score}}</td>
+                {{#if (and contest.plagiarismFiltering submission.plagiarismDetected)}}
+                  <td class='red'>Plagiarism Detected</td>
+                {{else}}
+                  <td>{{decimal-to-whole submission.score}}</td>
+                {{/if}}
+                
               {{/unless}}
               {{#if submission.language}}
                 <td>{{getlang submission.language}}</td>

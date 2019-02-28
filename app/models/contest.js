@@ -87,5 +87,6 @@ export default DS.Model.extend({
     get() {
       return moment().unix() > this.get('endTime');
     }
-  })
+  }),
+  plagiarismFiltering: DS.attr()
 });

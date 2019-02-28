@@ -46,6 +46,8 @@ export default Ember.Component.extend({
 
     this.get ('getLeaderBoard').perform ();
 
+    this.set('contest', this.get('store').peekRecord('contest', this.get('contestId')))
+
     let refreshInterval = this.get ('refreshInterval')
 
     if (refreshInterval) {
