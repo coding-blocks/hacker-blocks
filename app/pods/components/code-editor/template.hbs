@@ -74,6 +74,7 @@
         <pre>{{base64-decode output}}</pre>
         </p>
       {{else if output}}
+		{{#submission-explanation id=submissionId explanation=explanation}} {{/submission-explanation}}
         <hr/>
         <table class="table table-striped">
           <thead>
@@ -107,7 +108,7 @@
           Provide custom input</a>
       </div>
       {{#if customInput}}
-        <textarea id="custom-input" class="col-md-12" id="custom-input">{{#if problem.content.sample-input}}{{problem.content.sample-input}}{{/if}} </textarea>
+        <textarea id="custom-input" class="col-md-12" id="custom-input">{{#if problem.content.sample-input}}{{problem.content.sample-input}}{{/if}}</textarea>
       {{/if}}
     </div>
   </div>

@@ -71,6 +71,9 @@ function judge(component, problemId, contestId, noScore, headers) {
 
           let submission = response.judge_result
 
+          component.set ('explanation', response.explanation)
+          component.set ('submissionId', data.submissionId)
+
           clearInterval (pollForResult);
 
           component.sendAction('refreshModel');
@@ -244,7 +247,6 @@ export default Ember.Component.extend({
     },
 
     reset() {
-      console.log("RESET");
       let langId = $('#langSelect :selected').val();
       let editor = ace.edit("editor");
       editor.setValue(this.get('stub'));
@@ -260,6 +262,12 @@ export default Ember.Component.extend({
         this.set('customInput', false);
       } else {
         this.set('customInput', true);
+
+        Ember.run.later (() => {
+          let customInputField = document.querySelector ('#custom-input')
+          customInputField.focus ()
+          customInputField.select ()
+        })
       }
     },
 

@@ -23,7 +23,7 @@
           {{#if (eq submission.result -2)}}
             <td>N/A</td>
           {{else}}
-            <td>{{submission.score}}</td>
+			  <td>{{submission.score}} <a id="doe">(?)</a> </td>
           {{/if}}
           <td>{{getlang submission.language}}</td>
           {{#if (and contest.plagiarismFiltering submission.plagiarismDetected)}}

@@ -19,9 +19,9 @@
           {{/countdown-timer}}
         </div>
       {{/if}}
-      {{#link-to 'contests.contest' model.quiz.contest.id class="btn btn-red"}}
-        Back to Contest
-      {{/link-to}}
+	  <div class="col-md-6 col-md-offset-3">
+		  <button class="btn btn-filled btn-block" data-toggle="modal" data-target="#submissionConfirmation">Submit Quiz</button>
+	  </div>
     </div>
   </div>
   <div class="container-fluid">
@@ -46,18 +46,36 @@
 			  <div class="col-md-4">
 				  <a href="#" class="btn btn-filled btn-sm btn-block" disabled={{lastQuestion}} {{action 'nextQuestion'}}>Next &gt;</a>
 			  </div>
-
-			  <div class="col-md-6 col-md-offset-3">
-				  <button class="btn btn-filled btn-block" {{action 'submitQuiz'}}>Submit</button>
-			  </div>
 		  </div>
+		  {{#link-to 'contests.contest' model.quiz.contest.id class="col-md-6 col-md-offset-3 btn btn-red btn-block"}}
+			  Back To Contest
+		  {{/link-to}}
 	  </div>
 	  <div class="col-md-3 col-md-offset-1">
-		 {{c-review-pad questionIds=questionIds quizState=quizState lastUpdated=answerTimestamp onReview=(action 'goToQuestion')}}
-		 {{#link-to 'contests.contest.quiz-attempts' model.quiz.contest.id model.quiz.id class="btn btn-red"}}Previous Attempts{{/link-to}}
+		  {{c-review-pad questionIds=questionIds quizState=quizState lastUpdated=answerTimestamp onReview=(action 'goToQuestion')}}
+		  {{#link-to 'contests.contest.quiz-attempts' model.quiz.contest.id model.quiz.id class="btn btn-red"}}Previous Attempts{{/link-to}}
 	  </div>
   </section>
+
+  <div id="submissionConfirmation" class="modal fade" data-backdrop="false" tabindex="-1" role="dialog">
+	  <div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			  <div class="modal-header text-center">
+				  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  <h4 class="modal-title">Submit quiz for grading?</h4>
+				  <hr />
+			  </div>
+			  <div class="modal-body text-center">
+				  <h5 class="red">This will irrevocably submit the quiz for grading.</h5>
+				  <p class="text-muted">You might not be able to attempt it again.</p>
+				  <button type="button" class="btn btn-raised btn-success" {{action 'submitQuiz'}}>Yes, I'm sure.</button>
+				  <button type="button" class="btn btn-raised label-danger btn-lg" data-dismiss="modal">No, take me back.</button>
+			  </div>
+		  </div><!-- /.modal-content -->
+	  </div><!-- /.modal-dialog -->
+  </div>
 </section>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML-full"></script>
 

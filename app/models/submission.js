@@ -13,6 +13,7 @@ export default DS.Model.extend({
   submitAt: DS.attr(),
   language: DS.attr(),
   score: DS.attr(),
+  explanation: DS.attr ('string'),
   result: DS.attr(),
   problemId: DS.attr('string'),
   collegeName: DS.attr ('string'),
