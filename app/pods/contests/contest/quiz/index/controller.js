@@ -143,6 +143,10 @@ export default Ember.Controller.extend ({
       this.set ('answerTimestamp', Date.now ())
     },
 
+    confirmSubmit () {
+      $('#submissionConfirmation').modal ('show')
+    },
+
     submitQuiz () {
       const currentQuizAttempt = this.get ('model.currentQuizAttempt'),
         store = this.get ('store'),

@@ -20,7 +20,7 @@
         </div>
       {{/if}}
 	  <div class="col-md-6 col-md-offset-3">
-		  <button class="btn btn-filled btn-block" {{action 'submitQuiz'}}>Submit Quiz</button>
+		  <button class="btn btn-filled btn-block" {{action 'confirmSubmit'}}>Submit Quiz</button>
 	  </div>
     </div>
   </div>
@@ -69,7 +69,7 @@
 				  <h5 class="red">This will irrevocably submit the quiz for grading.</h5>
 				  <p class="text-muted">You might not be able to attempt it again.</p>
 				  <button type="button" class="btn btn-raised btn-success" {{action 'submitQuiz'}}>Yes, I'm sure.</button>
-				  <button type="button" class="btn btn-raised label-danger btn-lg" data-dismiss="modal">No, take me back.</button>
+				  <button type="button" class="btn btn-raised label-danger" data-dismiss="modal">No, take me back.</button>
 			  </div>
 		  </div><!-- /.modal-content -->
 	  </div><!-- /.modal-dialog -->
