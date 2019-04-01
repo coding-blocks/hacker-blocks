@@ -162,6 +162,12 @@ export default Ember.Controller.extend ({
           questionIds.map (id => {
             localStorage.removeItem (`review-${id}`)
           })
+
+          store
+            .peekAll ('choice')
+            .toArray ()
+            .map (choice => choice.set ('selected', false))
+
           this.set ('quizState', null)
           this.get ('notifications').info ('Test Successfully Submitted!')
           if (quizzes.length === 1 && (! problemCount) && attachments.length === 0) {
