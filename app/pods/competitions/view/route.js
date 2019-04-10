@@ -25,14 +25,25 @@ export default Ember.Route.extend({
   model (params) {
     let store = this.get ('store')
 
-    return store.findRecord ('competition', params.id, { reload:true })
+    const competition = store.findRecord ('competition', params.id, { reload:true })
+    const leaderboard = store.query ('competition', {
+      custom: {
+        ext: 'url',
+        url: `${params.id}/leaderboard`
+      }
+    })
+    return Ember.RSVP.hash({
+      competition,
+      leaderboard
+    })
   },
 
-  afterModel (competition, transition) {
-    competition.get ('contests').map (contest => this.get ('store').findRecord ('contest', contest.id))
+  afterModel (model, transition) {
+    model.competition.get ('contests').map (contest => this.get ('store').findRecord ('contest', contest.id))
   },
 
   setupController(controller, model){
-    controller.set('competition', model);
+    controller.set('competition', model.competition);
+    controller.set('leaderboard', model.leaderboard);
   }
 });
