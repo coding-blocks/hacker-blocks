@@ -5,8 +5,5 @@ export default DS.Model.extend({
   description: DS.attr(),
   duration: DS.attr(),
   maxAttempts: DS.attr(),
-  questions: DS.hasMany('question'),
-  questionCount: Ember.computed ('questions.[]', function () {
-    return this.get ('questions.length')
-  })
+  questions: DS.hasMany('question', { async: true })
 })

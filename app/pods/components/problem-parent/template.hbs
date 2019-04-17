@@ -18,7 +18,7 @@
 {{#if problem.content.constraints}}
   <div id="constraint">
     <span><b>Constraints:</b></span>
-    <pre>{{problem.content.constraints}}</pre>
+    <pre>{{markdown-to-html problem.content.constraints}}</pre>
   </div>
 {{/if}}
 {{#if problem.content.output-format}}

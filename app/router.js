@@ -34,9 +34,13 @@ Router.map(function() {
           this.route('show', { path: '/:attempt_id' });
         });
       });
-      this.route('quiz-attempts');
+      this.route('quiz-attempts', { path: '/qa/:quiz_id' }, function() {
+        this.route ('show', { path: '/:attempt_id' })
+      });
+      this.route('attachment', { path: '/attach/:attachment_id' }, function() {});
     });
     this.route('upcoming',{ path: '/upcoming/c/:contest_id' });
+    this.route('denied', { path: '/denied/:contest_id' });
   });
   this.route('dcb', function() {
     this.route('weekly-problem', {path: '/p/:problem_id'}, function () {
@@ -63,6 +67,9 @@ Router.map(function() {
   this.route('competitions', function() {
     this.route ('overview', { path: '/overview/:id' });
     this.route ('view', { path: '/:id' });
+  });
+  this.route('tracks', function() {
+    this.route('show', { path: '/:id' });
   });
 });
 

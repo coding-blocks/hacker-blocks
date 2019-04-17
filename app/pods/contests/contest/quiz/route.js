@@ -10,8 +10,6 @@ export default Ember.Route.extend({
       store = this.get ('store')
     ;
 
-    console.log (transition.params['contests.contest.quiz'].quiz_id)
-
     if (! session.get ('isAuthenticated')) {
       transition.abort ()
       notifications.error ('You must be logged in to view that!')
@@ -19,16 +17,14 @@ export default Ember.Route.extend({
       this.transitionTo ('contests.index')
     }
 
-    return store.query ('quiz-attempt', {
-      quizId: transition.params['contests.contest.quiz'].quiz_id
+    return store.queryRecord ('quiz-attempt', {
+      quizId: transition.params['contests.contest.quiz'].quiz_id,
+      contestId: transition.params['contests.contest'].contest_id,
+      custom: {
+        ext: 'url',
+        url: 'currentAttempt'
+      }
     })
-      .then (attempts => {
-        if (attempts.toArray ().length) {
-          transition.abort ()
-          notifications.error ('You cannot attempt that quiz more than once!')
-          this.transitionTo ('contests.contest', transition.params['contests.contest'].contest_id)
-        }
-      })
   },
 
   model (params) {
@@ -38,7 +34,6 @@ export default Ember.Route.extend({
     let quiz = store.findRecord ('quiz', params.quiz_id, { reload: true })
       .then (quiz => {
         quiz.set ('contest', contest)
-        quiz.get('questions').map (question => store.findRecord ('question', question.id))
 
         return quiz
       })

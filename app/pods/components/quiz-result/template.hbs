@@ -1,0 +1,19 @@
+<div class="qa-container card">
+	<h3>Q: {{question.description}}</h3>
+	<hr />
+	{{#each question.choices as |choice|}}
+		<div class="choice-container">
+			{{#if (eq choice.id answerId)}}
+				{{#if correct}}
+					<span class="correct">✔︎</span>
+				{{else}}
+					<span class="incorrect">⨯</span>
+				{{/if}}
+				{{choice.description}}
+			{{else}}
+				<span>◌</span>
+				{{choice.description}}
+			{{/if}}
+		</div>
+	{{/each}}
+</div>

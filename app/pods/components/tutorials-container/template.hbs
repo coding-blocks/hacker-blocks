@@ -1,0 +1,33 @@
+<div class="tutorials-container">
+  <div class="body">
+	<div class="row clearfix">
+		<div class="tutorials-header">
+			<h3>Learning & Resources</h3>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="tutorials-body">
+			<div class="row">
+				<div class="col-md-3 tutorials-left">
+					{{#each attachments as |attachment|}}
+						<div id="attachment-{{attachment.id}}" class="{{attachment.displayClass}}" {{action "selectAttachment" attachment.id}}>{{attachment.title}}</div>
+					{{/each}}
+				</div>
+				<div class="col-md-9 tutorials-right">
+					{{#each attachments as |attachment|}}
+						{{#if (eq "active" attachment.displayClass)}}
+							{{#if (eq attachment.contentType 'pdf')}}
+								<iframe width="100%" style="min-height: 450px" src="{{attachment.url}}#toolbar=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							{{/if}}
+
+							{{#if (eq attachment.contentType 'youtube')}}
+								<iframe width="100%" style="min-height: 450px" src="{{attachment.url}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+							{{/if}}
+						{{/if}}
+					{{/each}}
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>

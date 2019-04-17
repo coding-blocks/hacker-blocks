@@ -96,9 +96,15 @@
                             {{attempt.problem.name}}
                           </td>
                         {{/link-to}}
+                        {{#if (and contest.plagiarismFiltering attempt.plagiarismDetected)}}
+                          <td class="text-center red td-pad">
+                            Plagiarism Detected
+                          </td>
+                        {{else}}
                           <td class="text-center  td-pad">
                             {{attempt.score}}
                           </td>
+                        {{/if}}
                           <td class="text-center  td-pad">
                             {{attempt.language}}
                           </td>

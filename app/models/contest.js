@@ -8,6 +8,7 @@ import moment from 'npm:moment';
 export default DS.Model.extend({
   name: DS.attr(),
   startTime: DS.attr(),
+  level: DS.belongsTo (),
   endTime: DS.attr(),
   location: DS.attr(),
   showBanner: DS.attr(),
@@ -17,10 +18,15 @@ export default DS.Model.extend({
   allowEditorialUnlocks: DS.attr (),
   allowTestcaseUnlocks: DS.attr (),
   quizzes: DS.hasMany('quizzes', { async: true }),
+  attachments: DS.hasMany('attachments', { async: true }),
   description: DS.attr(),
   competitionName: DS.attr (),
+  passingScore: DS.attr (),
   competitionId: DS.attr (),
   meta: DS.attr(),
+  durationInHours: Ember.computed ('duration', function () {
+    return (this.get ('duration') / 3600).toPrecision (2)
+  }),
   problemCount: Ember.computed ('meta.problem-count', function () {
     const metaProblemCount = this.get ('meta.problem-count')
 
@@ -30,10 +36,12 @@ export default DS.Model.extend({
 
     return metaProblemCount
   }),
-  showCounts: Ember.computed ('problemCount', function () {
-    return (parseInt (this.get ('problemCount')) > 0)
+  quizCount: Ember.computed ('quizzes', function () {
+    return this.hasMany ('quizzes').ids ().length
   }),
-  quizCount: 0, // TODO
+  showCounts: Ember.computed ('problemCount', function () {
+    return (parseInt (this.get ('problemCount')) > 0) || (this.get ('quizCount') > 0)
+  }),
   showLeaderboard: DS.attr(),
   allowedLanguages: DS.attr(),
   showTags: DS.attr(),
@@ -72,9 +80,13 @@ export default DS.Model.extend({
   points: Ember.computed ('problemCount', function () {
     return this.get ('problemCount') * 100
   }),
+  isCapstone: Ember.computed ('passingScore', function () {
+    return (! this.get ('passingScore'))
+  }),
   isFinished: Ember.computed('endTime', {
     get() {
       return moment().unix() > this.get('endTime');
     }
-  })
+  }),
+  plagiarismFiltering: DS.attr()
 });

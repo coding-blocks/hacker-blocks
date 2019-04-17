@@ -1,7 +1,5 @@
 <div class="c-review-pad">
-  <div class="title">
-    Review Questions
-  </div>
+	<div class="title">Review Questions {{what}}</div>
   <div class="options">
     {{#each questions as |question index|}}
       {{review-circle question=question index=index onCircleClick=(action onReview)}} 
@@ -10,9 +8,16 @@
 </div>
 
 <style>
+.c-review-pad {
+	background: #f8f8f8;
+	padding-top: 0.5rem;
+	min-height: 400px;
+	margin-bottom: 1rem;
+}
+
 .options {
   display: grid;
-  grid-template-columns: repeat(3, 80px);
+  grid-template-columns: repeat(3, 77px);
   align-items: center;
   justify-items: center;
 }

@@ -6,6 +6,22 @@ $grey: #ebebeb;
 $light-grey: #eeeeee;
 //-----------------Variables-----------------------
 
+//-----------------mixins---------------------------
+@mixin flexbox($direction, $justify-content: false, $align-items: false, $webkit: true, $ms:true){
+    @if($webkit)    {display: -webkit-box};
+    @if($webkit)    {display: -webkit-flex};
+    @if($ms)        {display: -ms-flexbox};
+    display: flex;
+
+    @if($webkit)    {-webkit-flex-direction: $direction};
+    flex-direction: $direction;
+
+    @if($justify-content)    {justify-content: $justify-content}
+    @if($align-items)    {align-items: $align-items}
+}
+//-----------------mixins---------------------------
+
+
 //-------------------------------------------------------------Helpers--------------------------------------------------------------------------------
 .red{
   color: $red;
@@ -19,15 +35,47 @@ $light-grey: #eeeeee;
   background-color: $grey;
 }
 
+.blue{
+  color: #336699;
+}
+
 .bold{
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 
 .semi-bold{
-  font-weight: 500;
+  font-weight: 500 !important;
+}
+
+.display-block{
+  display: block !important;
+}
+
+.flex-row{
+  @include flexbox(row);
+}
+
+.align-items-center{
+  align-items: center !important;
+}
+
+.justify-content-center{
+  justify-content: center !important;
+}
+
+.m-0{
+  margin: 0;
+}
+
+.t-align-c{
+  text-align: center !important;
 }
 //-------------------------------------------------------------Helpers--------------------------------------------------------------------------------
 
+
+.container-fluid {
+  padding-left: 3rem;
+}
 
 .login-btn {
   border-radius: 20px !important;
@@ -1243,7 +1291,7 @@ blue-bar {
   background-size: cover;
   overflow: hidden;
   position: absolute;
-  height: 100%;
+  height: 400px;
   width: 100%;
   background: url(/images/course-3.jpg);
 }
@@ -1266,8 +1314,28 @@ blue-bar {
   padding: 2rem;
 }
 
+.p-0{
+  padding: 0;
+}
+
 .mb-2 {
   margin-bottom: 2rem;
+}
+
+.mb-3{
+  margin-bottom: 3rem;
+}
+
+.mb-4{
+  margin-bottom: 4rem;
+}
+
+.mb-5{
+  margin-bottom: 5rem;
+}
+
+.w-100{
+  width: 100%;
 }
 
 .td-pad {
@@ -1319,12 +1387,19 @@ blue-bar {
 }
 
 .contest-description-container {
-  padding: 3rem 7rem;
+  padding: 0;
+  color: #666666;
+  font-weight: bold;
+  clear: both;
+  max-width: 60%;
+  margin-top: 0;
+  padding: 2rem;
 
   h1, h2, h3 {
     font-weight: normal;
   }
 }
+
 @media (max-width: 600px) {
   .contest-description-container {
     padding: 5rem;
@@ -1435,6 +1510,7 @@ ul{
     top: 0;
     padding: 0 40px;
     background-color: $white;
+    overflow: hidden;
   
     .btn-solid{
       width: 180px;
@@ -1684,6 +1760,10 @@ ul{
   margin-bottom: 3rem;
 }
 
+.questions-container img {
+  max-width: 100%;
+}
+
 .choices-container {
   margin-top: 1rem;
   margin-left: 1rem;
@@ -1700,7 +1780,7 @@ ul{
   border: 1px solid gray;
 }
 
-.choices-container .selected .checkbox {
+.choices-container .selected-true .checkbox {
   background: #fc4f4f;
   height: 1.1rem;
   width: 1.1rem;
@@ -1717,4 +1797,252 @@ ul{
 
 .green {
   color: green;
+}
+
+img{
+  max-width: 100% !important;
+}
+
+//---------------------------------------img-card----------------------------------------
+.card{
+  height: auto;
+  box-shadow: -2.5px 4.3px 14px 0 rgba(51, 51, 51, 0.2);
+}
+
+.img-card{
+  padding: 0;
+}
+
+.img-card .img-container{
+  height: 88px;
+  width: 100%;
+}
+
+.img-card img{
+  height : 100%;
+  width: 100%;
+}
+
+.img-card .body{
+  padding: 30px 30px;
+  font-size: 12.5px;
+}
+
+.img-card .para, .card .para{
+  font-size: 11.5px;
+  margin: unset;
+}
+//---------------------------------------img-card----------------------------------------
+
+//---------------------------------------timleline----------------------------------------
+.timeline .event:before{
+  content: " ";
+  width: 10px;
+  height: 10px;
+  background-color: #e1e1e1;
+  display: inline-block;
+  border-radius: 50%;
+  position: absolute;
+  top: -4px;
+}
+
+.timeline .event.completed::before{
+  background-color: #8b8b8b;
+}
+
+.timeline .event:not(:last-child):after{
+  content: " ";
+  width: 100%;
+  height: 2px;
+  background-color: #e1e1e1;
+  display: inline-block;
+  position: absolute;
+  left: 10px
+}
+
+.timeline .event.completed:not(:last-child):after{
+  background-color: #8b8b8b
+}
+
+.timeline .event{
+  width: 11%;
+  display: inline-block;
+  position: relative;
+
+  &:hover{
+    .tooltip-bottom{
+      display: block;
+    }
+  }
+}
+
+.timeline .tooltip-top{
+  position: absolute;
+  bottom: 25px;
+  font-size: 13px;
+  font-weight: 600;
+  left: -15%;
+}
+
+.timeline .tooltip-bottom{
+  height: auto;
+  border-radius: 15.5px;
+  background-color: #7e7e7e;
+  color: white;
+  position: absolute;
+  z-index: 100;
+  font-size: 13px;
+  font-weight: 600;
+  top: 20px;
+  padding: 6px 7px;
+  text-align: center;
+  display: none;
+}
+//---------------------------------------timleline----------------------------------------
+
+.track{
+  height: 270px;
+  position: relative;
+
+  .badge-img{
+    padding: 0 38%;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .badge-img img{
+    max-width: 50px !important;
+  }
+
+  .body{
+    font-size: 12.5px;
+  }
+
+  .footer{
+    width: 100%;
+    position: absolute;
+    bottom: 15px;
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+    left: 0;
+  }
+
+  &.certify{
+    padding: 30px;
+  }
+
+  .para{
+    height: 50px;
+    overflow: auto;  
+  }
+}
+
+.track-container>.row{
+  margin-left: unset;
+  margin-right: unset;
+}
+
+.track-container{
+  padding: 30px 5%;
+
+  & .timeline{
+    margin: 10rem 0 6rem 0;
+  }
+}
+
+.contest-title {
+  font-size: 18px;
+  float: left;
+  max-width: 50%;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+.tutorials-container {
+  max-width: 95%;
+  box-shadow: 0px 5px 14px 0 rgba(51, 51, 51, 0.2);
+  background-color: var(--white-two);
+}
+
+.tutorials-header {
+  max-width: 80%;
+  position: relative;
+  left: 3rem;
+  top: 0;
+}
+
+.tutorials-body {
+  border: 3px solid #e0e0e0;
+  max-width: 97%;
+  left: 1.5rem;
+  position:relative;
+}
+
+.tutorials-body .row {
+  padding: 0;
+  margin: 0;
+}
+
+.tutorials-left {
+  font-weight: bold;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+  min-height: 450px;
+}
+
+.tutorials-left > div {
+  border: 3px solid #e0e0e0;
+  border-left: none;
+  border-bottom: none;
+  padding: 1rem;
+  color: #333333;
+  cursor: pointer;
+}
+
+.tutorials-left > .active {
+  background: white;
+  border-right: none;
+}
+
+.tutorials-left > div:first-child {
+  border-top: none;
+}
+
+.tutorials-left > div:last-child {
+  border-bottom: 3px solid #e0e0e0;
+}
+
+.tutorials-right {
+  min-height: 450px;
+  padding: 0;
+  margin: 0;
+}
+
+.qa-container {
+  margin-right: 1rem;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-shadow: none;
+
+  h3 {
+    font-weight: normal;
+  }
+
+  .choice-container {
+    margin-bottom: 1rem;
+  }
+
+  .correct {
+    color: green;
+  }
+
+  .incorrect {
+    color: red;
+  }
 }

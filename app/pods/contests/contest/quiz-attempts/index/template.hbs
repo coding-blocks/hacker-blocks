@@ -1,0 +1,74 @@
+<section class="content">
+  <div class="header">
+    <div class="header-left">
+      <div class="heading">
+		  Attempt History
+      </div>
+    </div>
+    <div class="header-right">
+      {{#link-to 'contests.contest' model.contest.id class="btn btn-red"}}
+        Back to Contest
+      {{/link-to}}
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row"></div>
+    <div class="clearfix" style="margin-left: 0; padding-left: 3rem;">
+    </div>
+  </div>
+
+  <section class="row clearfix">
+	  <div class="col-md-3 col-md-offset-1">
+		  <table class="table table-hover vc-table">
+			  <thead>
+				  <tr>
+					  <th>Attempt</th>
+					  <th>Score</th>
+					  <th></th>
+				  </tr>
+			  </thead>
+			  <tbody>
+				  {{#each model.attempts as |attempt index|}}
+					  <tr>
+						  <td>{{index}}</td>
+						  <td>{{attempt.result.score}}</td>
+						  <td>
+							  {{#link-to 'contests.contest.quiz-attempts.show' model.contest.id model.quiz.id attempt.id class="btn btn-red"}}
+								  View
+							  {{/link-to}}
+						  </td>
+					  </tr>
+				  {{/each}}
+			  </tbody>
+		  </table>
+	  </div>
+  </section>
+</section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML-full"></script>
+
+<style>
+.question {
+	margin-left: 2.5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.hints {
+  margin: 20px;
+}
+
+.hint-box {
+  height: 15px;
+  width: 15px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.review {
+  width: 270px;
+  background-color: #f7f7f7;
+}
+</style>

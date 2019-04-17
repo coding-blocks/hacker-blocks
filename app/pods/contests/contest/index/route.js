@@ -48,10 +48,10 @@ export default Ember.Route.extend({
 
         let store = this.get ('store')
         store.findRecord ('quiz', quiz.id)
-          .then (question => {
-              store.findRecord ('question', question.id)
-            })
+          .then (quiz => {
+            setTimeout (() => quiz.set ('questionCount', quiz.hasMany ('questions').ids ().length), 2000)
           })
+      })
 
       return Ember.RSVP.hash(hash);
       });
@@ -67,17 +67,16 @@ export default Ember.Route.extend({
      let presentDate = this.get ('serverTime').getUnixTime ();
      if(contest.get('startTime') >= presentDate && contest.get('endTime') >= presentDate ) {
         this.transitionTo('contests.upcoming',contest.id);
-     }// else if(contest.get('endTime') <= presentDate) {
-        // this.transitionTo('contests.contest.ended');
-     // }
+     }
   },
   afterModel(model, transition) {
     const { currentAttempt, contest } = model;
 
     const quizzes = contest.get ('quizzes').toArray ()
     const problemCount = contest.get ('problems.length')
+    const attachments = contest.get('attachments').toArray()
 
-    if (quizzes.length === 1 && (! problemCount)) {
+    if (quizzes.length === 1 && (! problemCount) && attachments.length === 0) {
       this.transitionTo ('contests.contest.quiz.index', contest.id, quizzes[0].id)
     }
 

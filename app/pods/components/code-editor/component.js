@@ -64,10 +64,15 @@ function judge(component, problemId, contestId, noScore, headers) {
         contentType: "application/json",
         timeout: 200000
       })
-        .done (function (submission) {
-          if (! submission) {
+        .done (function (response) {
+          if ((! response) || (! response.judge_result)) {
             return
           }
+
+          let submission = response.judge_result
+
+          component.set ('explanation', response.explanation)
+          component.set ('submissionId', data.submissionId)
 
           clearInterval (pollForResult);
 
@@ -86,6 +91,19 @@ function judge(component, problemId, contestId, noScore, headers) {
             }
           }
           component.set('result', submission.result);
+
+          if (response.certificate_earned) {
+            if (! response.level) {
+              let finishedModal = $('#finishedModal')
+              finishedModal.modal ('show')
+            }
+            else {
+              component.set ('level', response.level)
+
+              let certificateModal = $('#certificateModal')
+              certificateModal.modal ('show')
+            }
+          }
         })
         .fail (function (error) {
           Raven.captureException (error)
@@ -227,8 +245,8 @@ export default Ember.Component.extend({
       $('#run').button('loading');
       judge(this);
     },
+
     reset() {
-      console.log("RESET");
       let langId = $('#langSelect :selected').val();
       let editor = ace.edit("editor");
       editor.setValue(this.get('stub'));
@@ -238,13 +256,21 @@ export default Ember.Component.extend({
       this.set("result", null);
       this.set("output", null);
     },
+
     customInput() {
       if (this.get('customInput') === true) {
         this.set('customInput', false);
       } else {
         this.set('customInput', true);
+
+        Ember.run.later (() => {
+          let customInputField = document.querySelector ('#custom-input')
+          customInputField.focus ()
+          customInputField.select ()
+        })
       }
     },
+
     popup() {
       var redirectionPath = window.location.pathname;
       redirectionPath = redirectionPath.replace(/^\/|\/$/g, '');

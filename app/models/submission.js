@@ -13,6 +13,7 @@ export default DS.Model.extend({
   submitAt: DS.attr(),
   language: DS.attr(),
   score: DS.attr(),
+  explanation: DS.attr ('string'),
   result: DS.attr(),
   problemId: DS.attr('string'),
   collegeName: DS.attr ('string'),
@@ -21,5 +22,7 @@ export default DS.Model.extend({
   tcRuns: DS.attr(),
   problem:DS.belongsTo('problem',{inverse:'top'}),
   contest:DS.belongsTo('contest'),
-  user: DS.belongsTo('user')
+  user: DS.belongsTo('user'),
+  certificateEarned: DS.attr ('boolean'),
+  plagiarismDetected: DS.attr('boolean')
 });
