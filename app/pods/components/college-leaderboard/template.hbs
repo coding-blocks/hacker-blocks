@@ -1,4 +1,4 @@
-{{#if collegeLeaderboard}}
+{{#if leaderboard}}
   <div id="mobleader">
     <table class="table table-striped table-responsive">
       <thead>
@@ -9,11 +9,11 @@
         </tr>
       </thead>
       <tbody>
-        {{#each collegeLeaderboard as |row index|}}
+        {{#each leaderboard as |row index|}}
           <tr>
             <td>{{sum index 1}}</td>
             <td>
-              {{row.college}}
+              {{row.collegeName}}
             </td>
             <td>
               {{row.score}}

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  api: Ember.inject.service(),
   beforeModel (transition) {
     let store = this.get ('store'),
       competitionId = transition.params['competitions.view'].id,
@@ -32,9 +33,11 @@ export default Ember.Route.extend({
         url: `${params.id}/leaderboard`
       }
     })
+    const collegeLeaderboard = this.get('api').request(`competitions/${params.id}/collegeLeaderboard`)
     return Ember.RSVP.hash({
       competition,
-      leaderboard
+      leaderboard,
+      collegeLeaderboard
     })
   },
 
@@ -45,5 +48,6 @@ export default Ember.Route.extend({
   setupController(controller, model){
     controller.set('competition', model.competition);
     controller.set('leaderboard', model.leaderboard);
+    controller.set('collegeLeaderboard', model.collegeLeaderboard);
   }
 });
