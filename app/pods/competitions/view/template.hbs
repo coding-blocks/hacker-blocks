@@ -47,7 +47,18 @@
 
     {{#if (eq activeTab 2)}}
         <div id="tab3" class="tab-content">
-          {{#problem-leaderboard avatar=true contestId=484 competitionId=competition.id}}{{/problem-leaderboard}}
+          <div class="row">
+              <div class="col-sm-4">
+                  <div class="card hover-card">
+                    {{college-leaderboard leaderboard=collegeLeaderboard}}
+                  </div>
+              </div>
+              <div class="col-sm-8">
+                  <div class="card hover-card">
+                    {{#problem-leaderboard avatar=true contestId=484 competitionId=competition.id}}{{/problem-leaderboard}}
+                  </div>
+              </div>
+          </div>
         </div>
     {{/if}}
 

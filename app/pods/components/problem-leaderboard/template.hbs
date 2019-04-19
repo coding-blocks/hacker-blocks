@@ -50,48 +50,48 @@
               {{/unless}}
             </tr>
           {{/if}}
-          {{#each leaderBoard as |submission index|}}
+          {{#each leaderBoard as |leaderboardRow index|}}
             <tr>
               <td>{{sum index 1}}</td>
               <td>
                 {{#if avatar}}
-                  {{#if submission.photo}}
-                    <img src={{submission.photo}} width="25" class="img-circle marginR10">
+                  {{#if leaderboardRow.photo}}
+                    <img src={{leaderboardRow.photo}} width="25" class="img-circle marginR10">
                   {{else}}
-                    <img src="https://minio.cb.lk/img/avatar-{{avatarIndex submission.id}}.svg" width="25" class="img-circle marginR10">
+                    <img src="https://minio.cb.lk/img/avatar-{{avatarIndex leaderboardRow.id}}.svg" width="25" class="img-circle marginR10">
                   {{/if}}
                 {{/if}}
 
                 <!-- This is a very dirty hack. omerjerk. -->
-                {{#if submission.user.id}}
-                  {{#link-to "users.user" submission.user.id}}
-                    {{submission.user.name}}
+                {{#if leaderboardRow.user.id}}
+                  {{#link-to "users.user" leaderboardRow.user.id}}
+                    {{leaderboardRow.user.name}}
                   {{/link-to}}
                 {{else}}
-                  {{#link-to "users.user" submission.userId}}
-                    {{submission.userName}}
+                  {{#link-to "users.user" leaderboardRow.user.id}}
+                    {{leaderboardRow.user.name}}
                   {{/link-to}}
                 {{/if}}
               </td>
               {{#unless hideCollege}}
                 <td>
-                  {{#if submission.collegeName}}
-                    {{submission.collegeName}}
+                  {{#if leaderboardRow.college.id}}
+                    {{leaderboardRow.college.name}}
                   {{else}}
                     N/A
                   {{/if}}
                 </td>
               {{/unless}}
               {{#unless hideScore}}
-                {{#if (and contest.plagiarismFiltering submission.plagiarismDetected)}}
+                {{#if (and contest.plagiarismFiltering leaderboardRow.plagiarismDetected)}}
                   <td class='red'>Plagiarism Detected</td>
                 {{else}}
-                  <td>{{decimal-to-whole submission.score}}</td>
+                  <td>{{decimal-to-whole leaderboardRow.score}}</td>
                 {{/if}}
                 
               {{/unless}}
-              {{#if submission.language}}
-                <td>{{getlang submission.language}}</td>
+              {{#if leaderboardRow.language}}
+                <td>{{getlang leaderboardRow.language}}</td>
               {{/if}}
             </tr>
           {{/each}}
