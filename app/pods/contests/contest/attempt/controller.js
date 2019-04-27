@@ -1,25 +1,13 @@
 import Ember from 'ember';
-import ENV from '../../../../config/environment';
 
-const { inject: { service }, Component } = Ember;
+const { inject: { service } } = Ember;
 
 export default Ember.Controller.extend({
   session:     service('session'),
   currentUser: service('current-user'),
 
-  checkAttempts() {
-    return new Promise((resolve, reject) => {
-
-    });
-  },
-
-  init () {
-  },
-
   actions: {
     attemptContest (contestId) {
-      const userId = this.get('session').get('data').authenticated.user_id;
-
       this
         .get('store')
         .createRecord('ContestAttempt', { contestId: contestId })
@@ -32,8 +20,9 @@ export default Ember.Controller.extend({
           throw new Error ('MaxAttemptsExceeded')
         })
         .catch((error) => {
-            Raven.captureException(error);
-            this.set('error', 'You can\'t attempt this contest. You may have reached your max possible attempts on this contest.');
+          console.log(error)
+          Raven.captureException(error);
+          this.set('error', 'You can\'t attempt this contest. You may have reached your max possible attempts on this contest.');
         })
     }
   }

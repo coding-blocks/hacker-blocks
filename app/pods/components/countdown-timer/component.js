@@ -25,9 +25,11 @@ export default Ember.Component.extend({
     this.set('pollId', pollId)
 
     // compute the endTime
-    const startTime = this.get('startTime')
-    const duration = this.get('duration')
-    this.set('endTime', startTime+duration)
+    if (!this.get('endTime')) {
+      const startTime = this.get('startTime')
+      const duration = this.get('duration')
+      this.set('endTime', startTime+duration)
+    }
 
     this.send('tick')
 

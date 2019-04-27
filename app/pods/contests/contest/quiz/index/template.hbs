@@ -13,6 +13,7 @@
         <div class="countdown-timer-container">
           {{#countdown-timer
             startTime=model.currentAttempt.startTime
+						endTime=model.currentAttempt.endTime
             duration=attemptDuration
             noIcon=true
             onComplete=(action 'submitQuiz')}}

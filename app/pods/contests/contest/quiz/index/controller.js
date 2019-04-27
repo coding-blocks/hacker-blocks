@@ -1,6 +1,8 @@
 import Ember from 'ember';
+import Moment from 'npm:moment'
 
 export default Ember.Controller.extend ({
+  contestAttemptService: Ember.inject.service('current-attempt'),
   queryParams: ['q'],
   store: Ember.inject.service (),
   q: 1,
@@ -175,7 +177,13 @@ export default Ember.Controller.extend ({
           this.set ('quizState', null)
           this.get ('notifications').info ('Test Successfully Submitted!')
           if (quizzes.length === 1 && (! problemCount) && attachments.length === 0) {
-            return this.transitionToRoute('contests.index')
+            return this.get('contestAttemptService').getCurrentAttempts(contest.id) 
+              .then(contestAttempt => {
+                contestAttempt.set('endTime', Moment().unix())
+                return contestAttempt.save()
+              }).then(() => {
+                return this.transitionToRoute('contests.index')
+              })
           } else {
             return this.transitionToRoute('contests.contest', contest.id)
           }

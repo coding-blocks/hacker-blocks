@@ -59,15 +59,12 @@ export default Ember.Component.extend({
             answerId: choiceId
           }).save ()
         } else {
-          return store.findRecord ('quiz-submission', submission.id)
-            .then (qSubmission => {
-              if (choice.get ('selected')) {
-                qSubmission.set ('answerId', choiceId)
-              } else {
-                qSubmission.set ('answerId', null)
-              }
-              return qSubmission.save ()
-            })
+          if (choice.get ('selected')) {
+            submission.set ('answerId', choiceId)
+          } else {
+            submission.set ('answerId', null)
+          }
+          return submission.save ()
         }
       })
         .catch (error => {
