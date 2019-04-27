@@ -3,17 +3,15 @@
     <div class="header-left">
       <div class="heading">
         {{model.quiz.title}}
-		{{q}}
-
-        {{model.currentAttempt.startTime}}
+				{{q}}
       </div>
     </div>
     <div class="header-right">
       {{#if model.quiz.contest.duration}}
         <div class="countdown-timer-container">
           {{#countdown-timer
-            startTime=model.currentAttempt.startTime
-						endTime=model.currentAttempt.endTime
+            startTime=model.currentContestAttempt.startTime
+						endTime=model.currentContestAttempt.endTime
             duration=attemptDuration
             noIcon=true
             onComplete=(action 'submitQuiz')}}

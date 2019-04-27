@@ -13,8 +13,8 @@ export default Ember.Route.extend({
   model (params) {
     const quiz = this.modelFor ('contests.contest.quiz')
     const { contest } = this.modelFor ('contests.contest')
-    const currentAttempt = this.get ('currentAttemptService').getCurrentAttempts(quiz.get ('contest').id)
-    const currentQuizAttempt = this.store.queryRecord ('quiz_attempt', {
+    const currentContestAttempt = this.get ('currentAttemptService').getCurrentAttempts(quiz.get('contest.id'))
+    const currentQuizAttempt = this.store.peekRecord ('quiz_attempt', {
       quizId: quiz.id,
       contestId: contest.id,
       custom: {
@@ -26,7 +26,7 @@ export default Ember.Route.extend({
     return Ember.RSVP.hash ({
       quiz,
       contest,
-      currentAttempt,
+      currentContestAttempt,
       currentQuizAttempt
     })
   },
@@ -34,10 +34,10 @@ export default Ember.Route.extend({
   afterModel (params) {
     const contest = params.quiz.get ('contest'),
       duration = contest.get ('duration'),
-      { currentAttempt } = params
+      { currentContestAttempt } = params
     ;
 
-    if (duration && (! currentAttempt)) {
+    if (duration && (! currentContestAttempt)) {
       this.transitionTo ('contests.denied', contest.id)
     }
   },
