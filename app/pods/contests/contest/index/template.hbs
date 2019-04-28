@@ -1,17 +1,17 @@
 <section class="content">
-  {{#if model.contest.competitionId}}
+  {{#if contest.competitionId}}
   <div class="header">
     <div class="header-left">
       <div class="heading">
-        {{model.contest.competitionName}}
+        {{contest.competitionName}}
       </div>
     </div>
     <div class="header-left">
-      {{#if model.contest.duration}}
+      {{#if contest.duration}}
       <div class="countdown-timer-container">
         {{#countdown-timer
-        startTime=model.currentAttempt.startTime
-        endTime=model.currentAttempt.endTime
+        startTime=currentAttempt.startTime
+        endTime=currentAttempt.endTime
         duration=attemptDuration
         noIcon=true
         onComplete=(action 'redirectToContest' model)}}
@@ -19,26 +19,26 @@
       </div>
       {{/if}}
       <div>
-        {{#link-to 'competitions.view' model.contest.competitionId class="btn-solid" tagName="button"}}
+        {{#link-to 'competitions.view' contest.competitionId class="btn-solid" tagName="button"}}
         Back to Competition
         {{/link-to}}
       </div>
     </div>
   </div>
   {{/if}}
-  {{#if model.contest.level}}
+  {{#if contest.level}}
   <div class="header">
     <div class="header-left">
       <div class="heading">
-		<small class="text-muted">{{model.contest.level.description}}</small>
+		<small class="text-muted">{{contest.level.description}}</small>
       </div>
     </div>
     <div class="header-left">
-      {{#if model.contest.duration}}
+      {{#if contest.duration}}
       <div class="countdown-timer-container">
         {{#countdown-timer
-        startTime=model.currentAttempt.startTime
-        endTime=model.currentAttempt.endTime
+        startTime=currentAttempt.startTime
+        endTime=currentAttempt.endTime
         duration=attemptDuration
         noIcon=true
         onComplete=(action 'redirectToContest' model)}}
@@ -47,7 +47,7 @@
       {{/if}}
 
       <div>
-        {{#link-to 'tracks.show' model.contest.meta.track-id class="btn-solid" tagName="button"}}
+        {{#link-to 'tracks.show' contest.meta.track-id class="btn-solid" tagName="button"}}
 			Back to Track
         {{/link-to}}
       </div>
@@ -55,19 +55,19 @@
   </div>
   {{/if}}
   <div class="container-fluid">
-    {{#unless model.contest.competitionId}}
-	{{#unless model.contest.level}}
+    {{#unless contest.competitionId}}
+	{{#unless contest.level}}
     <div class="row clearfix" style="margin-left: 0">
       <div class="col-md-6 block-header">
         <h2>All Problems</h2>
         <small class="text-muted">Solve these problem and prove yourself </small>
       </div>
-      {{#if model.contest.duration}}
+      {{#if contest.duration}}
       <div class="countdown-timer-container col-md-offset-3 col-md-3">
         <div class="card">
           {{#countdown-timer
-          startTime=model.currentAttempt.startTime
-          endTime=model.currentAttempt.endTime
+          startTime=currentAttempt.startTime
+          endTime=currentAttempt.endTime
           duration=attemptDuration
           onComplete=(action 'redirectToContest' model)}}
           {{/countdown-timer}}
@@ -77,20 +77,20 @@
     </div>
 	{{/unless}}
     {{/unless}}
-    {{#if model.contest.showBanner}}
+    {{#if contest.showBanner}}
     <div class="row">	    
-      <img class="contest-banner" src={{model.contest.image}} alt={{model.contest.name}}>
+      <img class="contest-banner" src={{contest.image}} alt={{contest.name}}>
     </div>
     {{else}}
     <div class="">
       <div class="row">
-        <h1 class="text-center contest-title">{{model.contest.name}}</h1>
+        <h1 class="text-center contest-title">{{contest.name}}</h1>
         <div class="contest-description-container">
-          {{markdown-to-html model.contest.description}}
+          {{markdown-to-html contest.description}}
         </div>
 		<div>
-			{{#if model.contest.showTags}}
-				{{#each model.tags as |tag|}}
+			{{#if contest.showTags}}
+				{{#each tags as |tag|}}
 					<button class="btn fil-cat btn-sm btn-filled" {{action "updateSelection" tag selectedTag}} value={{tag}}>{{tag.name}}</button>
 				{{/each}}
 			{{/if}}
@@ -100,7 +100,7 @@
     {{/if}}
     <div class="row clearfix">
       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		{{#unless model.contest.level}}
+		{{#unless contest.level}}
         <div class="card custom-card hover-card">
           <div class="row">
             <div class="col-sm-4 col-md-4 col-lg-4">
@@ -116,25 +116,25 @@
                       <td><i class="material-icons">done</i></td>
                     </tr>
                     <tr>
-                      <td>{{model.contest.problems.length}}</td>
+                      <td>{{contest.problems.length}}</td>
                       <td>{{submissionCount}}</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
             </div>
-            {{#if model.contest.showLeaderboard}}
+            {{#if contest.showLeaderboard}}
             <div class="col-sm-8 col-md-8 col-lg-8">
-              <a href="{{model.contest.id}}/leaderboard">
+              <a href="{{contest.id}}/leaderboard">
                 <h4 class="text-center strong"><strong>Leaderboard</strong></h4>
               </a>
               <div class="card generate-scroll-y">
-                {{#problem-leaderboard avatar=true contestId=model.contest.id}}{{/problem-leaderboard}}
+                {{#problem-leaderboard avatar=true contestId=contest.id}}{{/problem-leaderboard}}
               </div>
             </div>
             {{/if}}
           </div>
-          {{#if model.contest.isFinished}}
+          {{#if contest.isFinished}}
           <div class="row">
             <div class="col-12 alert alert-warning">This contest is finished. You will not be awarded any points.</div>
           </div>
@@ -151,17 +151,17 @@
           </div>
         </div>
 		{{/unless}}
-        {{#if model.contest.attachments}}
-		{{tutorials-container contest=model.contest attachments=model.contest.attachments}}
+        {{#if contest.attachments}}
+		{{tutorials-container contest=contest attachments=contest.attachments}}
         {{/if}}
-        {{#if model.contest.quizzes}}
+        {{#if contest.quizzes}}
         <div class="">
           <div class="body">
             <div class="row clearfix">
               <h3>Quizzes</h3>
             </div>
             <div class="row clearfix">
-              {{#each model.contest.quizzes as |quiz|}}
+              {{#each contest.quizzes as |quiz|}}
               <div class="col-xs-12 col-sm-6 col-md-3 text-center">
                 {{#link-to 'contests.contest.quiz' quiz.id}}
                 <div class="thumbnail card problemCard hover-card">
@@ -188,16 +188,16 @@
           </div>
         </div>
         {{/if}}
-		{{#if model.contest.problems}}
+		{{#if contest.problems}}
         <div class="">
           <div class="body">
             <div class="row clearfix">
               <h3>Programming Questions</h3>
             </div>
             <div class="row clearfix">
-              {{#each model.contest.problems as |problem|}}
+              {{#each contest.problems as |problem|}}
               {{#if (is-tag-selected problem selectedTag)}}
-              {{#problem-view link='contests.contest.problem.index' showTags=model.contest.showTags problem=problem class="problemCardWrapper"}}{{/problem-view}}
+              {{#problem-view link='contests.contest.problem.index' showTags=contest.showTags problem=problem class="problemCardWrapper"}}{{/problem-view}}
               {{/if}}
               {{/each}}
             </div>

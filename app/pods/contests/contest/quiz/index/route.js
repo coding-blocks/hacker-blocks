@@ -14,7 +14,7 @@ export default Ember.Route.extend({
     const quiz = this.modelFor ('contests.contest.quiz')
     const { contest } = this.modelFor ('contests.contest')
     const currentContestAttempt = this.get ('currentAttemptService').getCurrentAttempts(quiz.get('contest.id'))
-    const currentQuizAttempt = this.store.peekRecord ('quiz_attempt', {
+    const currentQuizAttempt = this.store.queryRecord ('quiz_attempt', {
       quizId: quiz.id,
       contestId: contest.id,
       custom: {
@@ -29,6 +29,13 @@ export default Ember.Route.extend({
       currentContestAttempt,
       currentQuizAttempt
     })
+  },
+
+  setupController(controller, model) {
+    controller.set('currentQuizAttempt', model.currentQuizAttempt)
+    controller.set('currentContestAttempt', model.currentContestAttempt)
+    controller.set('quiz', model.quiz)
+    controller.set('contest', model.contest)
   },
 
   afterModel (params) {

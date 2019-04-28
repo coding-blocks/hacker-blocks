@@ -11,8 +11,8 @@ export default Ember.Controller.extend ({
   lastQuestionChange: Date.now (),
   notifications: Ember.inject.service ('toast'),
 
-  questionIds: Ember.computed ('model.quiz', function () {
-    return this.get ('model.quiz').hasMany ('questions').ids ()
+  questionIds: Ember.computed ('quiz', function () {
+    return this.get ('quiz').hasMany ('questions').ids ()
   }),
 
   currentQuestion: Ember.computed ('q', function () {
@@ -29,11 +29,11 @@ export default Ember.Controller.extend ({
     return (this.get ('q') === 1)
   }),
 
-  attemptDuration: Ember.computed('model.quiz.contest.endTime', 'model.quiz.contest.duration', 'model.currentAttempt', function () {
-    const userStartedAt = this.get('model.currentAttempt.startTime')
-    const duration = this.get('model.quiz.contest.duration');
-    const contestStartTime = this.get('model.quiz.contest.startTime')
-    const contestEndTime = this.get('model.quiz.contest.endTime')
+  attemptDuration: Ember.computed('quiz.contest.endTime', 'quiz.contest.duration', 'currentContestAttempt', function () {
+    const userStartedAt = this.get('currentContestAttempt.startTime')
+    const duration = this.get('quiz.contest.duration');
+    const contestStartTime = this.get('quiz.contest.startTime')
+    const contestEndTime = this.get('quiz.contest.endTime')
 
     if (userStartedAt < contestStartTime) {
       return 0
@@ -79,7 +79,8 @@ export default Ember.Controller.extend ({
     },
 
     restoreState () {
-      const currentQuizAttempt = this.get ('model.currentQuizAttempt'),
+      debugger
+      const currentQuizAttempt = this.get('currentQuizAttempt'),
         store = this.get ('store')
       ;
 
@@ -150,11 +151,11 @@ export default Ember.Controller.extend ({
     },
 
     submitQuiz () {
-      const currentQuizAttempt = this.get ('model.currentQuizAttempt'),
+      const currentQuizAttempt = this.get ('currentQuizAttempt'),
         store = this.get ('store'),
         toast = this.get ('notifications'),
         questionIds = this.get ('questionIds'),
-        contest = this.get('model.quiz.contest'),
+        contest = this.get('quiz.contest'),
         quizzes = contest.get('quizzes').toArray(),
         problemCount = contest.get('problems.length'),
         attachments = contest.get('attachments').toArray()
