@@ -37,10 +37,10 @@ export default Ember.Component.extend({
   },
 
   willDestroyElement () {
-    this.send('stopPoll')
+    this.get('poll').stopAll();
     return this._super(...arguments)
   },
-  
+
   // The actual string to display in the coundown timer. 
   // The difference between now and endTime
   displayString: Ember.computed('endTime', 'now', function () {
@@ -60,7 +60,7 @@ export default Ember.Component.extend({
     const now = this.get('now')
     const endTime = this.get('endTime')
     if (now >= endTime) {
-      this.send('stopPoll')
+      this.get('poll').stopAll();
       Ember.run.scheduleOnce('render', () => {
         this.get('onComplete')()
       })
@@ -71,11 +71,6 @@ export default Ember.Component.extend({
   }),
 
   actions: {
-    stopPoll () {
-      const pollId = this.get('pollId')
-      this.get('poll').stopPoll(pollId)
-    },
-
     tick() {
       // set now equal to unix timestamp in seconds
       this.set ('now', this.get ('serverTime').getUnixTime ()) ;

@@ -79,7 +79,6 @@ export default Ember.Controller.extend ({
     },
 
     restoreState () {
-      debugger
       const currentQuizAttempt = this.get('currentQuizAttempt'),
         store = this.get ('store')
       ;
@@ -180,6 +179,7 @@ export default Ember.Controller.extend ({
           if (quizzes.length === 1 && (! problemCount) && attachments.length === 0) {
             return this.get('contestAttemptService').getCurrentAttempts(contest.id) 
               .then(contestAttempt => {
+                if (!contestAttempt) return
                 contestAttempt.set('endTime', Moment().unix())
                 return contestAttempt.save()
               }).then(() => {

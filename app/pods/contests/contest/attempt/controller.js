@@ -17,11 +17,6 @@ export default Ember.Controller.extend({
             return this.transitionToRoute('contests.contest', contestId);
           }
 
-          throw new Error ('MaxAttemptsExceeded')
-        })
-        .catch((error) => {
-          console.log(error)
-          Raven.captureException(error);
           this.set('error', 'You can\'t attempt this contest. You may have reached your max possible attempts on this contest.');
         })
     }

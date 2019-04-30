@@ -9,7 +9,7 @@ const { inject: { service } } = Ember;
 export default Ember.Service.extend({
   store: service(),
 
-  getCurrentAttempts(contestId) {
+  async getCurrentAttempts(contestId) {
     const contestAttempt = this.get('store').peekRecord('ContestAttempt', {
       contestId
     })
