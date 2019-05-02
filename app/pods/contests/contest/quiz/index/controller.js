@@ -182,8 +182,13 @@ export default Ember.Controller.extend ({
             return this.get('contestAttemptService').getCurrentAttempts(contest.id) 
               .then(contestAttempt => {
                 if (!contestAttempt) return
-                contestAttempt.set('endTime', Moment().unix())
-                return contestAttempt.save()
+                // stop the contest attempt
+                return contestAttempt.save({
+                  custom: {
+                    ext: 'url',
+                    url: 'submit'
+                  }
+                })
               }).then(() => {
                 return this.transitionToRoute('contests.index')
               })
