@@ -1,14 +1,26 @@
 import Ember from 'ember';
+import { task, timeout } from 'ember-concurrency';
+// import ENV from '../../../../../../config/environment'
 const { inject: { service } } = Ember
 
 export default Ember.Route.extend({
   currentAttemptService: service('current-attempt'),
+  api: service(),
 
   queryParams: {
     q: {
       replace: true
     }
   },
+
+  contestDurationUpdateTask: task(function *(contest) {
+    while (true) {
+      yield timeout(6000)
+      const resp = yield this.get('api').request(`http://localhost:3000/api/contests/${contest.id}/duration`)
+      contest.set('duration', resp.duration)
+    }
+  }),
+  contestDurationUpdateTaskInstance: null,
 
   model (params) {
     const quiz = this.modelFor ('contests.contest.quiz')
@@ -48,6 +60,21 @@ export default Ember.Route.extend({
       this.transitionTo ('contests.denied', contest.id)
     }
   },
+
+  renderTemplate() {
+    const contest = this.controller.get('contest')
+    this.set(
+      'contestDurationUpdateTaskInstance', 
+      this.get('contestDurationUpdateTask').perform(contest)
+    )
+
+    return this._super(...arguments)
+  },
+
+  deactivate() {
+    this.get('contestDurationUpdateTaskInstance').cancel()
+  },
+
   actions: {
     error(err) {
       console.error(err)

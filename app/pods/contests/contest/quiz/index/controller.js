@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import Moment from 'npm:moment'
+import { task, timeout } from 'ember-concurrency'
 
 export default Ember.Controller.extend ({
   contestAttemptService: Ember.inject.service('current-attempt'),
@@ -30,6 +31,7 @@ export default Ember.Controller.extend ({
   }),
 
   attemptDuration: Ember.computed('quiz.contest.endTime', 'quiz.contest.duration', 'currentContestAttempt', function () {
+    debugger
     const userStartedAt = this.get('currentContestAttempt.startTime')
     const duration = this.get('quiz.contest.duration');
     const contestStartTime = this.get('quiz.contest.startTime')

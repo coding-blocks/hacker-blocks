@@ -16,8 +16,10 @@ export default Ember.Controller.extend({
           if (result.data.startTime && result.data.startTime !== 0) {
             return this.transitionToRoute('contests.contest', contestId);
           }
-
-          this.set('error', 'You can\'t attempt this contest. You may have reached your max possible attempts on this contest.');
+        }).catch(err => {
+          if (err.name !== "TransitionAborted") {
+            this.set('error', 'You can\'t attempt this contest. You may have reached your max possible attempts on this contest.');
+          }
         })
     }
   }

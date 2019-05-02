@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Ember, { TransformEachInToHash } from 'ember';
 import moment from 'npm:moment';
 
 /*
@@ -24,12 +24,9 @@ export default Ember.Component.extend({
 
     this.set('pollId', pollId)
 
-    // compute the endTime
-    if (!this.get('endTime')) {
-      const startTime = this.get('startTime')
-      const duration = this.get('duration')
-      this.set('endTime', startTime+duration)
-    }
+    const startTime = this.get('startTime')
+    const duration = this.get('duration')
+    this.set('endTime', startTime+duration)
 
     this.send('tick')
 
@@ -41,11 +38,16 @@ export default Ember.Component.extend({
     return this._super(...arguments)
   },
 
+
+  countdownEndTime: Ember.computed('duration', 'startTime', function() {
+    return this.get('startTime') + this.get('duration')
+  }),
+
   // The actual string to display in the coundown timer. 
   // The difference between now and endTime
-  displayString: Ember.computed('endTime', 'now', function () {
+  displayString: Ember.computed('now', function () {
     const now = this.get('now')
-    const endTime = this.get('endTime')
+    const endTime = this.get('countdownEndTime')
     
     let diff = Math.floor(endTime - now)
     const hrs = Math.floor(diff/3600)
@@ -56,9 +58,9 @@ export default Ember.Component.extend({
     return `${hrs} Hours ${min} Mins and ${sec} Seconds`
   }),
 
-  isCompleted: Ember.computed('endTime', 'now', function () {
+  isCompleted: Ember.computed('now', function () {
     const now = this.get('now')
-    const endTime = this.get('endTime')
+    const endTime = this.get('countdownEndTime')
     if (now >= endTime) {
       this.get('poll').stopAll();
       Ember.run.scheduleOnce('render', () => {
