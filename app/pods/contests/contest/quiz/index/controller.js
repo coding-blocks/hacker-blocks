@@ -31,7 +31,6 @@ export default Ember.Controller.extend ({
   }),
 
   attemptDuration: Ember.computed('quiz.contest.endTime', 'quiz.contest.duration', 'currentContestAttempt', function () {
-    debugger
     const userStartedAt = this.get('currentContestAttempt.startTime')
     const duration = this.get('quiz.contest.duration');
     const contestStartTime = this.get('quiz.contest.startTime')
@@ -183,12 +182,7 @@ export default Ember.Controller.extend ({
               .then(contestAttempt => {
                 if (!contestAttempt) return
                 // stop the contest attempt
-                return contestAttempt.save({
-                  custom: {
-                    ext: 'url',
-                    url: 'submit'
-                  }
-                })
+                return contestAttempt.save()
               }).then(() => {
                 return this.transitionToRoute('contests.index')
               })
