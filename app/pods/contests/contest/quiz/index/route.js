@@ -62,17 +62,20 @@ export default Ember.Route.extend({
   },
 
   renderTemplate() {
-    const contest = this.controller.get('contest')
-    this.set(
-      'contestDurationUpdateTaskInstance', 
-      this.get('contestDurationUpdateTask').perform(contest)
-    )
-
+    if (this.controller.get('currentContestAttempt')) {
+      const contest = this.controller.get('contest')
+      this.set(
+        'contestDurationUpdateTaskInstance', 
+        this.get('contestDurationUpdateTask').perform(contest)
+      )
+    }
     return this._super(...arguments)
   },
 
   deactivate() {
-    this.get('contestDurationUpdateTaskInstance').cancel()
+    if (this.controller.get('currentContestAttempt')) {
+      this.get('contestDurationUpdateTaskInstance').cancel()
+    }
   },
 
   actions: {

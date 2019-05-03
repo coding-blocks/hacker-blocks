@@ -36,17 +36,28 @@ export default Ember.Route.extend({
       return 0; // set submission count to zero
     });
 
+    const quiz = contest.get ('quizzes').map (quiz => {	
+      quiz.set ('contest', contest)
+      return this.get('store').findRecord('quiz', quiz.id)
+        .then(quiz => {
+          quiz.set('questionCount', quiz.hasMany('questions').ids().length)
+          return quiz
+        })
+    })
+
     return Ember.RSVP.hash({
       contest,
       tags,
       currentAttempt,
-      submissionCount
+      submissionCount,
+      quiz
     })
   },
   setupController: function (controller, model) {
     this._super(controller, model);
     controller.set('currentAttempt', model.currentAttempt)
     controller.set('contest', model.contest)
+    controller.set('quiz', model.quiz)
     controller.set('submissionCount', model.submissionCount.count)
   },
   beforeModel() {
