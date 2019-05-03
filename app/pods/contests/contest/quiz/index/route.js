@@ -15,7 +15,7 @@ export default Ember.Route.extend({
 
   contestDurationUpdateTask: task(function *(contest) {
     while (true) {
-      yield timeout(6000)
+      yield timeout(60000)
       const resp = yield this.get('api').request(`http://localhost:3000/api/contests/${contest.id}/duration`)
       contest.set('duration', resp.duration)
     }
