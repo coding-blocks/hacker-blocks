@@ -30,8 +30,21 @@ export default Ember.Component.extend({
     selected && selected.set ('selected', true)
   },
 
+  async didReceiveAttrs() {
+    if (this.get('question.id')) {
+      const questionId = this.get('question.id')
+      const currentAttemptId = this.get('attempt.id')
+      const submission = await this.get('store').queryRecord('quiz-submission', {
+        currentAttemptId,
+        questionId
+      })
+      this.set('submission', submission)
+    }
+    this._super(...arguments)
+  },
+
   actions: {
-    toggleChoice (choice) {
+    async toggleChoice (choice) {
       let choices = this.get ('question.choices'),
         attempt = this.get ('attempt'),
         questionId = this.get ('question.id'),
@@ -39,37 +52,31 @@ export default Ember.Component.extend({
         store = this.get ('store')
       ;
 
-      choices.map (choice => {
-        if (choice.id === choiceId) {
-          choice.set ('selected', (! choice.get ('selected')))
+      choices.map (c => {
+        if (c.id === choiceId) {
+          c.set ('selected', (! c.get ('selected')))
         }
         else {
-          choice.set ('selected', false)
+          c.set ('selected', false)
         }
       })
 
-      store.queryRecord ('quiz-submission', {
-        currentAttemptId: attempt.get ('id'),
-        questionId 
-      }).then (submission => {
-        if (! submission) {
-          return store.createRecord ('quiz-submission', {
-            currentattemptId: attempt,
-            questionId,
-            answerId: choiceId
-          }).save ()
+      const submission = this.get('submission')
+      if (!submission) {
+        const submission = await store.createRecord ('quiz-submission', {
+          currentattemptId: attempt,
+          questionId,
+          answerId: choiceId
+        }).save()
+        this.set('submission', submission)
+      } else {
+        if (choice.get('selected')) {
+          submission.set('answerId', choiceId)
         } else {
-          if (choice.get ('selected')) {
-            submission.set ('answerId', choiceId)
-          } else {
-            submission.set ('answerId', null)
-          }
-          return submission.save ()
+          submission.set('answerId', null)
         }
-      })
-        .catch (error => {
-          console.log (error)
-        })
+        await submission.save()
+      }
 
       this.get ('updateQuizState') (choice)
     }
