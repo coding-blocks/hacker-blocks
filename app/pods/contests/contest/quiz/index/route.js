@@ -9,8 +9,7 @@ export default Ember.Route.extend({
 
   queryParams: {
     q: {
-      replace: true,
-      refreshModel: true
+      replace: true
     }
   },
 
@@ -36,21 +35,19 @@ export default Ember.Route.extend({
       }
     })
 
-    const questionSubmissions = this.store.query('quiz-submission', {
+    const questionIds = quiz.hasMany('questions').ids()
+
+    const quizQuestionSubmissions = this.store.query('quiz-submission', {
       'currentAttemptId': currentQuizAttempt.id
     })
-
-    const questionIds = quiz.hasMany ('questions').ids ()
-    const question = this.store.findRecord ('question', questionIds[q ? q-1 : 0])
-
-
+        
     return Ember.RSVP.hash ({
       quiz,
       contest,
       currentContestAttempt,
       currentQuizAttempt,
-      questionSubmissions,
-      question
+      questionIds,
+      quizQuestionSubmissions
     })
   },
 
@@ -59,8 +56,8 @@ export default Ember.Route.extend({
     controller.set('currentContestAttempt', model.currentContestAttempt)
     controller.set('quiz', model.quiz)
     controller.set('contest', model.contest)
-    controller.set('questionSubmissions', model.questionSubmissions)
-    controller.set('currentQuestion', model.question)
+    controller.set('questionIds', model.questionIds)
+    controller.set('quizQuestionSubmissions', model.quizQuestionSubmissions)
   },
 
   afterModel (params) {

@@ -12,21 +12,15 @@ export default Ember.Controller.extend ({
   lastQuestionChange: Date.now (),
   notifications: Ember.inject.service ('toast'),
 
-  questionIds: Ember.computed ('quiz', function () {
-    return this.get ('quiz').hasMany ('questions').ids ()
+  question: Ember.computed('q', function () {
+    const currentQuestionIndex = this.get ('q') - 1
+    return DS.PromiseObject.create({
+      promise: this.store.findRecord ('question', this.get ('questionIds')[currentQuestionIndex])
+    })
   }),
 
-  // currentQuestion: Ember.computed ('q', function () {
-  //   const currentQuestionIndex = this.get ('q') - 1
-  //   this.set ('lastQuestionChange', Date.now ())
-  //   return this.store.findRecord ('question', this.get ('questionIds')[currentQuestionIndex])
-  // }),
-
-  currentQuestionSubmission: Ember.computed('questionSubmissions.@each', 'currentQuestion', function () {
-    // const currentQuizAttempt = this.get('currentQuizAttempt')
-    // const attempts = this.get('store').peekAll('quiz-submission').findBy('currentattemptId', currentQuizAttempt)
-    debugger;
-    return this.get('questionSubmissions').findBy('questionId', this.get('currentQuestion.id'))
+  currentQuestionSubmission: Ember.computed('quizQuestionSubmissions.[]', 'question.id', function () {
+    return this.get('quizQuestionSubmissions').findBy('questionId', this.get('question.id'))
   }),
 
   lastQuestion: Ember.computed ('q', function () {
@@ -141,15 +135,14 @@ export default Ember.Controller.extend ({
       if (!submission) {
         submission = await this.get('store').createRecord ('quiz-submission', {
           currentattemptId: this.get('currentQuizAttempt'),
-          questionId: this.get('currentQuestion.id'),
+          questionId: this.get('question.id'),
           answerId: choiceId
         }).save()
-        // return this.set('currentQuestionSubmission', submission)
-      } 
-
-      submission.set('answerId', choiceId)
-      
-      await submission.save()
+      } else {
+        submission.set('answerId', choiceId)
+        await submission.save()
+      }
+      this.set('quizQuestionSubmissions', this.get('store').peekAll('quiz-submission').filter(s => !!s.get('answerId')))
     },
 
     submitQuiz () {
