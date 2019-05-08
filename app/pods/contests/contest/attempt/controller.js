@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
   actions: {
     attemptContest (contestId) {
       const store = this.get('store')
-      this
+      return this
         .get('currentAttempt')
         .getCurrentAttempts(contestId)
         .then(contestAttempt => {

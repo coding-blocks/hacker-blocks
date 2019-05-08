@@ -8,13 +8,14 @@ export default Ember.Route.extend({
   store: service (),
   routing: service('-routing'),
   currentAttemptService: service('current-attempt'),
+  currentContest: service('current-contest'),
   currentUser: service('current-user'),
   serverTime: Ember.inject.service (),
   breadCrumb: Ember.Object.create({
     title: 'Contest'
   }),
   model(params, transition) {
-    const { contest } = this.modelFor('contests.contest');
+    const contest = this.get('currentContest').getContest()
     const tags = [];
     contest.get("problems").map(prob => {
       if (prob.get("tags") != null) {
@@ -38,7 +39,7 @@ export default Ember.Route.extend({
 
     const quiz = contest.get ('quizzes').map (quiz => {	
       quiz.set ('contest', contest)
-      return this.get('store').findRecord('quiz', quiz.id)
+      return this.get('store').findRecord('quiz', quiz.id, {reload: true})
         .then(quiz => {
           quiz.set('questionCount', quiz.hasMany('questions').ids().length)
           return quiz

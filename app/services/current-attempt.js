@@ -10,12 +10,13 @@ export default Ember.Service.extend({
   store: service(),
 
   async getCurrentAttempts(contestId) {
-    const contestAttempt = this.get('store').peekRecord('ContestAttempt', {
-      contestId
-    })
+    const contestAttempt = this
+      .get('store')
+      .peekAll('ContestAttempt')
+      .find(attempts => attempts.get('contestId') == contestId)
     if (!contestAttempt) {
       return this.get('store').queryRecord('ContestAttempt', { contestId: contestId })
     }
-    return contestAttempt
+    return Promise.resolve(contestAttempt)
   }
 });

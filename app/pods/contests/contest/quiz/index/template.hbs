@@ -3,7 +3,6 @@
     <div class="header-left">
       <div class="heading">
         {{quiz.title}}
-				{{q}}
       </div>
     </div>
     <div class="header-right">
@@ -20,12 +19,6 @@
 	  <div class="col-md-6 col-md-offset-3">
 		  <button class="btn btn-filled btn-block" {{action 'confirmSubmit'}}>Submit Quiz</button>
 	  </div>
-    </div>
-  </div>
-  <div class="container-fluid">
-    <div class="row"></div>
-    <div class="clearfix" style="margin-left: 0; padding-left: 3rem;">
-      {{markdown-to-html quiz.contest.description}}
     </div>
   </div>
 

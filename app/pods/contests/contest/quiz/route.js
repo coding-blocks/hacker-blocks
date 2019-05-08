@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   session: Ember.inject.service('session'),
   notifications: Ember.inject.service ('toast'),
+  currentContest: Ember.inject.service('current-contest'),
 
   beforeModel (transition) {
     const session = this.get ('session')
@@ -16,16 +17,11 @@ export default Ember.Route.extend({
     }
   },
 
-  model (params) {
-    let store = this.get ('store')
-    let { contest } = this.modelFor ('contests.contest');
-
-    let quiz = store.findRecord ('quiz', params.quiz_id, { reload: true })
-      .then (quiz => {
-        quiz.set ('contest', contest)
-
-        return quiz
-      })
+  async model (params) {
+    const store = this.get ('store')
+    const contest = this.get('currentContest').getContest()
+    const quiz = await store.findRecord('quiz', params.quiz_id, {reload: true})
+    quiz.set('contest', contest)
 
     return quiz
   }

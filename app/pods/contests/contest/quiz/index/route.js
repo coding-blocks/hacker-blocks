@@ -6,6 +6,7 @@ const { inject: { service } } = Ember
 export default Ember.Route.extend({
   currentAttemptService: service('current-attempt'),
   api: service(),
+  currentContest: service('current-contest'),
 
   queryParams: {
     q: {
@@ -24,8 +25,8 @@ export default Ember.Route.extend({
 
   async model ({q}) {
     const quiz = this.modelFor ('contests.contest.quiz')
-    const { contest } = this.modelFor ('contests.contest')
-    const currentContestAttempt = this.get ('currentAttemptService').getCurrentAttempts(quiz.get('contest.id'))
+    const contest = this.get('currentContest').getContest()
+    const currentContestAttempt = this.get ('currentAttemptService').getCurrentAttempts(contest.get('id'))
     const currentQuizAttempt = await this.store.queryRecord ('quiz_attempt', {
       quizId: quiz.id,
       contestId: contest.id,
@@ -60,11 +61,10 @@ export default Ember.Route.extend({
     controller.set('quizQuestionSubmissions', model.quizQuestionSubmissions)
   },
 
-  afterModel (params) {
-    const contest = params.quiz.get ('contest'),
-      duration = contest.get ('duration'),
-      { currentContestAttempt } = params
-    ;
+  afterModel (model) {
+    const contest = model.contest
+    const duration = contest.get ('duration')
+    const { currentContestAttempt } = model
 
     if (duration && (! currentContestAttempt)) {
       this.transitionTo ('contests.denied', contest.id)
