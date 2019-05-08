@@ -59,7 +59,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.apiEndpoint = 'https://api.cb.lk';
+    ENV.apiEndpoint = 'https://hack-api.codingblocks.com';
     ENV.GLOBAL_CHAT_NAME = 'chat-prod';
     ENV.chatEndpoint = 'https://chat.cb.lk';
     ENV.RavenDsn = 'https://1c192f55af754967966db2e85d46d252@sentry.cb.lk/6';
