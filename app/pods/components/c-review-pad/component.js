@@ -16,8 +16,8 @@ export default Ember.Component.extend({
 
       if (quizState) {
         quizState.map (attempt => {
-          if (attempt.questionId === questionId) {
-            question.answerId = attempt.answerId
+          if (attempt.get('questionId') === questionId) {
+            question.answerId = attempt.get('answerId')
           }
         })
       }

@@ -31,7 +31,7 @@
 
   <section class="row clearfix">
 	  <div class="col-md-6 question">
-		  {{question-container question=currentQuestion quizState=quizState lastUpdated=lastQuestionChange updateQuizState=(action 'updateQuizState') attempt=currentQuizAttempt}}
+		  {{question-container question=currentQuestion questionSubmission=currentQuestionSubmission updateQuestionSubmission=(action 'updateQuestionSubmission') attempt=currentQuizAttempt}}
 		  <div class="navigation row">
 			  <div class="col-md-4">
 				  <button href="#" class="btn btn-filled btn-sm btn-block" disabled={{firstQuestion}} {{action 'previousQuestion'}}>&lt; Previous</button>
@@ -50,7 +50,7 @@
 		  {{/link-to}}
 	  </div>
 	  <div class="col-md-3 col-md-offset-1">
-		  {{c-review-pad questionIds=questionIds quizState=quizState lastUpdated=answerTimestamp onReview=(action 'goToQuestion')}}
+		  {{c-review-pad questionIds=questionIds quizState=questionSubmissions lastUpdated=answerTimestamp onReview=(action 'goToQuestion')}}
 		  {{#link-to 'contests.contest.quiz-attempts' quiz.contest.id quiz.id class="btn btn-red"}}Previous Attempts{{/link-to}}
 	  </div>
   </section>

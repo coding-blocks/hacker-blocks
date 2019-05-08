@@ -9,7 +9,8 @@ export default Ember.Route.extend({
 
   queryParams: {
     q: {
-      replace: true
+      replace: true,
+      refreshModel: true
     }
   },
 
@@ -22,11 +23,11 @@ export default Ember.Route.extend({
   }),
   contestDurationUpdateTaskInstance: null,
 
-  model (params) {
+  async model ({q}) {
     const quiz = this.modelFor ('contests.contest.quiz')
     const { contest } = this.modelFor ('contests.contest')
     const currentContestAttempt = this.get ('currentAttemptService').getCurrentAttempts(quiz.get('contest.id'))
-    const currentQuizAttempt = this.store.queryRecord ('quiz_attempt', {
+    const currentQuizAttempt = await this.store.queryRecord ('quiz_attempt', {
       quizId: quiz.id,
       contestId: contest.id,
       custom: {
@@ -35,11 +36,21 @@ export default Ember.Route.extend({
       }
     })
 
+    const questionSubmissions = this.store.query('quiz-submission', {
+      'currentAttemptId': currentQuizAttempt.id
+    })
+
+    const questionIds = quiz.hasMany ('questions').ids ()
+    const question = this.store.findRecord ('question', questionIds[q ? q-1 : 0])
+
+
     return Ember.RSVP.hash ({
       quiz,
       contest,
       currentContestAttempt,
-      currentQuizAttempt
+      currentQuizAttempt,
+      questionSubmissions,
+      question
     })
   },
 
@@ -48,6 +59,8 @@ export default Ember.Route.extend({
     controller.set('currentContestAttempt', model.currentContestAttempt)
     controller.set('quiz', model.quiz)
     controller.set('contest', model.contest)
+    controller.set('questionSubmissions', model.questionSubmissions)
+    controller.set('currentQuestion', model.question)
   },
 
   afterModel (params) {
