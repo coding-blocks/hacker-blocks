@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import { task, timeout } from 'ember-concurrency';
-// import ENV from '../../../../../../config/environment'
+import ENV from 'hack/config/environment';
 const { inject: { service } } = Ember
 
 export default Ember.Route.extend({
@@ -17,7 +17,7 @@ export default Ember.Route.extend({
   contestDurationUpdateTask: task(function *(contest) {
     while (true) {
       yield timeout(60000)
-      const resp = yield this.get('api').request(`http://localhost:3000/api/contests/${contest.id}/duration`)
+      const resp = yield this.get('api').request(`${ENV.apiEndpoint}/api/contests/${contest.id}/duration`)
       contest.set('duration', resp.duration)
     }
   }),
@@ -83,8 +83,9 @@ export default Ember.Route.extend({
   },
 
   deactivate() {
-    if (this.controller.get('currentContestAttempt')) {
+    if (this.get('contestDurationUpdateTaskInstance')) {
       this.get('contestDurationUpdateTaskInstance').cancel()
+      this.set('contestDurationUpdateTaskInstance', null)
     }
   },
 
