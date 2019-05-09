@@ -19,9 +19,13 @@
 	<div class="row clearfix">
     {{#if session.isAuthenticated}}
       <button
-        {{action 'attemptContest' this.model.id}}
+        {{action (perform attemptContestTask this.model.id)}}
         class='btn btn-raised g-bg-blush2 waves-effect btn-sm'>
-        Attempt Contest
+        {{#if attemptContestTask.isRunning}}
+          Loading ...
+        {{else}}
+          Attempt Contest
+        {{/if}}
       </button>
     {{else}}
       <strong>Please login to attempt this contest.</strong>
