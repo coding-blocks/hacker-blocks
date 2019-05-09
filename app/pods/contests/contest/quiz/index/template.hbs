@@ -24,27 +24,42 @@
 
   <section class="row clearfix">
 	  <div class="col-md-6 question">
-		  {{question-container question=question questionSubmission=currentQuestionSubmission updateQuestionSubmission=(action 'updateQuestionSubmission') attempt=currentQuizAttempt}}
+		  {{question-container 
+				questionNumber=q
+				question=question 
+				questionSubmission=currentQuestionSubmission 
+				updateQuestionSubmissionTask=updateQuestionSubmissionTask
+				attempt=currentQuizAttempt}}
 		  <div class="navigation row">
 			  <div class="col-md-4">
 				  <button href="#" class="btn btn-filled btn-sm btn-block" disabled={{firstQuestion}} {{action 'previousQuestion'}}>&lt; Previous</button>
 			  </div>
 
 			  <div class="col-md-4">
-				  <a href="#" class="btn btn-filled btn-sm btn-block" {{action 'markForReview'}}>Review Later</a>
+				  <a href="#" class="btn btn-filled btn-sm btn-block" {{action 'markForReview'}}>
+						{{#if question.review}}
+							Reset Review
+						{{else}}
+							Review Later
+						{{/if}}
+					</a>
 			  </div>
 
 			  <div class="col-md-4">
 				  <a href="#" class="btn btn-filled btn-sm btn-block" disabled={{lastQuestion}} {{action 'nextQuestion'}}>Next &gt;</a>
 			  </div>
 		  </div>
-		  {{#link-to 'contests.contest' quiz.contest.id class="col-md-6 col-md-offset-3 btn btn-red btn-block"}}
-			  Back To Contest
-		  {{/link-to}}
+			{{#unless singleQuiz}}
+				{{#link-to 'contests.contest' quiz.contest.id class="col-md-6 col-md-offset-3 btn btn-red btn-block"}}
+					Back To Contest
+				{{/link-to}}
+			{{/unless}}
 	  </div>
 	  <div class="col-md-3 col-md-offset-1">
 		  {{c-review-pad questionIds=questionIds quizState=quizQuestionSubmissions lastUpdated=answerTimestamp onReview=(action 'goToQuestion')}}
-		  {{#link-to 'contests.contest.quiz-attempts' quiz.contest.id quiz.id class="btn btn-red"}}Previous Attempts{{/link-to}}
+			{{#if contest.showQuizGrades}}
+		  	{{#link-to 'contests.contest.quiz-attempts' quiz.contest.id quiz.id class="btn btn-red"}}Previous Attempts{{/link-to}}
+			{{/if}}
 	  </div>
   </section>
 

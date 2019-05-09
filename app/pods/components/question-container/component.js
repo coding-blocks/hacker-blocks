@@ -10,7 +10,7 @@ export default Ember.Component.extend({
   actions: {
     async toggleChoice (choiceId) {
       const selectedChoiceId = choiceId === this.get('selectedChoiceId') ? null : choiceId
-      this.get('updateQuestionSubmission')(selectedChoiceId)
+      this.get('updateQuestionSubmissionTask').perform(selectedChoiceId)
     }
   }
 });

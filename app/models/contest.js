@@ -44,6 +44,7 @@ export default DS.Model.extend({
   }),
   showLeaderboard: DS.attr(),
   allowedLanguages: DS.attr(),
+  showQuizGrades: DS.attr(),
   showTags: DS.attr(),
   java: Ember.computed('allowedLanguages.[]', function(){
       return this.get('allowedLanguages').includes('java');

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Moment from 'npm:moment'
 import DS from 'ember-data'
+import { task } from 'ember-concurrency'
 
 export default Ember.Controller.extend ({
   contestAttemptService: Ember.inject.service('current-attempt'),
@@ -21,6 +22,10 @@ export default Ember.Controller.extend ({
 
   currentQuestionSubmission: Ember.computed('quizQuestionSubmissions.[]', 'question.id', function () {
     return this.get('quizQuestionSubmissions').findBy('questionId', this.get('question.id'))
+  }),
+
+  singleQuiz: Ember.computed('contest.quizzes', function () {
+    return this.get('contest.quizzes').toArray().length === 1
   }),
 
   lastQuestion: Ember.computed ('q', function () {
@@ -58,6 +63,21 @@ export default Ember.Controller.extend ({
     //return startTime + duration < endTime ? duration : timeLeft 
   }),
 
+  updateQuestionSubmissionTask: task(function *(choiceId) {
+    const submission = this.get('currentQuestionSubmission')
+    if (!submission) {
+      yield this.get('store').createRecord ('quiz-submission', {
+        currentattemptId: this.get('currentQuizAttempt'),
+        questionId: this.get('question.id'),
+        answerId: choiceId
+      }).save()
+    } else {
+      submission.set('answerId', choiceId)
+      yield submission.save()
+    }
+    this.set('quizQuestionSubmissions', this.get('store').peekAll('quiz-submission').filter(s => !!s.get('answerId')))
+  }).drop(),
+
   actions: {
     previousQuestion () {
       if (this.get ('firstQuestion')) {
@@ -75,37 +95,6 @@ export default Ember.Controller.extend ({
       this.set ('q', this.get ('q') + 1)
     },
 
-    updateQuizState (choice) {
-      const currentQuestion = this.get ('currentQuestion'),
-        quizState = this.get ('quizState'),
-        answerId = (choice.get ('selected')) ? choice.get ('id') : null
-      ;
-
-      if (answerId) {
-        localStorage.setItem (`review-${currentQuestion.get ('id')}`, false)
-      }
-
-      let oldState = quizState.find (q => (q.questionId === currentQuestion.get ('id')))
-
-      if (! oldState) {
-        quizState.push ({
-          questionId: currentQuestion.get ('id'),
-          answerId: answerId,
-          review: false
-        })
-      }
-      else {
-        oldState.answerId = answerId
-        oldState.review = false
-      }
-
-      this.set ('answerTimestamp', Date.now ())
-    },
-
-    redirectToContest () {
-      // this.transitionToRoute('contests.contest', model.contest.id);
-    },
-
     goToQuestion (index) {
       this.set('q', index)
     },
@@ -115,9 +104,8 @@ export default Ember.Controller.extend ({
     },
 
     markForReview () {
-      let question = this.get ('currentQuestion'),
-        id = question.get ('id')
-      ;
+      const question = this.get ('question')
+      const id = question.get ('id')
 
       question.set ('review', (! question.get ('review')))
 
@@ -128,21 +116,6 @@ export default Ember.Controller.extend ({
 
     confirmSubmit () {
       $('#submissionConfirmation').modal ('show')
-    },
-
-    async updateQuestionSubmission (choiceId) {
-      let submission = this.get('currentQuestionSubmission')
-      if (!submission) {
-        submission = await this.get('store').createRecord ('quiz-submission', {
-          currentattemptId: this.get('currentQuizAttempt'),
-          questionId: this.get('question.id'),
-          answerId: choiceId
-        }).save()
-      } else {
-        submission.set('answerId', choiceId)
-        await submission.save()
-      }
-      this.set('quizQuestionSubmissions', this.get('store').peekAll('quiz-submission').filter(s => !!s.get('answerId')))
     },
 
     submitQuiz () {
