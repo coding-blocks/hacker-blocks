@@ -26,8 +26,8 @@ export default Ember.Controller.extend ({
 
   singleQuiz: Ember.computed('contest.quizzes', function () {
     return this.get('contest.quizzes').toArray().length === 1 && 
-      this.get('contest.attachments').toArray() === 0 &&
-      this.get('contest.problems').toArray() === 0
+      this.get('contest.attachments').toArray().length === 0 &&
+      this.get('contest.problems').toArray().length === 0
   }),
 
   lastQuestion: Ember.computed ('q', function () {
