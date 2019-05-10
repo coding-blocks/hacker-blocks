@@ -3,6 +3,7 @@
  */
 
 import Ember from 'ember';
+import Moment from 'npm:moment';
 
 const { inject: { service } } = Ember;
 
@@ -13,7 +14,7 @@ export default Ember.Service.extend({
     const contestAttempt = this
       .get('store')
       .peekAll('ContestAttempt')
-      .find(attempts => attempts.get('contestId') == contestId)
+      .find(attempt => attempt.get('contestId') == contestId && attempt.get('endTime') > Moment().unix())
     if (!contestAttempt) {
       return this.get('store').queryRecord('ContestAttempt', { contestId: contestId })
     }
