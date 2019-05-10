@@ -19,6 +19,7 @@ export default AjaxService.extend({
       headers['oauth-id'] = authData.oauth_id;
       headers['access-token'] = authData.auth_token;
       headers['user-id'] = authData.user_id;
+      headers['client'] = 'hacker-blocks';
       return headers;
     }
   })

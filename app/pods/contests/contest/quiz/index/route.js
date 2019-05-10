@@ -1,7 +1,12 @@
 import Ember from 'ember';
+import { task, timeout } from 'ember-concurrency';
+import ENV from 'hack/config/environment';
+const { inject: { service } } = Ember
 
 export default Ember.Route.extend({
-  currentAttemptService: Ember.inject.service('current-attempt'),
+  currentAttemptService: service('current-attempt'),
+  api: service(),
+  currentContest: service('current-contest'),
 
   queryParams: {
     q: {
@@ -9,55 +14,78 @@ export default Ember.Route.extend({
     }
   },
 
-  model (params) {
-    const quiz = this.modelFor ('contests.contest.quiz'),
-      { contest } = this.modelFor ('contests.contest'),
-      currentAttempt = this.get ('currentAttemptService').getCurrentAttempts(quiz.get ('contest').id)
-    ;
+  contestDurationUpdateTask: task(function *(contest) {
+    while (true) {
+      yield timeout(60000)
+      const resp = yield this.get('api').request(`${ENV.apiEndpoint}/api/contests/${contest.id}/duration`)
+      contest.set('duration', resp.duration)
+    }
+  }),
+  contestDurationUpdateTaskInstance: null,
 
+  async model ({q}) {
+    const quiz = this.modelFor ('contests.contest.quiz')
+    const contest = this.get('currentContest').getContest()
+    const currentContestAttempt = this.get ('currentAttemptService').getCurrentAttempts(contest.get('id'))
+    const currentQuizAttempt = await this.store.queryRecord ('quiz_attempt', {
+      quizId: quiz.id,
+      contestId: contest.id,
+      custom: {
+        ext: 'url',
+        url: 'currentAttempt'
+      }
+    })
+
+    const questionIds = quiz.hasMany('questions').ids()
+
+    const quizQuestionSubmissions = this.store.query('quiz-submission', {
+      'currentAttemptId': currentQuizAttempt.id
+    })
+        
     return Ember.RSVP.hash ({
       quiz,
       contest,
-      currentAttempt,
-      currentQuizAttempt: this.store.queryRecord ('quiz_attempt', {
-        quizId: quiz.id,
-        contestId: contest.id,
-        custom: {
-          ext: 'url',
-          url: 'currentAttempt'
-        }
-      })
+      currentContestAttempt,
+      currentQuizAttempt,
+      questionIds,
+      quizQuestionSubmissions
     })
   },
 
-  afterModel (params) {
-    let contest = params.quiz.get ('contest'),
-      duration = contest.get ('duration'),
-      { currentAttempt } = params
-    ;
+  setupController(controller, model) {
+    controller.set('currentQuizAttempt', model.currentQuizAttempt)
+    controller.set('currentContestAttempt', model.currentContestAttempt)
+    controller.set('quiz', model.quiz)
+    controller.set('contest', model.contest)
+    controller.set('questionIds', model.questionIds)
+    controller.set('quizQuestionSubmissions', model.quizQuestionSubmissions)
+  },
 
-    if (duration && (! currentAttempt)) {
+  afterModel (model) {
+    const contest = model.contest
+    const duration = contest.get ('duration')
+    const { currentContestAttempt } = model
+
+    if (duration && (! currentContestAttempt)) {
       this.transitionTo ('contests.denied', contest.id)
     }
   },
 
-  renderTemplate () {
-    this._super (...arguments)
-    //
-    // const questionContainer = document.querySelector ('.questions-container')
-    //
-    // if (window.MathJax && questionContainer) {
-    //   Ember.run.later (_ => MathJax.Hub.Queue(["Typeset", MathJax.Hub, questionContainer]))
-    // }
+  renderTemplate() {
+    if (this.controller.get('currentContestAttempt')) {
+      const contest = this.controller.get('contest')
+      this.set(
+        'contestDurationUpdateTaskInstance', 
+        this.get('contestDurationUpdateTask').perform(contest)
+      )
+    }
+    return this._super(...arguments)
   },
 
-  actions: {
-    didTransition () {
-      // Ember.run.later(() => {
-      //   let objDiv = document.getElementById("qTitle");
-      //   window.scrollTo ({top: Ember.$('#qTitle').offset().top - objDiv.scrollHeight});
-      // },500)
-      // return true;
+  deactivate() {
+    if (this.get('contestDurationUpdateTaskInstance')) {
+      this.get('contestDurationUpdateTaskInstance').cancel()
+      this.set('contestDurationUpdateTaskInstance', null)
     }
   }
 });

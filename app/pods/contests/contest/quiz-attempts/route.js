@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   session: Ember.inject.service('session'),
   notifications: Ember.inject.service ('toast'),
-  currentAttemptService: Ember.inject.service('current-attempt'),
 
   beforeModel (transition) {
     let session = this.get ('session'),

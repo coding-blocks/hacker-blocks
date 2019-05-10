@@ -7,12 +7,16 @@ import Ember from 'ember';
 const { inject: { service } } = Ember;
 
 export default Ember.Service.extend({
-  session:     service('session'),
   store: service(),
 
-  getCurrentAttempts(contestId) {
-    let userId = this.get('session').get('data').authenticated.user_id
-    let record = this.get('store').queryRecord('ContestAttempt', { contestId: contestId })
-    return record
+  async getCurrentAttempts(contestId) {
+    const contestAttempt = this
+      .get('store')
+      .peekAll('ContestAttempt')
+      .find(attempts => attempts.get('contestId') == contestId)
+    if (!contestAttempt) {
+      return this.get('store').queryRecord('ContestAttempt', { contestId: contestId })
+    }
+    return Promise.resolve(contestAttempt)
   }
 });

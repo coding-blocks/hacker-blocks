@@ -2,20 +2,17 @@
   <div class="header">
     <div class="header-left">
       <div class="heading">
-        {{model.quiz.title}}
-		{{q}}
-
-        {{model.currentAttempt.startTime}}
+        {{quiz.title}}
       </div>
     </div>
     <div class="header-right">
-      {{#if model.quiz.contest.duration}}
+      {{#if quiz.contest.duration}}
         <div class="countdown-timer-container">
           {{#countdown-timer
-            startTime=model.currentAttempt.startTime
+            startTime=currentContestAttempt.startTime
             duration=attemptDuration
             noIcon=true
-            onComplete=(action 'submitQuiz')}}
+            onComplete=(action 'autoSubmit')}}
           {{/countdown-timer}}
         </div>
       {{/if}}
@@ -24,36 +21,45 @@
 	  </div>
     </div>
   </div>
-  <div class="container-fluid">
-    <div class="row"></div>
-    <div class="clearfix" style="margin-left: 0; padding-left: 3rem;">
-      {{markdown-to-html model.quiz.contest.description}}
-    </div>
-  </div>
 
   <section class="row clearfix">
 	  <div class="col-md-6 question">
-		  {{question-container question=currentQuestion quizState=quizState lastUpdated=lastQuestionChange updateQuizState=(action 'updateQuizState') attempt=model.currentQuizAttempt}}
+		  {{question-container 
+				questionNumber=q
+				question=question 
+				questionSubmission=currentQuestionSubmission 
+				updateQuestionSubmissionTask=updateQuestionSubmissionTask
+				attempt=currentQuizAttempt}}
 		  <div class="navigation row">
 			  <div class="col-md-4">
 				  <button href="#" class="btn btn-filled btn-sm btn-block" disabled={{firstQuestion}} {{action 'previousQuestion'}}>&lt; Previous</button>
 			  </div>
 
 			  <div class="col-md-4">
-				  <a href="#" class="btn btn-filled btn-sm btn-block" {{action 'markForReview'}}>Review Later</a>
+				  <a href="#" class="btn btn-filled btn-sm btn-block" {{action 'markForReview'}}>
+						{{#if question.review}}
+							Reset Review
+						{{else}}
+							Review Later
+						{{/if}}
+					</a>
 			  </div>
 
 			  <div class="col-md-4">
 				  <a href="#" class="btn btn-filled btn-sm btn-block" disabled={{lastQuestion}} {{action 'nextQuestion'}}>Next &gt;</a>
 			  </div>
 		  </div>
-		  {{#link-to 'contests.contest' model.quiz.contest.id class="col-md-6 col-md-offset-3 btn btn-red btn-block"}}
-			  Back To Contest
-		  {{/link-to}}
+			{{#unless singleQuiz}}
+				{{#link-to 'contests.contest' quiz.contest.id class="col-md-6 col-md-offset-3 btn btn-red btn-block"}}
+					Back To Contest
+				{{/link-to}}
+			{{/unless}}
 	  </div>
 	  <div class="col-md-3 col-md-offset-1">
-		  {{c-review-pad questionIds=questionIds quizState=quizState lastUpdated=answerTimestamp onReview=(action 'goToQuestion')}}
-		  {{#link-to 'contests.contest.quiz-attempts' model.quiz.contest.id model.quiz.id class="btn btn-red"}}Previous Attempts{{/link-to}}
+		  {{c-review-pad questionIds=questionIds quizState=quizQuestionSubmissions lastUpdated=answerTimestamp onReview=(action 'goToQuestion')}}
+			{{#if contest.showQuizGrades}}
+		  	{{#link-to 'contests.contest.quiz-attempts' quiz.contest.id quiz.id class="btn btn-red"}}Previous Attempts{{/link-to}}
+			{{/if}}
 	  </div>
   </section>
 

@@ -3,12 +3,11 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   session: Ember.inject.service('session'),
   notifications: Ember.inject.service ('toast'),
+  currentContest: Ember.inject.service('current-contest'),
 
   beforeModel (transition) {
-    let session = this.get ('session'),
-      notifications = this.get ('notifications'),
-      store = this.get ('store')
-    ;
+    const session = this.get ('session')
+    const notifications = this.get ('notifications')
 
     if (! session.get ('isAuthenticated')) {
       transition.abort ()
@@ -16,27 +15,13 @@ export default Ember.Route.extend({
 
       this.transitionTo ('contests.index')
     }
-
-    return store.queryRecord ('quiz-attempt', {
-      quizId: transition.params['contests.contest.quiz'].quiz_id,
-      contestId: transition.params['contests.contest'].contest_id,
-      custom: {
-        ext: 'url',
-        url: 'currentAttempt'
-      }
-    })
   },
 
-  model (params) {
-    let store = this.get ('store')
-    let { contest } = this.modelFor ('contests.contest');
-
-    let quiz = store.findRecord ('quiz', params.quiz_id, { reload: true })
-      .then (quiz => {
-        quiz.set ('contest', contest)
-
-        return quiz
-      })
+  async model (params) {
+    const store = this.get ('store')
+    const contest = this.get('currentContest').getContest()
+    const quiz = await store.findRecord('quiz', params.quiz_id, {reload: true})
+    quiz.set('contest', contest)
 
     return quiz
   }
