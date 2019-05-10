@@ -87,11 +87,5 @@ export default Ember.Route.extend({
       this.get('contestDurationUpdateTaskInstance').cancel()
       this.set('contestDurationUpdateTaskInstance', null)
     }
-  },
-
-  actions: {
-    error(err) {
-      console.error(err)
-    }
   }
 });
