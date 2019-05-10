@@ -25,7 +25,7 @@ export default Ember.Controller.extend ({
   }),
 
   singleQuiz: Ember.computed('contest.quizzes', function () {
-    return this.get('contest.quizzes').toArray().length === 1
+    return this.get('contest.quizzes').toArray().length === 1 && this.get('contest.attachments').toArray() === 0
   }),
 
   lastQuestion: Ember.computed ('q', function () {
@@ -116,6 +116,26 @@ export default Ember.Controller.extend ({
 
     confirmSubmit () {
       $('#submissionConfirmation').modal ('show')
+    },
+
+    autoSubmit() {
+      const contest = this.get('quiz.contest')
+      const quizzes = contest.get('quizzes').toArray()
+      const problemCount = contest.get('problems.length')
+      const attachments = contest.get('attachments').toArray()
+      const questionIds = this.get ('questionIds')
+      if (quizzes.length === 1 && (! problemCount) && attachments.length === 0) {
+        questionIds.map (id => {
+          localStorage.removeItem (`review-${id}`)
+        })
+        this.get('store')
+          .peekAll ('choice')
+          .toArray ()
+          .map (choice => choice.set ('selected', false))
+        this.get ('notifications').info ('Test Successfully Submitted!')
+        return this.transitionToRoute('contests.index')
+      }
+      return this.transitionToRoute('contests.contest', contest.id)
     },
 
     submitQuiz () {
