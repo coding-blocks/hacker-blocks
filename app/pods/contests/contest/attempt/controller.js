@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
   init() {
     const wait = (Math.random()*100) % 60
     this.set('wait', wait)
-    this.set('start', Moment().unix())
+    this.set('start', this.get('serverTime').getUnixTime())
     this.get('tickTask').perform()
   },
 
