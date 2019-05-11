@@ -1,11 +1,30 @@
 import Ember from 'ember';
 const { inject: { service } } = Ember;
-import { task } from 'ember-concurrency';
+import { task, timeout } from 'ember-concurrency';
+import Moment from 'npm:moment'
 
 export default Ember.Controller.extend({
   session:     service('session'),
   currentUser: service('current-user'),
   currentAttempt: service('current-attempt'),
+  serverTime: service('server-time'),
+  started: false,
+
+  init() {
+    const wait = (Math.random()*100) % 60
+    this.set('wait', wait)
+    this.set('start', Moment().unix())
+    this.get('tickTask').perform()
+  },
+
+  tickTask: task(function *() {
+    while (this.get('serverTime').getUnixTime() < this.get('start') + this.get('wait')) {
+      const left = Math.floor(this.get('start') + this.get('wait') - this.get('serverTime').getUnixTime())
+      this.set('left', left)
+      yield timeout(1000)
+    }
+    this.set('started', true)
+  }),
 
   attemptContestTask: task(function *(contestId) {
     const store = this.get('store')

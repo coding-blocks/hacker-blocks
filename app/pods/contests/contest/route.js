@@ -7,12 +7,20 @@ export default Ember.Route.extend({
 
   model (params) {
     const contestId = params.contest_id;
+    const contest = this.get('store').findRecord('contest', contestId)
     return Ember.RSVP.hash({
-      contest: this.get('store').findRecord('contest', contestId, {reload: true})
+      contest
     })
   },
 
   afterModel(model) {
     this.get('currentContest').setContest(model.contest)
+  },
+
+  actions: {
+    error(error, transition) {
+      const contestId = transition.params['contests.contest'].contest_id
+      this.transitionTo('contests.denied', contestId)
+    }
   }
 });
