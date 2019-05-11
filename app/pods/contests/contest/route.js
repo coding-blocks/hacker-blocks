@@ -12,7 +12,11 @@ export default Ember.Route.extend({
     })
   },
 
-  afterModel(model) {
+  afterModel(model, transition) {
+    if (!model.contest){
+      transition.abort()
+      this.transitionTo('contests.denied')
+    }
     this.get('currentContest').setContest(model.contest)
   }
 });
