@@ -18,15 +18,20 @@
     {{/if}}
 	<div class="row clearfix">
     {{#if session.isAuthenticated}}
-      <button
-        {{action (perform attemptContestTask this.model.id)}}
-        class='btn btn-raised g-bg-blush2 waves-effect btn-sm'>
-        {{#if attemptContestTask.isRunning}}
-          Loading ...
-        {{else}}
-          Attempt Contest
-        {{/if}}
-      </button>
+      {{#if started}}
+        <button
+          {{action (perform attemptContestTask this.model.id)}}
+          class='btn btn-raised g-bg-blush2 waves-effect btn-sm'>
+          {{#if attemptContestTask.isRunning}}
+            Loading ...
+          {{else}}
+            Attempt Contest
+          {{/if}}
+        </button>
+      {{else}}
+        <strong>Please wait while we queue you for the contest</strong>
+        <strong>{{left}} seconds left</strong>
+      {{/if}}
     {{else}}
       <strong>Please login to attempt this contest.</strong>
     {{/if}}
