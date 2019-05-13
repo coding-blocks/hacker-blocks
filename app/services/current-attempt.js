@@ -9,12 +9,13 @@ const { inject: { service } } = Ember;
 
 export default Ember.Service.extend({
   store: service(),
+  serverTime: service('server-time'),
 
   async getCurrentAttempts(contestId) {
     const contestAttempt = this
       .get('store')
       .peekAll('ContestAttempt')
-      .find(attempt => attempt.get('contestId') == contestId && attempt.get('endTime') > Moment().unix())
+      .find(attempt => attempt.get('contestId') == contestId && attempt.get('endTime') > this.get('serverTime').getUnixTime())
     if (!contestAttempt) {
       return this.get('store').queryRecord('ContestAttempt', { contestId: contestId })
     }
