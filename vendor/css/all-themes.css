@@ -203,7 +203,7 @@
     right:0px;
 	cursor: pointer;
     display: inline-block !important;
-    padding: 9px 8px 8px 9px;
+    padding: 9px 8px 8px 100px;
 }
 .theme-blush .bars:before{
 	content: '';
