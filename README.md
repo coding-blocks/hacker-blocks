@@ -20,10 +20,7 @@ You will need the following things properly installed on your computer.
 
 ## Running / Development
 
-* The app is configured to use `dev-api.cb.lk` as backend out of the box. You can change this in `config/environment.js`.
-* If you wish to code without an instance of hack-backend running, you can
-  enable mirage by exporting `HACK_FRONTEND_MIRAGE_ENABLED` in your environment.
-* `ember serve`
+* `export oss=true && ember serve`
 * Visit your app at [http://localhost:4200](http://localhost:4200).
 
 ### Running Tests

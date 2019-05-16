@@ -47,6 +47,12 @@ module.exports = function(environment) {
     ENV.oneauthURL = 'https://account.codingblocks.com/'
   }
 
+  if (process.env.oss) {
+    ENV.publicUrl = 'http://localhost:4200'
+    ENV.apiEndpoint = 'https://api.codingblocks.xyz';
+    ENV.oneauthURL = 'https://account.codingblocks.com/'
+  }
+
   if (environment === 'test') {
     // Testem prefers this...
     ENV.locationType = 'none';
