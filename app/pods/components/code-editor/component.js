@@ -277,7 +277,7 @@ export default Ember.Component.extend({
       localStorage.setItem('redirection-path', redirectionPath);
       window.location = "https://account.codingblocks.com/oauth/authorize?" +
         "response_type=code" +
-        "&client_id=2146237097" +
+        "&client_id=" + config.oneauthClientId +
         "&redirect_uri=" + config.publicUrl
       },
 
