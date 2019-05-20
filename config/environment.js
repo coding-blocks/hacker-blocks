@@ -26,6 +26,8 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.oneauthClientId = 3680446660
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
@@ -59,6 +61,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV.oneauthClientId = 2146237097
     ENV.apiEndpoint = 'https://hack-api.codingblocks.com';
     ENV.GLOBAL_CHAT_NAME = 'chat-prod';
     ENV.chatEndpoint = 'https://chat.cb.lk';
