@@ -63,7 +63,7 @@ export default Ember.Route.extend({
   },
   beforeModel() {
      let {contest} = this.modelFor('contests.contest');
-     let presentDate = this.get ('serverTime').getUnixTime ();
+     let presentDate = this.get ('serverTime').getTime ();
      if(contest.get('startTime') >= presentDate && contest.get('endTime') >= presentDate ) {
         this.transitionTo('contests.upcoming',contest.id);
      }

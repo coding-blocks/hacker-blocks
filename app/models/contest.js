@@ -7,9 +7,9 @@ import moment from 'npm:moment';
 
 export default DS.Model.extend({
   name: DS.attr(),
-  startTime: DS.attr(),
+  startTime: DS.attr('date'),
   level: DS.belongsTo (),
-  endTime: DS.attr(),
+  endTime: DS.attr('date'),
   location: DS.attr(),
   showBanner: DS.attr(),
   image: DS.attr(),
@@ -67,7 +67,7 @@ export default DS.Model.extend({
   endTimeObj: Ember.computed('endTime', {
     get() {
       let obj = {};
-      let unix = moment.unix(this.get('endTime'));
+      let unix = moment(this.get('endTime'));
       obj.day = unix.format('DD');
       obj.month = moment.monthsShort()[unix.format('M') - 1].toUpperCase();
       obj.hour = unix.format('h');
@@ -86,7 +86,7 @@ export default DS.Model.extend({
   }),
   isFinished: Ember.computed('endTime', {
     get() {
-      return moment().unix() > this.get('endTime');
+      return moment() > this.get('endTime');
     }
   }),
   plagiarismFiltering: DS.attr()
