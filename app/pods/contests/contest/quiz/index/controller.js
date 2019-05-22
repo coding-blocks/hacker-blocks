@@ -141,49 +141,55 @@ export default Ember.Controller.extend ({
     },
 
     submitQuiz () {
-      const currentQuizAttempt = this.get ('currentQuizAttempt'),
-        store = this.get ('store'),
-        toast = this.get ('notifications'),
-        questionIds = this.get ('questionIds'),
-        contest = this.get('quiz.contest'),
-        quizzes = contest.get('quizzes').toArray(),
-        problemCount = contest.get('problems.length'),
-        attachments = contest.get('attachments').toArray()
-      ;
-      store.findRecord ('quiz-attempt', currentQuizAttempt.id)
-        .then (attempt => {
-          attempt.set ('result', {})
-          return attempt.save ()
-        })
-        .then (() => {
-          questionIds.map (id => {
-            localStorage.removeItem (`review-${id}`)
+      const currentQuizAttempt = this.get ('currentQuizAttempt')
+      const store = this.get ('store')
+      const toast = this.get ('notifications')
+      const questionIds = this.get ('questionIds')
+      const contest = this.get('quiz.contest')
+      const quizzes = contest.get('quizzes').toArray()
+      const problemCount = contest.get('problems.length')
+      const attachments = contest.get('attachments').toArray()
+      
+      this.get('contestAttemptService').getCurrentAttempts(contest.id).then(currentContestAttempt => {
+        if (currentContestAttempt.get('endTime') - Moment().unix() < 180) {
+          return this.send('autoSubmit')
+        }
+  
+        return store.findRecord ('quiz-attempt', currentQuizAttempt.id)
+          .then (attempt => {
+            attempt.set ('result', {})
+            return attempt.save ()
           })
-
-          store
-            .peekAll ('choice')
-            .toArray ()
-            .map (choice => choice.set ('selected', false))
-
-          this.set ('quizState', null)
-          this.get ('notifications').info ('Test Successfully Submitted!')
-          if (quizzes.length === 1 && (! problemCount) && attachments.length === 0) {
-            return this.get('contestAttemptService').getCurrentAttempts(contest.id) 
-              .then(contestAttempt => {
-                if (!contestAttempt) return
-                // stop the contest attempt
-                return contestAttempt.save()
-              }).then(() => {
-                return this.transitionToRoute('contests.index')
-              })
-          } else {
-            return this.transitionToRoute('contests.contest', contest.id)
-          }
-        })
-        .catch (error => {
-          console.error (error)
-          toast.error ('Could not save test, please check your network connection!')
-        })
+          .then (() => {
+            questionIds.map (id => {
+              localStorage.removeItem (`review-${id}`)
+            })
+  
+            store
+              .peekAll ('choice')
+              .toArray ()
+              .map (choice => choice.set ('selected', false))
+  
+            this.set ('quizState', null)
+            this.get ('notifications').info ('Test Successfully Submitted!')
+            if (quizzes.length === 1 && (! problemCount) && attachments.length === 0) {
+              return this.get('contestAttemptService').getCurrentAttempts(contest.id) 
+                .then(contestAttempt => {
+                  if (!contestAttempt) return
+                  // stop the contest attempt
+                  return contestAttempt.save()
+                }).then(() => {
+                  return this.transitionToRoute('contests.index')
+                })
+            } else {
+              return this.transitionToRoute('contests.contest', contest.id)
+            }
+          })
+          .catch (error => {
+            console.error (error)
+            toast.error ('Could not save test, please check your network connection!')
+          })
+      })
     }
   }
 })
