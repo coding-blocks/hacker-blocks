@@ -13,7 +13,8 @@ export default Ember.Component.extend({
         custom: {
           ext: 'url',
           url: `${competitionId}/leaderboard`
-        }
+        },
+        all: true
       })
 
       this.set('leaderBoard', leaderBoard);
