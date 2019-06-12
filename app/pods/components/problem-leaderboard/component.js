@@ -25,7 +25,7 @@ export default Ember.Component.extend({
 
     let contestId = this.get('contestId');
     let problemId = this.get('problemId');
-    let customParams = {contest_id: contestId, custom: {ext: 'url', url: 'leaderboard'}};
+    let customParams = {contest_id: contestId, custom: {ext: 'url', url: 'leaderboard'}, all: true};
     if (problemId) {
       customParams.problem_id = problemId;
     }
