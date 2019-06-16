@@ -31,7 +31,7 @@ export default Ember.Component.extend({
         ext: 'url', 
         url: 'leaderboard'
       }, 
-      ...(this.get('all') ? {all: true} : {})
+      ...(this.get('limit') ? {} : {all: true})
     };
     if (problemId) {
       customParams.problem_id = problemId;
