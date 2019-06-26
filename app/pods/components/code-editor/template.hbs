@@ -56,6 +56,11 @@
 		<div class="alert alert-danger">
 			Your solution could not be judged in time. If the problem persists, please report it to Hacker Blocks admins - info@hackerblocks.com.
         </div>
+      {{else if (eq result "access_error")}}
+        <hr/>
+        <div class="alert alert-danger">
+        You do not currently have the access for this problem. Please refresh and contact support@codingblocks.com if the issue persists
+        </div>
       {{else if (eq result "auth_error")}}
         <hr/>
         <p class="alert alert-danger">

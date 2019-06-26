@@ -25,8 +25,10 @@ function judge(component, problemId, contestId, noScore, headers) {
     no_score: noScore
   };
 
+  const route = problemId ? '/submit' : '/run';
+
   $.ajax({
-    url: config.apiEndpoint + '/api/submissions',
+    url: config.apiEndpoint + '/api/submissions' + route,
     data: JSON.stringify(submission),
     type: "POST",
     headers: authHeaders,
@@ -116,8 +118,9 @@ function judge(component, problemId, contestId, noScore, headers) {
 
     if (statusCode === 401) {
       component.set ('result', 'auth_error');
-    }
-    else {
+    } else if (statusCode === 403) {
+      component.set('result', 'access_error');
+    } else {
       component.set('result', 'error');
     }
 
