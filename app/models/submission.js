@@ -20,7 +20,7 @@ export default DS.Model.extend({
   problemName:DS.attr('string'),
   isTopSubmission:DS.attr('boolean'),
   tcRuns: DS.attr(),
-  problem:DS.belongsTo('problem'),
+  problem:DS.belongsTo('problem',{inverse:'top'}),
   contest:DS.belongsTo('contest'),
   user: DS.belongsTo('user'),
   certificateEarned: DS.attr ('boolean'),
