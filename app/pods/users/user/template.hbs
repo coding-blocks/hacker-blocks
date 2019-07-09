@@ -89,7 +89,7 @@
                     </thead>
                     {{#each submission as |attempt|}}
                       {{#if (eq contest.id attempt.contest.id) }}
-						{{#unless (eq attempt.language 'mcq')}}
+						{{#unless (or (eq attempt.language 'mcq') (not attempt.problem))}}
                         <tr>
                         {{#link-to "contests.contest.problem" contest.id attempt.problem.id}}
                             <td class="text-center  td-pad">
