@@ -170,8 +170,8 @@ export default Ember.Controller.extend ({
           if (quizzes.length === 1 && (! problemCount) && attachments.length === 0) {
             return this.get('contestAttemptService').getCurrentAttempts(contest.id) 
               .then(contestAttempt => {
-                if (!contestAttempt) return
-                if (contestAttempt.get('endTime') < Moment().unix() - 300) return
+                if (!contestAttempt) return;
+                if (contestAttempt.get('endTime') - 300 < Moment().unix() ) return;
                 return contestAttempt.save()
               }).then(() => {
                 return this.transitionToRoute('contests.index')
