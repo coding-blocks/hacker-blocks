@@ -2,7 +2,6 @@ import Ember from 'ember';
 import Moment from 'npm:moment'
 import DS from 'ember-data'
 import { task } from 'ember-concurrency'
-import { getMaxListeners } from 'cluster';
 
 export default Ember.Controller.extend ({
   contestAttemptService: Ember.inject.service('current-attempt'),
