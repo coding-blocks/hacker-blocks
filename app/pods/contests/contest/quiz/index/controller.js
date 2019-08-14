@@ -2,6 +2,7 @@ import Ember from 'ember';
 import Moment from 'npm:moment'
 import DS from 'ember-data'
 import { task } from 'ember-concurrency'
+import { getMaxListeners } from 'cluster';
 
 export default Ember.Controller.extend ({
   contestAttemptService: Ember.inject.service('current-attempt'),
@@ -171,7 +172,7 @@ export default Ember.Controller.extend ({
             return this.get('contestAttemptService').getCurrentAttempts(contest.id) 
               .then(contestAttempt => {
                 if (!contestAttempt) return
-                // stop the contest attempt
+                if (contestAttempt.get('endTime') < Moment().unix() - 300) return
                 return contestAttempt.save()
               }).then(() => {
                 return this.transitionToRoute('contests.index')
