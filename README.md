@@ -1,6 +1,7 @@
 # Hacker Blocks
 
-Online coding platform by Coding Blocks.
+Online coding platform by Coding Blocks with plenty of questions. All the questions are classified in different categories like Dynamic Programming, Greedy, Arrays, Strings, Segment Trees, Bit Indexed Trees and many more. Contests are Organised on daily or monthly basis.If someone is looking for Internship or Job then they can solve the problems in the category of Interview Preperation. Data Structures, Algorithms and different categories are assigned to problems.In Simple Words, it's a complete package of all types of Coding Problems and Solutions.
+
 
 ## Prerequisites
 
