@@ -1,4 +1,4 @@
-# Hacker Blocks
+![hb_logo](https://user-images.githubusercontent.com/33978990/66422740-d7ffcb00-ea27-11e9-9011-7bb97d3781d8.png)
 
 Online coding platform by Coding Blocks.
 
