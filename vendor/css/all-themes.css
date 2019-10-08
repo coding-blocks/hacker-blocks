@@ -200,8 +200,7 @@
     width: 32px;
     height: 32px;
     position: absolute;
-    right:0px;
-	cursor: pointer;
+	  cursor: pointer;
     display: inline-block !important;
     padding: 9px 8px 8px 9px;
 }
