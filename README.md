@@ -1,5 +1,9 @@
 # Hacker Blocks
 
+**NOTE** 
+This is the source code of the old hackerblocks platform. Newer application is the complete re-write of this one from scratch. It can be found here: https://github.com/coding-blocks/hackerblocks.projectx. 
+
+
 Online coding platform by Coding Blocks.
 
 ## Prerequisites
