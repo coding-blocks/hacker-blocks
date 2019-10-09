@@ -37,3 +37,4 @@ You will need the following things properly installed on your computer.
 
 * [ember.js](http://emberjs.com/)
 * [ember-cli](https://ember-cli.com/)
+* [bower](https://bower.io)
