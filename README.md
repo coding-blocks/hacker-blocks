@@ -8,7 +8,7 @@ Online coding platform by Coding Blocks.
 
 ## Prerequisites
 
-You will need the following things properly installed on your computer.
+You will need the following software components properly installed on your computer.
 
 * [Git](https://git-scm.com/)
 * [Node.js](https://nodejs.org/) (with NPM)
