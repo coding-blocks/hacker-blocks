@@ -17,8 +17,8 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone <repository-url>` this repository
-* `cd hack`
+* `git clone https://github.com/coding-blocks/hacker-blocks.git` this repository
+* `cd hacker-blocks `
 * `npm install`
 * `bower install`
 
