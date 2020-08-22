@@ -10,7 +10,7 @@ export default DS.Model.extend({
   photo:DS.attr(),
   source: DS.attr(),
   judgeResult: DS.attr(),
-  submitAt: DS.attr(),
+  submitAt: DS.attr('date'),
   language: DS.attr(),
   score: DS.attr(),
   explanation: DS.attr ('string'),

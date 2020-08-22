@@ -15,7 +15,7 @@ export default Ember.Service.extend({
     const contestAttempt = this
       .get('store')
       .peekAll('ContestAttempt')
-      .find(attempt => attempt.get('contestId') == contestId && attempt.get('endTime') > this.get('serverTime').getUnixTime())
+      .find(attempt => attempt.get('contestId') == contestId && attempt.get('endTime') > this.get('serverTime').getTime())
     if (!contestAttempt) {
       return this.get('store').queryRecord('ContestAttempt', { contestId: contestId })
     }

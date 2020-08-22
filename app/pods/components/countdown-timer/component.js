@@ -16,6 +16,9 @@ export default Ember.Component.extend({
   serverTime: Ember.inject.service (),
   
   didReceiveAttrs () {
+    // convert start time to moment
+    this.set('startTime', moment(this.get('startTime')))
+
     //setup an poll to call tick function with interval NO LESS than 1 sec
     const pollId = this.get('poll').addPoll({
       interval: 1000,
@@ -26,7 +29,7 @@ export default Ember.Component.extend({
 
     const startTime = this.get('startTime')
     const duration = this.get('duration')
-    this.set('endTime', startTime+duration)
+    this.set('endTime', startTime.add(duration, 'second'))
 
     this.send('tick')
 
@@ -40,26 +43,24 @@ export default Ember.Component.extend({
 
 
   countdownEndTime: Ember.computed('duration', 'startTime', function() {
-    return this.get('startTime') + this.get('duration')
+    return this.get('startTime').add(this.get('duration'), 'second')
   }),
 
   // The actual string to display in the coundown timer. 
   // The difference between now and endTime
   displayString: Ember.computed('now', function () {
-    const now = this.get('now')
+    const now = moment.unix(this.get('now'))
     const endTime = this.get('countdownEndTime')
     
-    let diff = Math.floor(endTime - now)
-    const hrs = Math.floor(diff/3600)
-    diff %= 3600
-    const min = Math.floor(diff/60)
-    diff %= 60
-    const sec = diff
+    const diff = moment.unix(endTime.diff(now, 'seconds '))
+    const hrs = diff.hours()
+    const min = diff.minutes()
+    const sec = diff.seconds()
     return `${hrs} Hours ${min} Mins and ${sec} Seconds`
   }),
 
   isCompleted: Ember.computed('now', function () {
-    const now = this.get('now')
+    const now = moment.unix(this.get('now'))
     const endTime = this.get('countdownEndTime')
     if (now >= endTime) {
       this.get('poll').stopAll();
